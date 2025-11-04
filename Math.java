@@ -11,4 +11,19 @@ public class Math {
             return b;
         }
     }
+	
+	/*****************************
+     * Developer: Arun Memi
+     * University ID: 240120968
+     * Function: This function takes two integers as input and returns the minimum one.
+	 *****************************/
+	 
+	public int min(int a, int b) {
+		if (a < b) {
+			return a;
+		} else {
+			return b;
+		}
+	}
+	
 }
