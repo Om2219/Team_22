@@ -25,5 +25,4 @@ public class Math {
 			return b;
 		}
 	}
-	
 }
