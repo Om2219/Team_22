@@ -25,5 +25,19 @@ public class Math {
 			return b;
 		}
 	}
+
+    /*****************************
+     * Developer: Om Patel
+     * University ID: 240171834
+     * Function: This function takes two integers as input and returns the sum
+	 *****************************/
+	 
+	public int add(int a, int b) {
+
+    int sum = a +b;
+
+    return sum;
+
+	}
 	
 }
