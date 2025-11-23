@@ -25,6 +25,16 @@ Route::get('account', function () { return view('account'); });
 
 Route::get('basket', function () { return view('basket'); });
 
+Route::get('checkout', function () { return view('checkout'); });
+
+Route::get('product', function () { return view('product'); });
+
+Route::get('products', function () { return view('products'); });
+
+Route::get('faq', function () { return view('faq'); });
+
+Route::get('contactdetail', function () { return view('contactdetail'); });
+
 Route::get('order', function () { return view('order'); });
 
 

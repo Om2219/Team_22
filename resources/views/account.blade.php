@@ -13,13 +13,13 @@
     <div class = "accountBox">
         <h2>My Details</h2>
         <p> Manage Passwords, Email and Phone Number </p>
-        <button class = "headbut"><a href="/order">Edit My Details</a></button>
+        <button class = "headbut"><a href="/contactdetail">Edit My Details</a></button>
     </div>
 
     <div class = "accountBox">
         <h2>Customer Service</h2>
-        <p> Get Help</p>
-        <button class = "headbut"><a href="/order">Click here</a></button>
+        <p> Need Help</p>
+        <button class = "headbut"><a href="/faq">Click here</a></button>
     </div>
 
     <div class = "accountBox">

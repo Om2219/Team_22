@@ -20,10 +20,10 @@
                  
           {{-- top of the nav bar and contains the logo, search bar,, the users account, the users basked--}}         
         <div class= "top">
-            <img src="{{ Vite::asset('resources/images/logo_updated.png') }}" class = "logo">
-            <input class ="headbut" type="text" name="search" placeholder="What are you looking for?">
-            <button class ="headbut"><img src="{{ Vite::asset('resources/images/account.png') }}" class = "bob"><br><a href="/account">account</a></button>
-            <button class ="headbut"><img src="{{ Vite::asset('resources/images/basket.png') }}" class = "bob"><br><a href="/basket">Basket</a></button>
+            <a href="/home"><button class = "logoButton"><img src="{{ Vite::asset('resources/images/logo_updated.png') }}" class = "logo"></button></a>
+            <input type="text" name="search" placeholder="What are you looking for?">
+            <a href="/account"><button class ="headbut"><img src="{{ Vite::asset('resources/images/account.png') }}" class = "bob"><br>Account</button></a>
+            <a href="/basket"><button class ="headbut"><img src="{{ Vite::asset('resources/images/basket.png') }}" class = "bob"><br>Basket</button></a>
             </div>
           {{-- bottom of nav bar and contains our 5 catagoires with links, and if you hover over it gives you more specific options--}}    
         <div class= "bottom">
@@ -45,28 +45,17 @@
 
   {{-- footer for all pages --}}
   <footer>
-    
-        <div class= "box">
-                <a href="/home">Arts & Crafts</a><br>
-                <a href="/home">Stationary</a><br>
-                <a href="/home">Books</a><br>
-                <a href="/home">eBooks</a><br>
-                <a href="/home">Office Supplies</a>
-                </div>
-        <div class= "box">
-                <a href="/home">Arts & Crafts</a><br>
-                <a href="/home">Stationary</a><br>
-                <a href="/home">Books</a><br>
-                <a href="/home">eBooks</a><br>
-                <a href="/home">Office Supplies</a>
-                </div>
-        <div class= "box">
-                <a href="/home">Arts & Crafts</a><br>
-                <a href="/home">Stationary</a><br>
-                <a href="/home">Books</a><br>
-                <a href="/home">eBooks</a><br>
-                <a href="/home">Office Supplies</a>
-                </div>
+    <div>
+       © Roots 
+
+      {{-- WE NEED TO DIRECT THESE PAGS TO SOMEWHERE--}}
+
+      <a href="/home"><button><img src="{{ Vite::asset('resources/images/youtube.png') }}" class = "icon"></button></a> 
+      <a href="/home"><button><img src="{{ Vite::asset('resources/images/Facebook.png') }}" class = "icon"></button></a> 
+      <a href="/home"><button><img src="{{ Vite::asset('resources/images/Instagram.png') }}" class = "icon"></button></a> 
+      <a href="/home"><button><img src="{{ Vite::asset('resources/images/X.png') }}" class = "icon"></button></a> 
+
+    </div>
 
   </footer>
     
