@@ -17,7 +17,12 @@ header{
 }
 
 .icon {
-    height: 10px;
+    height: 15px;
+}
+
+.iconbutton {
+    background-color:#bdab53;
+    border: #bdab53;
 }
 
 .bob {

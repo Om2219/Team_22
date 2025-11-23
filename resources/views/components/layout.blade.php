@@ -50,10 +50,10 @@
 
       {{-- WE NEED TO DIRECT THESE PAGS TO SOMEWHERE--}}
 
-      <a href="/home"><button><img src="{{ Vite::asset('resources/images/youtube.png') }}" class = "icon"></button></a> 
-      <a href="/home"><button><img src="{{ Vite::asset('resources/images/Facebook.png') }}" class = "icon"></button></a> 
-      <a href="/home"><button><img src="{{ Vite::asset('resources/images/Instagram.png') }}" class = "icon"></button></a> 
-      <a href="/home"><button><img src="{{ Vite::asset('resources/images/X.png') }}" class = "icon"></button></a> 
+      <a href="/home"><button class = "iconbutton"><img src="{{ Vite::asset('resources/images/youtube.png') }}" class = "icon"></button></a> 
+      <a href="/home"><button class = "iconbutton"><img src="{{ Vite::asset('resources/images/Facebook.png') }}" class = "icon"></button></a> 
+      <a href="/home"><button class = "iconbutton"><img src="{{ Vite::asset('resources/images/Instagram.png') }}" class = "icon"></button></a> 
+      <a href="/home"><button class = "iconbutton"><img src="{{ Vite::asset('resources/images/X.png') }}" class = "icon"></button></a> 
 
     </div>
 
