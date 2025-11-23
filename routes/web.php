@@ -21,6 +21,11 @@ Route::get('home', function () {return view('index'); });
 
 Route::get('login', function () { return view('login'); });
 
+Route::get('account', function () { return view('account'); });
+
+Route::get('basket', function () { return view('basket'); });
+
+Route::get('order', function () { return view('order'); });
 
 
 

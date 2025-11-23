@@ -22,8 +22,8 @@
         <div class= "top">
             <img src="{{ Vite::asset('resources/images/logo_updated.png') }}" class = "logo">
             <input class ="headbut" type="text" name="search" placeholder="What are you looking for?">
-            <button class ="headbut"><img src="{{ Vite::asset('resources/images/account.png') }}" class = "bob"><br><a href="/login">account</a></button>
-            <button class ="headbut"><img src="{{ Vite::asset('resources/images/basket.png') }}" class = "bob"><br><a href="/login">Basket</a></button>
+            <button class ="headbut"><img src="{{ Vite::asset('resources/images/account.png') }}" class = "bob"><br><a href="/account">account</a></button>
+            <button class ="headbut"><img src="{{ Vite::asset('resources/images/basket.png') }}" class = "bob"><br><a href="/basket">Basket</a></button>
             </div>
           {{-- bottom of nav bar and contains our 5 catagoires with links, and if you hover over it gives you more specific options--}}    
         <div class= "bottom">
