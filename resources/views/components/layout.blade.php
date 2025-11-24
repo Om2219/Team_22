@@ -28,9 +28,12 @@
              <a href="/sign-in"><button class ="headbut"><img src="{{ Vite::asset('resources/images/account.png') }}" class = "bob"><br>sign-in</button></a>
 
              <a href="/basket"><button class ="headbut"><img src="{{ Vite::asset('resources/images/basket.png') }}" class = "bob"><br>Basket</button></a>
+<<<<<<< Updated upstream
 =======
             <a href="/account"><button class ="headbut"><img src="{{ Vite::asset('resources/images/account.png') }}" class = "bob"><br>Accounts</button></a>
             <a href="/basket"><button class ="headbut"><img src="{{ Vite::asset('resources/images/basket.png') }}" class = "bob"><br>Basket</button></a>
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
             </div>
           {{-- bottom of nav bar and contains our 5 catagoires with links, and if you hover over it gives you more specific options--}}    
