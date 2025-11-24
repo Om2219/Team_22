@@ -23,8 +23,10 @@
             <a href="/home"><button class = "logoButton"><img src="{{ Vite::asset('resources/images/logo_updated.png') }}" class = "logo"></button></a>
             <input type="text" name="search" placeholder="What are you looking for?">
             <a href="/account"><button class ="headbut"><img src="{{ Vite::asset('resources/images/account.png') }}" class = "bob"><br>Account</button></a>
-             <a href="/account"><button class ="headbut"><img src="{{ Vite::asset('resources/images/account.png') }}" class = "bob"><br>Account</button></a>
-            <a href="/basket"><button class ="headbut"><img src="{{ Vite::asset('resources/images/basket.png') }}" class = "bob"><br>Basket</button></a>
+             <a href="/login"><button class ="headbut"><img src="{{ Vite::asset('resources/images/account.png') }}" class = "bob"><br>login</button></a>
+             <a href="/sign-in"><button class ="headbut"><img src="{{ Vite::asset('resources/images/account.png') }}" class = "bob"><br>sign-in</button></a>
+
+             <a href="/basket"><button class ="headbut"><img src="{{ Vite::asset('resources/images/basket.png') }}" class = "bob"><br>Basket</button></a>
             </div>
           {{-- bottom of nav bar and contains our 5 catagoires with links, and if you hover over it gives you more specific options--}}    
         <div class= "bottom">
