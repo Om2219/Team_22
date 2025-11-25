@@ -37,6 +37,7 @@ Route::get('contactdetail', function () { return view('contactdetail'); });
 
 Route::get('order', function () { return view('order'); });
 
+Route::get('aboutus', function () { return view('aboutus'); });
 
 
 // irrelavent;

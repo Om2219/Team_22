@@ -32,6 +32,7 @@
                 <button class ="headbut"><a href="/home">Books</a></button>
                 <button class ="headbut"><a href="/home">eBooks</a></button>
                 <button class ="headbut"><a href="/home">Office Supplies</a></button>
+                <button class ="headbut"><a href="/aboutus">About Us</a></button>
                 </div>
     </nav>
   </header>
