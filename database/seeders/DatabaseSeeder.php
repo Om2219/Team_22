@@ -19,9 +19,5 @@ class DatabaseSeeder extends Seeder
         // @todo: Add comments to explain what the call() method does.
         // @todo: What parameters does it accept?
         // @todo: Does the order of the contents of the function matter?
-        $this->call([
-            StudentSeeder::class, 
-            ModuleSeeder::class, 
-        ]);
     }
 }
