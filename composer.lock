@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< Updated upstream
     "content-hash": "65d9b64a45c168b56a6604fa7879b353",
+=======
+    "content-hash": "a349383c5500fe749471b3bfb83df832",
+>>>>>>> Stashed changes
     "packages": [
         {
             "name": "brick/math",
@@ -6071,6 +6075,7 @@
             "time": "2025-04-30T06:54:44+00:00"
         },
         {
+<<<<<<< Updated upstream
             "name": "krlove/code-generator",
             "version": "1.0.1",
             "source": {
@@ -6126,30 +6131,86 @@
             },
             "require-dev": {
                 "phpunit/phpunit": "^9.5"
+=======
+            "name": "laravel/breeze",
+            "version": "v1.29.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/breeze.git",
+                "reference": "22c53b84b7fff91b01a318d71a10dfc251e92849"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/breeze/zipball/22c53b84b7fff91b01a318d71a10dfc251e92849",
+                "reference": "22c53b84b7fff91b01a318d71a10dfc251e92849",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^10.17",
+                "illuminate/filesystem": "^10.17",
+                "illuminate/support": "^10.17",
+                "illuminate/validation": "^10.17",
+                "php": "^8.1.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^8.0",
+                "phpstan/phpstan": "^1.10"
+>>>>>>> Stashed changes
             },
             "type": "library",
             "extra": {
                 "laravel": {
                     "providers": [
+<<<<<<< Updated upstream
                         "Krlove\\EloquentModelGenerator\\Provider\\GeneratorServiceProvider"
                     ]
+=======
+                        "Laravel\\Breeze\\BreezeServiceProvider"
+                    ]
+                },
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+>>>>>>> Stashed changes
                 }
             },
             "autoload": {
                 "psr-4": {
+<<<<<<< Updated upstream
                     "Krlove\\EloquentModelGenerator\\": "src/"
+=======
+                    "Laravel\\Breeze\\": "src/"
+>>>>>>> Stashed changes
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
+<<<<<<< Updated upstream
             "description": "Eloquent Model Generator",
             "support": {
                 "issues": "https://github.com/krlove/eloquent-model-generator/issues",
                 "source": "https://github.com/krlove/eloquent-model-generator/tree/2.0.2"
             },
             "time": "2023-11-25T16:32:00+00:00"
+=======
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Minimal Laravel authentication scaffolding with Blade and Tailwind.",
+            "keywords": [
+                "auth",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel/breeze/issues",
+                "source": "https://github.com/laravel/breeze"
+            },
+            "time": "2024-03-04T14:35:21+00:00"
+>>>>>>> Stashed changes
         },
         {
             "name": "laravel/pint",
