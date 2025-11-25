@@ -1,30 +1,19 @@
 <x-layout>
-
-    <div class="container mt-5">
-        <h1 class="mb-4">Product List</h1>
-
-        <table class="table table-bordered table-striped">
-            <thead class="table-dark">
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th>Created When</th>
-                </tr>
-            </thead>
-            <tbody>
-            @foreach ($products as $product)
-                <tr>
-                    <td>{{ $product->id }}</td>
-                    <td>{{ $product->name }}</td>
-                    <td>{{ $product->product_description }}</td>
-                    <td>{{ number_format($product->price, 2) }}</td>
-                    <td>{{ $product->created_when ?? '-' }}</td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
-    </div>
-
+    <h1>all products</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach ($products as $product)
+            <tr>
+                <td>{{ $product->name }}</td>
+                <td>{{ number_format($product->price, 2) }}</td>
+            </tr>
+        @endforeach 
+        </tbody>
+    </table>
 </x-layout>
