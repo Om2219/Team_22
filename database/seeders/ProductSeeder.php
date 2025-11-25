@@ -13,5 +13,15 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         //
+
+      
+        Product::create ([
+  
+            'name' => 'Suja',
+            'product_description' => 'PIPE DOWN PRINCESS',
+            'price' => 67.69,
+            'category_id' => 1
+        ]);
+
     }
 }
