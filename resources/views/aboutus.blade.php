@@ -7,23 +7,40 @@
 <!-- full -width images-->
 <div class="mySlides fade">
     <div class="numbertext"> 1/3</div>
-     <img src="{{ asset('images/img1.jpg') }}"  style="width:80%; height:10%;">
-<div class="text"> Caption Text</div>
+     <img src="{{ asset('images/img1.jpg') }}"  class="slide-img">
+<div class="text"> <h1>Where our Story Begins</h1><p>Every great creation starts with a seed.
+ROOTS was born from a simple belief- that creativity grows when it is nurtured. What began as a 
+    small passion for beutiful stationary and meanigful handmade crafts soon blossomed into a space 
+    where ideas, imagination and inspiration come together. At ROOTS, we believe creativity is not just 
+    an activity - it is a journey that starts deep within.</p>
+
+</div>
 
 </div>
 
 <div class="mySlides fade">
     <div class="numbertext"> 2/3</div>
-    <img src="{{ asset('images/img2.jpg') }}"   style="width:80%; height:50%;">
-<div class="text"> Caption Two</div>
+    <img src="{{ asset('images/img1.jpg') }}"  class="slide-img">
+<div class="text"> <h1>Growing Creativity, One Idea At a Time</h1>
+<p> From thoughtfully designed notebooks to vibrant art supplies, every product we offer is chosen to 
+    spark imagination and encourage self-expression. We support dreamers, makers, writers, students and 
+    artist - anyone who believes in the power of creating something beutiful. Our focus is simple: quality, 
+    inspiration and tools that help creativity flourish. Because when your tools feel good your ideas grow even better. </p>
+
+</div>
 
 </div>
 
 <div class="mySlides fade">
     <div class="numbertext"> 3/3</div>
-     <img src="{{ asset('images/img3.jpg') }}"   style="width:80%; height:50%;">
-<div class="text"> Caption Three</div>
-
+     <img src="{{ asset('images/img1.jpg') }}"  class="slide-img">
+<div class="text"> <h1> Rooted in Purpose Made for You</h1>
+<p> Rootsis more than a brand - Its a community. A place where creativity is celebrated, individuality is 
+    valued, ane every creation tells a story. Whether you are crafting, learning, writing or discovering new 
+    passions, we are here to help you grow deeper roots and reach higher branches.
+     Together lets create a world where every idea is planted, nurtured and brought to life. </p>
+    
+</div>
 </div>
 
    
@@ -51,12 +68,19 @@
 .slideshow-container{
 max-width: 1000px;
 position: relative;
-margin: auto;
+margin:  40px auto 0  auto;
 }
 
 /* */
 .mySlides{
     display:none;
+}
+
+
+.slide-img{
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
 }
 
 /* previous and next button */
@@ -92,10 +116,10 @@ user-select: none;
 /*caption text */
 .text{
     color: black;
-    font-size:45px;
+    font-size:25px;
     padding: 8px 12px;
     position: absolute;
-    bottom: 260px;
+    bottom: 20px;
     width: 100%;
     text-align: left;
 }
