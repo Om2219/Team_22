@@ -7,21 +7,21 @@
 <!-- full -width images-->
 <div class="mySlides fade">
     <div class="numbertext"> 1/3</div>
-    <img src="img1.png" style="width:100%">
+     <img src="{{ asset('images/img1.jpg') }}"  style="width:80%; height:10%;">
 <div class="text"> Caption Text</div>
 
 </div>
 
 <div class="mySlides fade">
     <div class="numbertext"> 2/3</div>
-    <img src="img2.png" style="width:100%">
+    <img src="{{ asset('images/img2.jpg') }}"   style="width:80%; height:50%;">
 <div class="text"> Caption Two</div>
 
 </div>
 
 <div class="mySlides fade">
     <div class="numbertext"> 3/3</div>
-    <img src="img3.png" style="width:100%">
+     <img src="{{ asset('images/img3.jpg') }}"   style="width:80%; height:50%;">
 <div class="text"> Caption Three</div>
 
 </div>
@@ -91,13 +91,13 @@ user-select: none;
 
 /*caption text */
 .text{
-    color: #f2f2f2;
-    font-size:15px;
+    color: black;
+    font-size:45px;
     padding: 8px 12px;
     position: absolute;
-    bottom: 8px;
+    bottom: 260px;
     width: 100%;
-    text-align: center;
+    text-align: left;
 }
 
 /*number text */
@@ -122,7 +122,7 @@ user-select: none;
 
 }
 
-.active. ,dot:hover{
+.active, .dot:hover{
     background-color: #717171;
 
 }
@@ -134,7 +134,7 @@ user-select: none;
     animation-duration: 1.5s;
 }
 
-@keyframe fade{
+@keyframes fade{
     from{opacity: .4}
     to {opacity: 1}
 }
@@ -163,10 +163,14 @@ function showSlides(n) {
     if(n > slides.length) {slideIndex = 1}
     if (n < 1){slideIndex = slides.length}
     for(i = 0; i < slides.length; i++){
+
+        slides[i].style.display = "none";
+    }
+     for(i = 0; i < dots.length; i++){
         dots[i].className = dots[i].className.replace("active", "");
     }
-slides[slideIndex-1].style.display = "block";
-dots[slideIndex-1].className += " active";
+slides[slideIndex - 1].style.display = "block";
+dots[slideIndex - 1].className += " active";
 }
 </script>
 
