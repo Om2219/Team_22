@@ -26,5 +26,13 @@ class ProductSeeder extends Seeder
             'category_id' => $cat->id
         ]);
 
+        Product::create ([
+  
+            'name' => 'Yoyo',
+            'product_description' => 'It goes up and it goes down',
+            'price' => 6.70,
+            'category_id' => $cat->id
+        ]);
+
     }
 }
