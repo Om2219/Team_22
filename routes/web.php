@@ -39,7 +39,7 @@ Route::get('order', function () { return view('order'); });
 
 Route::get('aboutus', function () { return view('aboutus'); });
 
-
+Route::get('register', function () { return view('register'); });
 // irrelavent;
 
 // Route::get('studentlisting', 'App\Http\Controllers\StudentController@list')->name('list_student');
