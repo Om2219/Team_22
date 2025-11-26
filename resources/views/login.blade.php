@@ -1,16 +1,17 @@
 <x-layout>
  <div class="loginPage">
-    <form action="action_page.php" method="post" class="loginForm">
-                <div class="imgcontainer">
+ <form action="{{ route('login.store') }}" method="POST" class="loginForm">
+ @csrf
+ <div class="imgcontainer">
             <img src="{{ asset('images/img_avatar2.png') }}" alt= "Avatar" class ="avatar">
 </div>
 
 <div class= "login">
     <label for= "uname"><b>Username</b></label>
-    <input id="uname" type="text" placeholder= "Enter Username" name="uname" required>
+    <input id="email" type="text" placeholder= "Enter Username" name="email" required>
 
 <label for= "psw"><b>Password</b></label>
-    <input id="psw" type="password" placeholder= "Enter Password" psw="uname" required>
+    <input id="psw" type="password" placeholder= "Enter Password" name="password" required>
    
 <button type ="submit" class="mainLogin"> Login</button>
 <label>

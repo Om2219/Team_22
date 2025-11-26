@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,7 +20,7 @@ Route::get('/', function () {  return view('index'); });
 
 Route::get('home', function () {return view('index'); });
 
-Route::get('login', function () { return view('login'); });
+
 
 Route::get('account', function () { return view('account'); });
 
@@ -39,8 +40,17 @@ Route::get('order', function () { return view('order'); });
 
 Route::get('aboutus', function () { return view('aboutus'); });
 
-Route::get('register', function () { return view('register'); });
+
+
+Route::get('register', [RegisterController::class, 'create'])->name('register');
+Route::post('register', [RegisterController::class, 'store'])->name('register.store');
+Route::get('login', [LoginController::class, 'create'])->name('login');
+Route::post('login', [LoginController::class, 'store'])->name('login.store');
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
 // irrelavent;
+
+
 
 // Route::get('studentlisting', 'App\Http\Controllers\StudentController@list')->name('list_student');
 // Route::get('studentprofile/{}', 'App\Http\Controllers\StudentController@show');
