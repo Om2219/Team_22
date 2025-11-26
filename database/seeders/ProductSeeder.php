@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
 class ProductSeeder extends Seeder
@@ -13,6 +15,7 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         //
+        $cat = Category::first();
 
       
         Product::create ([
@@ -20,7 +23,7 @@ class ProductSeeder extends Seeder
             'name' => 'Suja',
             'product_description' => 'PIPE DOWN PRINCESS',
             'price' => 67.69,
-            'category_id' => 1
+            'category_id' => $cat->id
         ]);
 
     }

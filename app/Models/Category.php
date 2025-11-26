@@ -11,8 +11,7 @@ class Category extends Model
 
     protected $primaryKey = 'id';
     protected $fillable = [
-        'name',
-        'description'
+        'name'
     ];
 
     public function product() {

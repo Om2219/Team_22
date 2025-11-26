@@ -13,7 +13,6 @@ return new class extends Migration
             $table->foreignId('session_id')->constrained('chat_sessions_for_ai')->cascadeOnDelete();
             $table->enum('sender',['user','bot']);
             $table->text('message');
-            $table->timestamp('created_at')->nullable();
             $table->timestamps();
         });
     }
