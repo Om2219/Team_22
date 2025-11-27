@@ -1,12 +1,4 @@
 <x-layout>
-<<<<<<< Updated upstream
- 
-    <div >
-    <p> TEST </p>
-    </div>
-
-   
-=======
     <style>
         
         .container {
@@ -117,5 +109,5 @@
         </div>
     </div>
 
->>>>>>> Stashed changes
+
 </x-layout>
