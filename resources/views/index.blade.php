@@ -84,7 +84,7 @@
 
     <div class="hero-section">
         <h1>Grow Your Knowledge</h1>
-        <p>Premium sustainable stationery, books, and supplies for students.</p>
+        <p>Premium sustainable stationery, books and supplies for students.</p>
         <a href="/products" class="cta-button">Shop All Products</a>
     </div>
 
