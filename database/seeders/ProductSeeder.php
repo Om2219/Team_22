@@ -15,15 +15,23 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         //
-        $cat = Category::first();
+        $toy = Category::where('name', 'Toys')->first();
+
+        $stat = Category::where('name', 'Stationary')->first();
+
+        $book = Category::where('name', 'Books')->first();
+
+        $office = Category::where('name', 'Office')->first();
+
+        $art = Category::where('name', 'ArtCraft')->first();
 
       
         Product::create ([
   
-            'name' => 'Suja',
+            'name' => 'Suja the Goat',
             'product_description' => 'PIPE DOWN PRINCESS',
             'price' => 67.69,
-            'category_id' => $cat->id
+            'category_id' => $art->id
         ]);
 
         Product::create ([
@@ -31,7 +39,7 @@ class ProductSeeder extends Seeder
             'name' => 'Yoyo',
             'product_description' => 'It goes up and it goes down',
             'price' => 6.70,
-            'category_id' => $cat->id
+            'category_id' => $toy->id
         ]);
 
     }
