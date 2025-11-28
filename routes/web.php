@@ -23,8 +23,6 @@ Route::get('/', function () {  return view('index'); });
 
 Route::get('home', function () {return view('index'); });
 
-
-
 Route::get('account', function () { return view('account'); });
 
 Route::get('basket', function () { return view('basket'); });
