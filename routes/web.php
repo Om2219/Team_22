@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
+use App\Models\Product;
+use App\Http\Controllers\ProductController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,9 +31,13 @@ Route::get('basket', function () { return view('basket'); });
 
 Route::get('checkout', function () { return view('checkout'); });
 
-Route::get('product', function () { return view('product'); });
+// Route::get('product', function () { $product = Product::first(); return view('product', compact('product')); });
 
-Route::get('products', function () { return view('products'); });
+// Route::get('products', function () { return view('products'); });
+
+Route::get('product/{product}',[ProductController::class, 'show'])->name('product.show');
+
+Route::get('products',[ProductController::class, 'productPage'])->name('products.productPage');
 
 Route::get('faq', function () { return view('faq'); });
 
