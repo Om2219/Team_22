@@ -36,6 +36,10 @@
             </div>
 
             <button type="submit">update basket</button>
+
+            <div class = "basket-master">
+                <button class="checkoutButton"><a href="/checkout">Checkout</a></button>
+            </div>
         @endif
     
     </div>
