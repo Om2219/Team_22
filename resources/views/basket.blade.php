@@ -7,6 +7,8 @@
         @if($basket->isEmpty())
             <p>basket is empty</p>
         @else
+        <div class="basket-container">
+
             <div class="basket_items">
                 @foreach($basket as $product)
                     <div class="basket-item">
@@ -42,6 +44,7 @@
             </div>
         @endif
     
+        </div>
     </div>
 
 </x-layout>
