@@ -5,6 +5,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Models\Product;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\BasketController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,10 @@ Route::get('home', function () {return view('index'); });
 
 Route::get('account', function () { return view('account'); });
 
-Route::get('basket', function () { return view('basket'); });
+Route::get('basket', [BasketController::class, 'basketPage'])->name('basket');                              //displays the basket page
+Route::post('basket/add/{product}', [BasketController::class, 'add'])->name('basket.add');                  //adds a product to the basket
+Route::delete('basket/remove/{product}', [BasketController::class, 'remove'])->name('basket.remove');       //removes a product from the basket
+
 
 Route::get('checkout', function () { return view('checkout'); });
 
