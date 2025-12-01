@@ -38,13 +38,14 @@
             </div>
 
             <button type="submit">update basket</button>
+        </div>
 
-            <div class = "basket-master">
+            <br>
+            <div class = "basket-master"> <!--keeping this outside the container-->
                 <button class="checkoutButton"><a href="/checkout">Checkout</a></button>
             </div>
         @endif
     
-        </div>
     </div>
 
 </x-layout>
