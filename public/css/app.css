@@ -14,12 +14,17 @@ header{
 .logoButton{
  background-color: #7a4900;
  border: #7a4900;
+ cursor: pointer;
 
 }
 
 .icon {
     
     height: 15px;
+}
+
+.imageIcon {
+  width: 50%;
 }
 
 .iconbutton {
@@ -40,6 +45,7 @@ a{
   
     background-color: snow; 
     display: inline-block;
+    cursor: pointer;
     padding: 8px 16px;
     border-radius: 8px; 
     font-size: 16px;
@@ -55,7 +61,7 @@ a{
 }
 
 .headbut:active {
-    background-color: rgba(119, 72, 72, 0.86); 
+    background-color: whitesmoke;
     box-shadow: none; 
 }
 
@@ -127,6 +133,17 @@ footer{
 
 }
 
+
+.productsBox {
+
+    justify-content: space-between;
+    flex-direction: row;
+    display: flex;
+
+
+}
+
+
 /*Kyle CSS*/
 .faq-master .questions {
     background: none;
@@ -159,6 +176,7 @@ footer{
     border: 3px solid lightgrey;
     border-radius: 8px;
 }
+
 
 /*Suja */
 

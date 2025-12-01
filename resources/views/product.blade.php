@@ -1,26 +1,29 @@
 <x-layout>
+
+    <button class = "headbut"><a href=" {{route('products.productPage')}}">go back</a></button>
  
-    <div >
+    <div class="productsBox ">
     {{-- <p> place holder </p> --}}
+       <div>
+       @foreach($product->images as $image)
+        <img src="{{ asset('images/products/' . $image->product_image) }}" alt="{{ $product->name }}" class = "imageIcon">
+       @endforeach
+       </div>
+ 
+        <div>
+            <h2>{{$product->name}}</h2>
+            <p>£{{$product->price}}<p>
+        
 
-     <button><a href=" {{route('products.productPage')}}">go back</a></button>
-
-    <p>{{$product->name}}<p>
+            <form action="{{ route('basket.add', $product->id) }}" method="POST">
+                @csrf
+                <label for="quantity">quantity:</label><br><br>
+                <input type="number" name="quantity" id="quantity" value="1" min="1"><br><br>
+                <button class = "save-btn" type="submit">add to basket</button>
+            </form>
+        </div>
+    </div><br>
+    <h2>Product Information</h2>
     <p>{{$product->product_description}}<p>
-    <p>{{$product->price}}<p>
-
-    @foreach($product->images as $image)
-            <img src="{{ asset('images/products/' . $image->product_image) }}" 
-                 alt="{{ $product->name }}" width="200">
-     @endforeach
-
-     <form action="{{ route('basket.add', $product->id) }}" method="POST">
-        @csrf
-        <label for="quantity">quantity:</label>
-        <input type="number" name="quantity" id="quantity" value="1" min="1">
-        <button type="submit">add to basket</button>
-    </form>
-
-    </div>
-
+ 
 </x-layout>
