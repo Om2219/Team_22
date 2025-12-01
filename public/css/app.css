@@ -14,12 +14,17 @@ header{
 .logoButton{
  background-color: #7a4900;
  border: #7a4900;
+ cursor: pointer;
 
 }
 
 .icon {
     
     height: 15px;
+}
+
+.imageIcon {
+  width: 50%;
 }
 
 .iconbutton {
@@ -40,6 +45,7 @@ a{
   
     background-color: snow; 
     display: inline-block;
+    cursor: pointer;
     padding: 8px 16px;
     border-radius: 8px; 
     font-size: 16px;
@@ -55,7 +61,7 @@ a{
 }
 
 .headbut:active {
-    background-color: rgba(119, 72, 72, 0.86); 
+    background-color: whitesmoke;
     box-shadow: none; 
 }
 
@@ -127,7 +133,19 @@ footer{
 
 }
 
-.questions{
+
+.productsBox {
+
+    justify-content: space-between;
+    flex-direction: row;
+    display: flex;
+
+
+}
+
+
+/*Kyle CSS*/
+.faq-master .questions {
     background: none;
     border: none;
 
@@ -135,22 +153,45 @@ footer{
     cursor: pointer;
 
     justify-content: space-between;
-    display: flex;
+    display: flex; /*so the text isn't centered, looks better*/
 
     width: 100%;
     background: none;
     border: none;
     padding: 5px 0;
-    font-family:'Times New Roman', Times, serif;
+    font-family:'Times New Roman', Times, serif; /*possibly subject to change, settled on this for now*/
 }
 
-.answer{
+.faq-master .answer {
     display: none;
 }
 
-.answer.show{
+.faq-master .answer.show { /*after clicking any question, JS function activates this and shows answers*/
     display: block;
     color: black;
+}
+
+.MasterBasketBox .basket-container { /*Reminder: use flex-wrap, get text to go to the right of the images*/
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 10px 10px; /*move items away from the edges*/
+}
+
+.MasterBasketBox input {
+    padding: 5px 5px;
+}
+
+.MasterBasketBox button {
+    cursor: pointer;
+    padding: 10px 20px;
+    background: #04AA6D; /*placeholder colour, subject to change*/
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.MasterBasketBox button:hover {
+    opacity: 0.7;
 }
 
 
@@ -421,4 +462,29 @@ user-select: none;
 }
 
 
+
+.plsWork {
+    width: 100%;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+}
+
+#itemsForSale {
+    display: grid;
+    grid-template-columns:repeat(5, 1fr);
+    padding: 20px;
+    border: 3px;
+    box-sizing: border-box;
+    gap: 25px;
+    margin: 0 auto;
+    justify-items: center;
+}
+
+.productBox {
+    text-align: center;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 8px;
+}
 
