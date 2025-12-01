@@ -127,7 +127,8 @@ footer{
 
 }
 
-.questions{
+/*Kyle CSS*/
+.faq-master .questions {
     background: none;
     border: none;
 
@@ -144,15 +145,20 @@ footer{
     font-family:'Times New Roman', Times, serif;
 }
 
-.answer{
+.faq-master .answer {
     display: none;
 }
 
-.answer.show{
+.faq-master .answer.show {
     display: block;
     color: black;
 }
 
+.MasterBasketBox .basket-container { /*TOMORROW: put product descriptions to the right of images, take checkout button out of basket container*/
+    background: whitesmoke;
+    border: 3px solid lightgrey;
+    border-radius: 8px;
+}
 
 /*Suja */
 

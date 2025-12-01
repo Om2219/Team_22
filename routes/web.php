@@ -5,6 +5,8 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Models\Product;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\BasketController;
+use App\Http\Controllers\ContactFormController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +27,10 @@ Route::get('home', function () {return view('index'); });
 
 Route::get('account', function () { return view('account'); });
 
-Route::get('basket', function () { return view('basket'); });
+Route::get('basket', [BasketController::class, 'basketPage'])->name('basket');                              //displays the basket page
+Route::post('basket/add/{product}', [BasketController::class, 'add'])->name('basket.add');                  //adds a product to the basket
+Route::delete('basket/remove/{product}', [BasketController::class, 'remove'])->name('basket.remove');       //removes a product from the basket
+
 
 Route::get('checkout', function () { return view('checkout'); });
 
@@ -52,6 +57,7 @@ Route::post('register', [RegisterController::class, 'store'])->name('register.st
 Route::get('login', [LoginController::class, 'create'])->name('login');
 Route::post('login', [LoginController::class, 'store'])->name('login.store');
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+Route::post('contact', [ContactFormController::class, 'submit'])->name('contact.submit');
 
 // irrelavent;
 
