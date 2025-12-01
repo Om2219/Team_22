@@ -422,3 +422,28 @@ user-select: none;
 
 
 
+.plsWork {
+    width: 100%;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+}
+
+#itemsForSale {
+    display: grid;
+    grid-template-columns:repeat(5, 1fr);
+    padding: 20px;
+    border: 3px;
+    box-sizing: border-box;
+    gap: 25px;
+    margin: 0 auto;
+    justify-items: center;
+}
+
+.productBox {
+    text-align: center;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 8px;
+}
+
