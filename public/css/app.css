@@ -153,28 +153,45 @@ footer{
     cursor: pointer;
 
     justify-content: space-between;
-    display: flex;
+    display: flex; /*so the text isn't centered, looks better*/
 
     width: 100%;
     background: none;
     border: none;
     padding: 5px 0;
-    font-family:'Times New Roman', Times, serif;
+    font-family:'Times New Roman', Times, serif; /*possibly subject to change, settled on this for now*/
 }
 
 .faq-master .answer {
     display: none;
 }
 
-.faq-master .answer.show {
+.faq-master .answer.show { /*after clicking any question, JS function activates this and shows answers*/
     display: block;
     color: black;
 }
 
-.MasterBasketBox .basket-container { /*TOMORROW: put product descriptions to the right of images, take checkout button out of basket container*/
-    background: whitesmoke;
-    border: 3px solid lightgrey;
+.MasterBasketBox .basket-container { /*Reminder: use flex-wrap, get text to go to the right of the images*/
+    border: 2px solid black;
     border-radius: 8px;
+    padding: 10px 10px; /*move items away from the edges*/
+}
+
+.MasterBasketBox input {
+    padding: 5px 5px;
+}
+
+.MasterBasketBox button {
+    cursor: pointer;
+    padding: 10px 20px;
+    background: #04AA6D; /*placeholder colour, subject to change*/
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.MasterBasketBox button:hover {
+    opacity: 0.7;
 }
 
 

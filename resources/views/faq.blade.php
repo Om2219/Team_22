@@ -68,7 +68,7 @@
 <script>
    
 function tog(btn) {
-    btn.nextElementSibling.classList.toggle("show");
+    btn.nextElementSibling.classList.toggle("show"); // when any button is clicked, activates the CSS to display the answers
 }
 
 </script>
