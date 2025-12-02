@@ -35,7 +35,7 @@ ROOTS was born from a simple belief- that creativity grows when it is nurtured. 
     <div class="numbertext"> 3/3</div>
      <img src="{{ asset('images/img1.jpg') }}"  class="slide-img">
 <div class="text"> <h1> Rooted in Purpose Made for You</h1>
-<p> Rootsis more than a brand - Its a community. A place where creativity is celebrated, individuality is 
+<p> Roots is more than a brand - it's a community. A place where creativity is celebrated, individuality is 
     valued, ane every creation tells a story. Whether you are crafting, learning, writing or discovering new 
     passions, we are here to help you grow deeper roots and reach higher branches.
      Together lets create a world where every idea is planted, nurtured and brought to life. </p>
