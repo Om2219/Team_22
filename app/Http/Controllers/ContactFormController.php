@@ -13,6 +13,6 @@ class ContactFormController extends Controller {
             'message' => 'required|string'
         ]);
 
-        return redirect('/contact')->with('success', 'done - worked');
+        return redirect('/contact')->with('success', 'Thank you for reaching out. Your message is with our team and you will recieve a response shortly.');
     }
 }
