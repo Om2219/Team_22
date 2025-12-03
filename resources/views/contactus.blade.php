@@ -17,10 +17,10 @@
             
             <p><label for="message">Message</label></p>
             <!--textarea for the purpose of writing an email on websites, so text wraps down-->
-            <textarea id="message" rows="20" cols="50" placeholder="Enter Message" name="message" required></textarea> <!--rows 20 makes the field a suitable height, cols 50 makes the field a suitable width-->
+            <textarea id="message" rows="20" cols="50" type="text" placeholder="Enter Message" name="message" required></textarea> <!--rows 20 makes the field a suitable height, cols 50 makes the field a suitable width-->
             <hr>
 
-            <button class="sendEmail">Send Email</button>
+            <button class="sendEmail" type="submit">Send Email</button>
 
             <p>Click <a href="/account">here</a> to go back to the account page.</p>
         </div>

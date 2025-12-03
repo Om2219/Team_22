@@ -57,7 +57,7 @@ Route::post('register', [RegisterController::class, 'store'])->name('register.st
 Route::get('login', [LoginController::class, 'create'])->name('login');
 Route::post('login', [LoginController::class, 'store'])->name('login.store');
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
-Route::post('contact', [ContactFormController::class, 'submit'])->name('contact.submit');
+Route::post('contactus', [ContactFormController::class, 'submit'])->name('contactus.submit');
 
 // irrelavent;
 
