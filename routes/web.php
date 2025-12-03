@@ -34,13 +34,12 @@ Route::delete('basket/remove/{product}', [BasketController::class, 'remove'])->n
 
 Route::get('checkout', function () { return view('checkout'); });
 
-// Route::get('product', function () { $product = Product::first(); return view('product', compact('product')); });
 
-// Route::get('products', function () { return view('products'); });
+Route::get('product/{product}',[ProductController::class, 'show'])->name('product.show'); // shows individual products 
 
-Route::get('product/{product}',[ProductController::class, 'show'])->name('product.show');
+Route::get('products',[ProductController::class, 'productPage'])->name('products.productPage'); // shows all products regardless of category
 
-Route::get('products',[ProductController::class, 'productPage'])->name('products.productPage');
+Route::get('products/{cat}',[ProductController::class, 'cat'])->name('products.cat'); // shows products in their own category
 
 Route::get('faq', function () { return view('faq'); });
 
@@ -67,6 +66,12 @@ Route::post('contact', [ContactFormController::class, 'submit'])->name('contact.
 // Route::get('studentprofile/{}', 'App\Http\Controllers\StudentController@show');
 // Route::get('modulelisting', 'App\Http\Controllers\ModuleController@list')->name('list_module');
 // Route::get('moduledetails/{id}', 'App\Http\Controllers\ModuleController@show');
+
+
+// Route::get('product', function () { $product = Product::first(); return view('product', compact('product')); });
+
+// Route::get('products', function () { return view('products'); });
+
 
 
 // Route::get('/', function () {

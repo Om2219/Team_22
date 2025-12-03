@@ -39,7 +39,7 @@ class ProductSeeder extends Seeder
             'name' => 'Yoyo',
             'product_description' => 'It goes up and it goes down',
             'price' => 6.70,
-            'category_id' => $book->id
+            'category_id' => $toy->id
         ]);
         
         Product::create ([
@@ -87,7 +87,7 @@ class ProductSeeder extends Seeder
             'name' => 'Caculator',
             'product_description' => 'Swiftly overcome any mathematical hurdle with the press of a button',
             'price' => 6.70,
-            'category_id' => $stat->id
+            'category_id' => $office->id
         ]);
 
         Product::create ([

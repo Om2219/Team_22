@@ -29,11 +29,12 @@
             </div>
           {{-- bottom of nav bar and contains our 5 catagoires with links, and if you hover over it gives you more specific options--}}    
         <div class= "bottom">
-                <button class ="headbut"><a href="/products">Arts & Crafts</a></button>
-                <button class ="headbut"><a href="/home">Stationary</a></button>
-                <button class ="headbut"><a href="/home">Books</a></button>
-                <button class ="headbut"><a href="/home">eBooks</a></button>
-                <button class ="headbut"><a href="/home">Office Supplies</a></button>
+                <button class ="headbut"><a href="{{ route('products.cat', 'ArtCraft')}}">Arts & Crafts</a></button>
+                <button class ="headbut"><a href="{{ route('products.cat', 'Toys')}}">Toys</a></button>
+                <button class ="headbut"><a href="{{ route('products.cat', 'Stationary')}}">Stationary</a></button>
+                <button class ="headbut"><a href="{{ route('products.cat', 'Books')}}">Books</a></button>
+                <button class ="headbut"><a href="{{ route('products.cat', 'Office')}}">Office Supplies</a></button>
+                <button class ="headbut"><a href="/products">All products</a></button>
                 <button class ="headbut"><a href="/aboutus">About Us</a></button>
                 </div>
     </nav>
