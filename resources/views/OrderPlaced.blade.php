@@ -1,0 +1,27 @@
+<x-layout>
+
+    <h1>Your Ordre has been placed 😊</h1>
+
+    <p>Order Reference:</p>
+    <p>{{ $order->order_ref }}</p>
+
+    <p>Order total:</p>
+    <p>£{{ number_format($order->total, 2) }}</p>
+
+    <p>Shipping Address:</p> 
+    <p>{{ $order->shipping_address }}</p>
+
+
+    <p>Payment Method:</p> 
+    <p>{{ $order->payment_method }}</p>
+
+    @foreach ($items as $product)
+
+        <p>{{ $product->quantity }} × {{ $product->name }}  £{{ $product->price }}</p>
+        <img src="{{ asset('images/products/' . $product->product_image) }}"  alt="{{ $product->name }}" width="200">
+
+    @endforeach
+
+    <br><button class = "save-btn"><a href="/home">go back</a></button>  
+
+</x-layout>

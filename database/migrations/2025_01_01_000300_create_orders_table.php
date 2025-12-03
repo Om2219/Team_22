@@ -11,12 +11,12 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
-            $table->string('order_ref')->nullable();
+            $table->string('order_ref')->unique();
             $table->decimal('total',10,2)->default(0);
-            $table->decimal('price',10,2)->default(0);
+            // $table->decimal('price',10,2)->default(0); not needed we do the total can readd later
             $table->string('payment_method')->nullable();
-            $table->text('shipping_address')->nullable();
-            $table->timestamp('created_when')->nullable();
+            $table->string('shipping_address')->nullable();
+            // $table->timestamp('created_when')->nullable();
             $table->timestamps();
         });
     }
