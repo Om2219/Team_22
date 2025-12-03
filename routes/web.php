@@ -50,7 +50,7 @@ Route::get('order', function () { return view('order'); });
 
 Route::get('aboutus', function () { return view('aboutus'); });
 
-
+Route::get('contactus', function () { return view('contactus'); });
 
 Route::get('register', [RegisterController::class, 'create'])->name('register');
 Route::post('register', [RegisterController::class, 'store'])->name('register.store');

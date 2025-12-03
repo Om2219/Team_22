@@ -194,6 +194,38 @@ footer{
     opacity: 0.7;
 }
 
+.contactUsPage-master .contactus-container {
+    border: 2px; /*no border colour*/
+    padding: 10px 10px;
+}
+
+.contactUsPage-master #name, .contactUsPage-master #email, .contactUsPage-master #subject {
+    width: 300px;
+}
+
+.contactUsPage-master #name, .contactUsPage-master #email, .contactUsPage-master #subject, .contactUsPage-master #message::placeholder {
+    font-family: Arial, Helvetica, sans-serif;
+    height: 30px;
+}
+
+.contactUsPage-master button {
+    cursor: pointer;
+    padding: 10px 20px;
+    background: rgb(97, 97, 231); /*placeholder button colour, will likely be changed later*/
+    border-radius: 5px;
+    border: none;
+    color: white;
+}
+
+.contactUsPage-master .sendEmail:hover {
+    opacity: 0.7;
+}
+
+.contactUsPage-master #message {
+    max-height: 120px; /*otherwise the textarea field is massive*/
+    font-family: Arial, Helvetica, sans-serif; /*same font as the input fields and message::placeholder, otherwise user input will have a different font and look inconsistent*/
+    resize: none; /*so the user can't just resize the textarea field*/
+}
 
 /*Suja */
 

@@ -4,7 +4,7 @@
 
     <div class="faq-master">
         <button class="questions" onclick="tog(this)">Can I track my order?</button>
-        <div class="answer"><p>You can track your order by going into the 'accounts' page and clicking on 'my orders'.</p></div>
+        <div class="answer"><p>You can track your order by going into the <a href="/account">account</a> page and clicking on 'my orders'.</p></div>
         <br>
         <hr>
 
@@ -22,7 +22,7 @@
 
         <br>
         <button class="questions" onclick="tog(this)">How do I reset my password?</button>
-        <div class="answer"><p>In the 'accounts' page, you can reset your account details.</p></div>
+        <div class="answer"><p>In the <a href="/account">account</a> page, you can reset your account details.</p></div>
         <br>
         <hr>
 
