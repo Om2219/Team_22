@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+use App\Models\Order;
 use App\Models\Basket;
 use App\Models\Product;
 use App\Models\Product_image;
@@ -54,6 +57,38 @@ class BasketController extends Controller
         }
         return redirect()->route('basket');
     }
+
+    // Oms product proccessing
+
+    public function Orders(Request $details){
+
+        $user = Auth::id();
+
+        $ref = strtoupper(Str::random(6));
+
+        $basket = Basket::join('products','basket.product_id','=','products.id')->join('product_images','products.id','=','product_images.product_id')->select('basket.*','products.name','products.price','product_images.product_image')->get();
+        
+        $totalPrice = $basket->sum(function($item) {
+            return $item->price * $item->quantity;
+        });
+
+        $details->validate([ 
+            'payment_method' => 'required|string',
+            'shipping_address' => 'required|string'
+        ]);
+
+        $order = Order::create([
+            'user_id' => $user,
+            'order_ref' => $ref,
+            'total' => $totalPrice,
+            'payment_method' => $details->payment_method, 
+            'shipping_address' => $details->shipping_address
+        ]);
+
+        return view('OrderPlaced', ['order' => $order]);
+
+    }
+
 }
 
 //may need more comments ???
