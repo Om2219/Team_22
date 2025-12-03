@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\Basket;
 use App\Models\Product;
 use App\Models\Product_image;
@@ -66,9 +67,9 @@ class BasketController extends Controller
 
         $ref = strtoupper(Str::random(6));
 
-        $basket = Basket::join('products','basket.product_id','=','products.id')->join('product_images','products.id','=','product_images.product_id')->select('basket.*','products.name','products.price','product_images.product_image')->get();
+        $orderitems = Basket::join('products','basket.product_id','=','products.id')->join('product_images','products.id','=','product_images.product_id')->select('basket.*','products.name','products.price','product_images.product_image')->get();
         
-        $totalPrice = $basket->sum(function($item) {
+        $totalPrice = $orderitems->sum(function($item) {
             return $item->price * $item->quantity;
         });
 
@@ -85,7 +86,15 @@ class BasketController extends Controller
             'shipping_address' => $details->shipping_address
         ]);
 
-        return view('OrderPlaced', ['order' => $order]);
+        foreach ($orderitems as $product) {
+            $order->items()->create([
+            'product_id' => $product->product_id,
+            'quantity' => $product->quantity,
+            'price' => $product->price
+        ]);
+        }
+
+        return view('OrderPlaced', ['order' => $order, 'items' => $orderitems ]);
 
     }
 

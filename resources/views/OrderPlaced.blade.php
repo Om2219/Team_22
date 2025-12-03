@@ -15,6 +15,13 @@
     <p>Payment Method:</p> 
     <p>{{ $order->payment_method }}</p>
 
-    <button class = "save-btn"><a href="/home">go back</a></button>
+    @foreach ($items as $product)
+
+        <p>{{ $product->quantity }} × {{ $product->name }}  £{{ $product->price }}</p>
+        <img src="{{ asset('images/products/' . $product->product_image) }}"  alt="{{ $product->name }}" width="200">
+
+    @endforeach
+
+    <br><button class = "save-btn"><a href="/home">go back</a></button>  
 
 </x-layout>
