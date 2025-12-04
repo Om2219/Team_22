@@ -20,7 +20,7 @@ class ContactFormController extends Controller {
         ContactForm::create($request->all());
 
         // success message
-        return redirect('/contact')->with('success', 'Thank you for reaching out. Your message is with our team and you will recieve a response shortly.');
+        return redirect('/contactform')->with('success', 'Thank you for reaching out. Your message is with our team and you will recieve a response shortly.');
     }
 }
 
