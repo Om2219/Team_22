@@ -28,6 +28,8 @@ Route::get('home', function () {return view('index'); });
 
 Route::get('account', function () { return view('account'); });
 
+Route::get('order', function () { return view('order'); });
+
 Route::get('basket', [BasketController::class, 'basketPage'])->name('basket');                              //displays the basket page
 Route::post('basket/add/{product}', [BasketController::class, 'add'])->name('basket.add');                  //adds a product to the basket
 Route::delete('basket/remove/{product}', [BasketController::class, 'remove'])->name('basket.remove');       //removes a product from the basket
