@@ -6,7 +6,7 @@
     {{-- <p> place holder </p> --}}
        <div>
        @foreach($product->images as $image)
-        <img src="{{ asset('images/products/' . $image->product_image) }}" alt="{{ $product->name }}" class = "imageIcon">
+        <img src="{{asset('images/products/' . $image->product_image)}}" alt="{{$product->name}}" class = "imageIcon">
        @endforeach
        </div>
  
@@ -15,7 +15,7 @@
             <p>£{{$product->price}}<p>
         
 
-            <form action="{{ route('basket.add', $product->id) }}" method="POST">
+            <form action="{{route('basket.add', $product->id)}}" method="POST">
                 @csrf
                 <label for="quantity">quantity:</label><br><br>
                 <input type="number" name="quantity" id="quantity" value="1" min="1"><br><br>
