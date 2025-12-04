@@ -1,6 +1,8 @@
 <x-layout>
- 
-    <p> This is our FAQs page, where we answer questions by our customers. Below are our most commonly asked questions, and their answers:</p>
+
+    <h1>Frequently Asked Questions</h1>
+
+    <p>This is our FAQs page, where we answer questions by our customers. Below are our most commonly asked questions, and their answers:</p>
 
     <div class="faq-master">
         <button class="questions" onclick="tog(this)">Can I track my order?</button>
