@@ -11,34 +11,36 @@
         </div>
 
         <h2>Browse Our Collections</h2>
+
+        <section class="category-section">
+            <div class="categories">
+                <a href="/products/ArtCraft"><h3>Arts and Crafts</h3></a>
+                <p>Arts and Crafts for artists & painters to work with, and for people to enjoy their hobbies.</p>
+            </div>
+            <br>
         
-        <div class="categories">
-            <a href="/products/ArtCraft"><h3>Arts and Crafts</h3></a>
-            <p>Arts and Crafts for artists & painters to work with, and for people to enjoy their hobbies.</p>
-        </div>
-        <br>
-    
-        <div class="categories">
-            <a href="/products/Toys"><h3>Toys</h3></a>
-            <p>Toys such as action figures and toy cars for children to play with.</p>
-        </div>
-        <br>
+            <div class="categories">
+                <a href="/products/Toys"><h3>Toys</h3></a>
+                <p>Toys such as action figures and toy cars for children to play with.</p>
+            </div>
+            <br>
 
-        <div class="categories">
-            <a href="/products/Stationery"><h3>Stationery</h3></a>
-            <p>Stationery for students, to help with their studies.</p>
-        </div>
-        <br>
+            <div class="categories">
+                <a href="/products/Stationery"><h3>Stationery</h3></a>
+                <p>Stationery for students, to help with their studies.</p>
+            </div>
+            <br>
 
-        <div class="categories">
-            <a href="/products/Books"><h3>Books</h3></a>
-            <p>Books by Roots, for people to read through in their own time.</p>
-        </div>
-        <br>
+            <div class="categories">
+                <a href="/products/Books"><h3>Books</h3></a>
+                <p>Books by Roots, for people to read through in their own time.</p>
+            </div>
+            <br>
 
-        <div class="categories">
-            <a href="/products/Office"><h3>Office Supplies</h3></a>
-            <p>Office supplies so workers never miss out on their necessary supplies.</p>
-        </div>
+            <div class="categories">
+                <a href="/products/Office"><h3>Office Supplies</h3></a>
+                <p>Office supplies so workers never miss out on their necessary supplies.</p>
+            </div>
+        </section>
     </div>
 </x-layout>

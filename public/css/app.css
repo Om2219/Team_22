@@ -250,7 +250,6 @@ footer{
     text-align: center;
     display: grid;
     grid-template-columns:repeat(5, minmax(200px, 1fr)); /*makes the p element text align nicely to the right*/
-    padding: 15px;
     max-width: 500px; /*so each container box isn't too wide*/
 }
 
