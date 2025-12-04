@@ -50,14 +50,14 @@ Route::get('contactdetail', function () { return view('contactdetail'); });
 
 Route::get('aboutus', function () { return view('aboutus'); });
 
-Route::get('contactus', function () { return view('contactus'); });
+Route::get('contactform', function () { return view('contactform'); });
 
 Route::get('register', [RegisterController::class, 'create'])->name('register');
 Route::post('register', [RegisterController::class, 'store'])->name('register.store');
 Route::get('login', [LoginController::class, 'create'])->name('login');
 Route::post('login', [LoginController::class, 'store'])->name('login.store');
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
-Route::post('contactus', [ContactFormController::class, 'submit'])->name('contactus.submit');
+Route::post('contactform', [ContactFormController::class, 'submit'])->name('contactform.submit');
 
 // irrelavent;
 

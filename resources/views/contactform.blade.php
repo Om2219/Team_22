@@ -21,8 +21,6 @@
             <hr>
 
             <button class="sendEmail" type="submit">Send Email</button>
-
-            <p>Click <a href="/account">here</a> to go back to the account page.</p>
         </div>
     </div>
 </x-layout>
