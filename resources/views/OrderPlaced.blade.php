@@ -1,6 +1,6 @@
 <x-layout>
 
-    <h1>Your Ordre has been placed 😊</h1>
+    <h1>Your Order has been placed 😊</h1>
 
     <p>Order Reference:</p>
     <p>{{ $order->order_ref }}</p>

@@ -22,7 +22,7 @@
         <div class= "top">
             <a href="/home"><button class = "logoButton"><img src="{{ Vite::asset('public/images/logo_updated.png') }}" class = "logo"></button></a>
             <input type="text" name="search" placeholder="What are you looking for?">
-            <a href="/account"><button class ="headbut"><img src="{{ Vite::asset('public/images/account.png') }}" class = "bob"><br>Account</button></a>
+            <a href="/login"><button class ="headbut"><img src="{{ Vite::asset('public/images/account.png') }}" class = "bob"><br>Login</button></a>
             <a href="/register"><button class ="headbut"><img src="{{ Vite::asset('public/images/account.png') }}" class = "bob"><br>Register</button></a>
 
             <a href="/basket"><button class ="headbut"><img src="{{ Vite::asset('public/images/basket.png') }}" class = "bob"><br>Basket</button></a>
@@ -36,7 +36,9 @@
                 <button class ="headbut"><a href="{{ route('products.cat', 'Office')}}">Office Supplies</a></button>
                 <button class ="headbut"><a href="/products">All products</a></button>
                 <button class ="headbut"><a href="/aboutus">About Us</a></button>
-        </div>
+                <button class="headbut"><a href="/faq">FAQ</a></button>
+                <button class="headbut"><a href="/contactform">Contact us</a></button>
+                </div>
     </nav>
   </header>
 
@@ -58,9 +60,6 @@
       <a href="/home"><button class = "iconbutton"><img src="{{ Vite::asset('public/images/Facebook.png') }}" class = "icon"></button></a> 
       <a href="/home"><button class = "iconbutton"><img src="{{ Vite::asset('public/images/Instagram.png') }}" class = "icon"></button></a> 
       <a href="/home"><button class = "iconbutton"><img src="{{ Vite::asset('public/images/X.png') }}" class = "icon"></button></a>
-      
-      <button class = "footbut"><a href="/faq">Frequently Asked Questions (FAQ)</a></button>
-      <button class = "footbut"><a href="/contactus">Contact us</a></button>
 
     </div>
 

@@ -52,14 +52,16 @@ Route::get('contactdetail', function () { return view('contactdetail'); }); // s
 
 Route::get('aboutus', function () { return view('aboutus'); }); // shows the aboutus page
 
-Route::get('contactus', function () { return view('contactus'); }); // shows the contactus page
+
+
+Route::get('contactform', function () { return view('contactform'); }); // shows the contact form
 
 Route::get('register', [RegisterController::class, 'create'])->name('register');
 Route::post('register', [RegisterController::class, 'store'])->name('register.store');
 Route::get('login', [LoginController::class, 'create'])->name('login');
 Route::post('login', [LoginController::class, 'store'])->name('login.store');
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
-Route::post('contactus', [ContactFormController::class, 'submit'])->name('contactus.submit');
+Route::post('contactform', [ContactFormController::class, 'submit'])->name('contactform.submit');
 
 // irrelavent;
 
