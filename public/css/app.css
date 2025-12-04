@@ -227,10 +227,31 @@ footer{
     resize: none; /*so the user can't just resize the textarea field*/
 }
 
-.home-master {
-    border: 2px solid black;
+.home-banner {
+    padding: 10px; 
+}
+
+.home-banner img {
+    width: 150px;
+    height: 150px;
+}
+
+.home-banner {
+    display: flex; /*to wrap text next to Roots image*/
+}
+
+.home-banner .business-description {
+    padding-left: 15px; /*move text away from Roots image*/
+}
+
+.home-master .categories {  
+    border: 1px solid lightgray;
     border-radius: 5px;
-    padding: 10px 10px;
+    text-align: center;
+    display: grid;
+    grid-template-columns:repeat(5, minmax(200px, 1fr)); /*makes the p element text align nicely to the right*/
+    padding: 15px;
+    max-width: 500px; /*so each container box isn't too wide*/
 }
 
 /*Suja */
@@ -520,7 +541,7 @@ user-select: none;
 
 #itemsForSale {
     display: grid;
-    grid-template-columns:repeat(5, minmax(200px, 1fr));
+    grid-template-columns:repeat(5, minmax(200px, 1fr)); /*5 columns, min 200 pixels, max 1 fraction of available space*/
     padding: 20px;
     border: 3px;
     box-sizing: border-box;
