@@ -1,6 +1,6 @@
 <x-layout>
 
-    <button class = "headbut"><a href=" {{route('products.productPage')}}">go back</a></button>
+    {{-- <button class = "headbut"><a href=" {{route('products.productPage')}}">go back</a></button> --}}
  
     <div class="productsBox ">
     {{-- <p> place holder </p> --}}
