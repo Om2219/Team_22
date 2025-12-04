@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\ContactForm;
 
 use Illuminate\Http\Request;
 
@@ -15,6 +16,9 @@ class ContactFormController extends Controller {
             'subject' => 'required|string',
             'message' => 'required|string'
         ]);
+        // Stores the contact form data
+        ContactForm::create($request->all());
+
         // success message
         return redirect('/contact')->with('success', 'Thank you for reaching out. Your message is with our team and you will recieve a response shortly.');
     }
