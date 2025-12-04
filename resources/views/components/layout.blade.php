@@ -31,7 +31,7 @@
         <div class= "bottom">
                 <button class ="headbut"><a href="{{ route('products.cat', 'ArtCraft')}}">Arts & Crafts</a></button>
                 <button class ="headbut"><a href="{{ route('products.cat', 'Toys')}}">Toys</a></button>
-                <button class ="headbut"><a href="{{ route('products.cat', 'Stationary')}}">Stationery</a></button>
+                <button class ="headbut"><a href="{{ route('products.cat', 'Stationery')}}">Stationery</a></button>
                 <button class ="headbut"><a href="{{ route('products.cat', 'Books')}}">Books</a></button>
                 <button class ="headbut"><a href="{{ route('products.cat', 'Office')}}">Office Supplies</a></button>
                 <button class ="headbut"><a href="/products">All products</a></button>
