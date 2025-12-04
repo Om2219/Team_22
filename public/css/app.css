@@ -229,6 +229,27 @@ footer{
 
 /*Suja */
 
+    .save-btn {
+        background-color: #4a3b2a; 
+        color: white;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .save-btn:hover {
+        background-color: #6b8e23; 
+    }
+    
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
     /*.account-container {
         max-width: 800px;
         margin: 40px auto;
@@ -289,36 +310,14 @@ footer{
         box-shadow: 0 0 5px rgba(107, 142, 35, 0.3);
     }
 
-    
-    .save-btn {
-        background-color: #4a3b2a; 
-        color: white;
-        padding: 12px 25px;
-        border: none;
-        border-radius: 5px;
-        font-size: 1rem;
-        cursor: pointer;
-        transition: background 0.3s;
-    }
-
-    .save-btn:hover {
-        background-color: #6b8e23; 
-    }
-    
     .helper-text {
         font-size: 0.9rem;
         color: #666;
         margin-top: 5px;
-    }
-
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-    }
+    }*/
 
        
-    .hero-section {
+    /*.hero-section {
         background-color: #f4f1ea; 
         padding: 80px 20px;
         text-align: center;
