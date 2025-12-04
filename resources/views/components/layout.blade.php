@@ -36,7 +36,7 @@
                 <button class ="headbut"><a href="{{ route('products.cat', 'Office')}}">Office Supplies</a></button>
                 <button class ="headbut"><a href="/products">All products</a></button>
                 <button class ="headbut"><a href="/aboutus">About Us</a></button>
-                </div>
+        </div>
     </nav>
   </header>
 
