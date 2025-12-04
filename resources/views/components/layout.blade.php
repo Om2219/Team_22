@@ -31,11 +31,13 @@
         <div class= "bottom">
                 <button class ="headbut"><a href="{{ route('products.cat', 'ArtCraft')}}">Arts & Crafts</a></button>
                 <button class ="headbut"><a href="{{ route('products.cat', 'Toys')}}">Toys</a></button>
-                <button class ="headbut"><a href="{{ route('products.cat', 'Stationary')}}">Stationary</a></button>
+                <button class ="headbut"><a href="{{ route('products.cat', 'Stationery')}}">Stationery</a></button>
                 <button class ="headbut"><a href="{{ route('products.cat', 'Books')}}">Books</a></button>
                 <button class ="headbut"><a href="{{ route('products.cat', 'Office')}}">Office Supplies</a></button>
                 <button class ="headbut"><a href="/products">All products</a></button>
                 <button class ="headbut"><a href="/aboutus">About Us</a></button>
+                <button class="headbut"><a href="/faq">FAQ</a></button>
+                <button class="headbut"><a href="/contactform">Contact us</a></button>
                 </div>
     </nav>
   </header>
@@ -58,9 +60,6 @@
       <a href="/home"><button class = "iconbutton"><img src="{{ Vite::asset('public/images/Facebook.png') }}" class = "icon"></button></a> 
       <a href="/home"><button class = "iconbutton"><img src="{{ Vite::asset('public/images/Instagram.png') }}" class = "icon"></button></a> 
       <a href="/home"><button class = "iconbutton"><img src="{{ Vite::asset('public/images/X.png') }}" class = "icon"></button></a>
-      
-      <button class = "footbut"><a href="/faq">Frequently Asked Questions (FAQ)</a></button>
-      <button class = "footbut"><a href="/contactus">Contact us</a></button>
 
     </div>
 

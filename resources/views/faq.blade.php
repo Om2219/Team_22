@@ -1,6 +1,8 @@
 <x-layout>
- 
-    <p> This is our FAQs page, where we answer questions by our customers. Below are our most commonly asked questions, and their answers:</p>
+
+    <h1>Frequently Asked Questions</h1>
+
+    <p>This is our FAQs page, where we answer questions by our customers. Below are our most commonly asked questions, and their answers:</p>
 
     <div class="faq-master">
         <button class="questions" onclick="tog(this)">Can I track my order?</button>
@@ -28,13 +30,13 @@
 
         <br>
         <button class="questions" onclick="tog(this)">What do I do if it doesn't let me log in?</button>
-        <div class="answer"><p>Contact customer support via the <a href="/contactus">contact us</a> page.</p></div>
+        <div class="answer"><p>Contact customer support via the <a href="/contactform">contact us</a> page.</p></div>
         <br>
         <hr>
 
         <br>
         <button class="questions" onclick="tog(this)">What should I do if my order doesn't show up?</button>
-        <div class="answer"><p>Customer support can be contacted via the <a href="/contactus">contact us</a> page, they should be able to resolve these issues.</p></div> 
+        <div class="answer"><p>Customer support can be contacted via the <a href="/contactform">contact us</a> page, they should be able to resolve these issues.</p></div> 
         <br>
         <hr>
 
@@ -59,6 +61,7 @@
         <br>
         <button class="questions" onclick="tog(this)">When should my refund be processed?</button>
         <div class="answer"><p>Refunds usually take around 5-10 business days.</p></div>
+        <br>
     </div>
 
 </x-layout>

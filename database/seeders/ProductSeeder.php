@@ -17,7 +17,7 @@ class ProductSeeder extends Seeder
         //
         $toy = Category::where('name', 'Toys')->first();
 
-        $stat = Category::where('name', 'Stationary')->first();
+        $stat = Category::where('name', 'Stationery')->first();
 
         $book = Category::where('name', 'Books')->first();
 
@@ -44,7 +44,7 @@ class ProductSeeder extends Seeder
         
         Product::create ([
   
-            'name' => 'Bookone',
+            'name' => 'The Whispering Woods',
             'product_description' => 'A copy of "The Whispering Woods"',
             'price' => 6.70,
             'category_id' => $book->id
@@ -52,7 +52,7 @@ class ProductSeeder extends Seeder
 
         Product::create ([
   
-            'name' => 'Booktwo',
+            'name' => 'Echoes of the Starlit Se Sea',
             'product_description' => 'A copy of "Echoes of the Starlit Se Sea"',
             'price' => 6.70,
             'category_id' => $book->id
@@ -60,7 +60,7 @@ class ProductSeeder extends Seeder
 
         Product::create ([
   
-            'name' => 'Bookthree',
+            'name' => 'Clockwork Sparrows Secret',
             'product_description' => 'A copy of "Clockwork Sparrows Secret"',
             'price' => 6.70,
             'category_id' => $book->id
@@ -68,7 +68,7 @@ class ProductSeeder extends Seeder
 
         Product::create ([
   
-            'name' => 'Bookfour',
+            'name' => 'Whispers of the Ancient Stones',
             'product_description' => 'A copy of "Whispers of the Ancient Stones"',
             'price' => 6.70,
             'category_id' => $book->id
@@ -76,7 +76,7 @@ class ProductSeeder extends Seeder
 
         Product::create ([
   
-            'name' => 'Bookfive',
+            'name' => 'the Forgotten City of Aethelgard',
             'product_description' => 'A copy of "the Forgotten City of Aethelgard"',
             'price' => 6.70,
             'category_id' => $book->id
@@ -108,7 +108,7 @@ class ProductSeeder extends Seeder
 
         Product::create ([
   
-            'name' => 'ElasticBands',
+            'name' => 'Elastic Bands',
             'product_description' => 'Jar of assorted elastic bands in a variety of different colours',
             'price' => 6.70,
             'category_id' => $stat->id
@@ -116,7 +116,7 @@ class ProductSeeder extends Seeder
 
         Product::create ([
   
-            'name' => 'Fidgetspinner',
+            'name' => 'Fidget Spinner',
             'product_description' => 'A fidget toy that provides endless engagement',
             'price' => 6.70,
             'category_id' => $toy->id
@@ -132,7 +132,7 @@ class ProductSeeder extends Seeder
 
         Product::create ([
   
-            'name' => 'Holepuncher',
+            'name' => 'Hole Puncher',
             'product_description' => 'Perfect for making paper compatible with any folder',
             'price' => 6.70,
             'category_id' => $office->id
@@ -164,7 +164,7 @@ class ProductSeeder extends Seeder
 
         Product::create ([
   
-            'name' => 'Paintbrush',
+            'name' => 'Paint Brush',
             'product_description' => '11 types of brushes to truely enhance ones creative freedom',
             'price' => 6.70,
             'category_id' => $art->id
@@ -180,7 +180,7 @@ class ProductSeeder extends Seeder
 
         Product::create ([
   
-            'name' => 'Plaincards',
+            'name' => 'Plain Cards',
             'product_description' => 'a 52 card deck, and remember ALWAYS hit on a 16, that big win is just across the road',
             'price' => 6.70,
             'category_id' => $toy->id
@@ -212,7 +212,7 @@ class ProductSeeder extends Seeder
 
         Product::create ([
   
-            'name' => 'Toycar',
+            'name' => 'The Goats Whip',
             'product_description' => 'Vroom vroom, Whatsapp car lmao',
             'price' => 6.70,
             'category_id' => $toy->id
@@ -220,7 +220,7 @@ class ProductSeeder extends Seeder
 
         Product::create ([
   
-            'name' => 'Whiteboardpens',
+            'name' => 'Whiteboard Pens',
             'product_description' => '3 whiteboard pens to optimise your presentations',
             'price' => 6.70,
             'category_id' => $stat->id

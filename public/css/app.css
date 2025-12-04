@@ -227,6 +227,12 @@ footer{
     resize: none; /*so the user can't just resize the textarea field*/
 }
 
+.home-master {
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 10px 10px;
+}
+
 /*Suja */
 
     .save-btn {

@@ -24,11 +24,11 @@ use App\Http\Controllers\ContactFormController;
 
 Route::get('/', function () {  return view('index'); });
 
-Route::get('home', function () {return view('index'); });
+Route::get('home', function () {return view('index'); }); // returns the home page
 
-Route::get('account', function () { return view('account'); });
+Route::get('account', function () { if (!Auth::check()) {return redirect()->route('login');} return view('account'); }); // checks if user is logged in before showing account page
 
-Route::get('order', function () { return view('order'); });
+Route::get('order', function () { return view('order'); }); // returns order history
 
 Route::get('basket', [BasketController::class, 'basketPage'])->name('basket');                              //displays the basket page
 Route::post('basket/add/{product}', [BasketController::class, 'add'])->name('basket.add');                  //adds a product to the basket
@@ -36,9 +36,9 @@ Route::delete('basket/remove/{product}', [BasketController::class, 'remove'])->n
 
 Route::get('checkout', function () { if (!Auth::check()) {return redirect()->route('login');} return view('checkout'); }); // checks if a user is logged in and if so then shows checkout
 
-Route::post('checkout', [BasketController::class, 'Orders'])->name('checkout.place');
+Route::post('checkout', [BasketController::class, 'Orders'])->name('checkout.place'); // the post to the checkout form
 
-Route::get('OrderPlaced', function () { return view('OrderPlaced'); })-> name('OrderPlaced');
+Route::get('OrderPlaced', function () { return view('OrderPlaced'); })-> name('OrderPlaced');// shows the OrderPlaced page 
 
 Route::get('product/{product}',[ProductController::class, 'show'])->name('product.show'); // shows individual products 
 
@@ -46,20 +46,22 @@ Route::get('products',[ProductController::class, 'productPage'])->name('products
 
 Route::get('products/{cat}',[ProductController::class, 'cat'])->name('products.cat'); // shows products in their own category
 
-Route::get('faq', function () { return view('faq'); });
+Route::get('faq', function () { return view('faq'); }); // shows the FAQ page
 
-Route::get('contactdetail', function () { return view('contactdetail'); });
+Route::get('contactdetail', function () { return view('contactdetail'); }); // shows contactdetail page
 
-Route::get('aboutus', function () { return view('aboutus'); });
+Route::get('aboutus', function () { return view('aboutus'); }); // shows the aboutus page
 
-Route::get('contactus', function () { return view('contactus'); });
+
+
+Route::get('contactform', function () { return view('contactform'); }); // shows the contact form
 
 Route::get('register', [RegisterController::class, 'create'])->name('register');
 Route::post('register', [RegisterController::class, 'store'])->name('register.store');
 Route::get('login', [LoginController::class, 'create'])->name('login');
 Route::post('login', [LoginController::class, 'store'])->name('login.store');
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
-Route::post('contactus', [ContactFormController::class, 'submit'])->name('contactus.submit');
+Route::post('contactform', [ContactFormController::class, 'submit'])->name('contactform.submit');
 
 // irrelavent;
 
