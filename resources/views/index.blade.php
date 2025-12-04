@@ -1,31 +1,39 @@
 <x-layout>
    
-    <div class="hero-section">
-        <h1>Grow Your Knowledge</h1>
-        <p>Premium sustainable stationery, books and supplies for students.</p>
-        <a href="/products" class="cta-button">Shop All Products</a>
+    <div class="home-banner">
+        <h1>Slogan</h1> <!--I am not creative enough to come up with one-->
+        <p>Description</p>
+        <a href="/products" class="allProducts">Shop All Products</a>
     </div>
 
-    <div class="container categories-section">
+    <div class="categories-section">
         <h2 class="section-title">Browse Our Collections</h2>
         
-        <div class="category-grid">
-            <div class="category-card">
-                <h3>📚 Books</h3>
-                <p>Essential reading for your course.</p>
-            </div>
+        <div class="category-links">
+            <a href="/products/ArtCraft" class="category-card">
+                <h3>Arts and Crafts</h3>
+                <p>Arts and Crafts description</p>
+            </a>
 
-            <div class="category-card">
-                <h3>✏️ Stationery</h3>
-                <p>Pens, pencils and notebooks.</p>
-            </div>
+            <a href="/products/Toys" class="category-card">
+                <h3>Toys</h3>
+                <p>Toys description</p>
+            </a>
 
-            <div class="category-card">
-                <h3>🎨 Arts & Crafts</h3>
-                <p>Materials for creative minds.</p>
-            </div>
+            <a href="/products/Stationary" class="category-card">
+                <h3>Stationery</h3>
+                <p>Stationery description</p>
+            </a>
+
+            <a href="/products/Books" class="category-card">
+                <h3>Books</h3>
+                <p>Books description</p>
+            </a>
+
+            <a href="/products/Office" class="category-card">
+                <h3>Office Supplies</h3>
+                <p>Office Supplies description</p>
+            </a>
         </div>
     </div>
-
-
 </x-layout>

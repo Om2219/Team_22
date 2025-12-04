@@ -229,7 +229,7 @@ footer{
 
 /*Suja */
 
-    .account-container {
+    /*.account-container {
         max-width: 800px;
         margin: 40px auto;
         padding: 20px;
@@ -338,7 +338,7 @@ footer{
         margin-bottom: 30px;
     }
 
-    .cta-button {
+    .allProducts {
         background-color: #6b8e23; 
         color: white;
         padding: 15px 30px;
@@ -349,7 +349,7 @@ footer{
         display: inline-block;
     }
 
-    .cta-button:hover {
+    .allProducts:hover {
         background-color: #556b2f;
     }
 
@@ -369,6 +369,7 @@ footer{
         display: flex;
         justify-content: center;
         gap: 30px;
+        padding: 10px;
         flex-wrap: wrap;
     }
 
@@ -389,9 +390,19 @@ footer{
     .category-card h3 {
         color: #4a3b2a;
         margin-bottom: 10px;
-    }
+    } */
 
-    /* Gurpreet */
+
+
+
+
+
+
+
+
+
+
+/* Gurpreet */
 
 *{box-sizing: border-box}
 
