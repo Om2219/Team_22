@@ -59,7 +59,10 @@ class BasketController extends Controller
         return redirect()->route('basket');
     }
 
-    // Oms product proccessing
+    //creates an order using the information from the basket
+    //takes payment info and address input from the user
+    //displays price, picture, quantity, payment info, shipping address and a randomly generated reference number
+    //stores the order in the database
 
     public function Orders(Request $details){
 
@@ -99,6 +102,3 @@ class BasketController extends Controller
     }
 
 }
-
-//may need more comments ???
-//no idea

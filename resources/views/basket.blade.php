@@ -27,7 +27,7 @@
                         <form action="{{route('basket.remove', $product->id)}}" method="POST" onsubmit="return confirm('Are you sure you want to remove this item?');">
                             @csrf
                             @method('DELETE')
-                            <button type="submit">Remove</button>
+                            <button class="save-btn" type="submit">Remove</button>
                         </form>
                     </div>
                 @endforeach
@@ -36,12 +36,11 @@
             <div class="basket_total">
                 <p>Grand total: £{{number_format($totalPrice, 2)}}</p>
             </div>
-        </div>
 
-            <br>
             <div class = "basket-master"> <!--keeping this outside the container-->
-                <button class="checkoutButton"><a href="/checkout">Checkout</a></button>
+                <button class="save-btn"><a href="/checkout">Checkout</a></button>
             </div>
+        </div>
         @endif
     
     </div>

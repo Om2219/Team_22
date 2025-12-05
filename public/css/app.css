@@ -39,7 +39,7 @@ header{
 
 a{
     text-decoration: none; 
-    color: green;
+    color: white;
 }
 
 .headbut {
@@ -134,10 +134,8 @@ footer{
     border: 1px;
     border-style: solid;
     border-color: black;
-    color: white;
+    color: black;
     text-align: center;
-
-
 }
 
 
@@ -188,19 +186,6 @@ footer{
     padding: 5px 5px;
 }
 
-.MasterBasketBox button {
-    cursor: pointer;
-    padding: 10px 20px;
-    background: #04AA6D; /*placeholder colour, subject to change*/
-    color: white;
-    border: none;
-    border-radius: 5px;
-}
-
-.MasterBasketBox button:hover {
-    opacity: 0.7;
-}
-
 .contactUsPage-master .contactus-container {
     border: 2px; /*no border colour*/
     padding: 10px 10px;
@@ -216,16 +201,18 @@ footer{
 }
 
 .contactUsPage-master button {
-    cursor: pointer;
-    padding: 10px 20px;
-    background: rgb(97, 97, 231); /*placeholder button colour, will likely be changed later*/
-    border-radius: 5px;
-    border: none;
+    background-color: #4a3b2a; 
     color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
 }
 
 .contactUsPage-master .sendEmail:hover {
-    opacity: 0.7;
+    background-color: #6b8e23;
 }
 
 .contactUsPage-master #message {
@@ -593,3 +580,51 @@ user-select: none;
     border-radius: 8px;
 }
 
+/*Arun*/
+
+.details_container {
+    text-align: center;
+    width: 300px;
+    margin: 0 auto;
+    border: 2px solid black;
+    padding: 0px 0px 25px 0px;
+}
+
+.email_container  {
+    text-align: center;
+    width: 300px;
+    margin: 0 auto;
+    border: 2px solid black;
+    padding: 0px 0px 15px 0px;  /* top right bottom left */
+}
+
+.password_container {
+    text-align: center;
+    width: 300px;
+    margin: 0 auto;
+    border: 2px solid black;
+    padding: 0px 0px 15px 0px;
+}
+
+.email_section input[type=text]{
+    width:100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid rgb(187, 187, 187);
+    display: inline-block;
+    box-sizing: border-box;
+    width: 200px;
+}
+
+.password_container input[type=password], .email_container input[type=email]{
+    padding: 12px 20px;
+    margin: 8px auto;
+    border: 1px solid rgb(187, 187, 187);
+    display: block;
+    box-sizing: border-box;
+    width: 200px;
+}
+
+.email_container input[type=email]::placeholder, .password_container input[type=password]::placeholder {
+    text-align: center;
+}
