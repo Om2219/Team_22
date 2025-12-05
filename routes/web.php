@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Models\Product;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BasketController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContactFormController;
 
 /*
@@ -36,7 +37,12 @@ Route::delete('basket/remove/{product}', [BasketController::class, 'remove'])->n
 
 Route::get('checkout', function () { if (!Auth::check()) {return redirect()->route('login');} return view('checkout'); }); // checks if a user is logged in and if so then shows checkout
 
-Route::post('checkout', [BasketController::class, 'Orders'])->name('checkout.place'); // the post to the checkout form
+Route::post('checkout', [CheckoutController::class, 'Orders'])->name('checkout.place'); // the post to the checkout form
+
+Route::get('checkout/address', function () { if (!Auth::check()) { return redirect()->route('login'); } return view('checkoutAddress'); })->name('checkout.address'); //checks to see if you're logged in alongside displaying the checkout form
+
+//CODING IS ASS! GROUP PROJECT MODULE IS ASS! ASTON UNIVERSITY IS ASS! I WANT TO DROP OUT! 
+// MAKE ME CODE 1 MORE HTML SITE AND I WILL BEAT YOU TO A PULP
 
 Route::get('OrderPlaced', function () { return view('OrderPlaced'); })-> name('OrderPlaced');// shows the OrderPlaced page 
 
