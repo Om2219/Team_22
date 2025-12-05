@@ -193,6 +193,10 @@ footer{
     color: black;
 }
 
+.faq-master .faq-hyperlinks {
+    color: #04AA6D; /*override the a element color being white*/
+}
+
 .MasterBasketBox .basket-container { /*Reminder: use flex-wrap, get text to go to the right of the images*/
     border: 2px solid black;
     border-radius: 8px;
