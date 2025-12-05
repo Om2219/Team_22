@@ -6,25 +6,29 @@
         <form action ="{{ route('checkout.place') }}" method = "POST">
         @csrf
           <p>Address:</p>
-          <textarea name="country_reigon" id="country_reigon" required></textarea>
+          <p>Country/Region:</p>
+          <input type="text" name="country_region" required>
+
+          <p>First Name:</p>
+          <input type="text" name="first_name" required>
+
+          <p>Last Name:</p>
+          <input type="text" name="last_name" required>
 
           <p>Address:</p>
-          <textarea name="first_name" id="first_name" required></textarea>
-        
-          <p>Address:</p>
-          <textarea name="last_name" id="last_name" required></textarea>
+          <input type="text" name="address" required>
 
-          <p>Address:</p>
-          <textarea name="address" id="address" required></textarea>
+          <p>City:</p>
+          <input type="text" name="city" required>
 
-          <p>Address:</p>
-          <textarea name="city" id="city" required></textarea>
+          <p>Postcode:</p>
+          <input type="text" name="postcode" required>
 
-          <p>Address:</p>
-          <textarea name="postcode" id="postcode" required></textarea>
+          <p>Phone:</p>
+          <input type="text" name="phone" pattern="\d{16}">
 
-          <p>Address:</p>
-          <textarea name="phone" id="phone" required></textarea>
+          <br>
+          <br>
         
           <br><button class= "save-btn" type="submit">Place Order</button>
         

@@ -41,9 +41,6 @@ Route::post('checkout', [CheckoutController::class, 'Orders'])->name('checkout.p
 
 Route::get('checkout/address', function () { if (!Auth::check()) { return redirect()->route('login'); } return view('checkoutAddress'); })->name('checkout.address'); //checks to see if you're logged in alongside displaying the checkout form
 
-//CODING IS ASS! GROUP PROJECT MODULE IS ASS! ASTON UNIVERSITY IS ASS! I WANT TO DROP OUT! 
-// MAKE ME CODE 1 MORE HTML SITE AND I WILL BEAT YOU TO A PULP
-
 Route::get('OrderPlaced', function () { return view('OrderPlaced'); })-> name('OrderPlaced');// shows the OrderPlaced page 
 
 Route::get('product/{product}',[ProductController::class, 'show'])->name('product.show'); // shows individual products 
