@@ -186,6 +186,7 @@ footer{
 
 .faq-master .answer {
     display: none;
+    font-size: 20px;
 }
 
 .faq-master .answer.show { /*after clicking any question, JS function activates this and shows answers*/
