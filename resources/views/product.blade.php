@@ -17,9 +17,9 @@
 
             <form action="{{route('basket.add', $product->id)}}" method="POST">
                 @csrf
-                <label for="quantity">quantity:</label><br><br>
+                <label for="quantity">Quantity:</label><br><br>
                 <input type="number" name="quantity" id="quantity" value="1" min="1"><br><br>
-                <button class = "save-btn" type="submit">add to basket</button>
+                <button class = "save-btn" type="submit">Add to basket</button>
             </form>
         </div>
     </div><br>

@@ -22,11 +22,23 @@
         <div class= "top">
             <a href="/home"><button class = "logoButton"><img src="{{ Vite::asset('public/images/logo_updated.png') }}" class = "logo"></button></a>
             <input type="text" name="search" placeholder="What are you looking for?">
-            <a href="/login"><button class ="headbut"><img src="{{ Vite::asset('public/images/account.png') }}" class = "bob"><br>Login</button></a>
-            <a href="/register"><button class ="headbut"><img src="{{ Vite::asset('public/images/account.png') }}" class = "bob"><br>Register</button></a>
 
+            <!--cba to make a model or controller for 1 button so put this stuff here-->
+
+            @php
+                use App\Models\User;
+                $hasUser = User::exists();
+            @endphp
+
+            @if ($hasUser)
+                <a href="/account"><button class ="headbut"><img src="{{ Vite::asset('public/images/account.png') }}" class = "bob"><br>Account</button></a>
+            @else
+                <a href="/login"><button class ="headbut"><img src="{{ Vite::asset('public/images/account.png') }}" class = "bob"><br>Login</button></a>
+                <a href="/register"><button class ="headbut"><img src="{{ Vite::asset('public/images/account.png') }}" class = "bob"><br>Register</button></a>
+            @endif
+            
             <a href="/basket"><button class ="headbut"><img src="{{ Vite::asset('public/images/basket.png') }}" class = "bob"><br>Basket</button></a>
-            </div>
+        </div>
           {{-- bottom of nav bar and contains our 5 catagoires with links, and if you hover over it gives you more specific options--}}    
         <div class= "bottom">
                 <button class ="headbut"><a href="{{ route('products.cat', 'ArtCraft')}}">Arts & Crafts</a></button>

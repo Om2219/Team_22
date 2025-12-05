@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\ContactFormController;
+use App\Http\Controllers\DetailsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,15 +31,15 @@ Route::get('account', function () { if (!Auth::check()) {return redirect()->rout
 
 Route::get('order', function () { return view('order'); }); // returns order history
 
-Route::get('basket', [BasketController::class, 'basketPage'])->name('basket');                              //displays the basket page
-Route::post('basket/add/{product}', [BasketController::class, 'add'])->name('basket.add');                  //adds a product to the basket
-Route::delete('basket/remove/{product}', [BasketController::class, 'remove'])->name('basket.remove');       //removes a product from the basket
+Route::get('basket', [BasketController::class, 'basketPage'])->name('basket');                          // displays the basket page
+Route::post('basket/add/{product}', [BasketController::class, 'add'])->name('basket.add');              // adds a product to the basket
+Route::delete('basket/remove/{product}', [BasketController::class, 'remove'])->name('basket.remove');   // removes a product from the basket
 
 Route::get('checkout', function () { if (!Auth::check()) {return redirect()->route('login');} return view('checkout'); }); // checks if a user is logged in and if so then shows checkout
 
 Route::post('checkout', [BasketController::class, 'Orders'])->name('checkout.place'); // the post to the checkout form
 
-Route::get('OrderPlaced', function () { return view('OrderPlaced'); })-> name('OrderPlaced');// shows the OrderPlaced page 
+Route::get('OrderPlaced', function () { return view('OrderPlaced'); })-> name('OrderPlaced');// shows the order confirmation page 
 
 Route::get('product/{product}',[ProductController::class, 'show'])->name('product.show'); // shows individual products 
 
@@ -48,9 +49,15 @@ Route::get('products/{cat}',[ProductController::class, 'cat'])->name('products.c
 
 Route::get('faq', function () { return view('faq'); }); // shows the FAQ page
 
-Route::get('contactdetail', function () { return view('contactdetail'); }); // shows contactdetail page
+Route::get('mydetails', [DetailsController::class, 'show'])->name('mydetails');     // shows the my details page
 
-Route::get('aboutus', function () { return view('aboutus'); }); // shows the aboutus page
+Route::get('/changeEmail', [DetailsController::class, 'show_changeEmail'])->name('change.email');               // shows the change email page
+Route::post('/changeEmail', [DetailsController::class, 'update_email'])->name('update.email');                  // updates the email in the database
+
+Route::get('/changePassword', [DetailsController::class, 'show_changePassword'])->name('change.password');    // shows the change password page
+Route::post('/changePassword', [DetailsController::class, 'update_password'])->name('update.password');       // updates the password in the database
+
+Route::get('aboutus', function () { return view('aboutus'); }); // shows the about us page
 
 
 

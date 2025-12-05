@@ -12,14 +12,8 @@
 
     <div class = "accountBox">
         <h2>My Details</h2>
-        <p> Manage Passwords, Email and Phone Number </p>
-        <button class = "headbut"><a href="/contactdetail">Edit My Details</a></button>
-    </div>
-
-    <div class = "accountBox">
-        <h2>Customer Service</h2>
-        <p> Need Help</p>
-        <button class = "headbut"><a href="/faq">Click here</a></button>
+        <p> Manage and change email and password</p>
+        <button class = "headbut"><a href="/mydetails">Edit My Details</a></button>
     </div>
 
     <div class = "accountBox">

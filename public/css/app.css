@@ -227,8 +227,14 @@ footer{
     resize: none; /*so the user can't just resize the textarea field*/
 }
 
+.home-master {
+    text-align: center;
+}
+
 .home-banner {
-    padding: 10px; 
+    text-align: center;
+    font-size: 15px;
+    padding-bottom: 20px;
 }
 
 .home-banner img {
@@ -236,21 +242,44 @@ footer{
     height: 150px;
 }
 
-.home-banner {
-    display: flex; /*to wrap text next to Roots image*/
-}
-
 .home-banner .business-description {
-    padding-left: 15px; /*move text away from Roots image*/
+    padding-top: 5px;  /*move text away from Roots image*/
+    margin-bottom: 10px; /*creates gap between categories and banner*/
 }
 
-.home-master .categories {  
+.home-banner .business-description .allProducts {
+    background-color: #4a3b2a; 
+    color: white;
+    border-radius: 5px;
+    font-size: 15px;
+    padding: 12px 25px;
+    cursor: pointer;
+    display: inline-block;
+    transition: background 0.3s;  /*allows for smooth button colour transition*/
+}
+
+.home-banner .business-description .allProducts:hover {        
+    background-color: #6b8e23;  /*goes from brown to green, brand colours*/
+}
+
+.categories {  
+    display: grid;
+    grid-template-columns: repeat(5, minmax(200px, 1fr));
+    gap: 20px;
+    color: black;
+}
+
+.category-box {
+    text-align: center;
+    padding: 20px;
     border: 1px solid lightgray;
     border-radius: 5px;
-    text-align: center;
-    display: grid;
-    grid-template-columns:repeat(5, minmax(200px, 1fr)); /*makes the p element text align nicely to the right*/
-    max-width: 500px; /*so each container box isn't too wide*/
+    color: black;
+    transition: background 0.5s;
+}
+
+.category-box:hover {
+    background-color: rgb(233, 233, 233)
 }
 
 /*Suja */
