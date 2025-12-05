@@ -40,6 +40,8 @@
     background: white;
     border: 3px solid #7a4900;
     border-radius: 8px;
+    font-family:'Times New Roman', Times, serif; /*possibly subject to change, settled on this for now*/
+
 }
 /** padding of the container */
  .container_signin{
@@ -66,6 +68,7 @@
 /*style for all buttons */
 .loginPage .loginForm button{
     cursor:pointer;
+    
 }
 
 .loginPage .mainLogin{
