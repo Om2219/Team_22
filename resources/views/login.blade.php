@@ -20,11 +20,11 @@
 
 <div class="login extra"> 
     <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw"><a href="#"> Forget password?</a></span>
+    <span class="psw"><a class="login-hyperlinks" href="#"> Forget password?</a></span>
 </div>
 
 <div class="container_signin">
-                <p>Welcome to the ROOTS! <a href="/register">Register</a>.</p>
+                <p>Welcome to the ROOTS! <a class="login-hyperlinks" href="/register">Register</a>.</p>
             </div>
 </div>
 </form>
@@ -107,7 +107,10 @@
 .loginPage .login{
     padding: 16px;
 }
- 
+
+.login-hyperlinks {
+    color: #04AA6D;
+}
 
 /** forgot password */
 span.psw{

@@ -23,12 +23,12 @@
 
             <hr>
 
-            <p>By creating an account you are agree to our <a href="#">Terms & Privacy</a>.</p>
+            <p>By creating an account you are agree to our <a class="register-hyperlinks" href="#">Terms & Privacy</a>.</p>
 
             <button type="submit" class="registerbtn">Register</button>
 
             <div class="container_signin">
-                <p>Already have an account? <a href="/login">Login</a>.</p>
+                <p>Already have an account? <a class="register-hyperlinks" href="/login">Login</a>.</p>
             </div>
         </div>
 
@@ -107,6 +107,10 @@
 }
 .registerPage .register.extra{
     background-color:#f1f1f1;
+}
+
+.register-hyperlinks {
+    color: #04AA6D;
 }
 /** register */
 span.psw{
