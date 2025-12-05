@@ -1,0 +1,153 @@
+# Set-up your local development environment
+## Contents
+- [:wave: Introduction](#👋-introduction)
+- [:hammer_and_wrench: Languages and tools](#🔨-languages-and-tools)
+  - [Languages and frameworks](#languages-and-frameworks)
+  - [Tools](#tools)
+- [:arrow_heading_up: Create new repository from the template](#🔼-create-new-repository-from-the-template)
+- [:computer: Configure your local development environment](#💻-configure-your-local-development-environment)
+  - [Step 1: Clone the repository](#step-1-clone-the-repository)
+  - [Step 2: Install dependencies](#step-2-install-dependencies)
+  - [Step 3: Configure environment settings](#step-3-configure-environment-settings)
+  - [Step 4: Generate APP_Key](#step-4-generate-app_key)
+  - [Step 5: Create a local database](#step-5-create-a-local-database)
+  - [Step 6: Populate the local database](#step-6-populate-the-local-database)
+  - [Step 7: Test your setup](#step-7-test-your-setup)
+    - [Database:](#database)
+    - [Website:](#website)
+- [:question: Common issues](#❓-common-issues)
+    - [The home page displays, but all other pages give a 404 error](#the-home-page-displays-but-all-other-pages-give-a-404-error)
+    - [Pages display raw php code](#pages-display-raw-php-code)
+- [:partying_face: Time to code!](#🥳-time-to-code)
+
+## :wave: Introduction
+This workshop will guide you through setting up your local development environment for the Module Selector project. You will then be able to start working on the coding tasks in [WorkshopTasks.md](./WorkshopTasks.md).
+
+> [!IMPORTANT]
+> Although this workshop is based around an example project, the setup instructions will also apply to your coursework.
+> Make sure you follow the instructions carefully, and ask for help if you get stuck.
+
+## :hammer_and_wrench: Languages and tools
+### Languages and frameworks
+You will use languages and frameworks covered in CS1IAD:
+- php
+- HTML
+- CSS
+- Laravel 10
+- Blade
+
+### Tools
+You should already have the following installed and configured (or in the case of github, an account set up):
+- XAMPP (comes bundled with php, phpMyAdmin, MySQL and Apache)
+- Composer
+- An IDE or text editor suitable for large projects (e.g., VSCode)
+- A terminal (e.g. Gitbash or the VSCode's built-in terminal)
+- Git and github
+
+## :arrow_heading_up: Create new repository from the template
+> [!CAUTION]
+> Only one member of your team should follow this step!
+
+1. *One member* of your team should create a new repository from the template for your team to work on
+2. Go to the repository's home page [https://github.com/CSDT-PSO/CS2TP_Collaborative_Development_Starting_Code.git](https://github.com/CSDT-PSO/CS2TP_Collaborative_Development_Starting_Code.git)
+3. Click the green `Use this template` button
+4. Select 'Create a new repository'
+5. Name your repository (e.g., Team99_WorkshopTask)
+6. Click `Create repository`
+7. You should now be on your new repository's page. Add the rest of your team as collaborators
+
+
+## :computer: Configure your local development environment
+
+### Step 1: Clone the repository
+Clone your team's new repository.
+
+> [!IMPORTANT]
+> Clone the new repository into XAMPP's /htdocs folder.
+> If using the default installation options, this will be in `C:/xampp/htdocs`
+
+### Step 2: Install dependencies
+1. In your terminal, navigate to the project's root directory (e.g., `C:/xampp/htdocs/YOUR_PROJECT_NAME`).
+2. Run `composer install` to install the project's Laravel dependencies
+3. Run `npm install` to install any front-end dependencies through node package manager(npm)
+
+> [!TIP]
+> If you’re using VSCode as your text editor, you can open a terminal directly within the application. 
+> With the project code open, either:
+> - press `CTL+SHIFT+'`
+> - in VSCode's top menu: `terminal` -> `new terminal`.
+>
+> Remember to set the terminal's language to bash!
+
+
+### Step 3: Configure environment settings
+- As you learnt in CS1IAD, to connect your project to a database you need to update the project's `.env` file with the database's details.
+- You may have noticed that there isn't a `.env` file in the project code, just a `.env.example` file!
+
+> [!TIP]
+> The `.env` file contains sensitive or private information, such as your admin username and password.
+> `.env` files should not be publicly shared, and are therefore excluded from git using the `.gitignore` file. 
+
+- `.env.example` is a template. It contains no private information, so it can be added to the repository. New contributers can then use this to create their own local `.env` file, following the structure the project requires.
+
+To do create your `.env` file:
+1. In your terminal, make sure that you are in your project's root directory.
+2. Run `cp .env.example .env` to create a new `.env` file based on the template.
+3. You will now have a file called `.env` - **do not edit this yet!**
+
+### Step 4: Generate APP_Key
+- When you create a new Laravel project, the application key is generated by default. When you clone an existing project, you need to do this manually.
+
+In your terminal, in your project’s root directory:
+1. Run `php artisan key:generate`
+This creates a new key and automatically adds it to your .env file.
+
+### Step 5: Create a local database
+1. Start Apache and MySQL in XAMPP
+2. Open phpMyAdmin in your localhost
+3. Create a new database. This only exists in your local environment, so call it whatever you want, as long as it makes sense.
+4. **Do not create any database tables!**
+5. Update your `.env` file with the database information.
+
+### Step 6: Populate the local database
+The project already contains definitions for three database tables in the `migration` files. It also defines some ‘dummy data’ (known as `seed data`) to populate the database tables to help with development and testing.
+
+Migration files don’t automatically. In your terminal, in your project’s root directory.
+1. Run `php artisan migrate --seed`
+This runs the `migration` files (i.e. builds the database tables) and the `DatabaseSeeder.php` to add data to the tables.
+
+### Step 7: Test your setup
+#### Database:
+1. Open the database in phpMyAdmin
+2. The database should contain the default laravel tables, in addition to student, module, and module_student
+3. The `students` table should contain randomly generated data for 50 students
+4. The `modules` table should contain data for 7 modules
+5. The `module_student` table is a pivot table, and should contain a list module ids and student ids
+
+#### Website:
+1. Open the project’s public folder on localhost in your browser (e.g., if your project is called ‘Team99’, the url will be localhost/Team99/public)
+2. You should see a very basic homepage
+3. Try navigating around the website. [Not all pages will work](../README.md#known-issues), but you should be able to navigate to the studentlisting page without any issues.
+- If you have problems, see below.
+
+## :question: Common issues
+### The home page displays, but all other pages give a 404 error
+- Check your URL!
+- This is **case sensitive**. If your project is called ‘Team99’, the url will be localhost/Team99/public, not localhost/team99/public.
+- The home page will load regardless of case, but no other pages will.
+
+### Pages display raw php code
+Check:
+- You have started Apache and MySQL in XAMPP
+- You are accessing the project through localhost, not directly from the file system (e.g. `C:/xampp/htdocs/Team99/public` not `file:///C:/xampp/htdocs/Team99/public`)
+- You have cloned the project into XAMPP's htdocs folder
+
+
+# :partying_face: Time to code!
+If this works, congratulations, you're now ready to start development! If there are others in your team who are still working through the setup instructions, offer your help.
+
+When the **whole team** is read, you can find the coding tasks in [WorkshopTasks.md](./WorkshopTasks.md).
+
+> [!CAUTION]
+> Don't try to start the coding tasks before your whole team is ready.
+> This workshop is about collaboration, and the first task requires everyone!
