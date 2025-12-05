@@ -21,22 +21,16 @@
           {{-- top of the nav bar and contains the logo, search bar,, the users account, the users basked--}}         
         <div class= "top">
             <a href="/home"><button class = "logoButton"><img src="{{ Vite::asset('public/images/logo_updated.png') }}" class = "logo"></button></a>
-            <input type="text" name="search" placeholder="What are you looking for?">
+            <input type="text" name="search" placeholder="What are you looking for?" class="searchBar">
 
             <!--cba to make a model or controller for 1 button so put this stuff here-->
-
-            @php
-                use App\Models\User;
-                $hasUser = User::exists();
-            @endphp
-
-            @if ($hasUser)
+            @if (Auth::check())
                 <a href="/account"><button class ="headbut"><img src="{{ Vite::asset('public/images/account.png') }}" class = "bob"><br>Account</button></a>
             @else
                 <a href="/login"><button class ="headbut"><img src="{{ Vite::asset('public/images/account.png') }}" class = "bob"><br>Login</button></a>
                 <a href="/register"><button class ="headbut"><img src="{{ Vite::asset('public/images/account.png') }}" class = "bob"><br>Register</button></a>
             @endif
-            
+
             <a href="/basket"><button class ="headbut"><img src="{{ Vite::asset('public/images/basket.png') }}" class = "bob"><br>Basket</button></a>
         </div>
           {{-- bottom of nav bar and contains our 5 catagoires with links, and if you hover over it gives you more specific options--}}    
@@ -48,8 +42,8 @@
                 <button class ="headbut"><a href="{{ route('products.cat', 'Office')}}">Office Supplies</a></button>
                 <button class ="headbut"><a href="/products">All products</a></button>
                 <button class ="headbut"><a href="/aboutus">About Us</a></button>
-                <button class="headbut"><a href="/faq">FAQ</a></button>
-                <button class="headbut"><a href="/contactform">Contact us</a></button>
+                <button class ="headbut"><a href="/faq">FAQ</a></button>
+                <button class ="headbut"><a href="/contactform">Contact us</a></button>
                 </div>
     </nav>
   </header>
