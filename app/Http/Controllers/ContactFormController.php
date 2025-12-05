@@ -19,8 +19,8 @@ class ContactFormController extends Controller {
         // Stores the contact form data
         ContactForm::create($request->all());
 
-        // success message
-        return redirect('/contactform')->with('success', 'Thank you for reaching out. Your message is with our team and you will recieve a response shortly.');
+        // redirects to a thank you page after submission
+        return view('contactformredirect');
     }
 }
 
