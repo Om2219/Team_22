@@ -18,7 +18,7 @@
 
         <br>
         <button class="questions" onclick="tog(this)">How do I return an item?</button>
-        <div class="answer"><p>Send it back in its original packaging, and process a return ticket in the 'accounts' page.</p></div>
+        <div class="answer"><p>Send it back in its original packaging, and process a return ticket in the <a class="faq-hyperlinks" href="/account">account</a> page.</p></div>
         <br>
         <hr>
 
@@ -61,7 +61,6 @@
         <br>
         <button class="questions" onclick="tog(this)">When should my refund be processed?</button>
         <div class="answer"><p>Refunds usually take around 5-10 business days.</p></div>
-        <br>
     </div>
 
 </x-layout>
