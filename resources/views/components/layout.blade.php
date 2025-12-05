@@ -39,7 +39,7 @@
             
             <a href="/basket"><button class ="headbut"><img src="{{ Vite::asset('public/images/basket.png') }}" class = "bob"><br>Basket</button></a>
         </div>
-          {{-- bottom of nav bar and contains our 5 catagoires with links, and if you hover over it gives you more specific options--}}    
+          {{-- bottom of nav bar and contains our 5 categories with links, and if you hover over it gives you more specific options--}}    
         <div class= "bottom">
                 <button class ="headbut"><a href="{{ route('products.cat', 'ArtCraft')}}">Arts & Crafts</a></button>
                 <button class ="headbut"><a href="{{ route('products.cat', 'Toys')}}">Toys</a></button>
@@ -55,7 +55,7 @@
   </header>
 
 
-  {{-- the main informaton for all pages --}}
+  {{-- the main information for all pages --}}
   <main class="container">
   {{$slot}}
   </main>
@@ -66,7 +66,7 @@
     <div>
        © Roots 
 
-      {{-- WE NEED TO DIRECT THESE PAGS TO SOMEWHERE--}}
+      {{-- WE NEED TO DIRECT THESE PAGES TO SOMEWHERE--}}
 
       <a href="/home"><button class = "iconbutton"><img src="{{ Vite::asset('public/images/youtube.png') }}" class = "icon"></button></a> 
       <a href="/home"><button class = "iconbutton"><img src="{{ Vite::asset('public/images/Facebook.png') }}" class = "icon"></button></a> 
