@@ -35,6 +35,8 @@
     </form>
 
 <style>
+
+    /* border form */
 .registerPage .RegisterForm{
     width: 380px;
     margin: 40px auto;
@@ -42,15 +44,30 @@
     border: 3px solid #7a4900;
     border-radius: 8px;
 }
+
+
+/** padding of the container */
+ .container_signin{
+    padding: 0 16px 0px;
+}
+
+.registerPage .container_signin{
+    background: white;
+    border-radius: 0 0 8px 8px;
+}
+
+/*inputs */
 .registerPage input[type=text], 
 .registerPage input[type=password]{
     width:100%;
     padding: 12px 20px;
     margin: 8px 0;
-    border: 1px solid #ccc;
+    border: 1px solid white;
     display: inline-block;
     box-sizing: border-box;
 }
+
+/*style for all buttons */
 .registerPage .RegisterForm button{
     cursor:pointer;
 }
@@ -58,7 +75,7 @@
     background-color: #bdab53;
     color: black;
     padding: 14px 20px;
-    margin; 8px 0;
+    margin: 8px 0;
     border: none;
     width: 100%;
     font-weight: 600;
@@ -72,6 +89,8 @@
     padding: 10px 18px;
     background-color: #f44336;
 }
+
+/**avatar image */
 .registerPage .imgcontainer{
     text-align: center;
     margin-top: 20px;
@@ -80,12 +99,16 @@
     width: 40%;
     border-radius: 50%;
 }
+
+
+/**padding to containers */
 .registerPage .register{
     padding: 16px;
 }
 .registerPage .register.extra{
     background-color:#f1f1f1;
 }
+/** register */
 span.psw{
     float: right;
     padding-top: 16px;

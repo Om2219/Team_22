@@ -2,7 +2,8 @@
     <h1>Contact Us</h1>
 
     <div class="contactUsPage-master">
-        <div class="contactus-container">
+        <form method="POST" action="{{route('contactform.submit')}}">
+            @csrf
             <p>Please enter your details below to send us an email.</p>
             <hr>
 
@@ -21,6 +22,6 @@
             <hr>
 
             <button class="sendEmail" type="submit">Send Email</button>
-        </div>
+        </form>
     </div>
 </x-layout>

@@ -17,12 +17,15 @@
 <label>
     <input type = "checkbox" checked name="remember"> Remember Me
 </label>
-</div>
-
 
 <div class="login extra"> 
     <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forget <a href="#"> password?</a></span>
+    <span class="psw"><a href="#"> Forget password?</a></span>
+</div>
+
+<div class="container_signin">
+                <p>Welcome to the ROOTS! <a href="/register">Register</a>.</p>
+            </div>
 </div>
 </form>
 
@@ -38,14 +41,24 @@
     border: 3px solid #7a4900;
     border-radius: 8px;
 }
+/** padding of the container */
+ .container_signin{
+    padding: 0 16px 0px;
+}
+
+.loginPage .container_signin{
+    background: white;
+    border-radius: 0 0 8px 8px;
+}
+
 
 /*inputs */
 .loginPage input[type=text], 
 .loginPage input[type=password]{
     width:100%;
     padding: 12px 20px;
-    margin: 8px 0;
-    border: 1px solid #ccc;
+    margin; 8px 0;
+     border: 1px solid white;
     display: inline-block;
     box-sizing: border-box;
 }
@@ -59,7 +72,7 @@
     background-color: #bdab53;
     color: black;
     padding: 14px 20px;
-    margin; 8px 0;
+    margin: 8px 0;
     border: none;
     width: 100%;
     font-weight: 600;
@@ -91,9 +104,7 @@
 .loginPage .login{
     padding: 16px;
 }
- .loginPage .login.extra{
-    background-color:#f1f1f1;
-}
+ 
 
 /** forgot password */
 span.psw{
