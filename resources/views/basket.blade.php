@@ -1,7 +1,7 @@
 <x-layout>
 
     <h1>My Basket</h1>
-    
+
     <div class="MasterBasketBox">
 
         @if($basket->isEmpty())
@@ -16,11 +16,14 @@
                             alt="{{$product->name}}" width="200">
                         <p>{{$product->name}}</p>
                         <p>Price: £{{$product->price}}</p>
-
-                        <div>
-                            <label for="quantity_{{$product->id}}">Quantity:</label>
-                            <input type="number" name="quantity[{{$product->id}}]" value="{{$product->quantity}}" min="1">
-                        </div>
+                        @if (session('error')) {{ session('error') }} @endif
+                        <form action="{{ route('basket.update') }}" method="POST">
+                            @csrf
+                            <label for="quantity{{$product->product_id}}">Quantity:</label>
+                            <input type="number" name="quantity" value="{{ $product->quantity }}"  min="1"> 
+                            <input type="hidden" name="product_id" value="{{ $product->product_id }}">
+                            <button type="submit" class="save-btn">Update Quantity</button>
+                        </form>
 
                         <p>Total: £{{number_format($product->price * $product->quantity, 2)}}</p>
 

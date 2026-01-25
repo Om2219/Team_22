@@ -35,6 +35,8 @@ Route::get('order', function () { return view('order'); }); // returns order his
 Route::get('basket', [BasketController::class, 'basketPage'])->name('basket');                          // displays the basket page
 Route::post('basket/add/{product}', [BasketController::class, 'add'])->name('basket.add');              // adds a product to the basket
 Route::delete('basket/remove/{product}', [BasketController::class, 'remove'])->name('basket.remove');   // removes a product from the basket
+Route::post('basket/update', [BasketController::class, 'update'])->name('basket.update');               // updates quantities in the basket
+
 
 Route::get('checkout', function () { if (!Auth::check()) {return redirect()->route('login');} return view('checkout'); }); // checks if a user is logged in and if so then shows checkout
 
