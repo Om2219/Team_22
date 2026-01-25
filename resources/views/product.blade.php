@@ -14,13 +14,13 @@
             <h2>{{$product->name}}</h2>
             <p>£{{$product->price}}<p>
         
-
             <form action="{{route('basket.add', $product->id)}}" method="POST">
                 @csrf
                 <label for="quantity">Quantity:</label><br><br>
                 <input type="number" name="quantity" id="quantity" value="1" min="1"><br><br>
                 <button class = "save-btn" type="submit">Add to basket</button>
             </form>
+            <p>In Stock:<br>{{$product->stock->stock}}<p>
         </div>
     </div><br>
     <h2>Product Information</h2>
