@@ -48,10 +48,18 @@ class ProductController extends Controller
         ]);
         $product = Product::create(['name' => $validated['name'],'category_id'=> $category->id, 'product_description' => $validated['product_description']?? null, 'price' => $validated['price']??null,]);
         $imagePath = null;
-        if($request-> hasFile('product_image')){
-            $imagePath = $request->file('product_image')->store('products', 'public');
-            
+
+
+        if ($request->hasFile('product_image')) {
+            $image = $request->file('product_image');
+
+            $filename = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+
+            $image->move(public_path('images/products'), $filename);
+
+            $imagePath = 'images/products/' . $filename;
         }
+
         if($imagePath){
             Product_image::create(['product_id' => $product->id, 'product_image' => $imagePath,]);
         }
