@@ -10,6 +10,7 @@ use App\Models\OrderItem;
 use App\Models\Basket;
 use App\Models\Product;
 use App\Models\Product_image;
+use App\Models\Stock;
 
 class BasketController extends Controller
 {
@@ -20,7 +21,6 @@ class BasketController extends Controller
 
     public function basketPage() {
         $basket = Basket::join('products','basket.product_id','=','products.id')->join('product_images','products.id','=','product_images.product_id')->select('basket.*','products.name','products.price','product_images.product_image')->get();
-        
         $totalPrice = $basket->sum(function($item) {
             return $item->price * $item->quantity;
         });
@@ -35,10 +35,27 @@ class BasketController extends Controller
     //if the item added is already in the basket then the quantity is incremented by the amount specified
 
     public function add(Product $product, Request $request) {
+        
         $quantity = $request->input('quantity');
         $basketItem = Basket::where('product_id', $product->id)->first();
+        $stock = Stock::where('product_id', $product->id)->first();
+
+        if ($stock->stock <= 0) {
+            return back()->with('error', 'MONKEY HAS NO BANANAS!!!!!');
+        }
+
+        if ($quantity > $stock->stock) {
+            return back()->with('error', 'MONKEY DOESNT HAVE ENOUGH BANANASS!!! :(');
+        }
+
+
         if ($basketItem) {
             $basketItem->quantity += $quantity;
+
+            if ($basketItem->quantity > $stock->stock) {
+            return back()->with('error', 'MONKEY DOESNT HAVE ENOUGH BANANASSSSSS!!!! :(');
+        }
+
             $basketItem->save();
         } else {
             Basket::create([
@@ -57,6 +74,29 @@ class BasketController extends Controller
             $basketItem->delete();
         }
         return redirect()->route('basket');
+    }
+
+    public function update(Request $request) {
+ 
+        $productId = $request->input('product_id');
+        $quantity = $request->input('quantity');
+        $basketItem = Basket::where('product_id', $productId)->first();
+        $stock = Stock::where('product_id', $productId)->first();
+
+            if ($quantity > $stock->stock) {
+                return back()->with('error', "MONKEY DOESNT HAVE ENOUGH BANANASSSSSS!!!! :( only {$stock->stock} for {$basketItem->product->name}");
+            }
+
+
+            if ($quantity < 1) {
+                $basketItem->delete();
+            } else {
+                $basketItem->quantity = $quantity;
+                $basketItem->save();
+            }
+        
+         return redirect()->route('basket');
+
     }
 
     //creates an order using the information from the basket
@@ -90,12 +130,25 @@ class BasketController extends Controller
         ]);
 
         foreach ($orderitems as $product) {
+
             $order->items()->create([
             'product_id' => $product->product_id,
             'quantity' => $product->quantity,
             'price' => $product->price
         ]);
+
+
+        $stock = Stock::where('product_id',$product->product_id)->first();
+
+        if ($stock->stock >= $product->quantity){
+            $stock->stock -= $product->quantity;
+            $stock->save();
+        } else {
+            return back();
         }
+        }
+
+        Basket::truncate();
 
         return view('OrderPlaced', ['order' => $order, 'items' => $orderitems ]);
 

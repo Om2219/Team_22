@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Product_image;
 use App\Models\Category;
+use App\Models\Stock;
+
 
 class Product extends Model
 {

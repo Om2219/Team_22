@@ -13,14 +13,16 @@
         <div>
             <h2>{{$product->name}}</h2>
             <p>£{{$product->price}}<p>
+
+            @if (session('error')) {{ session('error') }} @endif
         
-            <form action="{{route('basket.add', $product->id)}}" method="POST">
+            <form action="{{route('basket.add', $product->id)}}" method="POST" novalidate>
                 @csrf
                 <label for="quantity">Quantity:</label><br><br>
                 <input type="number" name="quantity" id="quantity" value="1" min="1"><br><br>
                 <button class = "save-btn" type="submit">Add to basket</button>
             </form>
-            <p>In Stock:<br>{{$product->stock->stock}}<p>
+            <p>In Stock:<br>{{$product->stock->stock}}</p>
         </div>
     </div><br>
     <h2>Product Information</h2>
