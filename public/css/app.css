@@ -19,6 +19,23 @@ header{
 
 }
 
+.searchBar{
+
+    background-color: #FFF8EE; 
+    display: inline-block;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 8px; 
+    font-size: 16px;
+    line-height: 1; 
+    color: #24591C; 
+    border: 1px solid rgba(255, 250, 250, 0.452);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    width: 50%;
+    font-weight: 600;
+
+}
+
 .icon {
     
     height: 15px;
@@ -39,7 +56,7 @@ header{
 
 a{
     text-decoration: none; 
-    color: green;
+    color: white;
 }
 
 .headbut {
@@ -76,7 +93,7 @@ a{
   size: 10%;
   padding: 1%;
   justify-content: space-between;
-  display: flex;
+  display:flex;
   flex-wrap: wrap;
   align-items: flex-start;
 }
@@ -134,10 +151,8 @@ footer{
     border: 1px;
     border-style: solid;
     border-color: black;
-    color: white;
+    color: black;
     text-align: center;
-
-
 }
 
 
@@ -171,11 +186,16 @@ footer{
 
 .faq-master .answer {
     display: none;
+    font-size: 20px;
 }
 
 .faq-master .answer.show { /*after clicking any question, JS function activates this and shows answers*/
     display: block;
     color: black;
+}
+
+.faq-master .faq-hyperlinks {
+    color: #04AA6D; /*override the a element color being white*/
 }
 
 .MasterBasketBox .basket-container { /*Reminder: use flex-wrap, get text to go to the right of the images*/
@@ -186,19 +206,6 @@ footer{
 
 .MasterBasketBox input {
     padding: 5px 5px;
-}
-
-.MasterBasketBox button {
-    cursor: pointer;
-    padding: 10px 20px;
-    background: #04AA6D; /*placeholder colour, subject to change*/
-    color: white;
-    border: none;
-    border-radius: 5px;
-}
-
-.MasterBasketBox button:hover {
-    opacity: 0.7;
 }
 
 .contactUsPage-master .contactus-container {
@@ -216,16 +223,18 @@ footer{
 }
 
 .contactUsPage-master button {
-    cursor: pointer;
-    padding: 10px 20px;
-    background: rgb(97, 97, 231); /*placeholder button colour, will likely be changed later*/
-    border-radius: 5px;
-    border: none;
+    background-color: #4a3b2a; 
     color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
 }
 
 .contactUsPage-master .sendEmail:hover {
-    opacity: 0.7;
+    background-color: #6b8e23;
 }
 
 .contactUsPage-master #message {
@@ -282,11 +291,11 @@ footer{
     border: 1px solid lightgray;
     border-radius: 5px;
     color: black;
-    transition: background 0.5s;
+    transition: background 0.5s; /*slowly changes the bg colour*/
 }
 
 .category-box:hover {
-    background-color: rgb(233, 233, 233)
+    background-color: rgb(233, 233, 233);
 }
 
 /*Suja */
@@ -311,157 +320,6 @@ footer{
         margin: 0 auto;
         padding: 20px;
     }
-
-    /*.account-container {
-        max-width: 800px;
-        margin: 40px auto;
-        padding: 20px;
-        font-family: 'Arial', sans-serif;
-    }
-
-    .page-title {
-        color: #4a3b2a;
-        font-size: 2rem;
-        margin-bottom: 30px;
-        text-align: center;
-        border-bottom: 2px solid #6b8e23;
-        padding-bottom: 10px;
-    }
-
-    
-    .details-card {
-        background: #fff;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 30px;
-        margin-bottom: 30px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
-
-    .card-header {
-        font-size: 1.4rem;
-        color: #6b8e23; 
-        margin-bottom: 20px;
-        font-weight: bold;
-    }
-
-    
-    .form-group {
-        margin-bottom: 20px;
-    }
-
-    .form-label {
-        display: block;
-        margin-bottom: 8px;
-        color: #4a3b2a;
-        font-weight: bold;
-    }
-
-    .form-input {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 1rem;
-        box-sizing: border-box; 
-    }
-
-    .form-input:focus {
-        border-color: #6b8e23;
-        outline: none;
-        box-shadow: 0 0 5px rgba(107, 142, 35, 0.3);
-    }
-
-    .helper-text {
-        font-size: 0.9rem;
-        color: #666;
-        margin-top: 5px;
-    }*/
-
-       
-    /*.hero-section {
-        background-color: #f4f1ea; 
-        padding: 80px 20px;
-        text-align: center;
-        border-bottom: 5px solid #6b8e23; 
-    }
-    
-    .hero-section h1 {
-        font-size: 3rem;
-        color: #4a3b2a; 
-        margin-bottom: 10px;
-        font-family: 'Arial', sans-serif;
-    }
-
-    .hero-section p {
-        font-size: 1.2rem;
-        color: #555;
-        margin-bottom: 30px;
-    }
-
-    .allProducts {
-        background-color: #6b8e23; 
-        color: white;
-        padding: 15px 30px;
-        font-size: 1.2rem;
-        text-decoration: none;
-        border-radius: 8px;
-        transition: background-color 0.3s;
-        display: inline-block;
-    }
-
-    .allProducts:hover {
-        background-color: #556b2f;
-    }
-
-    
-    .categories-section {
-        padding: 60px 20px;
-        text-align: center;
-    }
-
-    .section-title {
-        font-size: 2rem;
-        color: #4a3b2a;
-        margin-bottom: 40px;
-    }
-
-    .category-grid {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        padding: 10px;
-        flex-wrap: wrap;
-    }
-
-    .category-card {
-        background: white;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        width: 250px;
-        padding: 30px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        transition: transform 0.2s;
-    }
-
-    .category-card:hover {
-        transform: translateY(-5px); 
-    }
-
-    .category-card h3 {
-        color: #4a3b2a;
-        margin-bottom: 10px;
-    } */
-
-
-
-
-
-
-
-
-
-
 
 /* Gurpreet */
 
@@ -593,3 +451,51 @@ user-select: none;
     border-radius: 8px;
 }
 
+/*Arun*/
+
+.details_container {
+    text-align: center;
+    width: 300px;
+    margin: 0 auto;
+    border: 2px solid black;
+    padding: 0px 0px 25px 0px;
+}
+
+.email_container  {
+    text-align: center;
+    width: 300px;
+    margin: 0 auto;
+    border: 2px solid black;
+    padding: 0px 0px 15px 0px;  /* top right bottom left */
+}
+
+.password_container {
+    text-align: center;
+    width: 300px;
+    margin: 0 auto;
+    border: 2px solid black;
+    padding: 0px 0px 15px 0px;
+}
+
+.email_section input[type=text]{
+    width:100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid rgb(187, 187, 187);
+    display: inline-block;
+    box-sizing: border-box;
+    width: 200px;
+}
+
+.password_container input[type=password], .email_container input[type=email]{
+    padding: 12px 20px;
+    margin: 8px auto;
+    border: 1px solid rgb(187, 187, 187);
+    display: block;
+    box-sizing: border-box;
+    width: 200px;
+}
+
+.email_container input[type=email]::placeholder, .password_container input[type=password]::placeholder {
+    text-align: center;
+}

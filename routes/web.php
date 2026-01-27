@@ -10,6 +10,7 @@ use App\Http\Controllers\BasketController;
 use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\DetailsController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,12 +35,18 @@ Route::get('order', function () { return view('order'); }); // returns order his
 Route::get('basket', [BasketController::class, 'basketPage'])->name('basket');                          // displays the basket page
 Route::post('basket/add/{product}', [BasketController::class, 'add'])->name('basket.add');              // adds a product to the basket
 Route::delete('basket/remove/{product}', [BasketController::class, 'remove'])->name('basket.remove');   // removes a product from the basket
+Route::post('basket/update', [BasketController::class, 'update'])->name('basket.update');               // updates quantities in the basket
+
 
 Route::get('checkout', function () { if (!Auth::check()) {return redirect()->route('login');} return view('checkout'); }); // checks if a user is logged in and if so then shows checkout
 
 Route::post('checkout', [BasketController::class, 'Orders'])->name('checkout.place'); // the post to the checkout form
 
 Route::get('OrderPlaced', function () { return view('OrderPlaced'); })-> name('OrderPlaced');// shows the order confirmation page 
+
+Route::get('products/create', [ProductController::class, 'create'])->name('products.create');
+
+Route::post('products', [ProductController::class, 'store'])->name('products.store');
 
 Route::get('product/{product}',[ProductController::class, 'show'])->name('product.show'); // shows individual products 
 
@@ -59,18 +66,18 @@ Route::post('/changePassword', [DetailsController::class, 'update_password'])->n
 
 Route::get('aboutus', function () { return view('aboutus'); }); // shows the about us page
 
-
-
 Route::get('contactform', function () { return view('contactform'); }); // shows the contact form
 
-Route::get('register', [RegisterController::class, 'create'])->name('register');
-Route::post('register', [RegisterController::class, 'store'])->name('register.store');
-Route::get('login', [LoginController::class, 'create'])->name('login');
-Route::post('login', [LoginController::class, 'store'])->name('login.store');
-Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('register', [RegisterController::class, 'create'])->name('register'); //registers a name 
+Route::post('register', [RegisterController::class, 'store'])->name('register.store'); //stores the name in the database
+
+Route::get('login', [LoginController::class, 'create'])->name('login'); //allows a user to login 
+Route::post('login', [LoginController::class, 'store'])->name('login.store'); //checks user data against database data
+
+Route::post('logout', [LoginController::class, 'logout'])->name('logout'); //logsout user 
 Route::post('contactform', [ContactFormController::class, 'submit'])->name('contactform.submit');
 
-// irrelavent;
+
 
 
 

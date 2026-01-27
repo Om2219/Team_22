@@ -5,7 +5,7 @@
             <img src="/images/logo_updated.png">
             <div class="business-description">
                 <h1>Roots, where creativity comes to thrive</h1> <!--slogan-->
-                <p>At Roots, we sell products such as books, toys, stationery, and more. These can be seen below:</p> <!--website description-->
+                <p>At Roots, we sell products such as books, toys, stationery, and more. These can be viewed below:</p> <!--website description-->
                 <a href="/products" class="allProducts">Shop All Products</a>
             </div>
         </div>
@@ -15,8 +15,8 @@
         <section class="category-section">
             <div class="categories">
                 <a href="/products/ArtCraft" class="category-box">
-                    <h3>Arts and Crafts</h3>
-                    <p>Arts and Crafts for artists & painters to work with, and for people to enjoy their hobbies.</p>
+                    <h3>Arts & Crafts</h3>
+                    <p>Arts & Crafts for artists and painters to work with, and for people to enjoy their hobbies.</p>
                 </a>
             
                 <a href="/products/Toys" class="category-box">

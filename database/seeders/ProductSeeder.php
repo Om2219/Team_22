@@ -107,8 +107,8 @@ paper
 
         Product::create ([
   
-            'name' => 'the Forgotten City of Aethelgard',
-            'product_description' => 'A copy of "the Forgotten City of Aethelgard"
+            'name' => 'The Forgotten City of Aethelgard',
+            'product_description' => 'A copy of "The Forgotten City of Aethelgard"
             A Roots original, the creator and author of this collection was inspired by the characters inside Roots. It follows the story of the creators of Roots and how they made legendary product.
 
 Material
@@ -120,7 +120,7 @@ paper
 
         Product::create ([
   
-            'name' => 'Caculator',
+            'name' => 'Calculator',
             'product_description' => 'Swiftly overcome any mathematical hurdle with the press of a button. It features a LCD display, improved functions and easier navigation. It’s approved for Key stage 3 and 4 students recommended for those taking GCSE and A levels
 
 Material
