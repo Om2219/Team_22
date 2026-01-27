@@ -5,9 +5,9 @@
     <div class="productsBox ">
     {{-- <p> place holder </p> --}}
        <div>
-       @foreach($product->images as $image)
-        <img src="{{asset('images/products/' . $image->product_image)}}" alt="{{$product->name}}" class = "imageIcon">
-       @endforeach
+        @foreach($product->images as $image)
+            <img src="{{asset('images/products/' . $image->product_image)}}" alt="{{$product->name}}" class = "imageIcon">
+        @endforeach
        </div>
  
         <div>
@@ -27,5 +27,17 @@
     </div><br>
     <h2>Product Information</h2>
     <p>{{$product->product_description}}<p>
+
+    <div>
+
+       <button class ="headbut"><a href="{{ route('product.edit', $product)}}">Edit Product</a></button>
+
+       <form action ="{{ route('product.destroy', $product) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit" onclick="return confirm('MONKEY BYE BYE YES??')"> Delete Product</button>
+        </form>
+    
+    </div>
  
 </x-layout>

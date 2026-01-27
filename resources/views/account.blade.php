@@ -19,7 +19,10 @@
     <div class = "accountBox">
         <h2>Sign Out</h2>
         <p> Sign Out Of Your Account</p>
-        <button class = "headbut"><a href="/home">Sign Out</a></button>
+        <form method = "POST" action="{{route('logout')}}">
+            @csrf
+            <button class = "headbut">Sign Out</button>
+        </form>
     </div>
 
 </div>
