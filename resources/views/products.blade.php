@@ -5,7 +5,10 @@
 
     @foreach($products as $product)
         <div class="productBox">
-            <img src="{{ asset('images/products/' . $product->images->first()->product_image) }}"  alt="{{ $product->name }}" width="200">
+            @if ($product->images->isNotEmpty())
+    <img src="{{ asset('images/products/' . $product->images->first()->product_image) }}" alt="{{ $product->name }}">
+@endif
+
             <br>
             <p2>{{$product->name}}<p2>
             <br>

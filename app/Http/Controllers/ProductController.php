@@ -11,7 +11,8 @@ class ProductController extends Controller
 {
     //
 
-    public function productPage(){
+    public function productPage()
+    {
 
         $products = Product::with('images')->get();
 
@@ -19,7 +20,8 @@ class ProductController extends Controller
 
     }
 
-    public function cat($category){
+    public function cat($category)
+    {
 
         $cat = Category::where('name', $category)->firstOrFail();
 
@@ -29,41 +31,62 @@ class ProductController extends Controller
 
     }
 
-    public function show(Product $product){
+    public function show(Product $product)
+    {
 
-        $product->load('images','category');
+        $product->load('images', 'category');
 
         return view('product', compact('product'));
     }
-    
-    public function create(){
-       
-        return view('create');
+
+    public function create()
+    {
+        $categories = Category::orderBy('name')->get();
+        return view('create', compact('categories'));
+
     }
-    public function store(Request $request){
-        $validated = $request->validate(['name' => 'required|string|max:255', 'product_description' => 'nullable|string','price' => 'required|numeric|min:0', 'category_name' => 'required|integer|max:255', 'product_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',]);
-        $category = Category::firstOrCreate([
-            'name' => $validated['category_name']
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'category_id' => 'required|exists:categories,id',
+            'product_description' => 'nullable|string',
+            'price' => 'required|numeric|min:0',
 
+
+            'stock' => 'required|integer|min:0',
+            'low_stock' => 'required|integer|min:0',
+
+            'product_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
-        $product = Product::create(['name' => $validated['name'],'category_id'=> $category->id, 'product_description' => $validated['product_description']?? null, 'price' => $validated['price']??null,]);
-        $imagePath = null;
 
+        $product = Product::create([
+            'name' => $validated['name'],
+            'category_id' => $validated['category_id'],
+            'product_description' => $validated['product_description'] ?? null,
+            'price' => $validated['price'],
+        ]);
+
+
+        \App\Models\Stock::create([
+            'product_id' => $product->id,
+            'stock' => $validated['stock'],
+            'low_stock' => $validated['low_stock'],
+        ]);
 
         if ($request->hasFile('product_image')) {
             $image = $request->file('product_image');
-
             $filename = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-
             $image->move(public_path('images/products'), $filename);
 
-            $imagePath = 'images/products/' . $filename;
+            Product_image::create([
+                'product_id' => $product->id,
+                'product_image' => $filename,
+            ]);
         }
 
-        if($imagePath){
-            Product_image::create(['product_id' => $product->id, 'product_image' => $imagePath,]);
-        }
-        return redirect('/products')->with('success', 'Product added succcessfully');
+        return redirect('/products')->with('success', 'Product created successfully!');
     }
-}
 
+
+}
