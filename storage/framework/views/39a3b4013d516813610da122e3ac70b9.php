@@ -7,8 +7,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roots</title>
-    <link rel="icon" type="image/png" href="<?php echo e(Vite::asset('resources/images/logo_updated.png')); ?>">
-    <?php echo app('Illuminate\Foundation\Vite')('resources/css/app.css'); ?>
+    <link rel="icon" type="image/png" href="<?php echo e(Vite::asset('public/images/logo_updated.png')); ?>">
+    <?php echo app('Illuminate\Foundation\Vite')('public/css/app.css'); ?>
 </head>
 
 
@@ -20,18 +20,30 @@
                  
                    
         <div class= "top">
-            <a href="/home"><button class = "logoButton"><img src="<?php echo e(Vite::asset('resources/images/logo_updated.png')); ?>" class = "logo"></button></a>
-            <input type="text" name="search" placeholder="What are you looking for?">
-            <a href="/account"><button class ="headbut"><img src="<?php echo e(Vite::asset('resources/images/account.png')); ?>" class = "bob"><br>Account</button></a>
-            <a href="/basket"><button class ="headbut"><img src="<?php echo e(Vite::asset('resources/images/basket.png')); ?>" class = "bob"><br>Basket</button></a>
-            </div>
+            <a href="/home"><button class = "logoButton"><img src="<?php echo e(Vite::asset('public/images/logo_updated.png')); ?>" class = "logo"></button></a>
+            <input type="text" name="search" placeholder="What are you looking for?" class="searchBar">
+
+            <!--cba to make a model or controller for 1 button so put this stuff here-->
+            <?php if(Auth::check()): ?>
+                <a href="/account"><button class ="headbut"><img src="<?php echo e(Vite::asset('public/images/account.png')); ?>" class = "bob"><br>Account</button></a>
+            <?php else: ?>
+                <a href="/login"><button class ="headbut"><img src="<?php echo e(Vite::asset('public/images/account.png')); ?>" class = "bob"><br>Login</button></a>
+                <a href="/register"><button class ="headbut"><img src="<?php echo e(Vite::asset('public/images/account.png')); ?>" class = "bob"><br>Register</button></a>
+            <?php endif; ?>
+
+            <a href="/basket"><button class ="headbut"><img src="<?php echo e(Vite::asset('public/images/basket.png')); ?>" class = "bob"><br>Basket</button></a>
+        </div>
               
         <div class= "bottom">
-                <button class ="headbut"><a href="/home">Arts & Crafts</a></button>
-                <button class ="headbut"><a href="/home">Stationary</a></button>
-                <button class ="headbut"><a href="/home">Books</a></button>
-                <button class ="headbut"><a href="/home">eBooks</a></button>
-                <button class ="headbut"><a href="/home">Office Supplies</a></button>
+                <button class ="headbut"><a href="<?php echo e(route('products.cat', 'ArtCraft')); ?>">Arts & Crafts</a></button>
+                <button class ="headbut"><a href="<?php echo e(route('products.cat', 'Toys')); ?>">Toys</a></button>
+                <button class ="headbut"><a href="<?php echo e(route('products.cat', 'Stationery')); ?>">Stationery</a></button>
+                <button class ="headbut"><a href="<?php echo e(route('products.cat', 'Books')); ?>">Books</a></button>
+                <button class ="headbut"><a href="<?php echo e(route('products.cat', 'Office')); ?>">Office Supplies</a></button>
+                <button class ="headbut"><a href="/products">All products</a></button>
+                <button class ="headbut"><a href="/aboutus">About Us</a></button>
+                <button class ="headbut"><a href="/faq">FAQ</a></button>
+                <button class ="headbut"><a href="/contactform">Contact us</a></button>
                 </div>
     </nav>
   </header>
@@ -51,10 +63,10 @@
 
       
 
-      <a href="/home"><button class = "iconbutton"><img src="<?php echo e(Vite::asset('resources/images/youtube.png')); ?>" class = "icon"></button></a> 
-      <a href="/home"><button class = "iconbutton"><img src="<?php echo e(Vite::asset('resources/images/Facebook.png')); ?>" class = "icon"></button></a> 
-      <a href="/home"><button class = "iconbutton"><img src="<?php echo e(Vite::asset('resources/images/Instagram.png')); ?>" class = "icon"></button></a> 
-      <a href="/home"><button class = "iconbutton"><img src="<?php echo e(Vite::asset('resources/images/X.png')); ?>" class = "icon"></button></a> 
+      <a href="/home"><button class = "iconbutton"><img src="<?php echo e(Vite::asset('public/images/youtube.png')); ?>" class = "icon"></button></a> 
+      <a href="/home"><button class = "iconbutton"><img src="<?php echo e(Vite::asset('public/images/Facebook.png')); ?>" class = "icon"></button></a> 
+      <a href="/home"><button class = "iconbutton"><img src="<?php echo e(Vite::asset('public/images/Instagram.png')); ?>" class = "icon"></button></a> 
+      <a href="/home"><button class = "iconbutton"><img src="<?php echo e(Vite::asset('public/images/X.png')); ?>" class = "icon"></button></a>
 
     </div>
 
