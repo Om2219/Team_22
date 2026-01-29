@@ -78,6 +78,10 @@ Route::post('logout', [LoginController::class, 'logout'])->name('logout'); //log
 Route::post('contactform', [ContactFormController::class, 'submit'])->name('contactform.submit');
 
 
+//admin login route
+Route::get('admin', function (){
+    return view ('admin');
+})->name('admin.login');
 
 
 

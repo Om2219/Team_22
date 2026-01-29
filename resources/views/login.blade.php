@@ -25,6 +25,7 @@
 
 <div class="container_signin">
                 <p>Welcome to the ROOTS! <a class="login-hyperlinks" href="/register">Register</a>.</p>
+                <p>Are you admin? <a class="login-hyperlinks" href="/admin">admin</a>.</p>
             </div>
 </div>
 </form>
