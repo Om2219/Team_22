@@ -45,6 +45,9 @@ class AdminLoginController extends Controller
 
     // Handles admin logout
     public function logout(Request $request) {
+        if (!$request->user()) {
+            return response()->json(['message' => 'Not authenticated'], 401);
+        }
         $request->user()->currentAccessToken()->delete();
         return response()->json(['message' => 'Logged out successfully']);
     }
