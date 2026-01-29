@@ -77,13 +77,21 @@ Route::post('login', [LoginController::class, 'store'])->name('login.store'); //
 Route::post('logout', [LoginController::class, 'logout'])->name('logout'); //logsout user 
 Route::post('contactform', [ContactFormController::class, 'submit'])->name('contactform.submit');
 
-//People coding admin need to add authentication to this so only Admin team can carry out these functions, for now anyone can edit and delete products edits haidens as well
 
-//Oms
-Route::get('product/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');  
-Route::put('product/{product}', [ProductController::class, 'update'])->name('product.update');
-Route::delete('product/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
+//admin login route
+Route::get('admin', function (){
+    return view ('admin');
+})->name('admin.login');
 
+
+
+
+// dashboard route
+
+Route::middleware(['auth', 'admin'])->group(function(){
+    Route::view('/admin/dashboard', 'admin_dashboard')
+    ->name('admin.dashboard')
+});
 
 
 // Route::get('studentlisting', 'App\Http\Controllers\StudentController@list')->name('list_student');

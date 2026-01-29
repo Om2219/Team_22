@@ -3,14 +3,14 @@
  <form action="{{ route('login.store') }}" method="POST" class="loginForm">
  @csrf
  <div class="imgcontainer">
-            <img src="{{ asset('images/img_avatar2.png') }}" alt= "Avatar" class ="avatar">
+            <img src="{{ asset('images/img_avatar2.png') }}" alt= "Admin Avatar" class ="avatar">
 </div>
 
 <div class= "login">
-    <label for= "uname"><b>Username</b></label>
+    <label for= "uname"><b>Admin Email</b></label>
     <input id="email" type="text" placeholder= "Enter Username" name="email" required>
 
-<label for= "psw"><b>Password</b></label>
+<label for= "psw"><b>Admin Password</b></label>
     <input id="psw" type="password" placeholder= "Enter Password" name="password" required>
    
 <button type ="submit" class="mainLogin"> Login</button>
@@ -24,8 +24,7 @@
 </div>
 
 <div class="container_signin">
-                <p>Welcome to the ROOTS! <a class="login-hyperlinks" href="/register">Register</a>.</p>
-                <p>Are you admin? <a class="login-hyperlinks" href="/admin">admin</a>.</p>
+                <p>Not an admin? <a class="login-hyperlinks" href="/login">Login</a>.</p>
             </div>
 </div>
 </form>
