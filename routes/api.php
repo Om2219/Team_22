@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminLoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/admin/login', [AdminLoginController::class, 'login']);
-Route::post('/admin/logout', [AdminLoginController::class, 'logout']);
+Route::post('/admin/logout', [AdminLoginController::class, 'logout'])->middleware('auth:sanctum');
