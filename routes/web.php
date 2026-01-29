@@ -83,16 +83,12 @@ Route::get('admin', function (){
     return view ('admin');
 })->name('admin.login');
 
-
-
-
 // dashboard route
 
-Route::middleware(['auth', 'admin'])->group(function(){
+Route::middleware(['auth', 'admin'])->group(function() {
     Route::view('/admin/dashboard', 'admin_dashboard')
-    ->name('admin.dashboard')
+    ->name('admin.dashboard');
 });
-
 
 // Route::get('studentlisting', 'App\Http\Controllers\StudentController@list')->name('list_student');
 // Route::get('studentprofile/{}', 'App\Http\Controllers\StudentController@show');
