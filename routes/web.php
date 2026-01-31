@@ -46,6 +46,10 @@ Route::get('OrderPlaced', function () { return view('OrderPlaced'); })-> name('O
 
 Route::get('product/{product}',[ProductController::class, 'show'])->name('product.show'); // shows individual products 
 
+Route::get('product/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');
+Route::put('product/{product}', [ProductController::class, 'update'])->name('product.update');
+Route::delete('product/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
+
 Route::get('products',[ProductController::class, 'productPage'])->name('products.productPage'); // shows all products regardless of category
 
 //haidens - add authentication to this so only admin

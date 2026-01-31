@@ -7,8 +7,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roots</title>
-    <link rel="icon" type="image/png" href="{{ Vite::asset('public/images/logo_updated.png') }}">
-    @vite('public/css/app.css')
+    <link rel="icon" type="image/png" href="{{ asset('images/logo_updated.png') }}">
+<link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
 </head>
 
 {{-- The body of a page which can be applied to all pages so we only edit one layout --}}
