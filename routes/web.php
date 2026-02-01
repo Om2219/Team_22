@@ -89,7 +89,9 @@ Route::get('admin', function (){
     return view ('admin');
 })->name('admin.login');
 
-// dashboard route
+//Suja
+Route::get('/search', [ProductController::class, 'search'])->name('products.search');
+
 
 Route::middleware(['auth', 'admin'])->group(function() {
     Route::view('/admin/dashboard', 'admin_dashboard')

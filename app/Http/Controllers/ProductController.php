@@ -170,5 +170,20 @@ class ProductController extends Controller
         return redirect()->route('products.productPage');
 
     } 
+    
+    //Suja's work
+    public function search(Request $request){
+        $search = $request ->input('search');
+
+        $products = Product::where('name', 'LIKE', "%{$search}%")
+        ->orWhere('product_description', 'LIKE', "%{$search}%")
+        ->orderBy('created_at', 'desc')
+        ->paginate(10);
+
+         return view('search', [
+        'products' => $products, 
+        'search' => $search
+        ]);
+    }
 
 }

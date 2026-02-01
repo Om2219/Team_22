@@ -468,6 +468,30 @@ user-select: none;
     width: 100%;
 }
 
+.searchBox {
+    text-align: center;
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 8px;
+    box-sizing: border-box;
+    width: 100%;
+
+}
+
+.searchBox img {
+    width: 250px;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    /* can comment this out if we dont like the box around images*/
+    text-align: center;
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 8px;
+    box-sizing: border-box;
+    width: 20%;
+}
+
 /*Arun*/
 
 .details_container {
