@@ -84,6 +84,9 @@ Route::get('product/{product}/edit', [ProductController::class, 'edit'])->name('
 Route::put('product/{product}', [ProductController::class, 'update'])->name('product.update');
 Route::delete('product/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
 
+//Suja
+Route::get('/search', [ProductController::class, 'search'])->name('products.search');
+
 
 
 // Route::get('studentlisting', 'App\Http\Controllers\StudentController@list')->name('list_student');

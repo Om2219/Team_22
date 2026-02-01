@@ -21,7 +21,10 @@
           {{-- top of the nav bar and contains the logo, search bar,, the users account, the users basked--}}         
         <div class= "top">
             <a href="/home"><button class = "logoButton"><img src="{{ Vite::asset('public/images/logo_updated.png') }}" class = "logo"></button></a>
-            <input type="text" name="search" placeholder="What are you looking for?" class="searchBar">
+            {{--<input type="text" name="search" placeholder="What are you looking for?" class="searchBar">--}}
+            <form action="{{ route('products.search') }}" method="GET">
+              <input type="text" name="search" placeholder="What are you looking for?" class="searchBar">
+            </form>
 
             <!--cba to make a model or controller for 1 button so put this stuff here-->
             @if (Auth::check())
