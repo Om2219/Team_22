@@ -95,7 +95,7 @@ class ProductController extends Controller
 
     public function edit(Product $product) {
 
-        $product->load('images', 'stock');
+        $product->load('images', 'stock', 'reviews.user');
 
         $categories = Category::orderBy('name')->get();  // <-- add this
 
