@@ -23,7 +23,7 @@
             <a href="/home"><button class = "logoButton"><img src="{{ Vite::asset('public/images/logo_updated.png') }}" class = "logo"></button></a>
             {{--<input type="text" name="search" placeholder="What are you looking for?" class="searchBar">--}}
             <form action="{{ route('products.search') }}" method="GET">
-              <input type="text" name="search" placeholder="What are you looking for?" class="searchBar">
+              <input type="text" name="search" placeholder="What are you looking for?" class="headbut">
             </form>
 
             <!--cba to make a model or controller for 1 button so put this stuff here-->
