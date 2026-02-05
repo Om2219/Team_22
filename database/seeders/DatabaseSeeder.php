@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             StockSeeder::class,
             ProductImagesSeeder::class,
             Accountseeder1::class,
+            AdminUserSeeder::class
         ]);
     }
 }
