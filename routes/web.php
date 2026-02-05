@@ -9,7 +9,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\DetailsController;
-
+use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,12 +45,18 @@ Route::post('checkout', [BasketController::class, 'Orders'])->name('checkout.pla
 Route::get('OrderPlaced', function () { return view('OrderPlaced'); })-> name('OrderPlaced');// shows the order confirmation page 
 
 Route::get('product/{product}',[ProductController::class, 'show'])->name('product.show'); // shows individual products 
+//oms
+Route::get('product/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');
+Route::put('product/{product}', [ProductController::class, 'update'])->name('product.update');
+Route::delete('product/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
 
 Route::get('products',[ProductController::class, 'productPage'])->name('products.productPage'); // shows all products regardless of category
 
 //haidens - add authentication to this so only admin
 Route::get('products/create', [ProductController::class, 'create'])->name('products.create');
 Route::post('products', [ProductController::class, 'store'])->name('products.store');
+//haidens 
+Route::post('product/{product}/reviews', [\App\Http\Controllers\ReviewController::class, 'store'])->middleware('auth')->name('reviews.store');
 
 Route::get('products/{cat}',[ProductController::class, 'cat'])->name('products.cat'); // shows products in their own category
 
@@ -83,7 +89,9 @@ Route::get('admin', function (){
     return view ('admin');
 })->name('admin.login');
 
-// dashboard route
+//Suja
+Route::get('/search', [ProductController::class, 'search'])->name('products.search');
+
 
 Route::middleware(['auth', 'admin'])->group(function() {
     Route::view('/admin/dashboard', 'admin_dashboard')
