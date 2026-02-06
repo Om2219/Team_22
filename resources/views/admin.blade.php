@@ -59,7 +59,7 @@
 .loginPage input[type=password]{
     width:100%;
     padding: 12px 20px;
-    margin; 8px 0;
+    margin: 8px 0;
      border: 1px solid white;
     display: inline-block;
     box-sizing: border-box;
