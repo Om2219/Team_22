@@ -175,11 +175,13 @@ class ProductController extends Controller
     public function search(Request $request){
         $search = $request ->input('search');
 
-        $products = Product::where('name', 'LIKE', "%{$search}%")
-        ->orWhere('product_description', 'LIKE', "%{$search}%")
+        if (!$search) {
+            return redirect()->back();
+        }
+
+        $products = Product::where('name', 'LIKE', "{$search}%")
         ->orderBy('created_at', 'desc')
         ->paginate(10);
-
          return view('search', [
         'products' => $products, 
         'search' => $search
