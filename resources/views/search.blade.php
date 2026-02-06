@@ -10,11 +10,12 @@
                         <img src="{{ asset('images/products/' . $product->images->first()->product_image) }}" alt="{{ $product->name }}">
                     @endif
                     <p>Price: ${{ number_format($product->price, 2) }}</p>
-                    <p>Description:<br> {{ $product->product_description }}</p>
+                    {{-- <p>Description:<br> {{ $product->product_description }}</p> --}}
                     <button><a href="{{ route('product.show', $product->id) }}">View Details</a></button>
                     
                 </li>
             @endforeach     
         </ul>
     </div>
+    {{ $products->links() }}
 </x-layout>
