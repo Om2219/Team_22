@@ -60,8 +60,8 @@
 .loginPage input[type=password]{
     width:100%;
     padding: 12px 20px;
-    margin; 8px 0;
-     border: 1px solid white;
+    margin: 8px 0;
+    border: 1px solid white;
     display: inline-block;
     box-sizing: border-box;
 }
@@ -100,7 +100,8 @@
     margin-top: 20px;
 }
 .loginPage img.avatar{
-    width: 40%;
+    width: 25%;
+    height: 25%;
     border-radius: 50%;
 }
 

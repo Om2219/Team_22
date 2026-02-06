@@ -96,7 +96,8 @@
     margin-top: 20px;
 }
 .registerPage img.avatar{
-    width: 40%;
+    width: 25%;
+    height: 25%;
     border-radius: 50%;
 }
 

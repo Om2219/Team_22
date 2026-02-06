@@ -184,6 +184,15 @@ footer{
     font-family:'Times New Roman', Times, serif; /*possibly subject to change, settled on this for now*/
 }
 
+.faq-master .questions:hover {
+    color: #04AA6D;
+    transition: color 0.2s ease;
+}
+
+.faq-master .faq_arrows {
+    margin-top: 10px;
+}
+
 .faq-master .answer {
     display: none;
     font-size: 20px;
