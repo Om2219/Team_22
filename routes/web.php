@@ -10,6 +10,7 @@ use App\Http\Controllers\BasketController;
 use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ChatBotController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,10 @@ use App\Http\Controllers\ReviewController;
 Route::get('/', function () {  return view('index'); });
 
 Route::get('home', function () {return view('index'); }); // returns the home page
+
+Route::get('ai', function () {return view('ai'); }); // returns ai chat bot
+
+Route::post('send',[ChatBotController::class, 'sendChat']);
 
 Route::get('account', function () { if (!Auth::check()) {return redirect()->route('login');} return view('account'); }); // checks if user is logged in before showing account page
 

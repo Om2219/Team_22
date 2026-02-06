@@ -6,9 +6,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{csrf_token()}}">
     <title>Roots</title>
     <link rel="icon" type="image/png" href="{{ asset('images/logo_updated.png') }}">
-<link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
 </head>
 
@@ -48,6 +49,7 @@
                 <button class ="headbut"><a href="/aboutus">About Us</a></button>
                 <button class ="headbut"><a href="/faq">FAQ</a></button>
                 <button class ="headbut"><a href="/contactform">Contact us</a></button>
+                <button class ="headbut"><a href="/ai">MONKEYS</a></button>
                 </div>
     </nav>
   </header>
