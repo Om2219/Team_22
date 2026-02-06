@@ -26,6 +26,7 @@
             {{--<input type="text" name="search" placeholder="What are you looking for?" class="searchBar">--}}
             <form action="{{ route('products.search') }}" method="GET">
               <input type="text" name="search" placeholder="What are you looking for?" class="headbut">
+              <button type="submit" class = "bob">🐒</button>
             </form>
 
             <!--cba to make a model or controller for 1 button so put this stuff here-->
