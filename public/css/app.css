@@ -207,14 +207,75 @@ footer{
     color: #04AA6D; /*override the a element color being white*/
 }
 
-.MasterBasketBox .basket-container { /*Reminder: use flex-wrap, get text to go to the right of the images*/
+.MasterBasketBox {
     border: 2px solid black;
     border-radius: 8px;
-    padding: 10px 10px; /*move items away from the edges*/
+    padding: 20px 20px; /*move items away from the edges*/
+    display: flex;
+    flex-direction: column;
 }
 
-.MasterBasketBox input {
+.input {
     padding: 5px 5px;
+}
+
+.basket-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.basket_items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.basket-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+}
+
+.basket-item p {
+    margin: 5px 0;
+}
+
+.basket-item .item-details {
+    flex: 1;
+}
+
+.remove-btn button {
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.basket_total {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+}
+
+.basket_total p {
+    font-size: 18px;
+}
+
+.basket-master {
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+.basket-master button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 .contactUsPage-master .contactus-container {
