@@ -99,7 +99,8 @@
     margin-top: 20px;
 }
 .loginPage img.avatar{
-    width: 40%;
+    width: 25%;
+    height: 25%;
     border-radius: 50%;
 }
 
