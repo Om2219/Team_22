@@ -97,6 +97,8 @@ Route::get('admin', function (){
 //Suja
 Route::get('/search', [ProductController::class, 'search'])->name('products.search');
 
+Route::get('termsandprivacy', function () { return view('termsandprivacy'); }); //shows the terms and privacy page (EMPTY RN)
+
 
 Route::middleware(['auth', 'admin'])->group(function() {
     Route::view('/admin/dashboard', 'admin_dashboard')
