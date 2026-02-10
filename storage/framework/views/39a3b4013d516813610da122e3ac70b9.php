@@ -6,9 +6,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     <title>Roots</title>
-    <link rel="icon" type="image/png" href="<?php echo e(Vite::asset('public/images/logo_updated.png')); ?>">
-    <?php echo app('Illuminate\Foundation\Vite')('public/css/app.css'); ?>
+    <link rel="icon" type="image/png" href="<?php echo e(asset('images/logo_updated.png')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('css/app.css')); ?>">
+
 </head>
 
 
@@ -21,7 +23,11 @@
                    
         <div class= "top">
             <a href="/home"><button class = "logoButton"><img src="<?php echo e(Vite::asset('public/images/logo_updated.png')); ?>" class = "logo"></button></a>
-            <input type="text" name="search" placeholder="What are you looking for?" class="searchBar">
+            
+            <form action="<?php echo e(route('products.search')); ?>" method="GET">
+              <input type="text" name="search" placeholder="What are you looking for?" class="headbut">
+              <button type="submit" class = "bob">🐒</button>
+            </form>
 
             <!--cba to make a model or controller for 1 button so put this stuff here-->
             <?php if(Auth::check()): ?>
@@ -44,6 +50,7 @@
                 <button class ="headbut"><a href="/aboutus">About Us</a></button>
                 <button class ="headbut"><a href="/faq">FAQ</a></button>
                 <button class ="headbut"><a href="/contactform">Contact us</a></button>
+                <button class ="headbut"><a href="/ai">MONKEYS</a></button>
                 </div>
     </nav>
   </header>
