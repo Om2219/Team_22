@@ -179,13 +179,20 @@ class ProductController extends Controller
             return redirect()->back();
         }
 
-        $products = Product::where('name', 'LIKE', "{$search}%")
-        ->orderBy('created_at', 'desc')
-        ->paginate(10);
-         return view('search', [
-        'products' => $products, 
-        'search' => $search
-        ]);
+        $query = Product::where('name', 'LIKE', "%{$search}%");
+
+        if ($request->get('sort') == 'price_asc') {
+            $query->orderBy('price', 'asc');
+        } elseif ($request->get('sort') == 'price_desc') {
+            $query->orderBy('price', 'desc');
+        } else {
+
+            
+            $query->orderBy('created_at', 'desc');
+        }
+
+            $products = $query->paginate(10);
+        return view('search', compact('products', 'search'));
     }
 
 }

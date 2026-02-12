@@ -95,7 +95,7 @@ Route::get('admin', function (){
 })->name('admin.login');
 
 //Suja
-Route::get('/search', [ProductController::class, 'search'])->name('products.search');
+Route::get('/search', [ProductController::class, 'search'])->name('search');
 
 
 Route::middleware(['auth', 'admin'])->group(function() {

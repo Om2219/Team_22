@@ -24,7 +24,7 @@
         <div class= "top">
             <a href="/home"><button class = "logoButton"><img src="{{ Vite::asset('public/images/logo_updated.png') }}" class = "logo"></button></a>
             {{--<input type="text" name="search" placeholder="What are you looking for?" class="searchBar">--}}
-            <form action="{{ route('products.search') }}" method="GET">
+            <form action="{{ route('search') }}" method="GET">
               <input type="text" name="search" placeholder="What are you looking for?" class="headbut">
               <button type="submit" class = "bob">🐒</button>
             </form>
