@@ -9,8 +9,8 @@
     <div class="numbertext"> 1/3</div>
      <img src="{{ asset('images/img1.png') }}"  class="slide-img">
 <div class="text"> <h1>Where our Story Begins</h1><p>Every great creation starts with a seed.
-ROOTS was born from a simple belief- that creativity grows when it is nurtured. What began as a 
-    small passion for beutiful stationary and meanigful handmade crafts soon blossomed into a space 
+ROOTS was born from a simple belief - that creativity grows when it is nurtured. What began as a 
+    small passion for beautiful stationery and meaningful handmade crafts soon blossomed into a space 
     where ideas, imagination and inspiration come together. At ROOTS, we believe creativity is not just 
     an activity - it is a journey that starts deep within.</p>
 
@@ -24,7 +24,7 @@ ROOTS was born from a simple belief- that creativity grows when it is nurtured. 
 <div class="text"> <h1>Growing Creativity, One Idea At a Time</h1>
 <p> From thoughtfully designed notebooks to vibrant art supplies, every product we offer is chosen to 
     spark imagination and encourage self-expression. We support dreamers, makers, writers, students and 
-    artist - anyone who believes in the power of creating something beutiful. Our focus is simple: quality, 
+    artists - anyone who believes in the power of creating something beautiful. Our focus is simple: quality, 
     inspiration and tools that help creativity flourish. Because when your tools feel good your ideas grow even better. </p>
 
 </div>
@@ -36,7 +36,7 @@ ROOTS was born from a simple belief- that creativity grows when it is nurtured. 
      <img src="{{ asset('images/img1.png') }}"  class="slide-img">
 <div class="text"> <h1> Rooted in Purpose Made for You</h1>
 <p> Roots is more than a brand - it's a community. A place where creativity is celebrated, individuality is 
-    valued, ane every creation tells a story. Whether you are crafting, learning, writing or discovering new 
+    valued, and every creation tells a story. Whether you are crafting, learning, writing or discovering new 
     passions, we are here to help you grow deeper roots and reach higher branches.
      Together lets create a world where every idea is planted, nurtured and brought to life. </p>
     
@@ -65,10 +65,10 @@ ROOTS was born from a simple belief- that creativity grows when it is nurtured. 
     <h2> Roots History</h2>
     <p1> Roots began as a small, family-driven passion for creativity expression and the joy of handmade artistry. 
         What started with designing simple, thoughtfully crafted notebooks and art materials quickly grew into a brand 
-        dedicated to nurturing imagination in every home and classroom. Inspired by the Idea that creativity starts at the 
-        foundation -at our Roots - we set out t provide quality stationery and crafts supplies that empower people of all 
-        ages to create, learn and explore. Today Roots continuos to grow, rooted in the belief that every 
-        idea deserve the chance to flourish </p>
+        dedicated to nurturing imagination in every home and classroom. Inspired by the idea that creativity starts at the 
+        foundation - at our Roots - we set out to provide quality stationery and crafts supplies that empower people of all 
+        ages to create, learn and explore. Today Roots continues to grow, rooted in the belief that every 
+        idea deserves the chance to flourish. </p>
 </div>
 </section>
 
@@ -96,7 +96,7 @@ ROOTS was born from a simple belief- that creativity grows when it is nurtured. 
             <div class="value_container">
             <div class="value_box">
                 <img src="{{ asset('images/Custome-First_aproach.jpg') }}" alt= "Avatar" class ="avatar">
-                <p3 class="title">Custome-First aproach</p>
+                <p3 class="title">Customer-First approach</p>
             </div>
         </div>
 

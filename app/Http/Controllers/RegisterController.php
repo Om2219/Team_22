@@ -7,16 +7,27 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller {
-public function create(){
-    return view('register');
-}
-public function store(Request $request){
-    $request->validate([ 'email' => 'required|email|unique:users,email', 'password' => 'required|min:6|confirmed']);
-    User::create([
-        'email' => $request->email,
-        'password' => Hash::make($request->password),
-    ]);
-    return redirect('/login')->with('success', 'Account created successfuly.');
-}
+    
+    public function create() {
+        return view('register');
+    }
+    
+    public function store(Request $request) {
+        $request->validate([ 
+            'title' => 'required',
+            'forename' => 'required',
+            'surname' => 'required',
+            'email' => 'required|email|unique:users,email', 
+            'password' => 'required|min:6|confirmed'
+        ]);
+        User::create([
+            'title' => $request->title,
+            'forename' => $request->forename,
+            'surname' => $request->surname,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+        return redirect('/login')->with('success', 'Account created successfuly.');
+    }
 }
 
