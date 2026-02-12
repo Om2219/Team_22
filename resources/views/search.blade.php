@@ -5,7 +5,7 @@
         <form action="{{ route('search') }}" method="GET">
             <input type="hidden" name="search" value="{{ request()->query('search') }}">
             
-            <label for="sort" style="font-weight: bold; color: #5d4037;">Sort By Price:</label>
+            <label for="sort" style="font-weight: bold; color: hsl(0, 11%, 98%);">Sort By Price:</label>
             <select name="sort" id="sort" onchange="this.form.submit()" style="padding: 5px; border-radius: 4px;">
                 <option value="">Newest</option>
                 <option value="price_asc" {{ request('sort') == 'price_asc' ? 'selected' : '' }}>Low to High</option>
