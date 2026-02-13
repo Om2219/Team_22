@@ -25,6 +25,23 @@
             <p>In Stock:<br>{{$product->stock->stock}}</p>
         </div>
     </div><br>
+    @auth
+        @if(auth()->user()->favouriteProducts->contains($product->id))
+        <form method="POST" action="{{ route('wishlist.destroy', $product) }}">
+            @csrf
+            @method('DELETE')
+            <button class="headbut">Remove from wishlist</button>
+        </form>
+        @else
+            <form method="POST" action="{{ route('wishlist.store', $product) }}">
+                @csrf<button class="headbut">add to wishlist</button>
+            </form>
+        @endif
+        @else 
+            <a href="{{  route('login') }}">
+                <button class ="headbut">Login to add to wishlist</button>
+            </a>
+        @endauth
     <h2>Product Information</h2>
     <p>{{$product->product_description}}<p>
 

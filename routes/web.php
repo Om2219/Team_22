@@ -11,6 +11,8 @@ use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ChatBotController;
+use App\Http\Controllers\FavouriteController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +26,9 @@ use App\Http\Controllers\ChatBotController;
 */
 
 // @todo: For each route, add comments to explain what it does and how it works
+  Route::get('/debug/categories', function () {
+    return \App\Models\Category::select('id','name')->get();  //ignore this one (haiden) i made this as a way to fix an issue i had with products not showing up
+  });
 
 Route::get('/', function () {  return view('index'); });
 
@@ -63,6 +68,11 @@ Route::post('products', [ProductController::class, 'store'])->name('products.sto
 //haidens 
 Route::post('product/{product}/reviews', [\App\Http\Controllers\ReviewController::class, 'store'])->middleware('auth')->name('reviews.store');
 
+Route::middleware('auth')->group(function (){
+    Route::get('/wishlist', [FavouriteController::class, 'index'])->name('wishlist.index');
+    Route::post('/wishlist/{product}', [FavouriteController::class, 'store'])->name('wishlist.store');
+    Route::delete('/wishlist/{product}', [FavouriteController::class, 'destroy'])->name('wishlist.destroy');
+});
 Route::get('products/{cat}',[ProductController::class, 'cat'])->name('products.cat'); // shows products in their own category
 
 Route::get('faq', function () { return view('faq'); }); // shows the FAQ page

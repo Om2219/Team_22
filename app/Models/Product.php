@@ -38,6 +38,10 @@ class Product extends Model
     public function reviews(){
         return $this->hasMany(\App\Models\Review::class);
     }
+    
+    public function favouritedBy(){
+        return $this->belongsToMany(\App\Models\User::class, 'favourites')->withTimestamps();
+    }
 
 
 }
