@@ -18,27 +18,9 @@
 </aside>
 
 <main class="Admin_Content">
-    <h1>Admin Dashboard</h1>
-    <p> Overview of Roots System</p>
+    <h1> Orders Information</h1>
+    <p> Overview of recent customer orders</p>
 
-<section class="stats">
-    <div class="card">
-        <h3>Total Users</h3>
-        <p>120</p>
-</div>
-
-
-    <div class="card">
-        <h3>Total orders</h3>
-        <p>120</p>
-</div>
-
-    <div class="card">
-        <h3>Products</h3>
-        <p>12</p>
-</div>
-
-</section>
 
 
 <section class="table-section">
@@ -47,12 +29,14 @@
     <tr>
         <th>Order ID</th>
         <th>Customer</th>
+        <th>Total</th>
         <th>Status</th>
         <th>Date</th>
 </tr>
 <tr>
     <td>#1</td>
      <td>John Doe</td>
+     <td>£12</td>
       <td>Pending</td>
        <td>12 feb 2026</td>
 </tr>
@@ -60,6 +44,7 @@
 <tr>
     <td>#2</td>
      <td>Joshep Doe</td>
+     <td>£10</td>
       <td>Shipped</td>
        <td>14 feb 2026</td>
 </tr>
@@ -67,9 +52,46 @@
 <tr>
     <td>#3</td>
      <td>Danny kio</td>
+     <td>£19</td>
       <td>Processing</td>
        <td>19 feb 2026</td>
 </tr>
+
+<tr>
+    <td>#4</td>
+     <td>Michal Anna</td>
+   <td>£29</td>
+      <td>Shipped</td>
+       <td>19 feb 2026</td>
+</tr>
+
+
+<tr>
+    <td>#5</td>
+     <td>Marry James</td>
+    <td>£8</td>
+      <td>Processing</td>
+       <td>20 feb 2026</td>
+</tr>
+
+
+<tr>
+    <td>#6</td>
+     <td>Filex Rio</td>
+    <td>£9</td>
+      <td>Pending</td>
+       <td>21 feb 2026</td>
+</tr>
+
+
+<tr>
+    <td>#7</td>
+     <td>Rayan Jio</td>
+    <td>£6</td>
+      <td>Processing</td>
+       <td>22 feb 2026</td>
+</tr>
+
 
 </table>
 
@@ -147,44 +169,6 @@ color: #2e2e2e;
     color:#5a5a5a;
 }
 
-.stats{
-    display: grid;
-    grid-template-colums:repeat(3,minmax(180px, 1fr));
-    gap: 18px;
-    margin-bottom: 30px;
-}
-
-.card{
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 18px 18px;
-    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
-    border-left: 6px solid #bdab53;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-
-.card:hover{
-    transform: translateY(-2px);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.12);
-}
-
-.card h3{
-    margin: 0 0 10px;
-    font-size: 1rem;
-    font-weight: 700;
-    color: #7a4900;
-    letter-spacing: 0.2px;
-
-}
-
-.card p{
-    margin: 0;
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: #2e2e22;
-}
-
 .table-section{
     background: #ffffff;
     border-radius: 12px;
@@ -251,7 +235,6 @@ color: #2e2e2e;
     text-align:left;
     width: 100%;
     border-radius:6px;
-    
 }
 
 .logout-link:hover{

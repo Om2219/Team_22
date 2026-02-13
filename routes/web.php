@@ -113,6 +113,13 @@ Route::get('termsandprivacy', function () { return view('termsandprivacy'); }); 
 Route::middleware(['auth', 'admin'])->group(function() {
     Route::view('/admin/dashboard', 'admin_dashboard')
     ->name('admin.dashboard');
+     Route::view('/admin/customers', 'admin_customers')
+    ->name('admin.customers');
+     Route::view('/admin/orders', 'admin_orders')
+    ->name('admin.orders');
+     Route::view('/admin/products', 'admin_products')
+    ->name('admin.products');
+
 });
 
 // Route::get('studentlisting', 'App\Http\Controllers\StudentController@list')->name('list_student');
