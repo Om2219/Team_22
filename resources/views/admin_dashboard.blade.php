@@ -6,11 +6,14 @@
 <h2>Roots Admin</h2>
 
 <ul>
-    <li><a href="admin_dashboard">Dashboard</a></li>
-    <li><a href="Customers">Customers</a></li>
-    <li><a href="Orders">Orders</a></li>
-    <li><a href="Product">Product</a></li>
-    <li><a href="Logout">Product</a></li>
+    <li><a href="{{ route ('admin.dashboard') }}">Dashboard</a></li>
+    <li><a href="{{ route ('admin.customers') }}">Customers</a></li>
+    <li><a href="{{ route ('admin.orders') }}">Orders</a></li>
+    <li><a href="{{ route ('admin.products') }}">Product</a></li>
+    <li>
+        <form method = "POST" action="{{route('logout')}}"> @csrf <button class = "headbut">Sign Out</button> 
+    </form>
+</li>
 </ul>
 </aside>
 
@@ -192,7 +195,7 @@ color: #2e2e2e;
 }
 
 .table-section h2{
-    margin;  0 0 14px;
+    margin:  0 0 14px;
     color: #7a4900;
     font-size: 1.2rem;
 }
@@ -233,8 +236,27 @@ color: #2e2e2e;
     }
 
     .Admin_Content{
-        padding; 22px;
+        padding: 22px;
     }
+}
+
+
+.logout-link{
+    background:none;
+    border: 2px solid #bdab53;
+    color: white; 
+    cursor: pointer;
+    padding: 10px 12px;
+    font-size: 15px;
+    text-align:left;
+    width: 100%;
+    border-radius:6px;
+    
+}
+
+.logout-link:hover{
+    color:#bdab53;
+    border-color:white;
 }
 
     </style>
