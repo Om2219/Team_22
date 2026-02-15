@@ -22,6 +22,6 @@
 
     @endforeach
 
-    <br><button class = "save-btn"><a href="/home">go back</a></button>  
+    <br><button class = "save-btn"><a href="/home">Go back</a></button>  
 
 </x-layout>

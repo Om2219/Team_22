@@ -24,8 +24,11 @@ class DatabaseSeeder extends Seeder
         $this->call([
             CategorySeeder::class,
             ProductSeeder::class,
+            StockSeeder::class,
             ProductImagesSeeder::class,
             Accountseeder1::class,
+            AdminUserSeeder::class,
+            VoucherSeeder::class
         ]);
     }
 }

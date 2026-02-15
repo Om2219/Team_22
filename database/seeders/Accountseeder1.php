@@ -12,6 +12,12 @@ class Accountseeder1 extends Seeder
     
     public function run(): void
     {
-        User::create([ 'email' => 'Certified@product.com', 'password' => Hash::make('CertifiedProduct'), ]); //creates a seeded account, didn't apply a name because it's nullable
+        // need to prevent duplicates
+        if (!User::where('email', 'Certified@product.com')->exists()) {
+            User::create([
+                'email' => 'Certified@product.com', //creates a seeded account, didn't apply a name because it's nullable
+                'password' => Hash::make('CertifiedProduct'),
+            ]);
+        }
     }
 }

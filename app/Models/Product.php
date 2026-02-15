@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Product_image;
 use App\Models\Category;
+use App\Models\Stock;
+
 
 class Product extends Model
 {
@@ -27,6 +29,18 @@ class Product extends Model
 
     public function category() {
         return $this->belongsTo(Category::class);
+    }
+
+    public function stock() {
+        return $this->hasOne(Stock::class);
+    }
+
+    public function reviews(){
+        return $this->hasMany(\App\Models\Review::class);
+    }
+    
+    public function favouritedBy(){
+        return $this->belongsToMany(\App\Models\User::class, 'favourites')->withTimestamps();
     }
 
 

@@ -1,7 +1,8 @@
+
 /* om css*/
 header{
 
-    background-color: #7a4900;
+    background-color: #754C24;
     width: 100%;
 }
 
@@ -12,9 +13,26 @@ header{
 }
 
 .logoButton{
- background-color: #7a4900;
- border: #7a4900;
+ background-color: #754C24;
+ border: #754C24;
  cursor: pointer;
+
+}
+
+.searchBar{
+
+    background-color: #FFF8EE; 
+    display: inline-block;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 8px; 
+    font-size: 16px;
+    line-height: 1; 
+    color: #24591C; 
+    border: 1px solid rgba(255, 250, 250, 0.452);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    width: 50%;
+    font-weight: 600;
 
 }
 
@@ -28,8 +46,8 @@ header{
 }
 
 .iconbutton {
-    background-color:#bdab53;
-    border: #bdab53;
+    background-color:black;
+    border: black;
 }
 
 .bob {
@@ -38,30 +56,36 @@ header{
 
 a{
     text-decoration: none; 
-    text-decoration-color: #FFFFFF;
+    color: white;
 }
 
 .headbut {
   
-    background-color: snow; 
+    background-color: #FFF8EE; 
     display: inline-block;
     cursor: pointer;
     padding: 8px 16px;
     border-radius: 8px; 
     font-size: 16px;
     line-height: 1; 
-    color: #000000; 
+    color: #24591C; 
     border: 1px solid rgba(255, 250, 250, 0.452);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    font-weight: 600;
+}
+
+.headbut a{
+    color: green;
+    font-weight: 600;
 }
 
 .headbut:hover {
-    background-color: rgba(255, 250, 250, 0.442); 
+    background-color: rgba(240, 238, 176, 0.87); 
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); 
 }
 
 .headbut:active {
-    background-color: whitesmoke;
+    background-color: #d8c7a1;
     box-shadow: none; 
 }
 
@@ -69,7 +93,7 @@ a{
   size: 10%;
   padding: 1%;
   justify-content: space-between;
-  display: flex;
+  display:flex;
   flex-wrap: wrap;
   align-items: flex-start;
 }
@@ -82,14 +106,14 @@ a{
 }
 
 body{
-background-color: rgba(255, 250, 250, 0.798);
+    background-color: white; 
 
 }
 
 
 footer{
 
-    background-color:#bdab53;
+    background-color:#7a4900;
     text-align: center;
     width: 100%;
     display: flex;
@@ -127,10 +151,8 @@ footer{
     border: 1px;
     border-style: solid;
     border-color: black;
-    
+    color: black;
     text-align: center;
-
-
 }
 
 
@@ -139,7 +161,7 @@ footer{
     justify-content: space-between;
     flex-direction: row;
     display: flex;
-
+    color: green;
 
 }
 
@@ -147,23 +169,35 @@ footer{
 /*Kyle CSS*/
 .faq-master .questions {
     background: none;
-    border: none;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1); 
+    /*rgb 0,0,0 with 0.1 opacity, 0 offset (so the shadow is on the button), 
+    5 pixels down and blurred by 10 pixels*/
 
     font-size: 29px;
     cursor: pointer;
 
     justify-content: space-between;
     display: flex; /*so the text isn't centered, looks better*/
-
     width: 100%;
-    background: none;
-    border: none;
-    padding: 5px 0;
+    padding: 10px 20px; /*10px makes the button smaller, 20px moves text away from the edges*/
     font-family:'Times New Roman', Times, serif; /*possibly subject to change, settled on this for now*/
+
+    transition: background 0.5s;
+}
+
+.faq-master .questions:hover {
+    background-color: rgb(233, 233, 233);
+}
+
+.faq-master img {
+    margin-top: 5px;
 }
 
 .faq-master .answer {
     display: none;
+    font-size: 20px;
 }
 
 .faq-master .answer.show { /*after clicking any question, JS function activates this and shows answers*/
@@ -171,27 +205,79 @@ footer{
     color: black;
 }
 
-.MasterBasketBox .basket-container { /*Reminder: use flex-wrap, get text to go to the right of the images*/
-    border: 2px solid black;
-    border-radius: 8px;
-    padding: 10px 10px; /*move items away from the edges*/
+.faq-master .faq-hyperlinks {
+    color: #04AA6D; /*override the a element color being white*/
 }
 
-.MasterBasketBox input {
+.MasterBasketBox { /*Reminder: use flex-wrap, get text to go to the right of the images*/
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 20px 20px; /*move items away from the edges*/
+    display: flex;
+    flex-direction: column;
+}
+
+.input {
     padding: 5px 5px;
 }
 
-.MasterBasketBox button {
-    cursor: pointer;
-    padding: 10px 20px;
-    background: #04AA6D; /*placeholder colour, subject to change*/
-    color: white;
-    border: none;
-    border-radius: 5px;
+.basket-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.MasterBasketBox button:hover {
-    opacity: 0.7;
+.basket_items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.basket-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+}
+
+.basket-item p {
+    margin: 5px 0;
+}
+
+.basket-item .item-details {
+    flex: 1;
+}
+
+.remove-btn button {
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.basket_total {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+}
+
+.basket_total p {
+    font-size: 18px;
+}
+
+.basket-master {
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+.basket-master button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 .contactUsPage-master .contactus-container {
@@ -204,33 +290,84 @@ footer{
 }
 
 .contactUsPage-master #name, .contactUsPage-master #email, .contactUsPage-master #subject, .contactUsPage-master #message::placeholder {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:'Times New Roman', Times, serif; /*possibly subject to change, settled on this for now*/
     height: 30px;
 }
 
 .contactUsPage-master button {
-    cursor: pointer;
-    padding: 10px 20px;
-    background: rgb(97, 97, 231); /*placeholder button colour, will likely be changed later*/
-    border-radius: 5px;
-    border: none;
+    background-color: #4a3b2a; 
     color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
 }
 
 .contactUsPage-master .sendEmail:hover {
-    opacity: 0.7;
+    background-color: #6b8e23;
 }
 
 .contactUsPage-master #message {
     max-height: 120px; /*otherwise the textarea field is massive*/
-    font-family: Arial, Helvetica, sans-serif; /*same font as the input fields and message::placeholder, otherwise user input will have a different font and look inconsistent*/
+    font-family:'Times New Roman', Times, serif; /*possibly subject to change, settled on this for now*/
     resize: none; /*so the user can't just resize the textarea field*/
 }
 
 .home-master {
-    border: 2px solid black;
+    text-align: center;
+}
+
+.home-banner {
+    text-align: center;
+    font-size: 15px;
+    padding-bottom: 20px;
+}
+
+.home-banner img {
+    width: 150px;
+    height: 150px;
+}
+
+.home-banner .business-description {
+    padding-top: 5px;  /*move text away from Roots image*/
+    margin-bottom: 10px; /*creates gap between categories and banner*/
+}
+
+.home-banner .business-description .allProducts {
+    background-color: #4a3b2a; 
+    color: white;
     border-radius: 5px;
-    padding: 10px 10px;
+    font-size: 15px;
+    padding: 12px 25px;
+    cursor: pointer;
+    display: inline-block;
+    transition: background 0.3s;  /*allows for smooth button colour transition*/
+}
+
+.home-banner .business-description .allProducts:hover {        
+    background-color: #6b8e23;  /*goes from brown to green, brand colours*/
+}
+
+.categories {  
+    display: grid;
+    grid-template-columns: repeat(5, minmax(200px, 1fr));
+    gap: 20px;
+    color: black;
+}
+
+.category-box {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    color: black;
+    transition: background 0.5s; /*slowly changes the bg colour*/
+}
+
+.category-box:hover {
+    background-color: rgb(233, 233, 233);
 }
 
 /*Suja */
@@ -255,157 +392,6 @@ footer{
         margin: 0 auto;
         padding: 20px;
     }
-
-    /*.account-container {
-        max-width: 800px;
-        margin: 40px auto;
-        padding: 20px;
-        font-family: 'Arial', sans-serif;
-    }
-
-    .page-title {
-        color: #4a3b2a;
-        font-size: 2rem;
-        margin-bottom: 30px;
-        text-align: center;
-        border-bottom: 2px solid #6b8e23;
-        padding-bottom: 10px;
-    }
-
-    
-    .details-card {
-        background: #fff;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 30px;
-        margin-bottom: 30px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
-
-    .card-header {
-        font-size: 1.4rem;
-        color: #6b8e23; 
-        margin-bottom: 20px;
-        font-weight: bold;
-    }
-
-    
-    .form-group {
-        margin-bottom: 20px;
-    }
-
-    .form-label {
-        display: block;
-        margin-bottom: 8px;
-        color: #4a3b2a;
-        font-weight: bold;
-    }
-
-    .form-input {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 1rem;
-        box-sizing: border-box; 
-    }
-
-    .form-input:focus {
-        border-color: #6b8e23;
-        outline: none;
-        box-shadow: 0 0 5px rgba(107, 142, 35, 0.3);
-    }
-
-    .helper-text {
-        font-size: 0.9rem;
-        color: #666;
-        margin-top: 5px;
-    }*/
-
-       
-    /*.hero-section {
-        background-color: #f4f1ea; 
-        padding: 80px 20px;
-        text-align: center;
-        border-bottom: 5px solid #6b8e23; 
-    }
-    
-    .hero-section h1 {
-        font-size: 3rem;
-        color: #4a3b2a; 
-        margin-bottom: 10px;
-        font-family: 'Arial', sans-serif;
-    }
-
-    .hero-section p {
-        font-size: 1.2rem;
-        color: #555;
-        margin-bottom: 30px;
-    }
-
-    .allProducts {
-        background-color: #6b8e23; 
-        color: white;
-        padding: 15px 30px;
-        font-size: 1.2rem;
-        text-decoration: none;
-        border-radius: 8px;
-        transition: background-color 0.3s;
-        display: inline-block;
-    }
-
-    .allProducts:hover {
-        background-color: #556b2f;
-    }
-
-    
-    .categories-section {
-        padding: 60px 20px;
-        text-align: center;
-    }
-
-    .section-title {
-        font-size: 2rem;
-        color: #4a3b2a;
-        margin-bottom: 40px;
-    }
-
-    .category-grid {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        padding: 10px;
-        flex-wrap: wrap;
-    }
-
-    .category-card {
-        background: white;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        width: 250px;
-        padding: 30px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        transition: transform 0.2s;
-    }
-
-    .category-card:hover {
-        transform: translateY(-5px); 
-    }
-
-    .category-card h3 {
-        color: #4a3b2a;
-        margin-bottom: 10px;
-    } */
-
-
-
-
-
-
-
-
-
-
 
 /* Gurpreet */
 
@@ -461,18 +447,19 @@ user-select: none;
 
 /*caption text */
 .text{
-    color: black;
-    font-size:25px;
+    color: #FFF8EE;
+    font-size:22px;
     padding: 8px 12px;
     position: absolute;
     bottom: 20px;
     width: 100%;
     text-align: left;
+    font-family: "Times New Roman", Times, serif;
 }
 
 /*number text */
 .numbertext{
-    color:#f2f2f2;
+    color:#FFF8EE;
     font-size:12px;
     padding: 8px 12px;
     position: absolute;
@@ -520,7 +507,7 @@ user-select: none;
 
 #itemsForSale {
     display: grid;
-    grid-template-columns:repeat(5, minmax(200px, 1fr));
+    grid-template-columns:repeat(5, minmax(200px, 1fr)); /*5 columns, min 200 pixels, max 1 fraction of available space*/
     padding: 20px;
     border: 3px;
     box-sizing: border-box;
@@ -534,5 +521,184 @@ user-select: none;
     padding: 5px;
     border: 2px solid black;
     border-radius: 8px;
+    box-sizing: border-box;
+    width: 100%;
+    
 }
 
+.productBox img {
+    width: 250px;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    /* can comment this out if we dont like the box around images*/
+    text-align: center;
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 8px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.searchBox {
+    text-align: center;
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 8px;
+    box-sizing: border-box;
+    width: 100%;
+
+}
+
+.searchBox img {
+    width: 250px;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    /* can comment this out if we dont like the box around images*/
+    text-align: center;
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 8px;
+    box-sizing: border-box;
+    width: 20%;
+}
+
+/*Arun*/
+
+.details_container {
+    text-align: center;
+    width: 300px;
+    margin: 0 auto;
+    border: 2px solid black;
+    padding: 0px 0px 25px 0px;
+}
+
+.email_container  {
+    text-align: center;
+    width: 300px;
+    margin: 0 auto;
+    border: 2px solid black;
+    padding: 0px 0px 15px 0px;  /* top right bottom left */
+}
+
+.password_container {
+    text-align: center;
+    width: 300px;
+    margin: 0 auto;
+    border: 2px solid black;
+    padding: 0px 0px 15px 0px;
+}
+
+.email_section input[type=text]{
+    width:100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid rgb(187, 187, 187);
+    display: inline-block;
+    box-sizing: border-box;
+    width: 200px;
+}
+
+.password_container input[type=password], .email_container input[type=email]{
+    padding: 12px 20px;
+    margin: 8px auto;
+    border: 1px solid rgb(187, 187, 187);
+    display: block;
+    box-sizing: border-box;
+    width: 200px;
+}
+
+.email_container input[type=email]::placeholder, .password_container input[type=password]::placeholder {
+    text-align: center;
+}
+
+/* remove this just using this for now THIS IS AI GENERATED 😵
+
+/* Chat container */
+.chat-container {
+    width: 350px;
+    height: 500px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+/* Header */
+.chat-header {
+    background: #7110cc;
+    color: white;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+}
+
+.avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+/* Message area */
+.chat-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Message bubbles */
+.user-message {
+    align-self: flex-end;
+    background: #4CAF50;
+    color: white;
+    padding: 10px 14px;
+    border-radius: 15px 15px 0 15px;
+    max-width: 70%;
+}
+
+.bot-message {
+    align-self: flex-start;
+    background: white;
+    padding: 10px 14px;
+    border-radius: 15px 15px 15px 0;
+    max-width: 70%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Input area */
+.chat-input {
+    display: flex;
+    border-top: 1px solid #ddd;
+}
+
+.chat-input input {
+    flex: 1;
+    border: none;
+    padding: 12px;
+    outline: none;
+}
+
+.chat-input button {
+    background: #c02b2b;
+    border: none;
+    color: white;
+    padding: 0 20px;
+    cursor: pointer;
+}
+
+.chat-input button:hover {
+    background: #911414;
+}

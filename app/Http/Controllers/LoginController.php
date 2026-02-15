@@ -19,10 +19,17 @@ class LoginController extends Controller
             return back()->withErrors(['email' => 'Invalid login details.']);
         }
         Auth::login($user);
+
+
+// admin check
+if($user->role === 'admin'){
+    return redirect()->route('admin.dashboard');
+}
+
         return redirect('/account');
     }
     public function logout(){
         Auth::logout();
-        return redirect('/login');
+        return redirect('/home');
     }
 }
