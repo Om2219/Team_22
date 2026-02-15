@@ -5,35 +5,74 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// document.addEventListener("DOMContentLoaded", () => {
+
+//     const video = document.getElementById("bg-video");
+//     const spacer = document.querySelector(".scroll-spacer");
+
+//     if (!video || !spacer) return;
+
+//     video.addEventListener("loadedmetadata", () => {
+
+//         video.play().then(() => {
+//             video.pause();
+//             video.currentTime = 0;
+
+//             gsap.to(video, {
+//                 currentTime: video.duration,
+//                 ease: "none",
+//                 scrollTrigger: {
+//                     trigger: spacer,
+//                     start: "top top",
+//                     end: "bottom bottom",
+//                     scrub: true,
+//                     markers: false, // check to see if video plays ( set to true to check)
+//                 }
+//             });
+
+//         }).catch((err) => {
+//             console.log("Autoplay blocked:", err);
+//         });
+
+//     });
+
+// });
+
 document.addEventListener("DOMContentLoaded", () => {
 
-    const video = document.getElementById("bg-video");
-    const spacer = document.querySelector(".scroll-spacer");
+    gsap.registerPlugin(ScrollTrigger);
 
-    if (!video || !spacer) return;
+    gsap.set("#pen", { rotation: -90 }); 
 
-    video.addEventListener("loadedmetadata", () => {
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: ".dos",
+            start: "top top",
+            end: "+=5000",
+            scrub: 3,
+            markers: false
+        }
+    });
 
-        video.play().then(() => {
-            video.pause();
-            video.currentTime = 0;
+    tl.to("#pen", {
+        x: "45vw",
+        y: "-35vh",
+        rotation: 0,
+        ease: "power2.inOut"
+    })
 
-            gsap.to(video, {
-                currentTime: video.duration,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: spacer,
-                    start: "top top",
-                    end: "bottom bottom",
-                    scrub: true,
-                    markers: false, // check to see if video plays ( set to true to check)
-                }
-            });
+    .to("#pen", {
+        x: "85vw",
+        y: "-10vh",
+        rotation: 90,
+        ease: "power2.inOut"
+    })
 
-        }).catch((err) => {
-            console.log("Autoplay blocked:", err);
-        });
-
+    .to("#pen", {
+        x: "50vw",
+        y: "40vh",
+        rotation: 180,
+        ease: "power2.inOut"
     });
 
 });
