@@ -73,6 +73,10 @@ Route::middleware('auth')->group(function (){
     Route::post('/wishlist/{product}', [FavouriteController::class, 'store'])->name('wishlist.store');
     Route::delete('/wishlist/{product}', [FavouriteController::class, 'destroy'])->name('wishlist.destroy');
 });
+
+Route::post('/voucher/apply', [BasketController::class, 'applyVoucher'])->name('voucher.apply');
+Route::post('/voucher/remove', [BasketController::class, 'removeVoucher'])->name('voucher.remove');
+
 Route::get('products/{cat}',[ProductController::class, 'cat'])->name('products.cat'); // shows products in their own category
 
 Route::get('faq', function () { return view('faq'); }); // shows the FAQ page

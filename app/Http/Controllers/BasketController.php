@@ -11,6 +11,7 @@ use App\Models\Basket;
 use App\Models\Product;
 use App\Models\Product_image;
 use App\Models\Stock;
+use App\Models\Voucher;
 
 class BasketController extends Controller
 {
@@ -153,5 +154,24 @@ class BasketController extends Controller
         return view('OrderPlaced', ['order' => $order, 'items' => $orderitems ]);
 
     }
+    
+    public function applyVoucher(Request $request){
+    $request->validate([
+        'code'=>'required|string'
+    ]);
+    $code = strtoupper(trim($request->code));
+    $voucher = Voucher::where('code', $code)->where('active', true)->first();
+    if (!$voucher){
+        return back()->with('voucher_error', 'Wrong voucher code');
 
+    }
+    session()->put('voucher', ['code' => $voucher->code,]);
+    return back()->with('voucher_success', 'Voucher has been applied');
+
+    }
+    public function removeVoucher(){
+        session()->forget('voucher');
+        return back()->with('voucher_success', 'Voucher removed');
+
+    }
 }
