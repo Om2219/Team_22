@@ -11,23 +11,45 @@ class ProductController extends Controller
 {
     //
 
-    public function productPage()
+    public function productPage(Request $request)
     {
 
-        $products = Product::with('images')->get();
+        $query = Product::with('images');
+
+        // Apply Sorting logic
+        if ($request->get('sort') == 'price_asc') {
+            $query->orderBy('price', 'asc');
+        } elseif ($request->get('sort') == 'price_desc') {
+            $query->orderBy('price', 'desc');
+        } else {
+            $query->orderBy('created_at', 'desc');
+        }
+
+            $products = $query->get();
+
 
         return view('products', compact('products'));
 
     }
 
-    public function cat($category)
+    public function cat(Request $request, $category) 
     {
 
         $cat = Category::where('name', $category)->firstOrFail();
 
-        $products = Product::where('category_id', $cat->id)->with('images')->get();
+    
+        $query = Product::where('category_id', $cat->id)->with('images');
 
-        return view('products', ['products' => $products, 'category' => $category]);
+    
+        if ($request->get('sort') == 'price_asc') {
+            $query->orderBy('price', 'asc');
+        } elseif ($request->get('sort') == 'price_desc') {
+            $query->orderBy('price', 'desc');
+        } else {
+            $query->orderBy('created_at', 'desc');
+        }
+            $products = $query->get();
+            return view('products', ['products' => $products, 'category' => $category]);
 
     }
 
@@ -186,6 +208,19 @@ class ProductController extends Controller
         'products' => $products, 
         'search' => $search
         ]);
+
+        $query = Product::where('name', 'LIKE', "%{$search}%");
+
+        if ($request->get('sort') == 'price_asc') {
+            $query->orderBy('price', 'asc');
+        } elseif ($request->get('sort') == 'price_desc') {
+            $query->orderBy('price', 'desc');
+        } else {
+            $query->orderBy('created_at', 'desc');
+        }
+
+            $products = $query->paginate(10);
+        return view('search', compact('products', 'search'));
     }
 
 }
