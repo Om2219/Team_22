@@ -1,6 +1,6 @@
 <x-layout>
    
-    <div class="home-master">
+    {{-- <div class="home-master">
         <div class="home-banner">
             <img src="/images/logo_updated.png">
             <div class="business-description">
@@ -9,7 +9,7 @@
                 <a href="/products" class="allProducts">Shop All Products</a>
             </div>
         </div>
-
+        
         <h2>Browse Our Collections</h2>
 
         <section class="category-section">
@@ -40,5 +40,17 @@
                 </a>
             </div>
         </section>
-    </div>
+    </div> --}}
+<div class="liveBg">
+    <video 
+        src="{{ asset('videos/Monkeys.mp4') }}" 
+        id="bg-video" 
+        muted 
+        playsinline
+        preload="auto"
+    ></video>
+</div>
+
+<div class="scroll-spacer"></div>
+
 </x-layout>
