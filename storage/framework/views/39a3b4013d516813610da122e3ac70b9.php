@@ -24,7 +24,8 @@
         <div class= "top">
             <a href="/home"><button class = "logoButton"><img src="<?php echo e(Vite::asset('public/images/logo_updated.png')); ?>" class = "logo"></button></a>
             
-            <form action="<?php echo e(route('products.search')); ?>" method="GET">
+            <!-- <form action="<?php echo e(route('products.search')); ?>" method="GET">  what it used to be-->
+            <form action="<?php echo e(route('search')); ?>" method="GET">
               <input type="text" name="search" placeholder="What are you looking for?" class="headbut">
               <button type="submit" class = "bob">🐒</button>
             </form>
