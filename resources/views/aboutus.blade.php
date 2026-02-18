@@ -1,210 +1,273 @@
-
-
 <x-layout>
- 
-    <div class="slideshow-container">
+   <div class="About-Us">
 
-<!-- full -width images-->
-<div class="mySlides fade">
-    <div class="numbertext"> 1/3</div>
-     <img src="{{ asset('images/img1.png') }}"  class="slide-img">
-<div class="text"> <h1>Where our Story Begins</h1><p>Every great creation starts with a seed.
-ROOTS was born from a simple belief - that creativity grows when it is nurtured. What began as a 
-    small passion for beautiful stationery and meaningful handmade crafts soon blossomed into a space 
-    where ideas, imagination and inspiration come together. At ROOTS, we believe creativity is not just 
-    an activity - it is a journey that starts deep within.</p>
-
-</div>
-
-</div>
-
-<div class="mySlides fade">
-    <div class="numbertext"> 2/3</div>
-    <img src="{{ asset('images/img1.png') }}"  class="slide-img">
-<div class="text"> <h1>Growing Creativity, One Idea At a Time</h1>
-<p> From thoughtfully designed notebooks to vibrant art supplies, every product we offer is chosen to 
-    spark imagination and encourage self-expression. We support dreamers, makers, writers, students and 
-    artists - anyone who believes in the power of creating something beautiful. Our focus is simple: quality, 
-    inspiration and tools that help creativity flourish. Because when your tools feel good your ideas grow even better. </p>
-
-</div>
-
-</div>
-
-<div class="mySlides fade">
-    <div class="numbertext"> 3/3</div>
-     <img src="{{ asset('images/img1.png') }}"  class="slide-img">
-<div class="text"> <h1> Rooted in Purpose Made for You</h1>
-<p> Roots is more than a brand - it's a community. A place where creativity is celebrated, individuality is 
-    valued, and every creation tells a story. Whether you are crafting, learning, writing or discovering new 
-    passions, we are here to help you grow deeper roots and reach higher branches.
-     Together lets create a world where every idea is planted, nurtured and brought to life. </p>
+<main class="About_Us">
+    <h1>What makes us Roots?</h1>
     
-</div>
-</div>
 
-   
-<!-- next and previous -->
-
-<a class="prev" onclick="plusSlides(-1)"> &#10094;</a>
-<a class="next" onclick="plusSlides(1)"> &#10095;</a>
-
-</div>
-
-<!-- the dots/circles -->
- <div style="text-align:center">
-    <span class="dot" onclick="currentSlide(1)"></span>
-    <span class="dot" onclick="currentSlide(2)"></span>
-    <span class="dot" onclick="currentSlide(3)"></span>
-
+<section class="stats_1">
+    <div class="card">
+        <h3>Inspired From the Start</h3>
+        <p> ROOTS was born from the belief that creativity thrives
+             when nurtured, growing from a love of stationery and handmade 
+            crafts into a space for inspiration....</p>
 </div>
 
 
-<section>
-    <div class="section">
-    <h2> Roots History</h2>
-    <p1> Roots began as a small, family-driven passion for creativity expression and the joy of handmade artistry. 
-        What started with designing simple, thoughtfully crafted notebooks and art materials quickly grew into a brand 
-        dedicated to nurturing imagination in every home and classroom. Inspired by the idea that creativity starts at the 
-        foundation - at our Roots - we set out to provide quality stationery and crafts supplies that empower people of all 
-        ages to create, learn and explore. Today Roots continues to grow, rooted in the belief that every 
-        idea deserves the chance to flourish. </p>
+    <div class="card">
+        <h3>Planting the Seeds of Creativity</h3>
+        <p>Every ROOTS product is designed to inspire 
+            creativity, self-expression, and beautiful ideas — through quality tools 
+            made for dreamers and creators....</p>
+</div>
+
+<div class="card">
+        <h3>Where Purpose Meets Creativity</h3>
+        <p>ROOTS is more than a brand — it’s a community where 
+            creativity is celebrated, individuality is valued, 
+            and every idea is nurtured to grow....</p>
+</div>
+</section>
+
+ <h1>Ours Value</h1>
+    
+
+<section class="stats_2">
+    <div class="card_1">✏️
+        <h3>Creativity</h3>
+        <p> Creativity is at the heart of ROOTS. We create tools that inspire ideas, imagination, 
+            and self-expression in every form.</p>
+</div>
+
+
+    <div class="card_1"> 🧵
+        <h3>Craftsmanship</h3>
+        <p>Every product is thoughtfully designed and carefully made, with attention to 
+            detail, quality, and purpose.</p>
+</div>
+
+ <div class="card_1"> 🌿
+        <h3>Sustainability</h3>
+        <p> We choose mindful materials and responsible practices to support creativity 
+            while caring for our planet.</p>
+</div>
+
+
+    <div class="card_1"> 🤍
+        <h3>Customer-First</h3>
+        <p>Our community comes first. We design with our customers in mind, supporting 
+            creators at every step of their journey.</p>
 </div>
 </section>
 
 
-<div class="value_section">
-    <h2>Our Value<h2>
-        <div class="value_container">
-            <div class="value_box">
-               <img src="{{ asset('images/symbol.jpg') }}" alt= "Avatar" class ="avatar">
-                <p3 class="title">Creativity</p>
-            </div>
-
-            <div class="value_container">
-            <div class="value_box">
-                <img src="{{ asset('images/Quality_Craftsmanship.jpg') }}" alt= "Avatar" class ="avatar">
-                <p3 class="title">Quality Craftsmanship</p>
-            </div>
-
-            <div class="value_container">
-            <div class="value_box">
-               <img src="{{ asset('images/Eco-Friendly_mindset.jpg') }}" alt= "Avatar" class ="avatar">
-                <p3 class="title">Eco-Friendly mindset</p>
-            </div>
-
-            <div class="value_container">
-            <div class="value_box">
-                <img src="{{ asset('images/Custome-First_aproach.jpg') }}" alt= "Avatar" class ="avatar">
-                <p3 class="title">Customer-First approach</p>
-            </div>
-        </div>
-
+<section class="stats_3">
+    <div class="card_2">
+        <h3>Let Your Ideas Grow</h3>
+        <p>Explore our collection of stationery and creative essentials designed to spark imagination.</p>
+        <button class = "headbut_1"><a href="/products">Browse Products</a></button>
 </div>
 
+</section>
 
 
-
-      <style>
-/** this code is for my about us page for section */
-        section{
-            display: block;
-h1,h2, h3{
-      font-family: "Times New Roman", Times, serif;
-      color: green;
-      font-size:30px;
-}
-
-p1{
-    font-family: "Times New Roman", Times, serif;
-      color: green;
-      font-size:20px;
-}
-
-p3{
-    font-family: "Times New Roman", Times, serif;
-      color: green;
-      font-size:15px;
-}
-
-/** this code is for my about us page section value */
-        }
-
-        .value_section{
-            text-align:center;
-            background: snow;
-            padding: 40px;
-            font-family: Arial, sans-serif;
-        }
-
-        .value_section h2{
-            color: #1d7d2c;
-            margin-bottom: 30px;
-        }
-
-        .value_container{
-            display:flex;
-            justify-content:center;
-            gap: 80px;
-            margin-top:20px;
-        }
-
-        .value_box{
-            text-align:center;
-            color: #1d7d2c;
-            width:150px;
-        }
-
-        .value_box img{
-            width: 120px;
-            margin: 0 auto 10px;
-            display: block;
-
-        }
-        .value_box .title{
-            font-size: 20px;
-            font-weight: 500;
-            line-height: 1.3;
-        }
-
-        </style>
-
-
-
-
-<script>
-    let slideIndex = 1;
-showSlides(slideIndex);
-
-//next/previous
-function plusSlides(n){
-    showSlides(slideIndex += n);
-}
-
-// thubnail images
-function currentSlide(n){
-    showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-
-    let i;
-    let slides = document.getElementsByClassName("mySlides");
-    let dots = document.getElementsByClassName("dot");
-    if(n > slides.length) {slideIndex = 1}
-    if (n < 1){slideIndex = slides.length}
-    for(i = 0; i < slides.length; i++){
-
-        slides[i].style.display = "none";
-    }
-     for(i = 0; i < dots.length; i++){
-        dots[i].className = dots[i].className.replace("active", "");
-    }
-slides[slideIndex - 1].style.display = "block";
-dots[slideIndex - 1].className += " active";
-}
-</script>
-
+   </div>
 
 </x-layout>
+<style>
 
+    .About-Us{
+        display: flex;
+        min-height: 100vh;
+        background-color:#f5f1e8;
+        font-family: 'Segoe UI', sans-serif;
+
+    }
+
+
+.About_Us{
+flex:1;
+padding: 40px;
+background-color: #f5f1e8;
+ font-family: 'Segoe UI', sans-serif;
+color: #2e2e2e;
+}
+
+.About_Us h1{
+    margin: 0 0 8px;
+    font-size: 2.2rem;
+    color:#7a4900;
+}
+
+.About_Us p{
+ margin: 0 0 28px;
+    font-size: 1rem;
+    color:#5a5a5a;
+}
+
+.stats_1{
+    display: grid;
+    grid-template-columns:repeat(3,1fr);
+    gap: 18px;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.card{
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 18px 18px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+    border-left: 6px solid #bdab53;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+.card:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+}
+
+.card h3{
+    margin: 0 0 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #7a4900;
+    letter-spacing: 0.2px;
+
+}
+
+.card p{
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 80;
+    color: #2e2e22;
+}
+
+
+
+
+.stats_2{
+    display: grid;
+    grid-template-columns:repeat(4,1fr);
+    gap: 18px;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.card_1{
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 18px 18px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+    border-left: 6px solid #bdab53;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+.card_1:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+}
+
+.card_1 h3{
+    margin: 0 0 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #7a4900;
+    letter-spacing: 0.2px;
+
+}
+
+.card_1 p{
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 80;
+    color: #2e2e22;
+}
+
+
+
+
+
+.stats_3{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns:repeat(1,1fr);
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+.card_2{
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 18px 18px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
+}
+
+
+
+.card_2 h3{
+    margin: 0 0 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #7a4900;
+    letter-spacing: 0.2px;
+    line-height: 1.6;
+
+
+}
+
+.card_2 p{
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 80;
+    color: #2e2e22;
+    line-height: 1.6;
+}
+
+.headbut_1 {
+  
+    background-color: #7a4900; 
+    display: inline-block;
+    cursor: pointer;
+    padding: 12px 26px;
+    border-radius: 10px; 
+    font-size: 16px;
+    line-height: 1; 
+    border: 2px solid #7a4900;
+    font-weight: 600;
+    margin-top: 20px;
+
+}
+
+
+.headbut_1 a{
+    color: #e7b569;
+   text-decoration: none;
+   display: inline-block;
+}
+
+.headbut_1:hover {
+    background-color: transparent;
+}
+
+.headbut_1:active {
+    color: #e99a24;
+}
+
+
+/**Responsive */
+@media (max-width:900px){
+    .stats_1{
+        grid-template-columns: 1fr;
+    }
+
+    .About_Us{
+        padding: 22px;
+    }
+}
+
+    </style>
