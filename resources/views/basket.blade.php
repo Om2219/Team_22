@@ -46,8 +46,9 @@
             </div>
 
             <div class = "basket-master"> <!--keeping this outside the container-->
-                <button class="save-btn"><a href="/checkout">Checkout</a></button>
+                <a href="/checkout" class="save-btn">Checkout</a>
             </div>
+
         </div>
         @endif
     

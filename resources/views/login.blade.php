@@ -7,8 +7,8 @@
             </div>
 
             <div class= "login">
-                <label for= "uname"><b>Username</b></label>
-                <input id="email" type="text" placeholder= "Enter username" name="email" required>
+                <label for= "uname"><b>Email address</b></label>
+                <input id="email" type="text" placeholder= "Enter email address" name="email" required>
 
                 <label for= "psw"><b>Password</b></label>
                 <input id="psw" type="password" placeholder= "Enter password" name="password" required>
