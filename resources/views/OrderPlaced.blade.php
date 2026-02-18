@@ -1,19 +1,20 @@
 <x-layout>
 
-    <h1>Your Order has been placed 😊</h1>
+    <h1>Thank you for your order, {{auth()->user()->forename }} 😊</h1>
 
-    <p>Order Reference:</p>
+    <p>Order reference:</p>
     <p>{{ $order->order_ref }}</p>
 
     <p>Order total:</p>
     <p>£{{ number_format($order->total, 2) }}</p>
 
-    <p>Shipping Address:</p> 
-    <p>{{ $order->shipping_address }}</p>
+    <p>Shipping address:</p> 
+    <p>{{$order->address_line_1}}<br>{{$order->address_line_2}}<br>{{$order->city }}<br>{{$order->postcode}}</p>
 
+    <p>Payment details:</p>
+    <p>Card ending in {{ substr($order->card_number, -4) }}<br>Expiry: {{ $order->expiry_month }}/{{ $order->expiry_year }}
+    </p>
 
-    <p>Payment Method:</p> 
-    <p>{{ $order->payment_method }}</p>
 
     @foreach ($items as $product)
 

@@ -1,6 +1,4 @@
 import './bootstrap';
-<<<<<<< Updated upstream
-=======
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -78,19 +76,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
-
-let wheel = document.querySelector(".wheel");
-let btn = document.getElementById("spin");
-let number = Math.ceil(Math.random() * 1000);
-
-let clicks = 0;
-btn.onclick = function () {
-  clicks += 1;
-  if(clicks == 1 ){
-	wheel.style.transform = "rotate(" + number + "deg)";
-	number += Math.ceil(Math.random() * 1000);
-  }
-}
-
-
->>>>>>> Stashed changes

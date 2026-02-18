@@ -24,23 +24,13 @@
             <button class = "headbut">Sign Out</button>
         </form>
     </div>
-<<<<<<< Updated upstream
-=======
-    <div class = "accountBox">
+      <div class = "accountBox">
         <h2>Wishlist</h2>
         <p> View products you've favourited</p>
         <a href="{{ route('wishlist.index') }}"> {{-- this is the favourites button --}}
             <button class="headbut">View wishlist</button>
         </a>
     </div>
->>>>>>> Stashed changes
-
-    <div class = "accountBox">
-        <h2>My Rewards</h2>
-        <p> Feeling lucky?</p>
-        <button class = "headbut"><a href="/reward">See your Rewards</a></button>
-    </div>
-
 
 </div>
 </x-layout>

@@ -2,7 +2,8 @@
 /* om css*/
 header{
 
-    background-color: #754C24;
+    /* background-color: #754C24; */
+    background-color: seagreen;
     width: 100%;
 }
 
@@ -19,6 +20,10 @@ header{
 
 }
 
+.filterbar{
+
+    width: auto;
+}
 .searchBar{
 
     background-color: #FFF8EE; 
@@ -113,7 +118,8 @@ body{
 
 footer{
 
-    background-color:#7a4900;
+    /* background-color:#7a4900; */
+    background-color: rgba(46, 139, 86, 0.61);
     text-align: center;
     width: 100%;
     display: flex;
@@ -165,6 +171,94 @@ footer{
 
 }
 
+/* .liveBg{
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.scroll-spacer{
+    height: 3000px;
+
+} */
+
+.animBg{
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.dos{
+    display: flex;
+    width: 100%;
+    height: 625vh;
+
+}
+
+#pen {
+    position: fixed;
+    top: 65%;
+    left: 5%;
+    transform: translate(-50%, -50%);
+    transform-origin: center center;
+    z-index: 99;
+}
+/* 
+#holder{
+    rotate: 90deg;
+    transform-origin: left;
+
+} */
+
+.hero {
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-section {
+    height: 490vh;
+}
+
+.collections {
+    padding: 515px 1%;
+}
+
+.blockUno {
+    background-color: seagreen;
+    border-radius: 150px 20px 20px 150px; 
+    padding: 40px;
+    width: 100%; 
+    min-height: 600px; 
+
+}
+
+.blockDos {
+    background-color: seagreen;
+    border-radius: 150px 150px 150px 150px; 
+    padding: 40px;
+    width: 100%; 
+    min-height: 600px; 
+
+}
+
+.blocktres{
+    background-color: seagreen;
+    border-radius: 150px 20px 20px 150px; 
+    padding: 40px;
+    width: 100%; 
+    min-height: 600px; 
+
+}
 
 .wheel {
     width: 500px;
@@ -267,19 +361,30 @@ footer{
 /*Kyle CSS*/
 .faq-master .questions {
     background: none;
-    border: none;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1); 
+    /*rgb 0,0,0 with 0.1 opacity, 0 offset (so the shadow is on the button), 
+    5 pixels down and blurred by 10 pixels*/
 
     font-size: 29px;
     cursor: pointer;
 
     justify-content: space-between;
     display: flex; /*so the text isn't centered, looks better*/
-
     width: 100%;
-    background: none;
-    border: none;
-    padding: 5px 0;
+    padding: 10px 20px; /*10px makes the button smaller, 20px moves text away from the edges*/
     font-family:'Times New Roman', Times, serif; /*possibly subject to change, settled on this for now*/
+
+    transition: background 0.5s;
+}
+
+.faq-master .questions:hover {
+    background-color: rgb(233, 233, 233);
+}
+
+.faq-master img {
+    margin-top: 5px;
 }
 
 .faq-master .answer {
@@ -296,14 +401,75 @@ footer{
     color: #04AA6D; /*override the a element color being white*/
 }
 
-.MasterBasketBox .basket-container { /*Reminder: use flex-wrap, get text to go to the right of the images*/
+.MasterBasketBox { /*Reminder: use flex-wrap, get text to go to the right of the images*/
     border: 2px solid black;
     border-radius: 8px;
-    padding: 10px 10px; /*move items away from the edges*/
+    padding: 20px 20px; /*move items away from the edges*/
+    display: flex;
+    flex-direction: column;
 }
 
-.MasterBasketBox input {
+.input {
     padding: 5px 5px;
+}
+
+.basket-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.basket_items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.basket-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+}
+
+.basket-item p {
+    margin: 5px 0;
+}
+
+.basket-item .item-details {
+    flex: 1;
+}
+
+.remove-btn button {
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.basket_total {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+}
+
+.basket_total p {
+    font-size: 18px;
+}
+
+.basket-master {
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+.basket-master button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 .contactUsPage-master .contactus-container {
@@ -343,6 +509,7 @@ footer{
 
 .home-master {
     text-align: center;
+    
 }
 
 .home-banner {
@@ -407,6 +574,8 @@ footer{
         font-size: 1rem;
         cursor: pointer;
         transition: background 0.3s;
+        text-decoration: none;
+        display: inline-block;
     }
 
     .save-btn:hover {
@@ -474,7 +643,7 @@ user-select: none;
 /*caption text */
 .text{
     color: #FFF8EE;
-    font-size:25px;
+    font-size:22px;
     padding: 8px 12px;
     position: absolute;
     bottom: 20px;

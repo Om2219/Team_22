@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Models\Order;
 use App\Models\OrderItem;
@@ -11,6 +12,7 @@ use App\Models\Basket;
 use App\Models\Product;
 use App\Models\Product_image;
 use App\Models\Stock;
+use App\Models\Voucher;
 
 class BasketController extends Controller
 {
@@ -104,6 +106,9 @@ class BasketController extends Controller
     //displays price, picture, quantity, payment info, shipping address and a randomly generated reference number
     //stores the order in the database
 
+    // NOW PROBABLY DOES MORE THAN THAT
+    // BRUZZ...
+
     public function Orders(Request $details){
 
         $user = Auth::id();
@@ -116,17 +121,28 @@ class BasketController extends Controller
             return $item->price * $item->quantity;
         });
 
-        $details->validate([ 
-            'payment_method' => 'required|string',
-            'shipping_address' => 'required|string'
+        $details->validate([
+            'address_line_1' => 'required|string|max:100',
+            'address_line_2' => 'nullable|string|max:100',
+            'postcode'       => 'required|string|max:10',
+            'city'           => 'required|string|max:100',
+            'card_number'    => 'required|digits_between:13,20',
+            'expiry_month'   => 'required',
+            'expiry_year'    => 'required',
+            'security_code'  => 'required|digits_between:3,4',
         ]);
 
         $order = Order::create([
             'user_id' => $user,
             'order_ref' => $ref,
             'total' => $totalPrice,
-            'payment_method' => $details->payment_method, 
-            'shipping_address' => $details->shipping_address
+            'address_line_1' => $details->address_line_1,
+            'address_line_2' => $details->address_line_2,
+            'postcode'       => $details->postcode,
+            'city'           => $details->city,
+            'card_number'    => substr($details->card_number, -4),
+            'expiry_month'   => $details->expiry_month,
+            'expiry_year'    => $details->expiry_year,
         ]);
 
         foreach ($orderitems as $product) {
@@ -153,5 +169,24 @@ class BasketController extends Controller
         return view('OrderPlaced', ['order' => $order, 'items' => $orderitems ]);
 
     }
+    
+    public function applyVoucher(Request $request){
+    $request->validate([
+        'code'=>'required|string'
+    ]);
+    $code = strtoupper(trim($request->code));
+    $voucher = Voucher::where('code', $code)->where('active', true)->first();
+    if (!$voucher){
+        return back()->with('voucher_error', 'Wrong voucher code');
 
+    }
+    session()->put('voucher', ['code' => $voucher->code,]);
+    return back()->with('voucher_success', 'Voucher has been applied');
+
+    }
+    public function removeVoucher(){
+        session()->forget('voucher');
+        return back()->with('voucher_success', 'Voucher removed');
+
+    }
 }

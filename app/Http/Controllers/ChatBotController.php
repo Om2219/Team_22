@@ -8,16 +8,16 @@ use OpenAI\Laravel\Facades\OpenAI;
 class ChatBotController extends Controller
 {
 
-    public function sendChat(Request $request){
+public function sendChat(Request $request)
+{
+    $response = OpenAI::chat()->create([
+        'model' => 'gpt-4.1-mini',
+        'messages' => [  
+            ['role' => 'user', 'content' => $request->input('input'), ],
+        ],
+        'max_tokens' => 100,
+    ]);
 
-        $result = OpenAI::chat()->create([
-            'model' => 'gpt-4.1-mini',
-            'messages' => [
-                ['role' => 'user', 'content' => $request->input('input')]
-            ],
-            'max_tokens' => 100
-        ]);
-
-        return $result->choices[0]->message->content;
-    }
+    return $response->choices[0]->message->content;
+}
 }
