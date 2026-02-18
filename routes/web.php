@@ -42,6 +42,7 @@ Route::post('basket/add/{product}', [BasketController::class, 'add'])->name('bas
 Route::delete('basket/remove/{product}', [BasketController::class, 'remove'])->name('basket.remove');   // removes a product from the basket
 Route::post('basket/update', [BasketController::class, 'update'])->name('basket.update');               // updates quantities in the basket
 
+Route::get('/reward', function () {  return view('reward'); }); 
 
 Route::get('checkout', function () { if (!Auth::check()) {return redirect()->route('login');} return view('checkout'); }); // checks if a user is logged in and if so then shows checkout
 
