@@ -60,20 +60,21 @@
         </div>
 
 
-        <div>
-            <h2>Reviews</h2>
+        <div >
+            <h2 class="fw-bold mb-3">Reviews</h2>
 
             @php
                 $avg = round($product->reviews->avg('rating') ?? 0, 1);
                 $count = $product->reviews->count();
             @endphp
 
-            <p>
+            <p class="mb-1">
                 Average rating: <strong>{{ $avg }}</strong> / 5
                 ({{ $count }} {{ $count === 1 ? 'review' : 'reviews' }})
             </p>
 
             {{-- show stars for average --}}
+            
             <p style="font-size: 22px; line-height: 1;">
                 @for ($i = 1; $i <= 5; $i++)
                     {{ $i <= round($avg) ? '★' : '☆' }}
@@ -81,64 +82,74 @@
             </p>
 
             @if (session('success'))
-                <p style="color: green;">{{ session('success') }}</p>
+                <div class="alert alert-success">
+                    <p style="color: green;">{{ session('success') }}</p>
+                </div>
             @endif
 
             @if ($errors->any())
-                <ul style="color: red;">
-                    @foreach ($errors->all() as $e)
-                        <li>{{ $e }}</li>
-                    @endforeach
-                </ul>
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $e)
+                            <li>{{ $e }}</li>
+                        @endforeach
+                    </ul>
+                </div>    
             @endif
 
             @if(Auth::check())
-                <h3>Leave a review</h3>
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h5 class="fw-bold mb-2">Leave a review</h3>
 
-                <form method="POST" action="{{ route('reviews.store', $product) }}">
-                    @csrf
+                        <form method="POST" action="{{ route('reviews.store', $product) }}">
+                            @csrf
+                            <div class="mb-2">
+                                <label for="rating" class="form-label fw-bold">Rating</label>
+                                <select name="rating" id="rating" class="form-select" required>
+                                    <option value="">-- Select --</option>
+                                    @for ($i = 5; $i >= 1; $i--)
+                                        <option value="{{ $i }}" {{ old('rating') == $i ? 'selected' : '' }}>
+                                            {{ $i }} star{{ $i === 1 ? '' : 's' }}
+                                        </option>
+                                    @endfor
+                                </select>
+                            </div>
 
-                    <label for="rating">Rating</label>
-                    <select name="rating" id="rating" required>
-                        <option value="">-- Select --</option>
-                        @for ($i = 5; $i >= 1; $i--)
-                            <option value="{{ $i }}" {{ old('rating') == $i ? 'selected' : '' }}>
-                                {{ $i }} star{{ $i === 1 ? '' : 's' }}
-                            </option>
-                        @endfor
-                    </select>
+                            <label for="comment" class="form-label fw-bold">Review (optional)</label>
+                            <textarea name="comment" id="comment" rows="4" cols="50" maxlength="1000"  class="form-control">{{ old('comment') }}</textarea><br>
 
-                    <br><br>
-
-                    <label for="comment">Review (optional)</label><br>
-                    <textarea name="comment" id="comment" rows="4" cols="50" maxlength="1000">{{ old('comment') }}</textarea>
-
-                    <br><br>
-                    <button type="submit">Post review</button>
-                </form>
+                            <button type="submit" class="btn btn-outline-secondary btn-sm">Post review</button>
+                        </form>
+                    </div>
+                </div>
             @else
-                <p><a href="{{ route('login') }}">Log in</a> to leave a review.</p>
+                <div class="alert alert-danger">
+                    <p><a href="{{ route('login') }}">Log in</a> to leave a review.</p>
+                </div>
             @endif
 
             {{-- list reviews --}}
             @if($product->reviews->isEmpty())
                 <p>No reviews yet.</p>
             @else
-                <h3>What people are saying</h3>
+                <h4 class="fw-bold mb-3">What people are saying</h4>
                 @foreach($product->reviews->sortByDesc('created_at') as $review)
-                    <div style="border: 1px solid #ccc; padding: 10px; margin: 10px 0;">
-                        <strong>{{ $review->user->name ?? 'User' }}</strong>
-                        <span style="margin-left:10px;">
-                            @for ($i = 1; $i <= 5; $i++)
-                                {{ $i <= $review->rating ? '★' : '☆' }}
-                            @endfor
-                        </span>
-                        <div style="font-size: 12px; opacity: 0.8;">
-                            {{ $review->created_at->format('d M Y') }}
+                    <div class="card shadow-sm mb-3">
+                        <div class="card-body">
+                            <strong>{{ $review->user->name ?? 'User' }}</strong>
+                            <span style="margin-left:10px;">
+                                @for ($i = 1; $i <= 5; $i++)
+                                    {{ $i <= $review->rating ? '★' : '☆' }}
+                                @endfor
+                            </span>
+                            <div style="font-size: 12px; opacity: 0.8;">
+                                {{ $review->created_at->format('d M Y') }}
+                            </div>
+                            @if($review->comment)
+                                <p>{{ $review->comment }}</p>
+                            @endif
                         </div>
-                        @if($review->comment)
-                            <p>{{ $review->comment }}</p>
-                        @endif
                     </div>
                 @endforeach
             @endif

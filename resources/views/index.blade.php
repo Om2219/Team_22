@@ -56,10 +56,11 @@
 
     <div class="animBg">
         {{-- we can change the background to something more fitting this is tempoary --}}
-        <img src="{{ asset('images/bg.png') }}">
+        <img src="{{ asset('images/Mint.png') }}">
     </div>
 
     <img id="pen" src="{{ asset('images/Pen.png') }}">
+    {{-- <img id="holder" src="{{ asset('images/hold.png') }}"> --}}
 
     <div class="dos">
         {{-- all things for the scroller needs to be in dos  --}}
@@ -79,8 +80,20 @@
                 </div>
             </section>
 
-            <section class="scroll-section dos">
+            <section class="scroll-section ">
                 <!-- This section exists just to give scroll space -->
+                <div class="blockUno">
+
+                </div>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <div class="blockDos">
+
+                </div>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <div class = "blocktres">
+                </div>
             </section>
 
 

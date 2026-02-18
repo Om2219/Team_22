@@ -49,14 +49,14 @@ document.addEventListener("DOMContentLoaded", () => {
             trigger: ".dos",
             start: "top top",
             end: "+=5000",
-            scrub: 3,
+            scrub: 1,
             markers: false
         }
     });
 
     tl.to("#pen", {
-        x: "45vw",
-        y: "-35vh",
+        x: "46vw",
+        y: "-50vh",
         rotation: 0,
         ease: "power2.inOut"
     })
