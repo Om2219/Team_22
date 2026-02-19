@@ -2,7 +2,8 @@
 /* om css*/
 header{
 
-    background-color: #754C24;
+    /* background-color: #754C24; */
+    background-color: seagreen;
     width: 100%;
 }
 
@@ -117,7 +118,8 @@ body{
 
 footer{
 
-    background-color:#7a4900;
+    /* background-color:#7a4900; */
+    background-color: rgba(46, 139, 86, 0.61);
     text-align: center;
     width: 100%;
     display: flex;
@@ -209,6 +211,12 @@ footer{
     transform-origin: center center;
     z-index: 99;
 }
+/* 
+#holder{
+    rotate: 90deg;
+    transform-origin: left;
+
+} */
 
 .hero {
     height: 30vh;
@@ -225,6 +233,32 @@ footer{
     padding: 515px 1%;
 }
 
+.blockUno {
+    background-color: seagreen;
+    border-radius: 150px 20px 20px 150px; 
+    padding: 40px;
+    width: 100%; 
+    min-height: 600px; 
+
+}
+
+.blockDos {
+    background-color: seagreen;
+    border-radius: 150px 150px 150px 150px; 
+    padding: 40px;
+    width: 100%; 
+    min-height: 600px; 
+
+}
+
+.blocktres{
+    background-color: seagreen;
+    border-radius: 150px 20px 20px 150px; 
+    padding: 40px;
+    width: 100%; 
+    min-height: 600px; 
+
+}
 
 /*Kyle CSS*/
 .faq-master .questions {
@@ -442,6 +476,8 @@ footer{
         font-size: 1rem;
         cursor: pointer;
         transition: background 0.3s;
+        text-decoration: none;
+        display: inline-block;
     }
 
     .save-btn:hover {

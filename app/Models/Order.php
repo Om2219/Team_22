@@ -15,8 +15,13 @@ class Order extends Model
         'user_id',
         'order_ref',
         'total',
-        'payment_method',
-        'shipping_address'
+        'address_line_1',
+        'address_line_2',
+        'postcode',
+        'city',
+        'card_number',
+        'expiry_month',
+        'expiry_year',
     ];
 
     public function items()

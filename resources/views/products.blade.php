@@ -20,9 +20,9 @@
         <div class="row row-cols-lg-4 g-4">
 
             @foreach($products as $product)
-                <div class="col">
+                <div class="col d-flex">
                     {{-- might remove the border im not sure --}}
-                    <div class="card border-1 shadow-sm">
+                    <div class="card border-1 shadow-sm d-flex flex-column">
                         <div class="position-relative overflow-hidden bg-light">
                             @if ($product->images->isNotEmpty())
                             <img src="{{ asset('images/products/' . $product->images->first()->product_image) }}" alt="{{ $product->name }}" class="card-img-top">
@@ -36,7 +36,7 @@
                             <h4 class="fw-bold text-black mb-2">{{$product->name}}</h4>
                             <p class="fw-bold text-success mb-2">£{{$product->price}}<p>
                             <br>
-                            <div class="mb-2">
+                            <div class="mt-auto">
                                 <a href="{{ route('product.show', $product->id) }}" class="btn btn-outline-dark btn-sm rounded-pill w-100 fw-bold py-2">View Product</a>
                             </div>
 
