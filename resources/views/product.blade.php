@@ -17,7 +17,11 @@
         
             <div class="col-md-6">
                 <h2 class="fw-bold mb-2">{{$product->name}}</h2><br>
-                <h3 class="text-success fw-bold mb-4">£{{$product->price}}</h3>
+                @if($product->is_reward)
+                    <h3 class="text-success fw-bold mb-4">{{$product->points_cost}}</h3>
+                @else
+                    <h3 class="text-success fw-bold mb-4">£{{$product->price}}</h3>
+                @endif
                 
                 @if (session('error')) {{ session('error') }} @endif
                 

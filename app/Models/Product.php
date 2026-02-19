@@ -19,7 +19,9 @@ class Product extends Model
         'name',
         'product_description',
         'price',
-        'category_id'
+        'category_id',
+        'is_reward',
+        'points_cost'
 
     ];
 

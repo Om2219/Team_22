@@ -55,6 +55,7 @@
                 <button class ="headbut"><a href="{{ route('products.cat', 'Stationery')}}" class="text-green text-decoration-none">Stationery</a></button>
                 <button class ="headbut"><a href="{{ route('products.cat', 'Books')}}" class="text-green text-decoration-none">Books</a></button>
                 <button class ="headbut"><a href="{{ route('products.cat', 'Office')}}" class="text-green text-decoration-none">Office Supplies</a></button>
+                <button class ="headbut"><a href="{{ route('products.cat', 'rewards')}}" class="text-green text-decoration-none">Rewards</a></button>
                 <button class ="headbut"><a href="/products" class="text-green text-decoration-none">All products</a></button>
                 <button class ="headbut"><a href="/aboutus" class="text-green text-decoration-none">About Us</a></button>
                 <button class ="headbut"><a href="/faq" class="text-green text-decoration-none">FAQ</a></button>

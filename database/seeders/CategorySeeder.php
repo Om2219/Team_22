@@ -23,5 +23,7 @@ class CategorySeeder extends Seeder
         Category::create(['name'=> 'Office']);
 
         Category::create(['name'=> 'ArtCraft']);
+
+        Category::create(['name'=> 'rewards']);
     }
 }

@@ -13,8 +13,10 @@ return new class extends Migration
             $table->string('name');
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->text('product_description')->nullable();
-            $table->decimal('price',10,2);
+            $table->decimal('price',10,2)->nullable();
             $table->timestamps();
+            $table->boolean('is_reward')->default(false);
+            $table->integer('points_cost')->nullable();
             //$table->string('brand')->nullable();
             //$table->integer('product_stock')->default(0);
         });

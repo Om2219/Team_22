@@ -83,6 +83,11 @@ class ProductController extends Controller
             'low_stock' => 'required|integer|min:0',
 
             'product_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+
+            'price' => 'nullable|numeric|min:0',
+            'points_cost' => 'nullable|integer|min:1',
+            'is_reward' => 'nullable|boolean',
+
         ]);
 
         $product = Product::create([
@@ -90,6 +95,8 @@ class ProductController extends Controller
             'category_id' => $validated['category_id'],
             'product_description' => $validated['product_description'] ?? null,
             'price' => $validated['price'],
+            'is_reward' => $request->has('is_reward'),
+            'points_cost' => $request->is_reward ? $validated['points_cost'] : null,
         ]);
 
 

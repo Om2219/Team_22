@@ -1,8 +1,10 @@
 <x-layout>
 
 <h1 class = "Ah">Account Home</h1>
+<p>Your Points: {{ auth()->user()->points }}</p>
 
 <div class = "MasterAccountBox">
+
 
     <div class = "accountBox">
         <h2>My Orders</h2>
