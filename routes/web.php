@@ -12,6 +12,7 @@ use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ChatBotController;
 use App\Http\Controllers\FavouriteController;
+use App\Http\Controllers\PointsVoucherController;
 
 
 /*
@@ -73,6 +74,10 @@ Route::middleware('auth')->group(function (){
     Route::get('/wishlist', [FavouriteController::class, 'index'])->name('wishlist.index');
     Route::post('/wishlist/{product}', [FavouriteController::class, 'store'])->name('wishlist.store');
     Route::delete('/wishlist/{product}', [FavouriteController::class, 'destroy'])->name('wishlist.destroy');
+});
+Route::middleware('auth')->group(function () {
+    Route::get('/points/vouchers', [PointsVoucherController::class, 'index'])->name('points.vouchers');
+    Route::post('/points/vouchers/redeem', [PointsVoucherController::class, 'redeem'])->name('points.vouchers.redeem');
 });
 
 Route::post('/voucher/apply', [BasketController::class, 'applyVoucher'])->name('voucher.apply');
