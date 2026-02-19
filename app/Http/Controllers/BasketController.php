@@ -27,9 +27,28 @@ class BasketController extends Controller
             return $item->price * $item->quantity;
         });
         
+        $discount = 0;
+        $voucherCode = session('voucher.code');
+
+        if ($voucherCode) {
+        $voucher = Voucher::where('code', $voucherCode)->where('active', true)->first();
+
+        if ($voucher) {
+            if ($voucher->type === 'percent') {
+                $discount = ($totalPrice * $voucher->value) / 100;
+            } else {
+                $discount = $voucher->value;
+            }
+        }
+    }
+
+    $finalTotal = max(0, $totalPrice - $discount);
         return view('basket', [
             'basket' => $basket,
-            'totalPrice' => $totalPrice
+            'totalPrice' => $totalPrice,
+            'voucher' => $voucher ?? null,
+            'discount' => $discount,
+            'finalTotal' => $finalTotal,
         ]);
     }
 

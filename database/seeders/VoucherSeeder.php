@@ -14,7 +14,7 @@ class VoucherSeeder extends Seeder
      */
    public function run(): void
 {
-    DB::table('vouchers')->insert([
+    DB::table('vouchers')->upsert([
         [
             'code' => 'SAVE10',
             'type' => 'percent',
@@ -35,7 +35,20 @@ class VoucherSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ],
-    ]);
+        [
+            'code' => 'MONKEY',
+            'type' => 'percent',
+            'value' => 90,
+            'min_spend' => 20,
+            'expires_at' => null,
+            'active' => true,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ],
+    ],
+    ['code'],
+    ['type', 'value', 'min_spend', 'expires_at', 'active', 'updated_at']
+    );
 }
 
 }
