@@ -199,7 +199,6 @@ footer{
 .dos{
     display: flex;
     width: 100%;
-    height: 625vh;
 
 }
 
@@ -219,18 +218,19 @@ footer{
 } */
 
 .hero {
-    height: 30vh;
+    height: 67vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .scroll-section {
-    height: 490vh;
+    padding-top: 290px;
+    padding-bottom: 290px;
 }
 
 .collections {
-    padding: 515px 1%;
+    padding: 290px 1%;
 }
 
 .blockUno {
@@ -253,7 +253,7 @@ footer{
 
 .blocktres{
     background-color: seagreen;
-    border-radius: 150px 20px 20px 150px; 
+    border-radius: 20px 150px 150px 20px; 
     padding: 40px;
     width: 100%; 
     min-height: 600px; 
