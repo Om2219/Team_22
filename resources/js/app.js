@@ -54,6 +54,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    tl.to({}, { duration: 0.29 });
+
+    //pen animation
+
     tl.to("#pen", {
         x: "46vw",
         y: "-50vh",
@@ -65,7 +69,8 @@ document.addEventListener("DOMContentLoaded", () => {
         x: "85vw",
         y: "-10vh",
         rotation: 90,
-        ease: "power2.inOut"
+        ease: "power2.inOut",
+        duration: 0.29
     })
 
     .to("#pen", {
@@ -74,5 +79,61 @@ document.addEventListener("DOMContentLoaded", () => {
         rotation: 180,
         ease: "power2.inOut"
     });
+
+    //block animations
+
+    //block uno 🐒
+
+    gsap.timeline({
+        scrollTrigger: {
+            trigger: ".blockUno",
+            start: "top 80%",
+            end: "bottom 20%",
+            scrub: true
+        }
+    })
+    .fromTo(".blockUno",
+        { x: 200, opacity: 0 },
+        { x: 0, opacity: 1, ease: "none" }
+    )
+    .to(".blockUno",
+        { x: -100, opacity: 0, ease: "none" }
+    );
+
+    //block dos 🍌
+
+    gsap.timeline({
+        scrollTrigger: {
+            trigger: ".blockDos",
+            start: "top 80%",
+            end: "bottom 20%",
+            scrub: true
+        }
+    })
+    .fromTo(".blockDos",
+        { y: 200, opacity: 0 },
+        { y: 175, opacity: 1, ease: "none" }
+    )
+    .to(".blockDos",
+        { y: -100, opacity: 0, ease: "none" }
+    );
+
+    //block tres 🐒🍌
+
+    gsap.timeline({
+        scrollTrigger: {
+            trigger: ".blocktres",
+            start: "top 80%",
+            end: "bottom 20%",
+            scrub: true
+        }
+    })
+    .fromTo(".blocktres",
+        { x: -200, opacity: 0 },
+        { x: 0, opacity: 1, ease: "none" }
+    )
+    .to(".blocktres",
+        { x: 100, opacity: 0, ease: "none" }
+    );
 
 });
