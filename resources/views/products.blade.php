@@ -51,6 +51,51 @@
             @endforeach
             
         </div>
+
+        <div class="container my-4" style="width: 67%;">
+
+            <div class="mb-4 text-center">
+                <h3>continue browsing where you left off</h3>
+            </div>
+
+            @if(isset($rvp) && $rvp->count())
+                <div class="row row-cols-lg-4 g-4">
+                    @foreach($rvp as $product)
+                        <div class="col d-flex">
+                            {{-- might remove the border im not sure --}}
+                            <div class="card border-1 shadow-sm d-flex flex-column">
+                                <div class="position-relative overflow-hidden bg-light">
+                                    @if ($product->images->isNotEmpty())
+                                    <img src="{{ asset('images/products/' . $product->images->first()->product_image) }}" alt="{{ $product->name }}" class="card-img-top">
+                                    @endif
+                                </div>
+
+                                <br>
+                                {{-- might remove the border top im not sure --}}
+                                <div class="card-body d-flex flex-column text-center border-top">
+
+                                    <h4 class="fw-bold text-black mb-2">{{$product->name}}</h4>
+                                    @if($product->is_reward)
+                                        <p class="fw-bold text-success mb-2">{{$product->points_cost}} Points<p>
+                                    @else
+                                        <p class="fw-bold text-success mb-2">£{{$product->price}}<p>
+                                    @endif
+                                    <br>
+                                    <div class="mt-auto">
+                                        <a href="{{ route('product.show', $product->id) }}" class="btn btn-outline-dark btn-sm rounded-pill w-100 fw-bold py-2">View Product</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                    
+                </div>
+            @endif
+        </div>
     </div>
+
+    <div>{{ $products->links() }}</div>
 </x-layout>
+
 

@@ -25,10 +25,12 @@ class ProductController extends Controller
             $query->orderBy('created_at', 'desc');
         }
 
-            $products = $query->get();
+            $products = $query->paginate(20)->withQueryString();
 
+            $rp = session()->get('recently_viewed', []);
+            $rvp = Product::with('images')->whereIn('id', $rp)->get();
 
-        return view('products', compact('products'));
+        return view('products', compact('products', 'rvp'));
 
     }
 
@@ -48,8 +50,13 @@ class ProductController extends Controller
         } else {
             $query->orderBy('created_at', 'desc');
         }
-            $products = $query->get();
-            return view('products', ['products' => $products, 'category' => $category]);
+
+            $products = $query->paginate(20)->withQueryString();
+
+            $rp = session()->get('recently_viewed', []);
+            $rvp = Product::with('images')->whereIn('id', $rp)->get();
+
+        return view('products', ['products' => $products, 'category' => $category, 'rvp' => $rvp]);
 
     }
 
@@ -57,6 +64,16 @@ class ProductController extends Controller
     {
 
         $product->load('images', 'category');
+
+        $rv = session()->get('recently_viewed', []);
+
+        $rv = array_diff($rv, [$product->id]);
+
+        array_unshift($rv, $product->id);
+
+        $rv = array_slice($rv, 0, 4);
+
+         session()->put('recently_viewed', $rv);
 
         return view('product', compact('product'));
     }
