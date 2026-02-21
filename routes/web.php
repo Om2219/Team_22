@@ -38,6 +38,10 @@ Route::get('ai', function () {return view('ai'); }); // returns ai chat bot
 
 Route::post('send',[ChatBotController::class, 'sendChat']);
 
+Route::get('/stock', [ProductController::class, 'stockChecker'])->name('stockChecker');
+Route::post('/stock/{product}/update', [ProductController::class, 'updateStock'])->name('updateStock');
+Route::post('/stock/{product}/restock', [ProductController::class, 'restock'])->name('stockRestock');
+
 Route::get('account', function () { if (!Auth::check()) {return redirect()->route('login');} return view('account'); }); // checks if user is logged in before showing account page
 
 Route::get('order', function () { return view('order'); }); // returns order history
