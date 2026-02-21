@@ -122,6 +122,39 @@ class ProductController extends Controller
 
     // Oms work
 
+    public function stockChecker(){
+
+        $products = Product::with('stock')->orderBy('name')->get();
+        return view('stock', compact('products'));
+
+    }
+
+    public function restock(Product $product){
+
+        if(!$product->stock){
+            return redirect()->route('stock.index')->with('error', 'Silly Monkey ate all the bananas🦧');
+        }
+
+        $product->stock->update(['stock' => 67]);
+
+        return redirect()->route('stockChecker')->with($product->name .'has been stocked with more bananas');
+
+    }
+
+    public function updateStock(Request $request, Product $product){
+
+        $request->validate([ 'stock' => 'required|integer|min:0']);
+
+        if(!$product->stock){
+            return redirect()->route('stock.index')->with('error', 'Silly Monkey ate all the bananas🦧');
+        }
+
+        $product->stock->update(['stock' => $request->stock]);
+
+        return redirect()->route('stockChecker')->with($product->name .'has been stocked with more bananas');
+
+    }
+
     public function edit(Product $product) {
 
         $product->load('images', 'stock', 'reviews.user');
