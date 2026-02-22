@@ -43,6 +43,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'dailySpin' => 'datetime',
     ];
     public function favouriteProducts(){
         return $this->belongsToMany(\App\Models\Product::class, 'favourites')->withTimestamps();

@@ -137,3 +137,68 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 });
+
+
+const wheel = document.querySelector(".wheel");
+const spinBtn = document.getElementById("spin");
+const resultDiv = document.getElementById("result");
+
+const segments = [
+    {name: "1000", value: 1000},
+    {name: "220", value: 220},
+    {name: "0", value: 0},
+    {name: "290", value: 290},
+    {name: "29", value: 29},
+    {name: "67", value: 67},
+    {name: "670", value: 670},
+    {name: "10", value: 10}
+];
+
+spinBtn.addEventListener("click", async function() {
+    spinBtn.disabled = true;
+
+    const spinResponse = await fetch("/dailySpin", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        }
+    });
+    const spinData = await spinResponse.json();
+
+    if (!spinResponse.ok) {
+        let errorData;
+        try {
+            errorData = await spinResponse.json();
+        } catch {
+            errorData = { error: "How Greedy, you only get one spin per day" };
+        }
+        alert(errorData.error);
+        spinBtn.disabled = false;
+        return;
+    }
+
+    const winningIndex = Math.floor(Math.random() * segments.length);
+    const winningSegment = segments[winningIndex];
+
+    const segmentAngle = 360 / segments.length;
+    const targetAngle = 360 - (winningIndex * segmentAngle) - segmentAngle / 2;
+
+    const extraInitialRotation = 45; 
+    const extraSpins = 5 * 360;
+    const totalRotation = extraSpins + extraInitialRotation + targetAngle;
+
+    wheel.style.transition = "transform 4s cubic-bezier(0.33, 1, 0.68, 1)"; 
+    wheel.style.transform = `rotate(${totalRotation}deg)`;
+
+    setTimeout(async () => {
+        const pointsResponse = await fetch(`/awardPoints/${winningSegment.value}`, {
+            method: "POST",
+            headers: {"X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute('content')}
+        });
+        const pointsData = await pointsResponse.json();
+
+        resultDiv.innerHTML = `You won ${winningSegment.value} points! <br>Your Points: ${pointsData.newPoints}`;
+        spinBtn.disabled = false;
+    }, 4000);
+});

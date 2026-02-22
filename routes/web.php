@@ -12,6 +12,7 @@ use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ChatBotController;
 use App\Http\Controllers\FavouriteController;
+use App\Http\Controllers\DailySpin;
 
 
 /*
@@ -37,6 +38,10 @@ Route::get('home', function () {return view('index'); }); // returns the home pa
 Route::get('ai', function () {return view('ai'); }); // returns ai chat bot
 
 Route::post('send',[ChatBotController::class, 'sendChat']);
+
+Route::middleware('auth')->get('/dailySpin', function () {return view('dailySpin');})->name('dailySpin');
+Route::middleware('auth')->post('/dailySpin', [DailySpin::class, 'spin']);
+Route::middleware('auth')->post('/awardPoints/{points}', [DailySpin::class, 'awardPoints']);
 
 Route::get('/stock', [ProductController::class, 'stockChecker'])->name('stockChecker');
 Route::post('/stock/{product}/update', [ProductController::class, 'updateStock'])->name('updateStock');

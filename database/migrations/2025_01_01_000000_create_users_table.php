@@ -22,6 +22,8 @@ return new class extends Migration
 
             $table->string('profile_picture_path')->nullable();
 
+            $table->timestamp('dailySpin')->nullable();
+
             // will move these bits to separate tables for saving details
             // but not yet
 
