@@ -26,12 +26,19 @@
             <button class = "headbut">Sign Out</button>
         </form>
     </div>
-      <div class = "accountBox">
+
+    <div class = "accountBox">
         <h2>Wishlist</h2>
         <p> View products you've favourited</p>
         <a href="{{ route('wishlist.index') }}"> {{-- this is the favourites button --}}
             <button class="headbut">View wishlist</button>
         </a>
+    </div>
+
+    <div class = "accountBox">
+        <h2>My rewards</h2>
+        <p> Go to your rewards page</p>
+        <button class = "headbut"><a href="/reward"> my rewards</a></button>
     </div>
 
 </div>

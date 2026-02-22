@@ -54,11 +54,10 @@
 
         <div class="container my-4" style="width: 67%;">
 
+            @if(isset($rvp) && $rvp->count())
             <div class="mb-4 text-center">
                 <h3>continue browsing where you left off</h3>
             </div>
-
-            @if(isset($rvp) && $rvp->count())
                 <div class="row row-cols-lg-4 g-4">
                     @foreach($rvp as $product)
                         <div class="col d-flex">
