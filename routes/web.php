@@ -14,6 +14,7 @@ use App\Http\Controllers\ChatBotController;
 use App\Http\Controllers\FavouriteController;
 use App\Http\Controllers\PointsVoucherController;
 use App\Http\Controllers\DailySpin;
+use App\Http\Controllers\SlotMachine;
 
 
 /*
@@ -43,6 +44,9 @@ Route::post('send',[ChatBotController::class, 'sendChat']);
 Route::middleware('auth')->get('/dailySpin', function () {return view('dailySpin');})->name('dailySpin');
 Route::middleware('auth')->post('/dailySpin', [DailySpin::class, 'spin']);
 Route::middleware('auth')->post('/awardPoints/{points}', [DailySpin::class, 'awardPoints']);
+
+Route::middleware('auth')->get('/slots', function () {return view('slots');})->name('slots');
+Route::middleware('auth')->post('/slots/spin', [SlotMachine::class, 'spin']);
 
 Route::get('/stock', [ProductController::class, 'stockChecker'])->name('stockChecker');
 Route::post('/stock/{product}/update', [ProductController::class, 'updateStock'])->name('updateStock');
