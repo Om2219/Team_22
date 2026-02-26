@@ -18,7 +18,7 @@
                         <div class="item-details">
                             <p>{{$product->name}}</p>
                             <p>Price: £{{$product->price}}</p>
-                            @if (session('error')) {{ session('error') }} @endif
+                            @if (session('error')) <div class="alert alert-danger" role="alert">{{ session('error') }}</div> @endif
                             <form action="{{ route('basket.update') }}" method="POST">
                                 @csrf
                                 <label for="quantity{{$product->product_id}}">Quantity:</label>

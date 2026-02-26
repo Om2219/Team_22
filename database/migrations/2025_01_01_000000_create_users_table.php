@@ -18,7 +18,11 @@ return new class extends Migration
             $table->string('password');
             $table->string('phone_number', 15)->nullable(); //accounts for foreign numbers and extensions (i.e. +44)
 
+            $table->integer('points')->default(0);
+
             $table->string('profile_picture_path')->nullable();
+
+            $table->timestamp('dailySpin')->nullable();
 
             // will move these bits to separate tables for saving details
             // but not yet

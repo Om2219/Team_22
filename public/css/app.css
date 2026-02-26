@@ -119,7 +119,7 @@ body{
 footer{
 
     /* background-color:#7a4900; */
-    background-color: rgba(46, 139, 86, 0.61);
+    background-color: rgba(46, 139, 86, 0.74);
     text-align: center;
     width: 100%;
     display: flex;
@@ -199,7 +199,6 @@ footer{
 .dos{
     display: flex;
     width: 100%;
-    height: 625vh;
 
 }
 
@@ -219,18 +218,19 @@ footer{
 } */
 
 .hero {
-    height: 30vh;
+    height: 67vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .scroll-section {
-    height: 490vh;
+    padding-top: 290px;
+    padding-bottom: 290px;
 }
 
 .collections {
-    padding: 515px 1%;
+    padding: 290px 1%;
 }
 
 .blockUno {
@@ -253,11 +253,105 @@ footer{
 
 .blocktres{
     background-color: seagreen;
-    border-radius: 150px 20px 20px 150px; 
+    border-radius: 20px 150px 150px 20px; 
     padding: 40px;
     width: 100%; 
     min-height: 600px; 
 
+}
+
+.wholeWheel {
+    position: relative;
+    width: 500px;
+    height: 500px;
+}
+
+.wheel {
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    border: 15px solid rgb(223, 238, 221);
+    position: relative;
+    overflow: hidden;
+    transition: transform 5s ease-out;
+    margin-bottom: 20px;
+}
+
+.wheel div {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform-origin: bottom left;
+    clip-path: polygon(100% 0, 50% 100%, 0 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.wheel .one    { background-color: #522c69; transform: rotate(0deg) translateX(-50%); }
+.wheel .two    { background-color: #ffffff; transform: rotate(45deg) translateX(-50%); }
+.wheel .three  { background-color: #522c69; transform: rotate(90deg) translateX(-50%); }
+.wheel .four   { background-color: #ffffff; transform: rotate(135deg) translateX(-50%); }
+.wheel .five   { background-color: #522c69; transform: rotate(180deg) translateX(-50%); }
+.wheel .six    { background-color: #ffffff; transform: rotate(225deg) translateX(-50%); }
+.wheel .seven  { background-color: #522c69; transform: rotate(270deg) translateX(-50%); }
+.wheel .eight  { background-color: #ffffff; transform: rotate(315deg) translateX(-50%); }
+
+.pointer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 75px;
+    background-color: rgb(0, 0, 0);
+    transform: translate(-50%, -100%);
+    z-index: 10;
+}
+
+.pointer::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 50%;
+    transform: translate(-50%, 50%);
+}
+
+.reel {
+    height: 100px;
+    width: 80px;
+    overflow: hidden;
+    border: 2px solid black;
+    background: white;
+    position: relative;
+}
+
+.reelStrip {
+    display: flex;
+    flex-direction: column;
+}
+
+.symbol {
+    font-size: 40px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.spinning .reelStrip {
+    animation: spin 0.5s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: translateY(0); }
+    to { transform: translateY(-300px); }
 }
 
 /*Kyle CSS*/

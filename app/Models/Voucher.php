@@ -7,8 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Voucher extends Model
 {
-    protected $fillable = [
-        'code', 'type', 'value', 'min_spend', 'expires_at', 'active'
-    ];
     use HasFactory;
+
+    protected $fillable = [
+    'user_id',
+    'code',
+    'type',
+    'value',
+    'min_spend',
+    'expires_at',
+    'active',
+    'used_at',
+];
 }
