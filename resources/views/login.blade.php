@@ -1,5 +1,15 @@
 <x-layout>
     <div class="loginPage">
+        @if (session('success'))
+        <div class="alert alert-success">
+            {{  session('success') }}
+        </div>
+        @endif
+        @if ($errors->has('login'))
+        <div class="alert alert-danger">
+            {{  $errors->first('login') }}
+        </div>
+        @endif
         <form action="{{ route('login.store') }}" method="POST" class="loginForm">
             @csrf
             <div class="imgcontainer">
