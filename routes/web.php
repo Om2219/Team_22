@@ -12,6 +12,7 @@ use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ChatBotController;
 use App\Http\Controllers\FavouriteController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\PointsVoucherController;
 use App\Http\Controllers\DailySpin;
 use App\Http\Controllers\SlotMachine;
@@ -134,7 +135,7 @@ Route::get('termsandprivacy', function () { return view('termsandprivacy'); }); 
 
 
 Route::middleware(['auth', 'admin'])->group(function() {
-    Route::view('/admin/dashboard', 'admin_dashboard')
+    Route::get('/admin/dashboard', [DashboardController::class, 'index'])
     ->name('admin.dashboard');
      Route::view('/admin/customers', 'admin_customers')
     ->name('admin.customers');
@@ -142,7 +143,6 @@ Route::middleware(['auth', 'admin'])->group(function() {
     ->name('admin.orders');
      Route::view('/admin/products', 'admin_products')
     ->name('admin.products');
-
 });
 
 // Route::get('studentlisting', 'App\Http\Controllers\StudentController@list')->name('list_student');
