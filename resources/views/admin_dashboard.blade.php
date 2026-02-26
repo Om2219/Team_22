@@ -24,18 +24,18 @@
 <section class="stats">
     <div class="card">
         <h3>Total Users</h3>
-        <p>120</p>
+        <p>{{ $totalUsers }}</p>
 </div>
 
 
     <div class="card">
         <h3>Total orders</h3>
-        <p>120</p>
+        <p>{{ $totalOrders }}</p>
 </div>
 
     <div class="card">
         <h3>Products</h3>
-        <p>12</p>
+        <p>{{ $totalProducts }}</p>
 </div>
 
 </section>
@@ -51,24 +51,10 @@
         <th>Date</th>
 </tr>
 <tr>
-    <td>#1</td>
-     <td>John Doe</td>
-      <td>Pending</td>
-       <td>12 feb 2026</td>
-</tr>
-
-<tr>
-    <td>#2</td>
-     <td>Joshep Doe</td>
-      <td>Shipped</td>
-       <td>14 feb 2026</td>
-</tr>
-
-<tr>
-    <td>#3</td>
-     <td>Danny kio</td>
-      <td>Processing</td>
-       <td>19 feb 2026</td>
+    <td>#{{$order->id}}</td>
+    <td>{{$order->user->name ?? 'Guest'}}</td>
+    <td>{{ucfirst($order->status ?? 'Pending')}}</td>
+    <td>{{ $order->created_at->format('M d, Y') }}</td>
 </tr>
 
 </table>
