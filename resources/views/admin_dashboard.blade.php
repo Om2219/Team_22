@@ -50,13 +50,18 @@
         <th>Status</th>
         <th>Date</th>
 </tr>
+@forelse($recentOrders as $order)
 <tr>
     <td>#{{$order->id}}</td>
     <td>{{$order->user->name ?? 'Guest'}}</td>
     <td>{{ucfirst($order->status ?? 'Pending')}}</td>
     <td>{{ $order->created_at->format('M d, Y') }}</td>
 </tr>
-
+@empty
+<tr>
+    <td colspan="4">No recent orders</td>
+</tr>
+@endforelse
 </table>
 
 </main>
