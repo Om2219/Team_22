@@ -395,6 +395,7 @@ footer{
 
 .faq-master .faq-hyperlinks {
     color: #04AA6D; /*override the a element color being white*/
+    text-decoration: none;
 }
 
 .MasterBasketBox { /*Reminder: use flex-wrap, get text to go to the right of the images*/
@@ -468,9 +469,24 @@ footer{
     cursor: pointer;
 }
 
-.contactUsPage-master .contactus-container {
-    border: 2px; /*no border colour*/
-    padding: 10px 10px;
+.contactUsPage-master {
+    background: none;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    padding: 20px;
+    font-family:'Times New Roman', Times, serif;
+}
+
+.contactUsPage-master input, .contactUsPage-master textarea {
+    border: 4px solid #ddd;
+    background: #ddd;
+    border-radius: 4px;
+    padding: 20px;
+}
+
+.contactUsPage-master textarea {
+    padding-top: 10px; /*because textarea padding makes the text appear way lower than in input padding*/
 }
 
 .contactUsPage-master #name, .contactUsPage-master #email, .contactUsPage-master #subject {
