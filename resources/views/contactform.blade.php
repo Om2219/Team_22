@@ -1,7 +1,7 @@
 <x-layout>
+    <h1>Contact Us</h1><br>
 
     <div class="contactUsPage-master">
-        <h1>Contact Us</h1><br>
         <form method="POST" action="{{route('contactform.submit')}}">
             @csrf
             <p>Please enter your details below to send us an email.</p>
