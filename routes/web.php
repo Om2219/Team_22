@@ -13,6 +13,10 @@ use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ChatBotController;
 use App\Http\Controllers\FavouriteController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\PointsVoucherController;
+use App\Http\Controllers\DailySpin;
+use App\Http\Controllers\SlotMachine;
 
 
 /*
@@ -39,6 +43,17 @@ Route::get('ai', function () {return view('ai'); }); // returns ai chat bot
 
 Route::post('send',[ChatBotController::class, 'sendChat']);
 
+Route::middleware('auth')->get('/dailySpin', function () {return view('dailySpin');})->name('dailySpin');
+Route::middleware('auth')->post('/dailySpin', [DailySpin::class, 'spin']);
+Route::middleware('auth')->post('/awardPoints/{points}', [DailySpin::class, 'awardPoints']);
+
+Route::middleware('auth')->get('/slots', function () {return view('slots');})->name('slots');
+Route::middleware('auth')->post('/slots/spin', [SlotMachine::class, 'spin']);
+
+Route::get('/stock', [ProductController::class, 'stockChecker'])->name('stockChecker');
+Route::post('/stock/{product}/update', [ProductController::class, 'updateStock'])->name('updateStock');
+Route::post('/stock/{product}/restock', [ProductController::class, 'restock'])->name('stockRestock');
+
 Route::get('account', function () { if (!Auth::check()) {return redirect()->route('login');} return view('account'); }); // checks if user is logged in before showing account page
 
 Route::get('order', function () { return view('order'); }); // returns order history
@@ -48,6 +63,7 @@ Route::post('basket/add/{product}', [BasketController::class, 'add'])->name('bas
 Route::delete('basket/remove/{product}', [BasketController::class, 'remove'])->name('basket.remove');   // removes a product from the basket
 Route::post('basket/update', [BasketController::class, 'update'])->name('basket.update');               // updates quantities in the basket
 
+Route::get('/reward', function () {  return view('reward'); }); 
 
 Route::get('checkout', function () { if (!Auth::check()) {return redirect()->route('login');} return view('checkout'); }); // checks if a user is logged in and if so then shows checkout
 
@@ -75,6 +91,10 @@ Route::middleware('auth')->group(function (){
     Route::get('/wishlist', [FavouriteController::class, 'index'])->name('wishlist.index');
     Route::post('/wishlist/{product}', [FavouriteController::class, 'store'])->name('wishlist.store');
     Route::delete('/wishlist/{product}', [FavouriteController::class, 'destroy'])->name('wishlist.destroy');
+});
+Route::middleware('auth')->group(function () {
+    Route::get('/points/vouchers', [PointsVoucherController::class, 'index'])->name('points.vouchers');
+    Route::post('/points/vouchers/redeem', [PointsVoucherController::class, 'redeem'])->name('points.vouchers.redeem');
 });
 
 Route::post('/voucher/apply', [BasketController::class, 'applyVoucher'])->name('voucher.apply');
@@ -118,7 +138,7 @@ Route::get('termsandprivacy', function () { return view('termsandprivacy'); }); 
 
 
 Route::middleware(['auth', 'admin'])->group(function() {
-    Route::view('/admin/dashboard', 'admin_dashboard')
+    Route::get('/admin/dashboard', [DashboardController::class, 'index'])
     ->name('admin.dashboard');
      Route::view('/admin/customers', 'admin_customers')
     ->name('admin.customers');
@@ -126,7 +146,6 @@ Route::middleware(['auth', 'admin'])->group(function() {
     ->name('admin.orders');
      Route::view('/admin/products', 'admin_products')
     ->name('admin.products');
-
 });
 
 // Route::get('studentlisting', 'App\Http\Controllers\StudentController@list')->name('list_student');

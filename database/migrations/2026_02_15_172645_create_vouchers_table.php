@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('vouchers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
             $table->string('code')->unique(); //creates the code/discount
             $table->enum('type', ['fixed', 'percent']); //decides the percentage of discount
             $table->decimal('value', 8, 2);
             $table->decimal('min_spend', 8, 2)->nullable();
             $table->timestamp('expires_at')->nullable();
             $table->boolean('active')->default(true);
+            $table->timestamp('used_at')->nullable();
             $table->timestamps();
         });
     }

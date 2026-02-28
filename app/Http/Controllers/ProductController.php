@@ -25,10 +25,12 @@ class ProductController extends Controller
             $query->orderBy('created_at', 'desc');
         }
 
-            $products = $query->get();
+            $products = $query->paginate(20)->withQueryString();
 
+            $rp = session()->get('recently_viewed', []);
+            $rvp = Product::with('images')->whereIn('id', $rp)->get();
 
-        return view('products', compact('products'));
+        return view('products', compact('products', 'rvp'));
 
     }
 
@@ -48,8 +50,13 @@ class ProductController extends Controller
         } else {
             $query->orderBy('created_at', 'desc');
         }
-            $products = $query->get();
-            return view('products', ['products' => $products, 'category' => $category]);
+
+            $products = $query->paginate(20)->withQueryString();
+
+            $rp = session()->get('recently_viewed', []);
+            $rvp = Product::with('images')->whereIn('id', $rp)->get();
+
+        return view('products', ['products' => $products, 'category' => $category, 'rvp' => $rvp]);
 
     }
 
@@ -57,6 +64,16 @@ class ProductController extends Controller
     {
 
         $product->load('images', 'category');
+
+        $rv = session()->get('recently_viewed', []);
+
+        $rv = array_diff($rv, [$product->id]);
+
+        array_unshift($rv, $product->id);
+
+        $rv = array_slice($rv, 0, 4);
+
+         session()->put('recently_viewed', $rv);
 
         return view('product', compact('product'));
     }
@@ -83,6 +100,11 @@ class ProductController extends Controller
             'low_stock' => 'required|integer|min:0',
 
             'product_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+
+            'price' => 'nullable|numeric|min:0',
+            'points_cost' => 'nullable|integer|min:1',
+            'is_reward' => 'nullable|boolean',
+
         ]);
 
         $product = Product::create([
@@ -90,6 +112,8 @@ class ProductController extends Controller
             'category_id' => $validated['category_id'],
             'product_description' => $validated['product_description'] ?? null,
             'price' => $validated['price'],
+            'is_reward' => $request->has('is_reward'),
+            'points_cost' => $request->is_reward ? $validated['points_cost'] : null,
         ]);
 
 
@@ -114,6 +138,39 @@ class ProductController extends Controller
     }
 
     // Oms work
+
+    public function stockChecker(){
+
+        $products = Product::with('stock')->orderBy('name')->get();
+        return view('stock', compact('products'));
+
+    }
+
+    public function restock(Product $product){
+
+        if(!$product->stock){
+            return redirect()->route('stock.index')->with('error', 'Silly Monkey ate all the bananas🦧');
+        }
+
+        $product->stock->update(['stock' => 67]);
+
+        return redirect()->route('stockChecker')->with($product->name .'has been stocked with more bananas');
+
+    }
+
+    public function updateStock(Request $request, Product $product){
+
+        $request->validate([ 'stock' => 'required|integer|min:0']);
+
+        if(!$product->stock){
+            return redirect()->route('stock.index')->with('error', 'Silly Monkey ate all the bananas🦧');
+        }
+
+        $product->stock->update(['stock' => $request->stock]);
+
+        return redirect()->route('stockChecker')->with($product->name .'has been stocked with more bananas');
+
+    }
 
     public function edit(Product $product) {
 

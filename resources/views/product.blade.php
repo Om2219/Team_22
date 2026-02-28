@@ -17,7 +17,11 @@
         
             <div class="col-md-6">
                 <h2 class="fw-bold mb-2">{{$product->name}}</h2><br>
-                <h3 class="text-success fw-bold mb-4">£{{$product->price}}</h3>
+                @if($product->is_reward)
+                    <h3 class="text-success fw-bold mb-4">{{$product->points_cost}}</h3>
+                @else
+                    <h3 class="text-success fw-bold mb-4">£{{$product->price}}</h3>
+                @endif
                 
                 @if (session('error')) {{ session('error') }} @endif
                 
@@ -42,6 +46,37 @@
                         </form>
 
                         <p><i class="bi bi-box-seam me-1"></i> Stock: <strong>{{ $product->stock->stock }}</strong> available</p>
+                        <div class="mt-3">
+                        @auth
+                        @php
+                            $isFavourited = auth()->user()
+                                            ->favouriteProducts()
+                                            ->where('products.id', $product->id)
+                                            ->exists();
+                        @endphp
+
+                        @if($isFavourited)
+                        <form method="POST" action="{{ route('wishlist.destroy', $product) }}">
+                         @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-outline-danger w-100 fw-bold">
+                         <i class="bi bi-heart-fill me-2"></i>Remove from Wishlist
+                        </button>
+                         </form>
+                         @else
+                            <form method="POST" action="{{ route('wishlist.store', $product) }}">
+                                @csrf
+                                    <button type="submit" class="btn btn-outline-success w-100 fw-bold">
+                         <i class="bi bi-heart me-2"></i>Add to Wishlist
+                </button>
+            </form>
+        @endif
+    @else
+        <a href="{{ route('login') }}" class="btn btn-outline-secondary w-100 fw-bold">
+            <i class="bi bi-person me-2"></i>Login to add to Wishlist
+        </a>
+    @endauth
+</div>
                         
                     </div>
                 </div>

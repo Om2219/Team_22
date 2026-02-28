@@ -134,11 +134,19 @@ class BasketController extends Controller
 
         $ref = strtoupper(Str::random(6));
 
-        $orderitems = Basket::join('products','basket.product_id','=','products.id')->join('product_images','products.id','=','product_images.product_id')->select('basket.*','products.name','products.price','product_images.product_image')->get();
+        $orderitems = Basket::join('products','basket.product_id','=','products.id')->join('product_images','products.id','=','product_images.product_id')->select('basket.*','products.name','products.price', 'products.is_reward','products.points_cost','product_images.product_image')->get();
         
-        $totalPrice = $orderitems->sum(function($item) {
-            return $item->price * $item->quantity;
-        });
+        $totalPrice = 0;
+        $tptd = 0;
+
+        foreach ($orderitems as $item) {
+
+            if ($item->is_reward) {
+                $tptd += $item->points_cost * $item->quantity;
+            } else {
+                $totalPrice += $item->price * $item->quantity;
+            }
+        }
 
         $details->validate([
             'address_line_1' => 'required|string|max:100',
@@ -150,6 +158,18 @@ class BasketController extends Controller
             'expiry_year'    => 'required',
             'security_code'  => 'required|digits_between:3,4',
         ]);
+
+        $uM = \App\Models\User::find($user);
+
+        if ($tptd > 0) {
+
+            if ($uM->points < $tptd) {
+                return redirect()->route('basket')->with('error', 'NO BANANA NO BUSINESSSS!!!!!🙈');
+            }
+
+            $uM->points -= $tptd;
+            $uM->save();
+        }
 
         $order = Order::create([
             'user_id' => $user,
@@ -166,11 +186,19 @@ class BasketController extends Controller
 
         foreach ($orderitems as $product) {
 
+            $ban = $item->is_reward ? 0 : $item->price;
+
             $order->items()->create([
             'product_id' => $product->product_id,
             'quantity' => $product->quantity,
-            'price' => $product->price
+            'price' => $ban
         ]);
+
+        if ($totalPrice > 0) {
+            $pointsEarned = $totalPrice * 100;
+            $uM->points += $pointsEarned;
+            $uM->save();
+        }
 
 
         $stock = Stock::where('product_id',$product->product_id)->first();
