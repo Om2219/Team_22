@@ -1,8 +1,8 @@
 <x-layout>
-
-    <h1>Frequently Asked Questions</h1>
-
-    <p>This is our FAQs page, where we answer questions by our customers. Below are our most commonly asked questions, and their answers:</p>
+    <div class="faq-header">
+        <h1>Frequently Asked Questions</h1>
+        <p>This is our FAQs page, where we answer questions by our customers. Below are our most commonly asked questions, and their answers:</p>
+    </div>
 
     <div class="faq-master">
         <br>
