@@ -359,6 +359,11 @@ footer{
     font-family:'Times New Roman', Times, serif;
 }
 
+.faq-header .faqDetails {
+    margin-top: 20px;
+    margin-bottom: -10px;
+}
+
 .faq-master .questions {
     background: none;
     border: 1px solid lightgray;
@@ -473,8 +478,28 @@ footer{
     cursor: pointer;
 }
 
-.contactUsPage-master, .contactUsPage-header h1 {
-    font-family:'Times New Roman', Times, serif;
+.contactUsPage-master {
+    border: 1px solid lightgray;
+    border-radius: 6px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1); 
+    /*rgb 0,0,0 with 0.1 opacity, 0 offset (so the shadow is on the button), 
+    5 pixels down and blurred by 10 pixels*/ 
+    padding: 10px 20px; /*to move content away from the edges of the container*/
+    font-family: 'Times New Roman', Times, serif;
+    width: 100%;
+}
+
+.contactUsPage-master .contactDetailsParagraph {
+    margin-top: 20px;
+}
+
+.contactUsPage-master .align-inputBoxes {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(200px, 1fr)); /*to align name and email on the same line*/
+}
+
+.contactUsPage-master .input-box {
+    margin-top: 10px;
 }
 
 .contactUsPage-master .input-box input::placeholder, 
@@ -483,8 +508,8 @@ footer{
     transition: 0.5s; /*so the font size slowly decreases*/
 }
 
-.contactUsPage-master .input-box input:focus::placeholder,
-.contactUsPage-master .input-box textarea:focus::placeholder {
+.contactUsPage-master .input-box input:hover::placeholder,
+.contactUsPage-master .input-box textarea:hover::placeholder {
     font-size: 0.75em;
 }
 
@@ -495,20 +520,34 @@ footer{
     padding: 20px;
 }
 
-.contactUsPage-master .input-box input:focus, 
-.contactUsPage-master .input-box textarea:focus {
+.contactUsPage-master .input-box input:hover, 
+.contactUsPage-master .input-box textarea:hover {
     border-color: rgb(185, 185, 185);
     background: rgb(185, 185, 185);
     outline: none;
     transition: 0.5s;
 }
 
+.contactUsPage-master .input-box input:focus::placeholder,
+.contactUsPage-master .input-box textarea:focus::placeholder {
+    color: rgb(185, 185, 185); /*so the text slowly disappears into the background*/
+}
+
+.contactUsPage-master .input-box input:focus,
+.contactUsPage-master .input-box textarea:focus {
+    outline: none;
+}
+
 .contactUsPage-master textarea {
     padding-top: 10px; /*because textarea padding makes the text appear way lower than in input padding*/
 }
 
-.contactUsPage-master #name, .contactUsPage-master #email, .contactUsPage-master #subject {
+.contactUsPage-master #name, .contactUsPage-master #email {
     width: 300px;
+}
+
+.contactUsPage-master #subject, .contactUsPage-master #message {
+    width: 623px;
 }
 
 .contactUsPage-master #name, .contactUsPage-master #email, 
@@ -525,6 +564,7 @@ footer{
     font-size: 1rem;
     cursor: pointer;
     transition: background 0.3s;
+    margin-top: 10px;
 }
 
 .contactUsPage-master .sendEmail:hover {
