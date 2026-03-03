@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,9 +21,8 @@
 <body>
 
   {{-- Header for all pages --}}
-  <header>
-    <nav class="container-fluid">
-                 
+      <header> 
+        <nav class="container-fluid">
           {{-- top of the nav bar and contains the logo, search bar,, the users account, the users basked--}}         
         <div class= "d-flex align-items-center justify-content-between mb-3">
 
@@ -48,8 +46,11 @@
               
             </div>
         </div>
+              <br> 
+            </nav> 
+      </header>
           {{-- bottom of nav bar and contains our 5 categories with links, and if you hover over it gives you more specific options--}}    
-        <div class= "d-flex justify-content-center flex-wrap gap-3 border-top pt-4">
+          <div id="navHeader" class= "d-flex justify-content-center flex-wrap gap-3 border-top pt-4 pb-4">
                 <button class ="headbut"><a href="{{ route('products.cat', 'ArtCraft')}}" class="text-green text-decoration-none">Arts & Crafts</a></button>
                 <button class ="headbut"><a href="{{ route('products.cat', 'Toys')}}" class="text-green text-decoration-none">Toys</a></button>
                 <button class ="headbut"><a href="{{ route('products.cat', 'Stationery')}}" class="text-green text-decoration-none">Stationery</a></button>
@@ -60,14 +61,30 @@
                 <button class ="headbut"><a href="/aboutus" class="text-green text-decoration-none">About Us</a></button>
                 <button class ="headbut"><a href="/faq" class="text-green text-decoration-none">FAQ</a></button>
                 <button class ="headbut"><a href="/contactform" class="text-green text-decoration-none">Contact us</a></button>
-                <button class ="headbut"><a href="/ai" class="text-green text-decoration-none">MONKEYS</a></button>
-        </div><br>
-    </nav>
-  </header>
+                <button id ="aiBtn" class ="headbut"><a class="text-green text-decoration-none">MONKEYS</a></button> 
+              </div>
 
 
   {{-- the main information for all pages --}}
   <main class="container">
+    {{-- the script containing the functions required upon opening the page--}}
+    <script> 
+    window.onload = function() {
+      let aiChatbot = document.getElementById("chatbot");
+      let chatbotBtn = document.getElementById("aiBtn");
+      aiChatbot.style.display='none';
+      chatbotBtn.onclick = function() {
+        if (aiChatbot.style.display === "none"){
+          aiChatbot.style.display = "block";
+        } else {
+          aiChatbot.style.display = "none"
+        }
+      }
+
+      let modeStatus = document.getElementById("darkMode");
+    };
+    </script>
+  @include("ai")
   {{$slot}}
   </main>
 
