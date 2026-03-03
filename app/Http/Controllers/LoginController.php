@@ -21,13 +21,9 @@ class LoginController extends Controller
         Auth::login($user);
 
 
-// admin check
-if($user->role === 'admin'){
-    return redirect()->route('admin.dashboard');
-}
-
         return redirect('/account');
     }
+    
     public function logout(){
         Auth::logout();
         return redirect('/home');
