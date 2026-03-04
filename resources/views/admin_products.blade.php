@@ -9,7 +9,7 @@
     <li><a href="{{ route ('admin.dashboard') }}">Dashboard</a></li>
     <li><a href="{{ route ('admin.customers') }}">Customers</a></li>
     <li><a href="{{ route ('admin.orders') }}">Orders</a></li>
-    <li><a href="{{ route ('admin.products') }}">Product</a></li>
+    <li><a href="{{ route ('admin.products') }}">Products</a></li>
     <li>
         <form method = "POST" action="{{route('logout')}}"> @csrf <button class = "headbut">Sign Out</button> 
     </form>
@@ -33,88 +33,16 @@
         <th>Price</th>
         <th>Stock</th>
 </tr>
+
+@foreach($products as $product)
 <tr>
-    <td>#1</td>
-     <td>Canvas</td>
-     <td>Art&Craft</td>
-      <td>£6.70</td>
-       <td>670</td>
+    <td>{{ $product->id }}</td>
+    <td>{{ $product->name }}</td>
+    <td>{{ $product->category->name ?? 'Uncategorised' }}</td>
+    <td>£{{ number_format($product->price, 2) }}</td>
+    <td>{{ $product->stock->stock ?? 0 }}</td>
 </tr>
-
-<tr>
-      <td>#2</td>
-     <td>Paint</td>
-     <td>Art&Craft</td>
-      <td>£6.70</td>
-       <td>670</td>
-</tr>
-
-<tr>
-      <td>#3</td>
-     <td>Yoyo</td>
-     <td>Toys</td>
-      <td>£6.70</td>
-       <td>670</td>
-</tr>
-
-<tr>
-     <td>#4</td>
-     <td>Soldier</td>
-     <td>Toys</td>
-      <td>£6.70</td>
-       <td>670</td>
-</tr>
-
-
-<tr>
-    <td>#5</td>
-     <td>Elastic Bands</td>
-     <td>Stationary</td>
-      <td>£6.70</td>
-       <td>670</td>
-</tr>
-
-
-<tr>
-    <td>#6</td>
-     <td>Notepad</td>
-     <td>Stationary</td>
-      <td>£6.70</td>
-       <td>670</td>
-</tr>
-
-
-<tr>
-    <td>#7</td>
-     <td>The Whispering Woods</td>
-     <td>Books</td>
-      <td>£6.70</td>
-       <td>670</td>
-</tr>
-
-<tr>
-    <td>#8</td>
-     <td>Clockwork Sparrows Secret</td>
-     <td>Books</td>
-      <td>£6.70</td>
-       <td>670</td>
-</tr>
-
-<tr>
-    <td>#9</td>
-     <td>Calculator</td>
-     <td>Office Supplies</td>
-      <td>£6.70</td>
-       <td>670</td>
-</tr>
-
-<tr>
-    <td>#10</td>
-     <td>Stapler</td>
-     <td>Office Supplies</td>
-      <td>£6.70</td>
-       <td>670</td>
-</tr>
+@endforeach
 
 </table>
 

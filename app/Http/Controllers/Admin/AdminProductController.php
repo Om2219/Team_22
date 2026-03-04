@@ -15,6 +15,13 @@ class AdminProductController extends Controller
         return response()->json($products);
     }
 
+    // web view for products
+    public function webIndex()
+    {
+        $products = Product::with(['category', 'stock'])->get();
+        return view('admin_products', compact('products'));
+    }
+
     // showing one product and details
     public function show($id)
     {
