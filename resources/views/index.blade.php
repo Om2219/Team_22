@@ -54,10 +54,10 @@
 
 <div class="scroll-spacer"></div> --}}
 
-    <div class="animBg">
+    <!--<div class="animBg">
         {{-- we can change the background to something more fitting this is tempoary --}}
         <img src="{{ asset('images/Mint.png') }}">
-    </div>
+    </div>-->
 
     <img id="pen" src="{{ asset('images/Pen.png') }}">
     {{-- <img id="holder" src="{{ asset('images/hold.png') }}"> --}}
@@ -93,37 +93,6 @@
                  <h2> Silly Monkey </h2>
                  <br>
                  <br>
-                 <!-- tl section -->   
-                 <div class="tlBlock">
-
-                        <div class="line"></div>
-                        
-                        <div class="timeArea leftA">
-                            <div class="imgItem">
-                                <img src="{{ asset('images/history/h1.jpg') }}" alt="timeline ig" class="timeImg">
-                            </div>
-                        </div>
-
-                        <div class="timeArea rightA">
-                            <div class="imgItem">
-                                <img src="{{ asset('images/history/h2.jpg') }}" alt="timeline ig" class="timeImg">
-                            </div>
-                        </div>
-
-                        <div class="timeArea leftA">
-                            <div class="imgItem">
-                                <img src="{{ asset('images/history/h3.jpg') }}" alt="timeline ig" class="timeImg">
-                            </div>
-                        </div>
-
-                        <div class="timeArea rightA">
-                            <div class="imgItem">
-                                <img src="{{ asset('images/history/h4.png') }}" alt="timeline ig" class="timeImg">
-                            </div>
-                        </div>
-                    </div> 
-                <!-- tl section -->
-                 
                 </div>
                 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

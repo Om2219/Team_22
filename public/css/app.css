@@ -116,7 +116,6 @@ a{
 
 body{
     background-color: white; 
-
 }
 
 
@@ -661,7 +660,6 @@ footer{
         margin: 0 auto;
         padding: 20px;
     }
-    /*breaks the nav, so removing it    */
 
 /* Gurpreet */
 
@@ -974,18 +972,13 @@ user-select: none;
 }
 
 /* Sion */
-
+/*
 .tlBlock
 {
     padding: 20px;
     width: 100%; 
     min-height: 400px; 
     position: relative;
-}
-
-.blockText {
-    font-size: 17px;
-    
 }
 
 .line {
@@ -1046,7 +1039,7 @@ left: 50%;
 
 .timeArea.rightA::before {
     left: -40px;
-}
+} unused */
 
 .aiSection {
     position: relative;
@@ -1067,6 +1060,3 @@ left: 50%;
     align-items: center;
     z-index: 99;
 }
-
-
-

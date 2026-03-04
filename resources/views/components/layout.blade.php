@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<script>
+  if (localStorage.getItem("modeStatus") === "true") {
+    document.documentElement.dataset.bsTheme = "dark";
+  } else {
+    document.documentElement.dataset.bsTheme = "light";
+  }
+</script>
 {{-- Page top with facion and page name --}}
 <head>
     <meta charset="UTF-8">
@@ -24,7 +30,7 @@
       <header> 
         <nav class="container-fluid">
           {{-- top of the nav bar and contains the logo, search bar,, the users account, the users basked--}}         
-        <div class= "d-flex align-items-center justify-content-between mb-3">
+          <div class= "d-flex align-items-center justify-content-between mb-3">
 
             <a href="/home" class = "navbar-brand"><img src="{{ Vite::asset('public/images/logo_updated.png') }}" class = "logo"></a>
 
@@ -45,24 +51,24 @@
               <a href="/basket" class="nav-icon-link d-flex flex-column align-items-center text-white text-decoration-none"><i class="bi bi-basket fs-3 text-white"></i>Basket</a>
               
             </div>
-        </div>
-              <br> 
-            </nav> 
-      </header>
+          </div>
           {{-- bottom of nav bar and contains our 5 categories with links, and if you hover over it gives you more specific options--}}    
-          <div id="navHeader" class= "d-flex justify-content-center flex-wrap gap-3 border-top pt-4 pb-4">
-                <button class ="headbut"><a href="{{ route('products.cat', 'ArtCraft')}}" class="text-green text-decoration-none">Arts & Crafts</a></button>
-                <button class ="headbut"><a href="{{ route('products.cat', 'Toys')}}" class="text-green text-decoration-none">Toys</a></button>
-                <button class ="headbut"><a href="{{ route('products.cat', 'Stationery')}}" class="text-green text-decoration-none">Stationery</a></button>
-                <button class ="headbut"><a href="{{ route('products.cat', 'Books')}}" class="text-green text-decoration-none">Books</a></button>
-                <button class ="headbut"><a href="{{ route('products.cat', 'Office')}}" class="text-green text-decoration-none">Office Supplies</a></button>
-                <button class ="headbut"><a href="{{ route('products.cat', 'rewards')}}" class="text-green text-decoration-none">Rewards</a></button>
-                <button class ="headbut"><a href="/products" class="text-green text-decoration-none">All products</a></button>
-                <button class ="headbut"><a href="/aboutus" class="text-green text-decoration-none">About Us</a></button>
-                <button class ="headbut"><a href="/faq" class="text-green text-decoration-none">FAQ</a></button>
-                <button class ="headbut"><a href="/contactform" class="text-green text-decoration-none">Contact us</a></button>
-                <button id ="aiBtn" class ="headbut"><a class="text-green text-decoration-none">MONKEYS</a></button> 
-              </div>
+          <div class= "d-flex justify-content-center flex-wrap gap-3 border-top pt-4">
+              <button class ="headbut"><a href="{{ route('products.cat', 'ArtCraft')}}" class="text-green text-decoration-none">Arts & Crafts</a></button>
+              <button class ="headbut"><a href="{{ route('products.cat', 'Toys')}}" class="text-green text-decoration-none">Toys</a></button>
+              <button class ="headbut"><a href="{{ route('products.cat', 'Stationery')}}" class="text-green text-decoration-none">Stationery</a></button>
+              <button class ="headbut"><a href="{{ route('products.cat', 'Books')}}" class="text-green text-decoration-none">Books</a></button>
+              <button class ="headbut"><a href="{{ route('products.cat', 'Office')}}" class="text-green text-decoration-none">Office Supplies</a></button>
+              <button class ="headbut"><a href="{{ route('products.cat', 'rewards')}}" class="text-green text-decoration-none">Rewards</a></button>
+              <button class ="headbut"><a href="/products" class="text-green text-decoration-none">All products</a></button>
+              <button class ="headbut"><a href="/aboutus" class="text-green text-decoration-none">About Us</a></button>
+              <button class ="headbut"><a href="/faq" class="text-green text-decoration-none">FAQ</a></button>
+              <button class ="headbut"><a href="/contactform" class="text-green text-decoration-none">Contact us</a></button>
+              <button id ="aiBtn" class ="headbut"><a class="text-green text-decoration-none">MONKEYS</a></button>
+              <button id ="darkBtn" class ="headbut"><a id="mTxt" class="text-green text-decoration-none"></a></button>  
+          </div><br> 
+        </nav> 
+      </header>
 
 
   {{-- the main information for all pages --}}
@@ -72,7 +78,7 @@
     window.onload = function() {
       let aiChatbot = document.getElementById("chatbot");
       let chatbotBtn = document.getElementById("aiBtn");
-      aiChatbot.style.display='none';
+      aiChatbot.style.display="none";
       chatbotBtn.onclick = function() {
         if (aiChatbot.style.display === "none"){
           aiChatbot.style.display = "block";
@@ -81,11 +87,37 @@
         }
       }
 
-      let modeStatus = document.getElementById("darkMode");
+      let modeStatus = localStorage.getItem('modeStatus') === 'true';
+      let dBtn = document.getElementById("darkBtn");
+      let modeText = document.getElementById("mTxt");
+      if(modeStatus == false) {
+          modeText.textContent = "Dark Mode";
+          document.documentElement.dataset.bsTheme = "light"
+        } else {
+          modeText.textContent = "Light Mode";
+          document.documentElement.dataset.bsTheme = "dark"
+        }
+      dBtn.onclick = function() {
+        modeStatus = !modeStatus;
+        console.log("dark mode is ", modeStatus);
+      
+        if(modeStatus == false) {
+          modeText.textContent = "Dark Mode";
+          document.documentElement.dataset.bsTheme = "light"
+        } else {
+          modeText.textContent = "Light Mode";
+          document.documentElement.dataset.bsTheme = "dark"
+        }
+        localStorage.setItem('modeStatus', modeStatus);
+      } 
     };
     </script>
   @include("ai")
   {{$slot}}
+    <!--<div class="animBg">
+        {{-- we can change the background to something more fitting this is tempoary --}}
+        <img src="{{ asset('images/Mint.png') }}">
+    </div>-->
   </main>
 
 

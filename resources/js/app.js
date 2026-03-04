@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     //timeline 
-    gsap.to(
+  /*  gsap.to(
         ".line", {
         scaleY:1,
         scrollTrigger: {
@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 scrub: true
             }
         });
-    });
+    }); unused */
 
     
     
