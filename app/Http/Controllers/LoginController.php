@@ -18,9 +18,14 @@ class LoginController extends Controller
         if(! $user || ! Hash::check($request->password, $user->password)){
             return back()->withErrors(['email' => 'Invalid login details.']);
         }
+
+        if($user->role == 'admin'){
+            return back()->withErrors([
+                'email' => 'Admin users please login via the admin login.',
+            ]);
+        }
+
         Auth::login($user);
-
-
         return redirect('/account');
     }
     

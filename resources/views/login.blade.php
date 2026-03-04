@@ -34,7 +34,7 @@
 
                 <div class="container_signin">
                     <p>New to Roots? <a class="login-hyperlinks" href="/register">Register</a></p>
-                    <p>Are you admin? <a class="login-hyperlinks" href="/admin">admin</a></p>
+                    <p>Are you an admin? <a class="login-hyperlinks" href="{{ route('admin.login') }}">Admin</a></p>
                 </div>
             </div>
         </form>
