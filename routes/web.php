@@ -14,6 +14,7 @@ use App\Http\Controllers\ChatBotController;
 use App\Http\Controllers\FavouriteController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminWebLoginController;
+use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\PointsVoucherController;
 use App\Http\Controllers\DailySpin;
 use App\Http\Controllers\SlotMachine;
@@ -148,7 +149,7 @@ Route::get('termsandprivacy', function () { return view('termsandprivacy'); }); 
 Route::middleware(['auth', 'admin'])->group(function() {
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])
     ->name('admin.dashboard');
-     Route::view('/admin/customers', 'admin_customers')
+     Route::get('/admin/customers', [CustomerController::class, 'webIndex'])
     ->name('admin.customers');
      Route::view('/admin/orders', 'admin_orders')
     ->name('admin.orders');
@@ -177,7 +178,3 @@ Route::middleware(['auth', 'admin'])->group(function() {
 // Route::get('home', function () {
 //     return view('home');
 // });
-
-
-
-

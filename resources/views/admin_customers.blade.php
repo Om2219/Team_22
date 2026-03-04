@@ -30,60 +30,16 @@
         <th>Name </th>
         <th>Email</th>
         <th>Joined</th>
-</tr>
-<tr>
-    <td>#1</td>
-     <td>John Doe</td>
-      <td>john@example.com</td>
-       <td>12 feb 2026</td>
-</tr>
+    </tr>
 
-<tr>
-    <td>#2</td>
-     <td>Joshep Doe</td>
-      <td>joshep@example.com</td>
-       <td>14 feb 2026</td>
-</tr>
-
-<tr>
-    <td>#3</td>
-     <td>Danny Kio</td>
-    <td>danny@example.com</td>
-       <td>19 feb 2026</td>
-</tr>
-
-<tr>
-    <td>#4</td>
-     <td>Michal Anna</td>
-    <td>michal@example.com</td>
-       <td>19 feb 2026</td>
-</tr>
-
-
-<tr>
-    <td>#5</td>
-     <td>Marry James</td>
-    <td>marry@example.com</td>
-       <td>20 feb 2026</td>
-</tr>
-
-
-<tr>
-    <td>#6</td>
-     <td>Filex Rio</td>
-    <td>filex@example.com</td>
-       <td>21 feb 2026</td>
-</tr>
-
-
-<tr>
-    <td>#7</td>
-     <td>Rayan Jio</td>
-    <td>rayan@example.com</td>
-       <td>22 feb 2026</td>
-</tr>
-
-
+    @foreach ($users as $user)
+    <tr>
+        <td>{{ $user->id }}</td>
+        <td>{{ $user->forename ?? 'Guest' }} {{ $user->surname ?? '' }}</td>
+        <td>{{ $user->email }}</td>
+        <td>{{ $user->created_at->format('M d, Y') }}</td>
+    </tr>
+    @endforeach
 
 
 </table>
