@@ -16,6 +16,13 @@ class CustomerController extends Controller
         return response()->json($customers);
     }
 
+    // show web page with customers
+    public function webIndex()
+    {
+        $users = User::where('role', 'customer')->get();
+        return view('admin_customers', compact('users'));
+    }
+
     // create a new customer
     public function store(Request $request)
     {
