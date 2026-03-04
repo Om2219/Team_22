@@ -21,3 +21,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/admin/login', [AdminLoginController::class, 'login']);
 Route::post('/admin/logout', [AdminLoginController::class, 'logout'])->middleware('auth:sanctum');
+
+// Customer routes - admin controls
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('customers', [CustomerController::class, 'index']);
+    Route::post('customers', [CustomerController::class, 'store']);
+    Route::get('customers/{id}', [CustomerController::class, 'show']);
+    Route::put('customers/{id}', [CustomerController::class, 'update']);
+    Route::delete('customers/{id}', [CustomerController::class, 'destroy']);
+});
