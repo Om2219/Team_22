@@ -1,6 +1,6 @@
 <x-layout>
     <div class="loginPage">
-        <form action="{{ route('login.store') }}" method="POST" class="loginForm">
+        <form action="{{ route('admin.login.submit') }}" method="POST" class="loginForm">
             @csrf
             <div class="imgcontainer">
                         <img src="{{ asset('images/img_avatar2.png') }}" alt= "Admin Avatar" class ="avatar">

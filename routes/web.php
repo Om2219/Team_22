@@ -13,6 +13,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ChatBotController;
 use App\Http\Controllers\FavouriteController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\AdminWebLoginController;
 use App\Http\Controllers\PointsVoucherController;
 use App\Http\Controllers\DailySpin;
 use App\Http\Controllers\SlotMachine;
@@ -135,9 +136,8 @@ Route::post('contactform', [ContactFormController::class, 'submit'])->name('cont
 
 
 //admin login route
-Route::get('admin', function (){
-    return view ('admin');
-})->name('admin.login');
+Route::get('admin/login', [AdminWebLoginController::class, 'showLoginForm'])->name('admin.login');
+Route::post('admin/login', [AdminWebLoginController::class, 'login'])->name('admin.login.submit');
 
 //Suja
 Route::get('/search', [ProductController::class, 'search'])->name('search');
