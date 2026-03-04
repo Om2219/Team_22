@@ -33,65 +33,15 @@
         <th>Status</th>
         <th>Date</th>
 </tr>
-<tr>
-    <td>#1</td>
-     <td>John Doe</td>
-     <td>£12</td>
-      <td>Pending</td>
-       <td>12 feb 2026</td>
-</tr>
-
-<tr>
-    <td>#2</td>
-     <td>Joshep Doe</td>
-     <td>£10</td>
-      <td>Shipped</td>
-       <td>14 feb 2026</td>
-</tr>
-
-<tr>
-    <td>#3</td>
-     <td>Danny kio</td>
-     <td>£19</td>
-      <td>Processing</td>
-       <td>19 feb 2026</td>
-</tr>
-
-<tr>
-    <td>#4</td>
-     <td>Michal Anna</td>
-   <td>£29</td>
-      <td>Shipped</td>
-       <td>19 feb 2026</td>
-</tr>
-
-
-<tr>
-    <td>#5</td>
-     <td>Marry James</td>
-    <td>£8</td>
-      <td>Processing</td>
-       <td>20 feb 2026</td>
-</tr>
-
-
-<tr>
-    <td>#6</td>
-     <td>Filex Rio</td>
-    <td>£9</td>
-      <td>Pending</td>
-       <td>21 feb 2026</td>
-</tr>
-
-
-<tr>
-    <td>#7</td>
-     <td>Rayan Jio</td>
-    <td>£6</td>
-      <td>Processing</td>
-       <td>22 feb 2026</td>
-</tr>
-
+    @foreach($orders as $order)
+    <tr>
+        <td>{{ $order->id }}</td>
+        <td>{{ $order->user->forename ?? 'Guest' }} {{ $order->user->surname ?? '' }}</td>
+        <td>£{{ number_format($order->total, 2) }}</td>
+        <td>{{ ucfirst($order->status ?? 'Pending') }}</td>
+        <td>{{ $order->created_at->format('d M Y') }}</td>
+    </tr>
+    @endforeach
 
 </table>
 
