@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Controllers\Admin\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,4 +31,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('customers/{id}', [CustomerController::class, 'show']);
     Route::put('customers/{id}', [CustomerController::class, 'update']);
     Route::delete('customers/{id}', [CustomerController::class, 'destroy']);
+
+    // Order routes - admin controls
+    Route::get('orders', [OrderController::class, 'index']);
+    Route::get('orders/{id}', [OrderController::class, 'show']);
+    Route::put('orders/{id}/status', [OrderController::class, 'updateStatus']);
 });
