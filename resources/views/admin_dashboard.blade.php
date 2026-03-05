@@ -53,7 +53,7 @@
 @forelse($recentOrders as $order)
 <tr>
     <td>#{{$order->id}}</td>
-    <td>{{$order->user->name ?? 'Guest'}}</td>
+    <td>{{$order->user->forename ?? 'Guest'}} {{$order->user->surname ?? ''}}</td>
     <td>{{ucfirst($order->status ?? 'Pending')}}</td>
     <td>{{ $order->created_at->format('M d, Y') }}</td>
 </tr>
