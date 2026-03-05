@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\AdminWebLoginController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\AdminProductController;
+use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\PointsVoucherController;
 use App\Http\Controllers\DailySpin;
 use App\Http\Controllers\SlotMachine;
@@ -157,6 +158,7 @@ Route::middleware(['auth', 'admin'])->group(function() {
     ->name('admin.orders');
      Route::get('/admin/products', [AdminProductController::class, 'webIndex'])
     ->name('admin.products');
+    Route::get('/admin/reports', [ReportController::class, 'index'])->name('admin.reports');
 });
 
 // Route::get('studentlisting', 'App\Http\Controllers\StudentController@list')->name('list_student');
