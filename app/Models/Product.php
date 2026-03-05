@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Product_image;
 use App\Models\Category;
 use App\Models\Stock;
+use App\Models\OrderItem;
 
 
 class Product extends Model
@@ -45,5 +46,8 @@ class Product extends Model
         return $this->belongsToMany(\App\Models\User::class, 'favourites')->withTimestamps();
     }
 
+    public function order_items() {
+        return $this->hasMany(OrderItem::class);
+    }
 
 }
