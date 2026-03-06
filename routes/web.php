@@ -159,6 +159,9 @@ Route::middleware(['auth', 'admin'])->group(function() {
      Route::get('/admin/products', [AdminProductController::class, 'webIndex'])
     ->name('admin.products');
     Route::get('/admin/reports', [ReportController::class, 'index'])->name('admin.reports');
+    // stock routes
+    Route::post('admin/stock/{product}/update', [ProductController::class, 'updateStock'])->name('updateStock');
+    Route::post('admin/stock/{product}/restock', [ProductController::class, 'restock'])->name('stockRestock');
 });
 
 // Route::get('studentlisting', 'App\Http\Controllers\StudentController@list')->name('list_student');

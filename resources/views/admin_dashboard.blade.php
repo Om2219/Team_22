@@ -9,7 +9,7 @@
     <li><a href="{{ route ('admin.dashboard') }}">Dashboard</a></li>
     <li><a href="{{ route ('admin.customers') }}">Customers</a></li>
     <li><a href="{{ route ('admin.orders') }}">Orders</a></li>
-    <li><a href="{{ route ('admin.products') }}">Product</a></li>
+    <li><a href="{{ route ('admin.products') }}">Products</a></li>
     <li><a href="{{ route ('admin.reports') }}">Reports</a></li>
     <li>
         <form method = "POST" action="{{route('logout')}}"> @csrf <button class = "headbut">Sign Out</button> 
