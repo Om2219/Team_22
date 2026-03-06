@@ -167,9 +167,15 @@ color: #2e2e2e;
     border-radius: 10px;
 }
 
-.table-section th, .table-section td{
+.table-section th {
     text-align: left;
     padding: 12px 12px;
+    font-size: 0.95rem;
+}
+
+.table-section td {
+    text-align: left;
+    padding: 0px 12px;
     font-size: 0.95rem;
 }
 
@@ -230,8 +236,8 @@ color: #2e2e2e;
     background: white;
     cursor: pointer;
     font-size: 0.9rem;
-    width: 110px;
-    margin-top: 12px;
+    width: 120px;
+    margin-top: 14px;
 }
 
 .status-select:hover {

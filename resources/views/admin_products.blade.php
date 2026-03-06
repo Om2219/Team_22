@@ -174,9 +174,15 @@ color: #2e2e2e;
     border-radius: 10px;
 }
 
-.table-section th, .table-section td{
+.table-section th {
     text-align: left;
     padding: 12px 12px;
+    font-size: 0.95rem;
+}
+
+.table-section td {
+    text-align: left;
+    padding: 0px 12px;
     font-size: 0.95rem;
 }
 
@@ -251,6 +257,26 @@ color: #2e2e2e;
 .logout-link:hover{
     color:#bdab53;
     border-color:white;
+}
+
+.d-inline-flex {
+    margin-top: 16px;
+    align-items: center;
+}
+
+.d-inline {
+    margin-top: 16px;
+}
+
+.form-control-sm {
+    height: 28px;
+    padding: 2px 6px;
+}
+
+.btn-sm {
+    height: 28px;
+    padding: 2px 8px;
+    line-height: 1.2;
 }
 
     </style>
