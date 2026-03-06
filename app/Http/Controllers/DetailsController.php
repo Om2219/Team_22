@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 
 class DetailsController extends Controller {
 
@@ -68,16 +69,18 @@ class DetailsController extends Controller {
         $user = Auth::user();
 
         $request->validate([
-            'current_password' => 'required',
-            'new_password' => 'required|string|min:6|confirmed',
+            'current_password' => ['required'],
+            'new_password' => ['required','confirmed',Password::min(6)->mixedCase()->numbers()->symbols(),],
         ]);
 
         if (!Hash::check($request->current_password, $user->password)) {
-            return redirect()->back();
-        } else {
+            return redirect()->back()->withErrors(['current_password' => 'Current password is incorrect',]);
+        }
+        if (Hash::check($request->new_password, $user->password)){
+            return redirect()->back()->withErrors(['new_password' => 'New password must be different from your current password',]);
+        }
             $user->password = Hash::make($request->new_password);
             $user->save();
-        }
-        return redirect()->route('mydetails');
+        return redirect()->route('mydetails')->with('success', 'Password updated successfully');
     }
 }
