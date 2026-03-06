@@ -22,29 +22,54 @@
     <h1> Orders Information</h1>
     <p> Overview of recent customer orders</p>
 
+@if(session('success'))
+    <div class="alert alert-success"> {{ session('success') }} </div>
+@endif
 
+@if(session('error'))
+    <div class="alert alert-danger"> {{ session('error') }} </div>
+@endif
 
 <section class="table-section">
     <h2>Recent Orders</h2>
-<table>
-    <tr>
-        <th>Order ID</th>
-        <th>Customer</th>
-        <th>Total</th>
-        <th>Status</th>
-        <th>Date</th>
-</tr>
-    @foreach($orders as $order)
-    <tr>
-        <td>{{ $order->id }}</td>
-        <td>{{ $order->user->forename ?? 'Guest' }} {{ $order->user->surname ?? '' }}</td>
-        <td>£{{ number_format($order->total, 2) }}</td>
-        <td>{{ ucfirst($order->status ?? 'Pending') }}</td>
-        <td>{{ $order->created_at->format('d M Y') }}</td>
-    </tr>
-    @endforeach
-
-</table>
+    <table>
+        <tr>
+            <th>Order ID</th>
+            <th>Customer</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Update</th>
+        </tr>
+        
+        @foreach($orders as $order)
+        <tr>
+            <td>#{{ $order->id }}</td>
+            <td>{{ $order->user->forename ?? 'Guest' }} {{ $order->user->surname ?? '' }}</td>
+            <td>£{{ number_format($order->total, 2) }}</td>
+            <td>
+                <span class="status-badge status-{{ $order->status ?? 'pending' }}">
+                    {{ ucfirst($order->status ?? 'Pending') }}
+                </span>
+            </td>
+            <td>{{ $order->created_at->format('d M Y') }}</td>
+            <td>
+                <form action="{{ route('admin.orders.status', $order->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <select name="status" onchange="this.form.submit()" class="status-select">
+                        <option value="pending" {{ $order->status == 'pending' ? 'selected' : '' }}>Pending</option>
+                        <option value="processing" {{ $order->status == 'processing' ? 'selected' : '' }}>Processing</option>
+                        <option value="shipped" {{ $order->status == 'shipped' ? 'selected' : '' }}>Shipped</option>
+                        <option value="delivered" {{ $order->status == 'delivered' ? 'selected' : '' }}>Delivered</option>
+                        <option value="cancelled" {{ $order->status == 'cancelled' ? 'selected' : '' }}>Cancelled</option>
+                    </select>
+                </form>
+            </td>
+        </tr>
+        @endforeach
+    </table>
+</section>
 
 </main>
 
@@ -163,6 +188,75 @@ color: #2e2e2e;
 
 }
 
+/* to match the product page style */
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.status-pending {
+    background: #fff3f3;
+    color: #c44536;
+}
+
+.status-processing {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.status-shipped {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-delivered {
+    background: #d1e7dd;
+    color: #0f5132;
+}
+
+.status-cancelled {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* to match the product page style */
+.status-select {
+    padding: 4px 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+    width: 110px;
+    margin-top: 12px;
+}
+
+.status-select:hover {
+    border-color: #7a4900;
+}
+
+.status-form {
+    margin: 0;
+}
+
+.alert-success {
+    background: #d4edda;
+    color: #155724;
+    padding: 12px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.alert-danger {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 12px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
 
 /**Responsive */
 @media (max-width:900px){
@@ -186,6 +280,7 @@ color: #2e2e2e;
     text-align:left;
     width: 100%;
     border-radius:6px;
+    
 }
 
 .logout-link:hover{

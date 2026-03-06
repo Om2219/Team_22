@@ -162,6 +162,8 @@ Route::middleware(['auth', 'admin'])->group(function() {
     // stock routes
     Route::post('admin/stock/{product}/update', [ProductController::class, 'updateStock'])->name('updateStock');
     Route::post('admin/stock/{product}/restock', [ProductController::class, 'restock'])->name('stockRestock');
+    // order status update route
+    Route::put('/admin/orders/{id}/status', [OrderController::class, 'webUpdateStatus'])->name('admin.orders.status');
 });
 
 // Route::get('studentlisting', 'App\Http\Controllers\StudentController@list')->name('list_student');

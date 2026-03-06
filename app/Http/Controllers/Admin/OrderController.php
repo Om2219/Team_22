@@ -56,4 +56,21 @@ class OrderController extends Controller
             'data' => $order,
         ]);
     }
+
+    // for web view status update
+    public function webUpdateStatus(Request $request, $id)
+    {
+        $request->validate([
+            'status' => 'required|in:pending,processing,shipped,delivered,cancelled',
+        ]);
+
+        $order = Order::find($id);
+        if(! $order){
+            return redirect()->back()->with('error', 'Order not found');
+        }
+
+        $order->status = $request->status;
+        $order->save();
+        return redirect()->back()->with('success', 'Order status updated successfully');
+    }
 }
