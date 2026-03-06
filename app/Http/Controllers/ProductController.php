@@ -142,7 +142,7 @@ class ProductController extends Controller
     public function stockChecker(){
 
         $products = Product::with('stock')->orderBy('name')->get();
-        return view('stock', compact('products'));
+        return redirect()->route('admin.products');
 
     }
 
@@ -154,7 +154,7 @@ class ProductController extends Controller
 
         $product->stock->update(['stock' => 67]);
 
-        return redirect()->route('stockChecker')->with($product->name .'has been stocked with more bananas');
+        return redirect()->route('admin.products')->with('success', $product->name .' has been restocked successfully');
 
     }
 
@@ -168,7 +168,7 @@ class ProductController extends Controller
 
         $product->stock->update(['stock' => $request->stock]);
 
-        return redirect()->route('stockChecker')->with($product->name .'has been stocked with more bananas');
+        return redirect()->route('admin.products')->with('success', 'Stock updated successfully for '. $product->name);
 
     }
 
