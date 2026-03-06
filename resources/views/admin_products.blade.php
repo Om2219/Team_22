@@ -20,12 +20,18 @@
 
 <main class="Admin_Content">
     <h1> Products</h1>
-    <p> Manage Roots products catalogue</p>
+    <p> Manage products and stock levels</p>
 
+    @if(session('success'))
+        <div class="alert alert-success"> {{ session('success') }} </div>
+    @endif
 
+    @if(session('error'))
+        <div class="alert alert-danger"> {{ session('error') }} </div>
+    @endif
 
 <section class="table-section">
-    <h2>Products  Stock</h2>
+    <h2>Stock Levels</h2>
 <table>
     <tr>
         <th>Product ID</th>
@@ -33,15 +39,40 @@
         <th>Category</th>
         <th>Price</th>
         <th>Stock</th>
+        <th>Update Stock</th>
 </tr>
 
 @foreach($products as $product)
-<tr>
+<tr class="@if($product->stock && $product->stock->stock <= $product->stock->low_stock) table-danger @endif">
     <td>{{ $product->id }}</td>
     <td>{{ $product->name }}</td>
     <td>{{ $product->category->name ?? 'Uncategorised' }}</td>
     <td>£{{ number_format($product->price, 2) }}</td>
-    <td>{{ $product->stock->stock ?? 0 }}</td>
+    <td>
+        @if($product->stock)
+            @if($product->stock->stock <= $product->stock->low_stock)
+                <span class="text-danger fw-bold">{{ $product->stock->stock }}</span>
+            @else
+                {{ $product->stock->stock }}
+            @endif
+        @else
+            0
+        @endif
+    </td>
+    <td>
+        <form action="{{ route('updateStock', $product) }}" method="POST" class="d-inline-flex gap-3">
+            @csrf
+            <input type="number" name="stock" value="{{ $product->stock->stock }}"  min="0" class="form-control form-control-sm" style="width:100px;">
+            <button type="submit" class="btn btn-sm btn-outline-dark"> Update </button>
+        </form>
+
+        @if($product->stock && $product->stock->stock <= $product->stock->low_stock)
+            <form action="{{ route('stockRestock', $product) }}" method="POST" class="d-inline ms-2">
+                @csrf
+                <button type="submit" class="btn btn-sm btn-success"> Restock </button>
+            </form>
+        @endif
+    </td>
 </tr>
 @endforeach
 
@@ -164,6 +195,33 @@ color: #2e2e2e;
 
 }
 
+.table-danger {
+    background-color: #fff3f3;
+}
+
+.text-danger {
+    color: #c44536;
+}
+
+.fw-bold {
+    font-weight: 700;
+}
+
+.alert-success {
+    background: #d4edda;
+    color: #155724;
+    padding: 12px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.alert-danger {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 12px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
 
 /**Responsive */
 @media (max-width:900px){
@@ -187,10 +245,12 @@ color: #2e2e2e;
     text-align:left;
     width: 100%;
     border-radius:6px;
+    
 }
 
 .logout-link:hover{
     color:#bdab53;
     border-color:white;
 }
+
     </style>
