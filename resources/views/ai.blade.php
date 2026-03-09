@@ -33,16 +33,16 @@
 
         <div class="chat-container">
 
-            <div class="chat-header">
+            <div class="chat-header d-flex align-items-center">
                 <img src="{{ Vite::asset('public/images/monkey.png') }}" class="avatar">
                 <span>Silly Monkey</span>
             </div>
 
-            <div id="content-box" class="chat-messages"></div>
+            <div id="content-box" class="chat-messages d-flex flex-column p-3 gap-2"></div>
 
-            <div class="chat-input">
-                <input id="input" type="text" name="input" placeholder="Type a message...">
-                <button id="button-submit">Send</button>
+            <div class="chat-input input-group">
+                <input id="input" type="text" name="input" placeholder="Type a message..." class="form-control">
+                <button id="button-submit" class="btn btn-danger">Send</button>
             </div>
 
         </div>
@@ -61,7 +61,9 @@
 
         let value = $('#input').val();
 
-        $('#content-box').append(`<div>${value}</div>`);
+        $('#content-box').append(`<div class="message user-message">${value}</div>`);
+
+        $('#input').val("");
 
         $.ajax({
             type: 'POST',
@@ -74,7 +76,7 @@
                         <img src="{{ Vite::asset('public/images/monkey.png') }}" class="bob">
                         Silly Monkey
                     </div>
-                    <div>${data}</div>
+                    <div class="message bot-message">${data}</div>
                 `);
             }
         });
