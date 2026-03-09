@@ -54,10 +54,10 @@
 
 <div class="scroll-spacer"></div> --}}
 
-    <div class="animBg">
+    <!--<div class="animBg">
         {{-- we can change the background to something more fitting this is tempoary --}}
         <img src="{{ asset('images/Mint.png') }}">
-    </div>
+    </div>-->
 
     <img id="pen" src="{{ asset('images/Pen.png') }}">
     {{-- <img id="holder" src="{{ asset('images/hold.png') }}"> --}}
@@ -84,16 +84,22 @@
                 <!-- This section exists just to give scroll space -->
                 <div class="blockUno">
                  <h1> hello </h1>
+                 <br>
+                 <br>
                 </div>
                 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                 <div class="blockDos">
                  <h2> Silly Monkey </h2>
+                 <br>
+                 <br>
                 </div>
                 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                 <div class = "blocktres">
                  <h3> get back to monkey business </h3>
+                 <br>
+                 <br>
                 </div>
             </section>
 

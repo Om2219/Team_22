@@ -1,10 +1,14 @@
 
+
+
 /* om css*/
 header{
 
     /* background-color: #754C24; */
     background-color: seagreen;
     width: 100%;
+    /* sion */
+    overflow-x: hidden;
 }
 
 .logo {
@@ -112,7 +116,6 @@ a{
 
 body{
     background-color: white; 
-
 }
 
 
@@ -966,4 +969,94 @@ user-select: none;
 
 .chat-input button:hover {
     background: #911414;
+}
+
+/* Sion */
+/*
+.tlBlock
+{
+    padding: 20px;
+    width: 100%; 
+    min-height: 400px; 
+    position: relative;
+}
+
+.line {
+    background: black;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    transform: translateX(-50%) scaleY(0);
+    transform-origin: top;
+    left: 50%;
+}
+
+.timeArea {
+padding: 40px 40px 40px 40px;
+position: relative;
+width: 50%;
+}
+
+.imgItem {
+background: white;
+color: black;
+padding: 20%;
+display: inline-block;
+position: relative;
+opacity: 0;
+transform: translateY(50px);
+}
+
+.timeArea.leftA {
+    text-align: right;
+    left: 0;
+}
+
+.timeArea.rightA {
+text-align: left;
+left: 50%;
+}
+
+.timeImg {
+    width: 120px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.timeArea::before {
+    content: "";
+    height: 4px;
+    width: 40px;
+    background: white;
+    top: 60px;
+    position: absolute;
+}
+
+.timeArea.leftA::before {
+    right: -40px;
+}
+
+.timeArea.rightA::before {
+    left: -40px;
+} unused */
+
+.aiSection {
+    position: relative;
+    z-index: 9999;
+}
+
+#chatbot {
+    display: none;
+}
+
+
+#navHeader {
+    background-color: seagreen;
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
 }
