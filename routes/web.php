@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\ReportController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\PointsVoucherController;
 use App\Http\Controllers\DailySpin;
 use App\Http\Controllers\SlotMachine;
@@ -167,6 +168,12 @@ Route::middleware(['auth', 'admin'])->group(function() {
     Route::post('admin/stock/{product}/restock', [ProductController::class, 'restock'])->name('stockRestock');
     // order status update route
     Route::put('/admin/orders/{id}/status', [OrderController::class, 'webUpdateStatus'])->name('admin.orders.status');
+    // contact form route
+    Route::get('/admin/contactforms', [ContactController::class, 'index'])->name('admin.contactforms');
+    Route::get('/admin/contactforms/{id}', [ContactController::class, 'show'])->name('admin.contactforms.show');
+    Route::post('/admin/contactforms/{id}/reply', [ContactController::class, 'reply'])->name('admin.contactforms.reply');
+    Route::delete('/admin/contactforms/{id}', [ContactController::class, 'destroy'])->name('admin.contactforms.destroy');
+    Route::get('admin/contactforms/{id}', function() { return redirect()->route('admin.contactforms'); });
 });
 
 // Route::get('studentlisting', 'App\Http\Controllers\StudentController@list')->name('list_student');

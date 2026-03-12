@@ -15,17 +15,18 @@
     </div>
 
     <div>
-        <ul>
+        <ul style="list-style: none; padding: 0; margin: 0;">
             @foreach($products as $product)
                 <li class="searchBox">
                     <h3>{{ $product->name }}</h3>
                     @if ($product->images->isNotEmpty())
                         <img src="{{ asset('images/products/' . $product->images->first()->product_image) }}" alt="{{ $product->name }}">
                     @endif
-                    <p>Price: ${{ number_format($product->price, 2) }}</p>
+                    <p>Price: £{{ number_format($product->price, 2) }}</p>
                     <button><a href="{{ route('product.show', $product->id) }}">View Details</a></button>
                 </li>
             @endforeach     
+            
         </ul>
     </div>
     {{ $products->links() }}
