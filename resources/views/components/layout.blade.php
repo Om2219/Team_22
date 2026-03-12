@@ -15,11 +15,52 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet"/>
+    <style>
+    /* making it so that the admin theme has a different colour */
+    .admin-theme header,
+    .admin-theme .blockUno,
+    .admin-theme .blockDos,
+    .admin-theme .blocktres,
+    .admin-theme footer {
+        background-color: #b2ddec
+    }
+
+    .admin-theme .allProducts,
+    .admin-theme .save-btn {
+        background-color: #b2ddec;
+    }
+
+    .admin-theme .headbut {
+        background-color: #061156;
+        color: #b2ddec;
+    }
+
+    .admin-theme .headbut a {
+        background-color: #061156;
+        color: #b2ddec;
+    }
+
+    .admin-theme .category-box:hover {
+        background-color: #b2ddec;
+    }
+
+    .admin-theme .allProducts:hover,
+    .admin-theme .save-btn:hover {
+        background-color: #b2ddec;
+    }
+    .admin-theme img[src*="Mint.png"] {
+        content: url('/images/Blue.png');
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+  </style>
 </head>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK" crossorigin="anonymous"></script>
 {{-- The body of a page which can be applied to all pages so we only edit one layout --}}
-<body>
+<body class="{{ Auth::check() && Auth::user()->role === 'admin' ? 'admin-theme' : '' }}">
 
   {{-- Header for all pages --}}
   <header>
