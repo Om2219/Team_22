@@ -95,16 +95,16 @@
           </div>
           {{-- bottom of nav bar and contains our 5 categories with links, and if you hover over it gives you more specific options--}}    
           <div class= "d-flex justify-content-center flex-wrap gap-3 border-top pt-4">
+              <button class ="headbut"><a href="/aboutus" class="text-green text-decoration-none">About Us</a></button>
+              <button class ="headbut"><a href="/products" class="text-green text-decoration-none">All products</a></button>        
               <button class ="headbut"><a href="{{ route('products.cat', 'ArtCraft')}}" class="text-green text-decoration-none">Arts & Crafts</a></button>
-              <button class ="headbut"><a href="{{ route('products.cat', 'Toys')}}" class="text-green text-decoration-none">Toys</a></button>
-              <button class ="headbut"><a href="{{ route('products.cat', 'Stationery')}}" class="text-green text-decoration-none">Stationery</a></button>
               <button class ="headbut"><a href="{{ route('products.cat', 'Books')}}" class="text-green text-decoration-none">Books</a></button>
               <button class ="headbut"><a href="{{ route('products.cat', 'Office')}}" class="text-green text-decoration-none">Office Supplies</a></button>
+              <button class ="headbut"><a href="{{ route('products.cat', 'Stationery')}}" class="text-green text-decoration-none">Stationery</a></button>
+              <button class ="headbut"><a href="{{ route('products.cat', 'Toys')}}" class="text-green text-decoration-none">Toys</a></button>
               <button class ="headbut"><a href="{{ route('products.cat', 'rewards')}}" class="text-green text-decoration-none">Rewards</a></button>
-              <button class ="headbut"><a href="/products" class="text-green text-decoration-none">All products</a></button>
-              <button class ="headbut"><a href="/aboutus" class="text-green text-decoration-none">About Us</a></button>
+              <button class ="headbut"><a href="/contactform" class="text-green text-decoration-none">Contact Us</a></button>
               <button class ="headbut"><a href="/faq" class="text-green text-decoration-none">FAQ</a></button>
-              <button class ="headbut"><a href="/contactform" class="text-green text-decoration-none">Contact us</a></button>
               <button id ="aiBtn" class ="headbut"><a class="text-green text-decoration-none">MONKEYS</a></button>
               <button id ="darkBtn" class ="headbut"><a id="mTxt" class="text-green text-decoration-none"></a></button>  
           </div><br> 
@@ -185,9 +185,9 @@
           <div class="col">
             <h6>Useful Links</h6>
               <ul class="list-unstyled">
-                <li class="list-group-item"><a href="/home" class="text-light text-decoration-none">Accounts page</a></li>
-                <li class="list-group-item"><a href="/home" class="text-light text-decoration-none">My Orders</a></li>
-                <li class="list-group-item"><a href="/home" class="text-light text-decoration-none">Track Parcel</a></li>
+                <li class="list-group-item"><a href="/account" class="text-light text-decoration-none">Accounts page</a></li>
+                <li class="list-group-item"><a href="/order" class="text-light text-decoration-none">My Orders</a></li>
+                <li class="list-group-item"><a href="/reward" class="text-light text-decoration-none">Rewards</a></li>
               </ul>
           </div>
 
@@ -196,7 +196,7 @@
               <ul class="list-unstyled">
                 <li class="list-group-item"><a href="/aboutus" class="text-light text-decoration-none">About Us</a></li>
                 <li class="list-group-item"><a href="/faq" class="text-light text-decoration-none">FAQ</a></li>
-                <li class="list-group-item"><a href="/ai" class="text-light text-decoration-none">Ai assistant</a></li>
+                <li class="list-group-item"><a href="/contactform" class="text-light text-decoration-none">Contact Us</a></li>
               </ul>
           </div>
         </div>

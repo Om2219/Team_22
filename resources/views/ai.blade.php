@@ -34,8 +34,9 @@
         <div class="chat-container">
 
             <div class="chat-header d-flex align-items-center">
-                <img src="{{ Vite::asset('public/images/monkey.png') }}" class="avatar">
-                <span>Silly Monkey</span>
+                <img src="{{ Vite::asset('public/images/assistant.png') }}" class="avatar">
+                {{-- <span>Silly Monkey</span> --}}
+                <span> Assistant lilm Mo</span>
             </div>
 
             <div id="content-box" class="chat-messages d-flex flex-column p-3 gap-2"></div>
