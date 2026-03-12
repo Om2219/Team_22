@@ -13,25 +13,27 @@ class ProductController extends Controller
 
     public function productPage(Request $request)
     {
-
-        $query = Product::with('images');
+        // 1. Added withAvg to calculate the 1-5 star average from the reviews table
+        $query = Product::with('images')->withAvg('reviews', 'rating');
 
         // Apply Sorting logic
         if ($request->get('sort') == 'price_asc') {
             $query->orderBy('price', 'asc');
         } elseif ($request->get('sort') == 'price_desc') {
             $query->orderBy('price', 'desc');
+        } elseif ($request->get('sort') == 'rating_desc') { 
+            // 2. Added this case to sort by the calculated average
+            $query->orderBy('reviews_avg_rating', 'desc');
         } else {
             $query->orderBy('created_at', 'desc');
         }
 
-            $products = $query->paginate(20)->withQueryString();
+        $products = $query->paginate(20)->withQueryString();
 
-            $rp = session()->get('recently_viewed', []);
-            $rvp = Product::with('images')->whereIn('id', $rp)->get();
+        $rp = session()->get('recently_viewed', []);
+        $rvp = Product::with('images')->whereIn('id', $rp)->get();
 
         return view('products', compact('products', 'rvp'));
-
     }
 
     public function cat(Request $request, $category) 
@@ -251,32 +253,33 @@ class ProductController extends Controller
     } 
     
     //Suja's work
-    public function search(Request $request){
-        $search = $request ->input('search');
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
 
         if (!$search) {
             return redirect()->back();
         }
 
-        $products = Product::where('name', 'LIKE', "{$search}%")
-        ->orderBy('created_at', 'desc')
-        ->paginate(10);
-         return view('search', [
-        'products' => $products, 
-        'search' => $search
-        ]);
+        // 1. Join reviews and calculate average rating from your fresh seeders
+        $query = Product::where('name', 'LIKE', "%{$search}%")
+                        ->withAvg('reviews', 'rating');
 
-        $query = Product::where('name', 'LIKE', "%{$search}%");
-
+        // 2. Sorting logic
         if ($request->get('sort') == 'price_asc') {
             $query->orderBy('price', 'asc');
         } elseif ($request->get('sort') == 'price_desc') {
             $query->orderBy('price', 'desc');
+        } elseif ($request->get('sort') == 'rating_desc') {
+            // This 'reviews_avg_rating' column is created automatically by withAvg()
+            $query->orderBy('reviews_avg_rating', 'desc');
         } else {
+            // Default sorting: Newest products first
             $query->orderBy('created_at', 'desc');
         }
 
-            $products = $query->paginate(10);
+        $products = $query->paginate(10);
+
         return view('search', compact('products', 'search'));
     }
 

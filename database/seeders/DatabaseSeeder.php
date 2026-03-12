@@ -28,7 +28,11 @@ class DatabaseSeeder extends Seeder
             ProductImagesSeeder::class,
             Accountseeder1::class,
             AdminUserSeeder::class,
-            VoucherSeeder::class
+            VoucherSeeder::class,
+            ReviewSeeder::class,
+            
         ]);
+        
     }
+
 }
