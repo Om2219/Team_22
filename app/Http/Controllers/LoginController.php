@@ -19,6 +19,11 @@ class LoginController extends Controller
             return back()->withErrors(['email' => 'Invalid login details.']);
         }
 
+        // check if the user is banned
+        if(!$user->is_active){
+            return back()->withErrors(['email' => 'This account has been banned. Please contact customer support.']);
+        }
+
         if($user->role == 'admin'){
             return back()->withErrors([
                 'email' => 'Admin users please login via the admin login.',

@@ -62,6 +62,11 @@
     .admin-icon{
         color: #061156;
     }
+    .admin-theme img[src*="admin logo.png"] {
+        width: 200px;
+        height: auto;
+        object-fit: contain;
+    }
 
   </style>
 </head>
@@ -104,7 +109,7 @@
           {{-- bottom of nav bar and contains our 5 categories with links, and if you hover over it gives you more specific options--}}    
           <div class= "d-flex justify-content-center flex-wrap gap-3 border-top pt-4">
               <button class ="headbut"><a href="/aboutus" class="text-green text-decoration-none">About Us</a></button>
-              <button class ="headbut"><a href="/products" class="text-green text-decoration-none">All products</a></button>        
+              <button class ="headbut"><a href="/products" class="text-green text-decoration-none">All Products</a></button>        
               <button class ="headbut"><a href="{{ route('products.cat', 'ArtCraft')}}" class="text-green text-decoration-none">Arts & Crafts</a></button>
               <button class ="headbut"><a href="{{ route('products.cat', 'Books')}}" class="text-green text-decoration-none">Books</a></button>
               <button class ="headbut"><a href="{{ route('products.cat', 'Office')}}" class="text-green text-decoration-none">Office Supplies</a></button>

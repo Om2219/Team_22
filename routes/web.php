@@ -173,7 +173,10 @@ Route::middleware(['auth', 'admin'])->group(function() {
     Route::get('/admin/contactforms/{id}', [ContactController::class, 'show'])->name('admin.contactforms.show');
     Route::post('/admin/contactforms/{id}/reply', [ContactController::class, 'reply'])->name('admin.contactforms.reply');
     Route::delete('/admin/contactforms/{id}', [ContactController::class, 'destroy'])->name('admin.contactforms.destroy');
-    Route::get('admin/contactforms/{id}', function() { return redirect()->route('admin.contactforms'); });
+    // customer routes
+    Route::get('/admin/customers/create', [CustomerController::class, 'create'])->name('admin.customers.create');
+    Route::post('/admin/customers', [CustomerController::class, 'store'])->name('admin.customers.store');
+    Route::post('/admin/customers/{id}/toggle-status', [CustomerController::class, 'toggleStatus'])->name('admin.customers.toggle');
 });
 
 // Route::get('studentlisting', 'App\Http\Controllers\StudentController@list')->name('list_student');

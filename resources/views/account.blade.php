@@ -20,7 +20,7 @@
             <div class="card border-dark text-center h-100 ">
                 <div class="card-body d-flex flex-column">
                     <h2>My Details</h2>
-                    <p> Manage and change email and password</p>
+                    <p> Manage and Change Email and Password</p>
                     <a class = "headbut mt-auto mb-3" href="/mydetails">Edit My Details</a>
                 </div>
             </div>
@@ -30,7 +30,7 @@
             <div class="card border-dark text-center h-100">
                 <div class="card-body d-flex flex-column">
                     <h2>Wishlist</h2>
-                    <p>View products you've favourited</p>
+                    <p>View your Favourite Products</p>
                     <a class="headbut mt-auto mb-3" href="{{ route('wishlist.index') }}">View wishlist</a>
                 </div>
             </div>
@@ -39,8 +39,8 @@
         <div class = "col col-lg-3">
             <div class="card border-dark text-center h-100">
                 <div class="card-body d-flex flex-column">
-                    <h2>My rewards</h2>
-                    <p> Go to your rewards page</p>
+                    <h2>My Rewards</h2>
+                    <p> Go to your Rewards Page</p>
                     <a class = "headbut mt-auto mb-3" href="/reward"> my rewards</a>
                 </div>
             </div>

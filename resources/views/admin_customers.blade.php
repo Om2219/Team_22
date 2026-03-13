@@ -20,30 +20,52 @@
 
 <main class="Admin_Content">
     <h1>Customers</h1>
-    <p> Registered users on the Roots platform</p>
+    <p> Registered Users on the Roots platform</p>
 
+@if(session('success'))
+    <div style="background: #d4edda; color: #155724; padding: 12px; border-radius: 4px; margin-bottom: 20px;">{{ session('success') }}</div>
+@endif
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+    <h2 style="color: #061156; font-size: 1.2rem; margin: 0;">Customers Information</h2>
+    <a href="{{ route('admin.customers.create') }}" style="background: #28a745; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px;">+ Add User</a>
+</div>
 
 <section class="table-section">
-    <h2>Customers Information</h2>
-<table>
-    <tr>
-        <th>User  ID</th>
-        <th>Name </th>
-        <th>Email</th>
-        <th>Joined</th>
-    </tr>
+    <table>
+        <tr>
+            <th>User ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
 
-    @foreach ($users as $user)
-    <tr>
-        <td>{{ $user->id }}</td>
-        <td>{{ $user->forename ?? 'Guest' }} {{ $user->surname ?? '' }}</td>
-        <td>{{ $user->email }}</td>
-        <td>{{ $user->created_at->format('M d, Y') }}</td>
-    </tr>
-    @endforeach
+        @foreach ($users as $user)
+        <tr>
+            <td>{{ $user->id }}</td>
+            <td>{{ $user->forename ?? 'Guest' }} {{ $user->surname ?? '' }}</td>
+            <td>{{ $user->email }}</td>
+            <td>
+                @if($user->is_active)
+                    <span style="color: #28a745;">Active</span>
+                @else
+                    <span style="color: #c44536;">Banned</span>
+                @endif
+            </td>
+            <td>
+                <form action="{{ route('admin.customers.toggle', $user->id) }}" method="POST" style="display:inline;">
+                    @csrf
+                    <button type="submit" style="background: none; border: none; color: #061156; text-decoration: underline; cursor: pointer;">
+                        {{ $user->is_active ? 'Ban' : 'Unban' }}
+                    </button>
+                </form>
+            </td>
+        </tr>
+        @endforeach
 
-
-</table>
+    </table>
+</section>
 
 </main>
 
