@@ -30,7 +30,7 @@
 
 
     <div class="card">
-        <h3>Total orders</h3>
+        <h3>Total Orders</h3>
         <p>{{ $totalOrders }}</p>
 </div>
 
