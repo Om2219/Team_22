@@ -1,10 +1,14 @@
 
+
+
 /* om css*/
 header{
 
     /* background-color: #754C24; */
     background-color: seagreen;
     width: 100%;
+    /* sion */
+    overflow-x: hidden;
 }
 
 .logo {
@@ -112,7 +116,6 @@ a{
 
 body{
     background-color: white; 
-
 }
 
 
@@ -236,23 +239,43 @@ footer{
 .blockUno {
     background-color: seagreen;
     border-radius: 150px 20px 20px 150px; 
-    padding: 40px;
+    padding: 20px;
     width: 100%; 
     min-height: 600px; 
 
 }
 
+#first {
+    border-radius: 150px 20px 20px 150px; 
+    padding: 40px;
+    width: 100%; 
+    min-height: 500px; 
+}
+
+#second {
+    padding: 40px;
+    max-height: 500px; 
+}
+
+#sillyMonkey {
+    padding: 40px;
+    height: 200px;        
+    width: 100%;
+    object-fit: contain;  
+}
+
+
 .blockDos {
     background-color: seagreen;
     border-radius: 150px 150px 150px 150px; 
-    padding: 40px;
+    padding: 20px;
     width: 100%; 
     min-height: 600px; 
 
 }
 
 .blocktres{
-    background-color: seagreen;
+    /* background-color: seagreen; */
     border-radius: 20px 150px 150px 20px; 
     padding: 40px;
     width: 100%; 
@@ -878,9 +901,7 @@ user-select: none;
     text-align: center;
 }
 
-/* remove this just using this for now THIS IS AI GENERATED 😵
 
-/* Chat container */
 .chat-container {
     width: 350px;
     height: 500px;
@@ -889,21 +910,16 @@ user-select: none;
     right: 20px;
     background: white;
     border-radius: 15px;
-    box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    font-family: Arial, sans-serif;
 }
 
-/* Header */
 .chat-header {
     background: #7110cc;
     color: white;
-    padding: 12px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    padding: 12px 15px;
     font-weight: bold;
 }
 
@@ -913,57 +929,115 @@ user-select: none;
     border-radius: 50%;
 }
 
-/* Message area */
 .chat-messages {
     flex: 1;
-    padding: 15px;
     overflow-y: auto;
     background: #f5f5f5;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
 }
 
-/* Message bubbles */
-.user-message {
-    align-self: flex-end;
-    background: #4CAF50;
-    color: white;
-    padding: 10px 14px;
-    border-radius: 15px 15px 0 15px;
+.message {
+    padding: 8px 14px;
+    border-radius: 15px;
     max-width: 70%;
+}
+
+.user-message {
+    background: #7110cc;
+    color: white;
+    margin-left: auto; 
 }
 
 .bot-message {
-    align-self: flex-start;
     background: white;
-    padding: 10px 14px;
-    border-radius: 15px 15px 15px 0;
-    max-width: 70%;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* Input area */
-.chat-input {
+/* Sion */
+/*
+.tlBlock
+{
+    padding: 20px;
+    width: 100%; 
+    min-height: 400px; 
+    position: relative;
+}
+
+.line {
+    background: black;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    transform: translateX(-50%) scaleY(0);
+    transform-origin: top;
+    left: 50%;
+}
+
+.timeArea {
+padding: 40px 40px 40px 40px;
+position: relative;
+width: 50%;
+}
+
+.imgItem {
+background: white;
+color: black;
+padding: 20%;
+display: inline-block;
+position: relative;
+opacity: 0;
+transform: translateY(50px);
+}
+
+.timeArea.leftA {
+    text-align: right;
+    left: 0;
+}
+
+.timeArea.rightA {
+text-align: left;
+left: 50%;
+}
+
+.timeImg {
+    width: 120px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.timeArea::before {
+    content: "";
+    height: 4px;
+    width: 40px;
+    background: white;
+    top: 60px;
+    position: absolute;
+}
+
+.timeArea.leftA::before {
+    right: -40px;
+}
+
+.timeArea.rightA::before {
+    left: -40px;
+} unused */
+
+.aiSection {
+    position: relative;
+    z-index: 9999;
+}
+
+#chatbot {
+    display: none;
+}
+
+
+#navHeader {
+    background-color: seagreen;
+    position: sticky;
+    top: 0;
     display: flex;
-    border-top: 1px solid #ddd;
-}
-
-.chat-input input {
-    flex: 1;
-    border: none;
-    padding: 12px;
-    outline: none;
-}
-
-.chat-input button {
-    background: #c02b2b;
-    border: none;
-    color: white;
-    padding: 0 20px;
-    cursor: pointer;
-}
-
-.chat-input button:hover {
-    background: #911414;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
 }

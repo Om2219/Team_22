@@ -58,10 +58,10 @@
 
 <div class="scroll-spacer"></div> --}}
 
-    <div class="animBg">
+    <!--<div class="animBg">
         {{-- we can change the background to something more fitting this is tempoary --}}
         <img src="{{ asset('images/Mint.png') }}">
-    </div>
+    </div>-->
 
     <img id="pen" src="{{ asset('images/Pen.png') }}">
     {{-- <img id="holder" src="{{ asset('images/hold.png') }}"> --}}
@@ -82,7 +82,8 @@
                         <h1>Roots, where creativity comes to thrive</h1>
                         <p>
                             At Roots, we sell products such as books, toys, stationery, 
-                            and more. These can be viewed below:
+                            and more. 
+                            <br> These can be viewed below along with our community:
                         </p>
                     </div>
                 </div>
@@ -91,17 +92,26 @@
             <section class="scroll-section ">
                 <!-- This section exists just to give scroll space -->
                 <div class="blockUno">
-                 <h1> hello </h1>
+                 <h1> "Wisdom is the right use of knowledge." — Charles Spurgeon </h1>
+                 <img id="first" src="{{ asset('images/blockOne.png') }}">
+                 <br>
+                 <br>
                 </div>
-                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                 <div class="blockDos">
-                 <h2> Silly Monkey </h2>
+                 <h2> Meet Our Mascot </h2>
+                 <img id="second" src="{{ asset('images/blockTwo.png') }}">
+                 <br>
+                 <br>
                 </div>
-                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <div class = "blocktres">
-                 <h3> get back to monkey business </h3>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <div>
+                 {{-- <h3> get back to monkey business </h3> --}}
+                <img class = "blocktres" src="{{ asset('images/blockThree.png') }}">
+                 <br>
+                 <br>
                 </div>
             </section>
 

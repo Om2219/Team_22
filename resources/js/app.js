@@ -118,6 +118,34 @@ document.addEventListener("DOMContentLoaded", () => {
         { y: -100, opacity: 0, ease: "none" }
     );
 
+
+    //timeline 
+  /*  gsap.to(
+        ".line", {
+        scaleY:1,
+        scrollTrigger: {
+            trigger: ".tlBlock",
+            start: "top 80%",
+            end: "bottom 20%",
+            scrub: true
+        }
+    });
+
+    gsap.utils.toArray(".imgItem").forEach((item) =>{
+        gsap.to(item, {
+            opacity: 1,
+            y:0,
+                scrollTrigger: {
+                trigger: ".blockdos",
+                start: "top 80%",
+                end: "bottom 20%",
+                scrub: true
+            }
+        });
+    }); unused */
+
+    
+    
     //block tres 🐒🍌
 
     gsap.timeline({
