@@ -27,19 +27,23 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:6',
+            'forename' => 'required|string|max:255',
+            'surname' => 'required|string|max:255',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:8',
+            'role' => 'required|in:admin,customer'
         ]);
 
-        $customer = User::create([
-            'name' => $request->name,
+        User::create([
+            'forename' => $request->forename,
+            'surname' => $request->surname,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => 'customer',
+            'role' => $request->role,
+            'is_active' => true
         ]);
 
-        return response()->json($customer, 201);
+        return redirect()->route('admin.customers')->with('success', 'User created');
     }
 
     //  customer details
@@ -80,5 +84,27 @@ class CustomerController extends Controller
         $customer = User::where('role', 'customer')->findOrFail($id);
         $customer->delete();
         return response()->json(['message' => 'Customer deleted successfully']);
+    }
+
+    // show create form
+    public function create()
+    {
+        return view('admin_customers_create');
+    }
+
+    // toggle user ban/unban
+    public function toggleStatus($id)
+    {
+        $user = User::find($id);
+        
+        if (!$user) {
+            return redirect()->back()->with('error', 'User not found');
+        }
+        
+        $user->is_active = !$user->is_active;
+        $user->save();
+        
+        $status = $user->is_active ? 'unbanned' : 'banned';
+        return redirect()->back()->with('success', "User {$status}");
     }
 }
