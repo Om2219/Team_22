@@ -5,9 +5,9 @@
             {{  session('success') }}
         </div>
         @endif
-        @if ($errors->has('login'))
+        @if ($errors->has('email'))
         <div class="alert alert-danger">
-            {{  $errors->first('login') }}
+            {{  $errors->first('email') }}
         </div>
         @endif
         <form action="{{ route('login.store') }}" method="POST" class="loginForm">
