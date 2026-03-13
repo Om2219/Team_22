@@ -2,7 +2,11 @@
    
     {{-- <div class="home-master">
         <div class="home-banner">
-            <img src="/images/logo_updated.png">
+            @if(Auth::check() && Auth::user()->role === 'admin')
+            <img src="{{ asset('images/admin logo.png') }}" class="logo">
+                @else
+                    <img src="{{ asset('images/logo_updated.png') }}" class="logo">
+            @endif
             <div class="business-description">
                 <h1>Roots, where creativity comes to thrive</h1> <!--slogan-->
                 <p>At Roots, we sell products such as books, toys, stationery, and more. These can be viewed below:</p> <!--website description-->
@@ -68,7 +72,11 @@
 
             <section class="hero">
                 <div class="home-banner">
-                    <img src="/images/logo_updated.png">
+                    @if(Auth::check() && Auth::user()->role === 'admin')
+                        <img src="{{ asset('images/admin logo.png') }}" class="logo">
+                        @else
+                        <img src="{{ asset('images/logo_updated.png') }}" class="logo">
+                    @endif
 
                     <div class="business-description">
                         <h1>Roots, where creativity comes to thrive</h1>

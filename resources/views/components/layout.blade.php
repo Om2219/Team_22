@@ -57,6 +57,11 @@
     .admin-icon{
         color: #061156;
     }
+    .admin-theme img[src*="admin logo.png"] {
+        width: 200px;
+        height: auto;
+        object-fit: contain;
+    }
 
   </style>
 </head>
