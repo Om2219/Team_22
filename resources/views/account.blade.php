@@ -18,6 +18,18 @@
         <a class = "headbut" href="/mydetails">Edit My Details</a></button>
     </div>
 
+     <div class="accountBox">
+        <h2>Wishlist</h2>
+        <p>View your favourite products</p>
+        <a class="headbut" href="{{ route('wishlist.index') }}">View Wishlist</a>
+    </div>
+
+    <div class = "accountBox">
+        <h2>My Rewards</h2>
+        <p> Go to your Rewards Page</p>
+        <a class = "headbut" href="/reward"> My Rewards</a></button>
+    </div>
+
     <div class = "accountBox">
         <h2>Sign Out</h2>
         <p> Sign Out Of Your Account</p>
@@ -27,17 +39,6 @@
         </form>
     </div>
 
-     <div class="accountBox">
-        <h2>Wishlist</h2>
-        <p>View products you've favourited</p>
-        <a class="headbut" href="{{ route('wishlist.index') }}">View wishlist</a>
-    </div>
-
-    <div class = "accountBox">
-        <h2>My rewards</h2>
-        <p> Go to your rewards page</p>
-        <a class = "headbut" href="/reward"> my rewards</a></button>
-    </div>
     <style>
         .MasterAccountBox {
             display: flex;
