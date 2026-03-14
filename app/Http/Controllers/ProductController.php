@@ -262,7 +262,7 @@ class ProductController extends Controller
         }
 
         // 1. Join reviews and calculate average rating from your fresh seeders
-        $query = Product::where('name', 'LIKE', "%{$search}%")
+        $query = Product::where('name', 'LIKE', "{$search}%")
                         ->withAvg('reviews', 'rating');
 
         // 2. Sorting logic
