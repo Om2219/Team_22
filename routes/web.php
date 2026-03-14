@@ -162,6 +162,10 @@ Route::middleware(['auth', 'admin'])->group(function() {
     ->name('admin.orders');
      Route::get('/admin/products', [AdminProductController::class, 'webIndex'])
     ->name('admin.products');
+
+    // new page for contact messages
+    Route::view('/admin/messages', 'admin_msg')
+    ->name('admin.messages');
     Route::get('/admin/reports', [ReportController::class, 'index'])->name('admin.reports');
     // stock routes
     Route::post('admin/stock/{product}/update', [ProductController::class, 'updateStock'])->name('updateStock');
