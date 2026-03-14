@@ -19,10 +19,10 @@
     </div>
 
     <div class = "accountBox">
-        <h2>Wishlist</h2>
-        <p> View your favourite products</p>
-        <a href="{{ route('wishlist.index') }}"> {{-- this is the favourites button --}}
-            <button class="headbut">View Wishlist</button>
+        <h2>User Messages</h2>
+        <p> User Contact Forms</p>
+        <a href="{{ route('admin.messages') }}"> {{-- this is the favourites button --}}
+            <button class="headbut">View Messages</button>
         </a>
     </div>
 
