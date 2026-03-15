@@ -380,6 +380,7 @@ footer{
 /*Kyle CSS*/
 .faq-header {
     font-family:'Times New Roman', Times, serif;
+    margin-bottom: 20px;
 }
 
 .faq-header .faqDetails {
@@ -394,16 +395,13 @@ footer{
     box-shadow: 0 5px 10px rgba(0,0,0,0.1); 
     /*rgb 0,0,0 with 0.1 opacity, 0 offset (so the shadow is on the button), 
     5 pixels down and blurred by 10 pixels*/
-
     font-size: 29px;
     cursor: pointer;
-
     justify-content: space-between;
     display: flex; /*so the text isn't centered, looks better*/
     width: 100%;
     padding: 10px 20px; /*10px makes the button smaller, 20px moves text away from the edges*/
     font-family:'Times New Roman', Times, serif; /*possibly subject to change, settled on this for now*/
-
     transition: background 0.5s;
 }
 
@@ -412,7 +410,7 @@ footer{
 }
 
 .faq-master img {
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 .faq-master .answer {
@@ -431,8 +429,9 @@ footer{
 }
 
 .MasterBasketBox { /*Reminder: use flex-wrap, get text to go to the right of the images*/
-    border: 2px solid black;
-    border-radius: 8px;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     padding: 20px 20px; /*move items away from the edges*/
     display: flex;
     flex-direction: column;
@@ -458,7 +457,8 @@ footer{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid #ddd;
+    /*if anyone wants the line separating each product, just uncomment the line below*/
+    /*border-bottom: 1px solid #ddd;*/
     padding: 15px 0;
 }
 
@@ -478,6 +478,7 @@ footer{
 }
 
 .basket_total {
+    border-top: 1px solid #ddd;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -492,6 +493,38 @@ footer{
     display: flex;
     justify-content: flex-start;
     gap: 15px;
+}
+
+.MasterBasketBox input {
+    padding: 8px;
+    background: #ddd;
+    border: 4px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+    transition: 0.5s;
+}
+
+.MasterBasketBox input:hover {
+    border-color: rgb(185, 185, 185);
+    background: rgb(185, 185, 185);
+    outline: none;
+}
+
+/*remove spinner buttons to the right of quantity input boxes*/
+.MasterBasketBox input::-webkit-outer-spin-button,
+.MasterBasketBox input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    /*scrolling in the box still increments/decrements despite the 
+    spinner buttons being gone, so functionality is still there*/
+}
+
+.MasterBasketBox .quantityAlign {
+    display: grid;
+    max-width: 100px;
+}
+
+.MasterBasketBox .fieldAlign {
+    margin-top: 10px;
 }
 
 .basket-master button {
@@ -644,6 +677,7 @@ footer{
 }
 
 .category-box {
+    text-decoration: none;
     text-align: center;
     padding: 20px;
     border: 1px solid lightgray;

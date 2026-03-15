@@ -16,15 +16,21 @@
                             alt="{{$product->name}}" width="200">
 
                         <div class="item-details">
-                            <p>{{$product->name}}</p>
+                            <p><b>{{$product->name}}</b></p>
                             <p>Price: £{{$product->price}}</p>
                             @if (session('error')) <div class="alert alert-danger" role="alert">{{ session('error') }}</div> @endif
                             <form action="{{ route('basket.update') }}" method="POST">
                                 @csrf
-                                <label for="quantity{{$product->product_id}}">Quantity:</label>
-                                <input type="number" name="quantity" value="{{ $product->quantity }}"  min="1"> 
-                                <input type="hidden" name="product_id" value="{{ $product->product_id }}">
-                                <button type="submit" class="save-btn">Update Quantity</button>
+                                <div class="quantityAlign">
+                                    <label for="quantity{{$product->product_id}}">Quantity:</label>
+                                    <div class="fieldAlign">
+                                        <input type="number" name="quantity" value="{{ $product->quantity }}"  min="1">
+                                    </div>
+                                    <div class="fieldAlign">
+                                        <input type="hidden" name="product_id" value="{{ $product->product_id }}">
+                                        <button type="submit" class="save-btn">Update Quantity</button>
+                                    </div>
+                                </div>
                             </form>
 
                             <p>Total: £{{number_format($product->price * $product->quantity, 2)}}</p>
