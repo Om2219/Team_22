@@ -19,51 +19,48 @@
 </aside>
 
 <main class="Admin_Content">
-    <h1>Admin Dashboard</h1>
-    <p> Overview of Roots System</p>
-
-<section class="stats">
-    <div class="card">
-        <h3>Total Users</h3>
-        <p>{{ $totalUsers }}</p>
-</div>
-
-
-    <div class="card">
-        <h3>Total Orders</h3>
-        <p>{{ $totalOrders }}</p>
-</div>
-
-    <div class="card">
-        <h3>Products</h3>
-        <p>{{ $totalProducts }}</p>
-</div>
-
-</section>
-
+    <h1>Create New User</h1>
+    <p> Add A New Admin Or Customer</p>
 
 <section class="table-section">
-    <h2>Recent Orders</h2>
-<table>
-    <tr>
-        <th>Order ID</th>
-        <th>Customer</th>
-        <th>Status</th>
-        <th>Date</th>
-</tr>
-@forelse($recentOrders as $order)
-<tr>
-    <td>#{{$order->id}}</td>
-    <td>{{$order->user->forename ?? 'Guest'}} {{$order->user->surname ?? ''}}</td>
-    <td>{{ucfirst($order->status ?? 'Pending')}}</td>
-    <td>{{ $order->created_at->format('M d, Y') }}</td>
-</tr>
-@empty
-<tr>
-    <td colspan="4">No recent orders</td>
-</tr>
-@endforelse
-</table>
+    <h2>User Details</h2>
+    <form method="POST" action="{{ route('admin.customers.store') }}">
+        @csrf
+        <table>
+            <tr>
+                <th>First Name</th>
+                <td><input type="text" name="forename" class="form-control" required></td>
+            </tr>
+            <tr>
+                <th>Last Name</th>
+                <td><input type="text" name="surname" class="form-control" required></td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td><input type="email" name="email" class="form-control" required></td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td><input type="password" name="password" class="form-control" required></td>
+            </tr>
+            <tr>
+                <th>Role</th>
+                <td>
+                    <select name="role" class="form-control">
+                        <option value="customer">Customer</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: right; padding-top: 20px;">
+                    <button type="submit" class="btn-view" style="background: #28a745;">Create User</button>
+                    <a href="{{ route('admin.customers') }}" class="btn-delete" style="background: #6c757d;">Cancel</a>
+                </td>
+            </tr>
+        </table>
+    </form>
+</section>
 
 </main>
 
@@ -80,8 +77,6 @@
 
     }
 
-
-
     .Sidebar{
         width: 260px;
         background-color: #061156;
@@ -90,12 +85,10 @@
         box-shadow: 4px 0 10px rgba(0,0,0,0.15);
     }
 
-
     .Sidebar ul{
         list-style: none;
         padding: 0;
         margin: 1px;
-
     }
 
     .Sidebar ul li{
@@ -118,7 +111,6 @@
     color: #2e2e2e;
 }
 
-
 .Admin_Content{
 flex:1;
 padding: 40px;
@@ -139,44 +131,6 @@ color: #2e2e2e;
     color: #5a5a5a;
 }
 
-.stats{
-    display: grid;
-    grid-template-colums:repeat(3,minmax(180px, 1fr));
-    gap: 18px;
-    margin-bottom: 30px;
-}
-
-.card{
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 18px 18px;
-    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
-    border-left: 6px solid #e1edf1;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-
-.card:hover{
-    transform: translateY(-2px);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.12);
-}
-
-.card h3{
-    margin: 0 0 10px;
-    font-size: 1rem;
-    font-weight: 700;
-    color: #061156;
-    letter-spacing: 0.2px;
-
-}
-
-.card p{
-    margin: 0;
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: #2e2e22;
-}
-
 .table-section{
     background: #ffffff;
     border-radius: 12px;
@@ -187,7 +141,7 @@ color: #2e2e2e;
 }
 
 .table-section h2{
-    margin:  0 0 14px;
+    margin: 0 0 14px;
     color: #061156;
     font-size: 1.2rem;
 }
@@ -220,35 +174,47 @@ color: #2e2e2e;
 
 }
 
+.btn-view {
+    background: #4a6fa5;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.btn-delete {
+    background: #c44536;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #061156;
+}
 
 /**Responsive */
 @media (max-width:900px){
-    .stats{
-        grid-template-colums: 1fr;
-    }
-
     .Admin_Content{
         padding: 22px;
     }
 }
 
-
-.logout-link{
-    background:none;
-    border: 2px solid #fff;
-    color: white; 
-    cursor: pointer;
-    padding: 10px 12px;
-    font-size: 15px;
-    text-align:left;
-    width: 100%;
-    border-radius:6px;
-    
-}
-
-.logout-link:hover{
-    color:#bdab53;
-    border-color:white;
-}
-
-    </style>
+</style>

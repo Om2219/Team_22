@@ -59,6 +59,14 @@
         height: 100%;
         object-fit: cover;
     }
+    .admin-icon{
+        color: #061156;
+    }
+    .admin-theme img[src*="admin logo.png"] {
+        width: 200px;
+        height: auto;
+        object-fit: contain;
+    }
 
   </style>
 </head>
@@ -73,7 +81,13 @@
           {{-- top of the nav bar and contains the logo, search bar,, the users account, the users basked--}}         
           <div class= "d-flex align-items-center justify-content-between mb-3">
 
-            <a href="/home" class = "navbar-brand"><img src="{{ Vite::asset('public/images/logo_updated.png') }}" class = "logo"></a>
+            <a href="/home" class = "navbar-brand">
+              @if(Auth::check() && Auth::user()->role === 'admin')
+                <img src="{{ Vite::asset('public/images/Admin logo.png') }}" class = "logo">
+                @else
+                  <img src="{{ Vite::asset('public/images/logo_updated.png') }}" class = "logo">
+                @endif
+            </a>
 
             <form action="{{ route('search') }}" method="GET" class="d-flex form-control me-5">
               <input type="text" name="search" placeholder="What are you looking for?" class="form-control me-2">
@@ -83,20 +97,19 @@
             <div class="d-flex align-items-center gap-4">
               <!--cba to make a model or controller for 1 button so put this stuff here-->
               @if (Auth::check())
-                  <a href="/account" class="nav-icon-link d-flex flex-column align-items-center text-white text-decoration-none"><i class="bi bi-person-circle fs-3 text-white"></i>Account</a>
+                  <a href="/account" class="nav-icon-link d-flex flex-column align-items-center text-white text-decoration-none"><i class="bi bi-person-circle fs-3 {{ Auth::check() && Auth::user()->role === 'admin' ? 'admin-icon' : '' }}"></i><span class="{{ Auth::check() && Auth::user()->role === 'admin' ? 'admin-icon' : ''}}">Account</span></a>
               @else
                   <a href="/login" class="btn btn-light btn-sm rounded-pill px-3">Login</a>
                   <a href="/register" class="btn btn-light btn-sm rounded-pill px-3">Register</a>
               @endif
 
-              <a href="/basket" class="nav-icon-link d-flex flex-column align-items-center text-white text-decoration-none"><i class="bi bi-basket fs-3 text-white"></i>Basket</a>
-              
+              <a href="/basket" class="nav-icon-link d-flex flex-column align-items-center text-white text-decoration-none"><i class="bi bi-basket fs-3 {{ Auth::check() && Auth::user()->role === 'admin' ? 'admin-icon' : '' }}"></i><span class="{{ Auth::check() && Auth::user()->role === 'admin' ? 'admin-icon' : '' }}">Basket</span></a>
             </div>
           </div>
           {{-- bottom of nav bar and contains our 5 categories with links, and if you hover over it gives you more specific options--}}    
           <div class= "d-flex justify-content-center flex-wrap gap-3 border-top pt-4">
               <button class ="headbut"><a href="/aboutus" class="text-green text-decoration-none">About Us</a></button>
-              <button class ="headbut"><a href="/products" class="text-green text-decoration-none">All products</a></button>        
+              <button class ="headbut"><a href="/products" class="text-green text-decoration-none">All Products</a></button>        
               <button class ="headbut"><a href="{{ route('products.cat', 'ArtCraft')}}" class="text-green text-decoration-none">Arts & Crafts</a></button>
               <button class ="headbut"><a href="{{ route('products.cat', 'Books')}}" class="text-green text-decoration-none">Books</a></button>
               <button class ="headbut"><a href="{{ route('products.cat', 'Office')}}" class="text-green text-decoration-none">Office Supplies</a></button>

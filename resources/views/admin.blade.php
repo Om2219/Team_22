@@ -7,10 +7,10 @@
             </div>
 
             <div class= "login">
-                <label for= "uname"><b>Admin email</b></label>
+                <label for= "uname"><b>Admin Email</b></label>
                 <input id="email" type="text" placeholder= "Enter username" name="email" required>
 
-                <label for= "psw"><b>Admin password</b></label>
+                <label for= "psw"><b>Admin Password</b></label>
                 <input id="psw" type="password" placeholder= "Enter password" name="password" required>
 
                 <button type ="submit" class="mainLogin"> Login</button>
@@ -19,11 +19,11 @@
                 </label>
 
                 <div class="login extra"> 
-                    <span class="psw"><a class="login-hyperlinks" href="#"> Forget password?</a></span>
+                    <span class="psw"><a class="login-hyperlinks" href="#"> Forgot Password?</a></span>
                 </div>
 
                 <div class="container_signin">
-                    <p>Not an admin? <a class="login-hyperlinks" href="/login">Login</a></p>
+                    <p>Not an Admin? <a class="login-hyperlinks" href="/login">Login</a></p>
                 </div>
             </div>
         </form>

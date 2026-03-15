@@ -21,6 +21,15 @@ class AdminWebLoginController extends Controller
 
         if (Auth::attempt($request->only('email', 'password'))) {
             $user = Auth::user();
+
+            // check if the user is banned
+            if(!$user->is_active){
+                Auth::logout();
+                return back()->withErrors([
+                    'email' => 'This account has been banned. Please contact support.',
+                ]);
+            }
+
             // check if user is admin
             if ($user->role === 'admin') {
                 return redirect()->route('admin.dashboard');

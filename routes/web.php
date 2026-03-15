@@ -162,6 +162,10 @@ Route::middleware(['auth', 'admin'])->group(function() {
     ->name('admin.orders');
      Route::get('/admin/products', [AdminProductController::class, 'webIndex'])
     ->name('admin.products');
+
+    // new page for contact messages
+    Route::view('/admin/messages', 'admin_msg')
+    ->name('admin.messages');
     Route::get('/admin/reports', [ReportController::class, 'index'])->name('admin.reports');
     // stock routes
     Route::post('admin/stock/{product}/update', [ProductController::class, 'updateStock'])->name('updateStock');
@@ -173,7 +177,10 @@ Route::middleware(['auth', 'admin'])->group(function() {
     Route::get('/admin/contactforms/{id}', [ContactController::class, 'show'])->name('admin.contactforms.show');
     Route::post('/admin/contactforms/{id}/reply', [ContactController::class, 'reply'])->name('admin.contactforms.reply');
     Route::delete('/admin/contactforms/{id}', [ContactController::class, 'destroy'])->name('admin.contactforms.destroy');
-    Route::get('admin/contactforms/{id}', function() { return redirect()->route('admin.contactforms'); });
+    // customer routes
+    Route::get('/admin/customers/create', [CustomerController::class, 'create'])->name('admin.customers.create');
+    Route::post('/admin/customers', [CustomerController::class, 'store'])->name('admin.customers.store');
+    Route::post('/admin/customers/{id}/toggle-status', [CustomerController::class, 'toggleStatus'])->name('admin.customers.toggle');
 });
 
 // Route::get('studentlisting', 'App\Http\Controllers\StudentController@list')->name('list_student');

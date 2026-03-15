@@ -20,30 +20,52 @@
 
 <main class="Admin_Content">
     <h1>Customers</h1>
-    <p> Registered users on the Roots platform</p>
+    <p> Registered Users on the Roots platform</p>
 
+@if(session('success'))
+    <div style="background: #d4edda; color: #155724; padding: 12px; border-radius: 4px; margin-bottom: 20px;">{{ session('success') }}</div>
+@endif
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+    <h2 style="color: #061156; font-size: 1.2rem; margin: 0;">Customers Information</h2>
+    <a href="{{ route('admin.customers.create') }}" style="background: #28a745; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px;">+ Add User</a>
+</div>
 
 <section class="table-section">
-    <h2>Customers Information</h2>
-<table>
-    <tr>
-        <th>User  ID</th>
-        <th>Name </th>
-        <th>Email</th>
-        <th>Joined</th>
-    </tr>
+    <table>
+        <tr>
+            <th>User ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
 
-    @foreach ($users as $user)
-    <tr>
-        <td>{{ $user->id }}</td>
-        <td>{{ $user->forename ?? 'Guest' }} {{ $user->surname ?? '' }}</td>
-        <td>{{ $user->email }}</td>
-        <td>{{ $user->created_at->format('M d, Y') }}</td>
-    </tr>
-    @endforeach
+        @foreach ($users as $user)
+        <tr>
+            <td>{{ $user->id }}</td>
+            <td>{{ $user->forename ?? 'Guest' }} {{ $user->surname ?? '' }}</td>
+            <td>{{ $user->email }}</td>
+            <td>
+                @if($user->is_active)
+                    <span style="color: #28a745;">Active</span>
+                @else
+                    <span style="color: #c44536;">Banned</span>
+                @endif
+            </td>
+            <td>
+                <form action="{{ route('admin.customers.toggle', $user->id) }}" method="POST" style="display:inline;">
+                    @csrf
+                    <button type="submit" style="background: none; border: none; color: #061156; text-decoration: underline; cursor: pointer;">
+                        {{ $user->is_active ? 'Ban' : 'Unban' }}
+                    </button>
+                </form>
+            </td>
+        </tr>
+        @endforeach
 
-
-</table>
+    </table>
+</section>
 
 </main>
 
@@ -55,7 +77,7 @@
     .Admin_Dashboard{
         display: flex;
         min-height: 100vh;
-        background-color:#f5f1e8;
+        background-color: #e1edf1;
         font-family: 'Segoe UI', sans-serif;
 
     }
@@ -64,8 +86,8 @@
 
     .Sidebar{
         width: 260px;
-        background-color: #7a4900;
-        color:#fff;
+        background-color: #061156;
+        color: #fff;
         padding: 30px 20px;
         box-shadow: 4px 0 10px rgba(0,0,0,0.15);
     }
@@ -94,7 +116,7 @@
 
 .Sidebar ul li a:hover,
 .Sidebar ul li a.active{
-    background-color: #bdab53;
+    background-color: #e1edf1;
     color: #2e2e2e;
 }
 
@@ -102,7 +124,7 @@
 .Admin_Content{
 flex:1;
 padding: 40px;
-background-color: #f5f1e8;
+background-color: #e1edf1;
  font-family: 'Segoe UI', sans-serif;
 color: #2e2e2e;
 }
@@ -110,15 +132,52 @@ color: #2e2e2e;
 .Admin_Content h1{
     margin: 0 0 8px;
     font-size: 2.2rem;
-    color:#7a4900;
+    color: #061156;
 }
 
 .Admin_Content p{
  margin: 0 0 28px;
     font-size: 1rem;
-    color:#5a5a5a;
+    color: #5a5a5a;
 }
 
+.stats{
+    display: grid;
+    grid-template-colums:repeat(3,minmax(180px, 1fr));
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+.card{
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 18px 18px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+    border-left: 6px solid #e1edf1;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+.card:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+}
+
+.card h3{
+    margin: 0 0 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #061156;
+    letter-spacing: 0.2px;
+
+}
+
+.card p{
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #2e2e22;
+}
 
 .table-section{
     background: #ffffff;
@@ -131,7 +190,7 @@ color: #2e2e2e;
 
 .table-section h2{
     margin:  0 0 14px;
-    color: #7a4900;
+    color: #061156;
     font-size: 1.2rem;
 }
 
@@ -149,7 +208,7 @@ color: #2e2e2e;
 }
 
 .table-section th{
-    background: #7a4900;
+    background: #061156;
     color: #ffffff;
     font-weight: 700;
 
@@ -176,10 +235,9 @@ color: #2e2e2e;
 }
 
 
-
 .logout-link{
     background:none;
-    border: 2px solid #bdab53;
+    border: 2px solid #fff;
     color: white; 
     cursor: pointer;
     padding: 10px 12px;
@@ -187,10 +245,12 @@ color: #2e2e2e;
     text-align:left;
     width: 100%;
     border-radius:6px;
+    
 }
 
 .logout-link:hover{
     color:#bdab53;
     border-color:white;
 }
+
     </style>
