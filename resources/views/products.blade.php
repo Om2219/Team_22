@@ -33,7 +33,7 @@
                         {{-- might remove the border top im not sure --}}
                         <div class="card-body d-flex flex-column text-center border-top">
 
-                            <h4 class="fw-bold text-black mb-2">{{$product->name}}</h4>
+                            <h4 class="fw-bold mb-2">{{$product->name}}</h4>
                             @if($product->is_reward)
                                 <p class="fw-bold text-success mb-2">{{$product->points_cost}} Points<p>
                             @else
@@ -41,7 +41,7 @@
                             @endif
                             <br>
                             <div class="mt-auto">
-                                <a href="{{ route('product.show', $product->id) }}" class="btn btn-outline-dark btn-sm rounded-pill w-100 fw-bold py-2">View Product</a>
+                                <a href="{{ route('product.show', $product->id) }}" class="btn btn-outline-dark btn-sm rounded-pill w-100 fw-bold py-2 kill_yourself">View Product</a>
                             </div>
 
                         </div>
@@ -73,7 +73,7 @@
                                 {{-- might remove the border top im not sure --}}
                                 <div class="card-body d-flex flex-column text-center border-top">
 
-                                    <h4 class="fw-bold text-black mb-2">{{$product->name}}</h4>
+                                    <h4 class="fw-bold mb-2">{{$product->name}}</h4>
                                     @if($product->is_reward)
                                         <p class="fw-bold text-success mb-2">{{$product->points_cost}} Points<p>
                                     @else
@@ -81,7 +81,7 @@
                                     @endif
                                     <br>
                                     <div class="mt-auto">
-                                        <a href="{{ route('product.show', $product->id) }}" class="btn btn-outline-dark btn-sm rounded-pill w-100 fw-bold py-2">View Product</a>
+                                        <a href="{{ route('product.show', $product->id) }}" class="btn btn-outline-dark btn-sm rounded-pill w-100 fw-bold py-2 kill_yourself">View Product</a>
                                     </div>
 
                                 </div>

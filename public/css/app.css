@@ -673,22 +673,38 @@ footer{
     display: grid;
     grid-template-columns: repeat(5, minmax(200px, 1fr));
     gap: 20px;
-    color: black;
 }
 
 .category-box {
     text-decoration: none;
     text-align: center;
     padding: 20px;
-    border: 1px solid lightgray;
     border-radius: 5px;
-    color: black;
     transition: background 0.5s; /*slowly changes the bg colour*/
 }
 
-.category-box:hover {
+/*Dark mode edits (Sion)*/
+[data-bs-theme="dark"] .category-box:hover {
+    background-color: rgb(72, 72, 72);
+}
+
+[data-bs-theme="light"] .category-box:hover {
     background-color: rgb(233, 233, 233);
 }
+
+[data-bs-theme="dark"] .category-box {
+        color: white;
+        border: 1px solid rgb(61, 61, 61);
+
+}
+
+[data-bs-theme="light"] .category-box {
+        color: black;
+        border: 1px solid lightgray;
+
+}
+
+
 
 /*Suja */
 
@@ -1054,7 +1070,7 @@ left: 50%;
 
 .timeArea.rightA::before {
     left: -40px;
-} unused */
+} unused timeline code*/
 
 .aiSection {
     position: relative;
@@ -1074,4 +1090,14 @@ left: 50%;
     justify-content: center;
     align-items: center;
     z-index: 99;
+}
+
+[data-bs-theme="dark"] .kill_yourself {
+    border-color: white;
+    color: white;
+}
+
+[data-bs-theme="dark"] .kill_yourself:hover {
+    background-color: white;
+    color: #212529;
 }
