@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller {
     public function index() {
         // need total users, orders, products
-        $totalUsers = User::count();
+        $totalUsers = User::where('role', 'customer')->count();
         $totalOrders = Order::count();
         $totalProducts = Product::count();
         

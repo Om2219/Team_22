@@ -1,7 +1,7 @@
 <x-layout>
    <div class="Admin_Dashboard">
 
-
+<!-- Admin Dashboard Sidebar -->
 <aside class="Sidebar">
 <h2>Roots Admin</h2>
 
@@ -21,7 +21,7 @@
 <main class="Admin_Content">
     <h1>Sales Reports</h1>
     <p> Overview of Sales</p>
-<!-- row 1: overall stats -->
+<!-- row 1: Overall Stats -->
 <section class="stats">
     <div class="card">
         <h3>Total Orders</h3>
@@ -38,7 +38,7 @@
         <p>{{ $totalCustomers }}</p>
     </div>
 </section>
-<!-- row 2: today's stats -->
+<!-- Row 2: Today's Stats -->
 <section class="stats">
     <div class="card">
         <h3>Today's Orders</h3>
@@ -55,7 +55,7 @@
         <p>{{ $todayTopProduct->name ?? 'Not available' }}</p>
     </div>
 </section>
-<!-- row 3: this month's stats -->
+<!-- Row 3: This Month's Stats -->
 <section class="stats">
     <div class="card">
         <h3>Monthly Orders</h3>
@@ -73,6 +73,7 @@
     </div>
 </section>
 
+<!-- Row 4: Top Products Table -->
 <section class="table-section">
     <h2>Top 5 Best Selling Products</h2>
     <table>

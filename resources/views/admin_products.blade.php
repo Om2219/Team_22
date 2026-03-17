@@ -1,7 +1,7 @@
 <x-layout>
    <div class="Admin_Dashboard">
 
-
+<!-- Admin Dashboard Sidebar -->
 <aside class="Sidebar">
 <h2>Roots Admin</h2>
 
@@ -21,7 +21,7 @@
 <main class="Admin_Content">
     <h1> Products</h1>
     <p> Manage products and stock levels</p>
-
+    <!-- Success/Error messages -->
     @if(session('success'))
         <div class="alert alert-success"> {{ session('success') }} </div>
     @endif
@@ -30,9 +30,11 @@
         <div class="alert alert-danger"> {{ session('error') }} </div>
     @endif
 
+<!-- Stock management table -->
 <section class="table-section">
     <h2>Stock Levels</h2>
 <table>
+    <!-- Table headers -->
     <tr>
         <th>Product ID</th>
         <th>Name</th>
@@ -42,7 +44,9 @@
         <th>Update Stock</th>
 </tr>
 
+<!-- Loop through products -->
 @foreach($products as $product)
+<!-- Highlighting red if stock is low -->
 <tr class="@if($product->stock && $product->stock->stock <= $product->stock->low_stock) table-danger @endif">
     <td>{{ $product->id }}</td>
     <td>{{ $product->name }}</td>
@@ -50,6 +54,7 @@
     <td>£{{ number_format($product->price, 2) }}</td>
     <td>
         @if($product->stock)
+        <!-- Showing stock -->
             @if($product->stock->stock <= $product->stock->low_stock)
                 <span class="text-danger fw-bold">{{ $product->stock->stock }}</span>
             @else
@@ -60,12 +65,14 @@
         @endif
     </td>
     <td>
+        <!-- Manually updating stock -->
         <form action="{{ route('updateStock', $product) }}" method="POST" class="d-inline-flex gap-3">
             @csrf
             <input type="number" name="stock" value="{{ $product->stock->stock }}"  min="0" class="form-control form-control-sm" style="width:100px;">
             <button type="submit" class="btn btn-sm btn-outline-dark"> Update </button>
         </form>
 
+        <!-- Restock button -->
         @if($product->stock && $product->stock->stock <= $product->stock->low_stock)
             <form action="{{ route('stockRestock', $product) }}" method="POST" class="d-inline ms-2">
                 @csrf
