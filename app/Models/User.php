@@ -23,6 +23,9 @@ class User extends Authenticatable
         'surname',
         'email',
         'password',
+        'role',
+        'is_active',
+        'points',
     ];
 
     /**
@@ -44,8 +47,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
         'dailySpin' => 'datetime',
+        'is_active' => 'boolean',
     ];
     public function favouriteProducts(){
         return $this->belongsToMany(\App\Models\Product::class, 'favourites')->withTimestamps();
+    }
+
+    public function orders() {
+        return $this->hasMany(Order::class);
+    }
+
+    public function reviews() {
+        return $this->hasMany(\App\Models\Review::class);
     }
 }

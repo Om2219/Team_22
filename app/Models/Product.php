@@ -46,7 +46,8 @@ class Product extends Model
         return $this->belongsToMany(\App\Models\User::class, 'favourites')->withTimestamps();
     }
 
-    public function order_items() {
+    // Added to track product sales
+    public function orderItems() {
         return $this->hasMany(OrderItem::class);
     }
 

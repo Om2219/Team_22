@@ -4,14 +4,13 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
+    public function up(): void {
         Schema::table('contact_forms', function (Blueprint $table) {
+            // Track columns to see what messages have been seen
             $table->boolean('is_read')->default(false);
         });
     }
@@ -19,8 +18,7 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
-    {
+    public function down(): void {
         Schema::table('contact_forms', function (Blueprint $table) {
             $table->dropColumn('is_read');
         });
