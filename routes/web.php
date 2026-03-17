@@ -7,7 +7,6 @@ use App\Http\Controllers\LoginController;
 use App\Models\Product;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BasketController;
-use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\ReviewController;
@@ -84,9 +83,7 @@ Route::get('/reward', function () {  return view('reward'); });
 
 Route::get('checkout', function () { if (!Auth::check()) {return redirect()->route('login');} return view('checkout'); }); // checks if a user is logged in and if so then shows checkout
 
-Route::post('checkout', [CheckoutController::class, 'Orders'])->name('checkout.place'); // the post to the checkout form
-
-Route::get('checkout/address', function () { if (!Auth::check()) { return redirect()->route('login'); } return view('checkoutAddress'); })->name('checkout.address'); //checks to see if you're logged in alongside displaying the checkout form
+Route::post('checkout', [BasketController::class, 'Orders'])->name('checkout.place');
 
 Route::get('OrderPlaced', function () { return view('OrderPlaced'); })-> name('OrderPlaced');// shows the order confirmation page 
 
