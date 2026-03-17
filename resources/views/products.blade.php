@@ -1,7 +1,7 @@
 <x-layout>
     <div class="container my-4">
      
-        <div class="row mb-4 shadow-sm p-3 bg-white rounded-4 align-items-center border">
+        <div class="row mb-4 shadow-sm p-3 rounded-4 align-items-center border modeBoxes">
             <div class="col-md-6"><h4 class="mb-0 fw-bold">Products</h4></div>
             <div class="col-md-6 d-flex justify-content-md-end mt-3 mt-md-0">
                 <form action="{{ url()->current() }}" method="GET" class="d-flex align-items-center">
@@ -22,7 +22,7 @@
             @foreach($products as $product)
                 <div class="col d-flex">
                     {{-- might remove the border im not sure --}}
-                    <div class="card border-1 shadow-sm d-flex flex-column">
+                    <div class="card border-1 shadow-sm d-flex flex-column modeBoxes">
                         <div class="position-relative overflow-hidden bg-light">
                             @if ($product->images->isNotEmpty())
                             <img src="{{ asset('images/products/' . $product->images->first()->product_image) }}" alt="{{ $product->name }}" class="card-img-top">
@@ -41,7 +41,7 @@
                             @endif
                             <br>
                             <div class="mt-auto">
-                                <a href="{{ route('product.show', $product->id) }}" class="btn btn-outline-dark btn-sm rounded-pill w-100 fw-bold py-2 kill_yourself">View Product</a>
+                                <a href="{{ route('product.show', $product->id) }}" class="btn btn-outline-dark btn-sm rounded-pill w-100 fw-bold py-2 viewProducts">View Product</a>
                             </div>
 
                         </div>
@@ -81,7 +81,7 @@
                                     @endif
                                     <br>
                                     <div class="mt-auto">
-                                        <a href="{{ route('product.show', $product->id) }}" class="btn btn-outline-dark btn-sm rounded-pill w-100 fw-bold py-2 kill_yourself">View Product</a>
+                                        <a href="{{ route('product.show', $product->id) }}" class="btn btn-outline-dark btn-sm rounded-pill w-100 fw-bold py-2 viewProducts">View Product</a>
                                     </div>
 
                                 </div>

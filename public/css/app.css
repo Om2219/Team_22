@@ -389,12 +389,7 @@ footer{
 }
 
 .faq-master .questions {
-    background: none;
-    border: 1px solid lightgray;
     border-radius: 6px;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.1); 
-    /*rgb 0,0,0 with 0.1 opacity, 0 offset (so the shadow is on the button), 
-    5 pixels down and blurred by 10 pixels*/
     font-size: 29px;
     cursor: pointer;
     justify-content: space-between;
@@ -405,12 +400,32 @@ footer{
     transition: background 0.5s;
 }
 
-.faq-master .questions:hover {
+[data-bs-theme="light"] .faq-master .questions {
+    background: none;
+    border: 1px solid lightgray;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1); 
+    /*rgb 0,0,0 with 0.1 opacity, 0 offset (so the shadow is on the button), 
+    5 pixels down and blurred by 10 pixels*/ 
+}
+[data-bs-theme="dark"] .faq-master .questions {
+    background: #303336;
+    border: 1px solid #1b1e22;
+    box-shadow: 0 5px 10px rgba(255, 255, 255, 0.1); 
+}
+
+[data-bs-theme="light"] .faq-master .questions:hover {
     background-color: rgb(233, 233, 233);
+}
+[data-bs-theme="dark"] .faq-master .questions:hover {
+    background-color: rgb(84, 89, 95);
 }
 
 .faq-master img {
     margin-top: 10px;
+}
+
+[data-bs-theme="dark"] .faq-master img {
+    filter: invert(100%);
 }
 
 .faq-master .answer {
@@ -423,18 +438,34 @@ footer{
     color: black;
 }
 
+[data-bs-theme="dark"] .faq-master .answer.show {
+    color: white;
+}
+
 .faq-master .faq-hyperlinks {
     color: #04AA6D; /*override the a element color being white*/
     text-decoration: none;
 }
 
+[data-bs-theme="dark"] .faq-master .faq-hyperlinks {
+    color: #1ff2a5;
+}
+
 .MasterBasketBox { /*Reminder: use flex-wrap, get text to go to the right of the images*/
-    border: 1px solid lightgray;
     border-radius: 6px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     padding: 20px 20px; /*move items away from the edges*/
     display: flex;
     flex-direction: column;
+}
+
+[data-bs-theme="light"] .MasterBasketBox {
+    border: 1px solid lightgray;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+[data-bs-theme="dark"] .MasterBasketBox {
+    border: 1px solid #1b1e22;
+    box-shadow: 0 5px 10px rgba(255, 255, 255, 0.1);
+    background-color: #303336;
 }
 
 .input {
@@ -455,8 +486,8 @@ footer{
 
 .basket-item {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     /*if anyone wants the line separating each product, just uncomment the line below*/
     /*border-bottom: 1px solid #ddd;*/
     padding: 15px 0;
@@ -468,6 +499,10 @@ footer{
 
 .basket-item .item-details {
     flex: 1;
+}
+
+.basket-item .item-image {
+    padding-right: 3em;
 }
 
 .remove-btn button {
@@ -612,20 +647,29 @@ footer{
 }
 
 .contactUsPage-master button {
-    background-color: #4a3b2a; 
-    color: white;
     padding: 12px 25px;
-    border: none;
     border-radius: 5px;
     font-size: 1rem;
     cursor: pointer;
     transition: background 0.3s;
     margin-top: 10px;
+    border: none;
 }
 
 .contactUsPage-master .sendEmail:hover {
     background-color: #6b8e23;
 }
+
+/*Dark mode edits (Sion)*/
+[data-bs-theme="light"] .contactUsPage-master button {
+    background-color: #4a3b2a; 
+    color: white;
+}
+[data-bs-theme="dark"] .contactUsPage-master button {
+    background-color: #7f99c9; 
+    color: rgb(0, 0, 0);
+}
+
 
 .contactUsPage-master #message {
     max-height: 120px; /*otherwise the textarea field is massive*/
@@ -709,8 +753,6 @@ footer{
 /*Suja */
 
     .save-btn {
-        background-color: #4a3b2a; 
-        color: white;
         padding: 12px 25px;
         border: none;
         border-radius: 5px;
@@ -721,6 +763,16 @@ footer{
         display: inline-block;
     }
 
+    /*Dark mode edits (Sion)*/
+    [data-bs-theme="dark"] .save-btn {
+        background-color: #7f99c9; 
+        color: #212529;
+    }
+    [data-bs-theme="light"] .save-btn {
+        background-color: #4a3b2a; 
+        color: white;
+    }
+    
     .save-btn:hover {
         background-color: #6b8e23; 
     }
@@ -910,14 +962,34 @@ user-select: none;
     margin: 0 auto;
     border: 2px solid black;
     padding: 0px 0px 25px 0px;
+    box-shadow: 0 5px 10px rgba(255, 255, 255, 0.1);
+}
+
+[data-bs-theme="light"] .details_container {
+    border: 2px solid black;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+[data-bs-theme="dark"] .details_container {
+    border: 2px solid #1b1e22;
+    box-shadow: 0 5px 10px rgba(255, 255, 255, 0.1);
+    background: #303336;
 }
 
 .email_container  {
     text-align: center;
     width: 300px;
     margin: 0 auto;
-    border: 2px solid black;
     padding: 0px 0px 15px 0px;  /* top right bottom left */
+}
+
+[data-bs-theme="light"] .email_container {
+    border: 2px solid black;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+[data-bs-theme="dark"] .email_container {
+    border: 2px solid #1b1e22;
+    box-shadow: 0 5px 10px rgba(255, 255, 255, 0.1);
+    background: #303336;
 }
 
 .password_container {
@@ -926,6 +998,16 @@ user-select: none;
     margin: 0 auto;
     border: 2px solid black;
     padding: 0px 0px 15px 0px;
+}
+
+[data-bs-theme="light"] .password_container {
+    border: 2px solid black;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+[data-bs-theme="dark"] .password_container {
+    border: 2px solid #1b1e22;
+    box-shadow: 0 5px 10px rgba(255, 255, 255, 0.1);
+    background: #303336;
 }
 
 .email_section input[type=text]{
@@ -1092,12 +1174,25 @@ left: 50%;
     z-index: 99;
 }
 
-[data-bs-theme="dark"] .kill_yourself {
+/*Dark mode edits (Sion)*/
+[data-bs-theme="dark"] .viewProducts {
     border-color: white;
     color: white;
 }
 
-[data-bs-theme="dark"] .kill_yourself:hover {
+[data-bs-theme="dark"] .viewProducts:hover {
     background-color: white;
     color: #212529;
+}
+
+[data-bs-theme="dark"] .modeBoxes {
+    background-color: rgb(44, 46, 48);
+}
+
+[data-bs-theme="dark"] .inputTxt {
+    color: rgb(0, 0, 0);
+}
+
+[data-bs-theme="dark"] .invImg {
+    filter: invert(100%);
 }

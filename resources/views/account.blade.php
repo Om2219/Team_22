@@ -7,7 +7,7 @@
 
 
         <div class = "col col-lg-3">
-            <div class="card border-dark text-center h-100 ">
+            <div class="card border-dark text-center h-100 modeBoxes">
                 <div class="card-body d-flex flex-column">
                     <h2>My Orders</h2>
                     <p> Track, Return, Cancel your parcels</p>
@@ -17,7 +17,7 @@
         </div>
 
         <div class = "col col-lg-3">
-            <div class="card border-dark text-center h-100 ">
+            <div class="card border-dark text-center h-100 modeBoxes">
                 <div class="card-body d-flex flex-column">
                     <h2>My Details</h2>
                     <p> Manage and Change Email and Password</p>
@@ -27,7 +27,7 @@
         </div>
 
         <div class="col col-lg-3">
-            <div class="card border-dark text-center h-100">
+            <div class="card border-dark text-center h-100 modeBoxes">
                 <div class="card-body d-flex flex-column">
                     <h2>Wishlist</h2>
                     <p>View your Favourite Products</p>
@@ -37,7 +37,7 @@
         </div>
 
         <div class = "col col-lg-3">
-            <div class="card border-dark text-center h-100">
+            <div class="card border-dark text-center h-100 modeBoxes">
                 <div class="card-body d-flex flex-column">
                     <h2>My Rewards</h2>
                     <p> Go to your Rewards Page</p>
@@ -47,7 +47,7 @@
         </div>
 
         <div class = "col col-lg-3">
-            <div class="card border-dark text-center h-100">
+            <div class="card border-dark text-center h-100 modeBoxes">
                 <div class="card-body d-flex flex-column">
                     <h2>Sign Out</h2>
                     <p> Sign Out Of Your Account</p>

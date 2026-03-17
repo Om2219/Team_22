@@ -84,10 +84,10 @@
 }
 [data-bs-theme="dark"] .About-Us {
     background-color: #3b3b3b;
-}
+} /* Dark mode */
 [data-bs-theme="light"] .About-Us {
     background-color: #f5f1e8;
-}
+} /* Light mode */
 
 .About_Us{
     flex:1;
@@ -97,23 +97,22 @@
 [data-bs-theme="dark"] .About_Us {
     background-color: #292929;
     color: #c8c8c8;
-
-}
+} /* Dark mode */
 [data-bs-theme="light"] .About_Us { 
     background-color: #f5f1e8;
     color: #2e2e2e;
-}
+} /* Light mode */
 
 .About_Us h1{
     margin: 0 0 8px;
     font-size: 2.2rem;
 }
-[data-bs-theme="dark"].About_Us h1 {
+[data-bs-theme="dark"] .About_Us h1 {
     color: #ffd595;
-}
-[data-bs-theme="light"].About_Us h1 {
+} /* Dark mode */
+[data-bs-theme="light"] .About_Us h1 {
     color: #7a4900;
-}
+} /* Light mode */
 
 .About_Us p{
     margin: 0 0 28px;
@@ -121,10 +120,10 @@
 }
 [data-bs-theme="dark"] .About_Us p {
     color: #dbdbdb;
-}
+} /* Dark mode */
 [data-bs-theme="light"] .About_Us p {
     color: #5a5a5a;
-}
+} /* Light mode */
 
 .stats_1{
     display: grid;
@@ -143,11 +142,11 @@
 [data-bs-theme="dark"] .card {
     background: #212529;
     border-left: 6px solid #bdab53;
-}
+} /* Dark mode */
 [data-bs-theme="light"] .card{
     background: #ffffff;
     border-left: 6px solid #bdab53;
-}
+} /* Light mode */
 
 
 .card:hover{
@@ -164,10 +163,10 @@
 }
 [data-bs-theme="dark"] .card h3 {
     color: #d4ba92;
-}
+} /* Dark mode */
 [data-bs-theme="light"] .card h3 {
     color: #7a4900;
-}
+} /* Light mode */
 
 .card p{
     margin: 0;
@@ -176,7 +175,7 @@
 }
 [data-bs-theme="dark"] .card p {
     color: #c7c7c7;
-}
+} /* Dark mode */
 [data-bs-theme="light"] .card p {
     color: #2e2e22;
 }
@@ -198,11 +197,11 @@
 [data-bs-theme="dark"] .card_1 {
     background: #212529;
     border-left: 6px solid #bdab53;
-}
+} /* Dark mode */
 [data-bs-theme="light"] .card_1 {
     background: #ffffff;
     border-left: 6px solid #bdab53;
-}
+} /* Light mode */
 
 
 .card_1:hover{
@@ -219,22 +218,22 @@
 }
 [data-bs-theme="dark"] .card_1 h3 {
     color: #d4ba92;
-}
+} /* Dark mode */
 [data-bs-theme="light"] .card_1 h3 {
     color: #7a4900;
-}
+} /* Light mode */
 
 .card_1 p{
     margin: 0;
     font-size: 1rem;
     font-weight: 80;
 }
-[data-bs-theme="dark"].card_1 p {
+[data-bs-theme="dark"] .card_1 p {
     color: #c7c7c7;
-}
-[data-bs-theme="light"].card_1 p {
+} /* Dark mode */
+[data-bs-theme="light"] .card_1 p {
     color: #2e2e22;
-}
+} /* Light mode */
 
 .stats_3{
     margin-top: 20px;
@@ -253,10 +252,10 @@
 }
 [data-bs-theme="dark"] .card_2 {
     background: #212529;
-}
+} /* Dark mode */
 [data-bs-theme="light"] .card_2 {
     background: #ffffff;
-}
+} /* Light mode */
 
 
 
@@ -269,10 +268,10 @@
 }
 [data-bs-theme="dark"] .card_2 h3 {
     color: #d4ba92;
-}
+} /* Dark mode */
 [data-bs-theme="light"] .card_2 h3 {
     color: #7a4900;
-}
+} /* Light mode */
 
 .card_2 p{
     margin: 0;
@@ -282,10 +281,10 @@
 }
 [data-bs-theme="dark"] .card_2 p {
     color: #c7c7c7;
-}
+} /* Dark mode */
 [data-bs-theme="light"] .card_2 p {
     color: #2e2e22;
-}
+} /* Light mode */
 
 .headbut_1 {
   
@@ -302,11 +301,11 @@
 [data-bs-theme="dark"] .headbut_1 {
     background-color: #d4ba92; 
     border: 2px solid #d4ba92;
-}
+} /* Dark mode */
 [data-bs-theme="light"] .headbut_1 {
     background-color: #7a4900; 
     border: 2px solid #7a4900;
-}
+} /* Light mode */
 
 
 .headbut_1 a{
@@ -315,11 +314,10 @@
 }
 [data-bs-theme="dark"] .headbut_1 a {
     color: #69440b;
-}
-
+} /* Dark mode */
 [data-bs-theme="light"] .headbut_1 a {
     color: #e7b569;
-}
+} /* Light mode */
 
 .headbut_1:hover {
     background-color: transparent;

@@ -45,19 +45,25 @@
         .loginPage .loginForm{
             width: 600px;
             margin: 40px auto;
-            background: white;
             border: 3px solid #7a4900;
             border-radius: 8px;
             font-family:'Times New Roman', Times, serif; /*possibly subject to change, settled on this for now*/
-
         }
+
+        [data-bs-theme="light"] .loginPage .loginForm{
+            background: white;
+        }
+
+        [data-bs-theme="dark"] .loginPage .loginForm{
+            background: rgb(44, 46, 48);
+        }
+
         /** padding of the container */
         .container_signin{
             padding: 0 16px 0px;
         }
 
         .loginPage .container_signin{
-            background: white;
             border-radius: 0 0 8px 8px;
         }
 
@@ -82,8 +88,6 @@
         }
 
         .loginPage .mainLogin{
-            background-color: #bdab53;
-            color: black;
             padding: 14px 20px;
             margin: 8px 0;
             border: none;
@@ -91,9 +95,24 @@
             font-weight: 600;
             margin-top: 8px;
         }
+
+        [data-bs-theme="light"] .loginPage .mainLogin{
+            background-color: #bdab53;
+            color: black;
+        }
+        [data-bs-theme="dark"] .loginPage .mainLogin{
+            background-color: #8d7f3e;
+            color: rgb(255, 255, 255);
+        }
+
         /*effects for buttons */
-        .loginForm button:hover{
+        [data-bs-theme="light"] .loginForm button:hover{
             opacity: 0.8;
+        }
+
+        [data-bs-theme="dark"] .loginForm button:hover{
+            background-color: #d5c05f;
+
         }
 
         /**extra style for the cancel button */
@@ -121,6 +140,9 @@
 
         .login-hyperlinks {
             color: #04AA6D;
+        }
+        [data-bs-theme="dark"] .login-hyperlinks {
+            color: #1ff2a5;
         }
 
         /** forgot password */

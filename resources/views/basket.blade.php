@@ -12,8 +12,10 @@
             <div class="basket_items">
                 @foreach($basket as $product)
                     <div class="basket-item">
-                        <img src="{{asset('images/products/' . $product->product_image)}}" 
+                        <div class="item-image">
+                            <img src="{{asset('images/products/' . $product->product_image)}}" 
                             alt="{{$product->name}}" width="200">
+                        </div>
 
                         <div class="item-details">
                             <p><b>{{$product->name}}</b></p>
@@ -24,10 +26,10 @@
                                 <div class="quantityAlign">
                                     <label for="quantity{{$product->product_id}}">Quantity:</label>
                                     <div class="fieldAlign">
-                                        <input type="number" name="quantity" value="{{ $product->quantity }}"  min="1">
+                                        <input class="inputTxt" type="number" name="quantity" value="{{ $product->quantity }}"  min="1">
                                     </div>
                                     <div class="fieldAlign">
-                                        <input type="hidden" name="product_id" value="{{ $product->product_id }}">
+                                        <input class="inputTxt "type="hidden" name="product_id" value="{{ $product->product_id }}">
                                         <button type="submit" class="save-btn">Update Quantity</button>
                                     </div>
                                 </div>
@@ -68,7 +70,7 @@
             @if (!session()->has('voucher'))
                 <form method="POST" action="{{ route('voucher.apply') }}">
                     @csrf
-                    <input type="text" name="code" placeholder="Enter voucher code" required>
+                    <input class="inputTxt" type="text" name="code" placeholder="Enter voucher code" required>
                     <button type="submit" class="save-btn">Apply</button>
                 </form>
             @else
