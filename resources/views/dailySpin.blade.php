@@ -1,4 +1,8 @@
 <x-layout>
+      <div class="back-btn-wrapper">
+        <a href="/reward" class="save-btn">Go back</a>
+    </div>
+
     <div class="wholeWheel">
         <div class="wheel">
             <div class="one">1000</div>

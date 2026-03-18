@@ -1,4 +1,7 @@
 <x-layout>
+     <div class="back-btn-wrapper">
+        <a href="/account" class="save-btn">Go back</a>
+    </div>
     <div class = "container">
 
 

@@ -1,4 +1,7 @@
 <x-layout>
+    <div class="back-btn-wrapper">
+        <a href="/account" class="save-btn">Go back</a>
+    </div>
     <h1 class="Ah">My Wishlist</h1> 
     @if (session('success'))
     <p style="color: green;">{{  session('success') }}</p>
