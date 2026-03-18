@@ -3,7 +3,7 @@
 
     <div class="checkout-container">
 
-        <div class="checkout-master">
+        <div class="checkout-master modeBoxes">
 
             <div class="error-message" id="error-message" style="display: none;">
                 Please fill in all required fields. Required fields are denoted by the red asterisk.
@@ -16,26 +16,26 @@
                     <h3>Shipping address</h3>
 
                     <label for="address_line1">Address line 1 <span class="required-asterisk">[<span class="asterisk">*</span>]</span></label>
-                    <input type="text" name="address_line_1" id="address_line_1" required>
+                    <input class="inputTxt" type="text" name="address_line_1" id="address_line_1" required>
 
                     <label for="address_line2">Address line 2</label>
-                    <input type="text" name="address_line_2" id="address_line_2">
+                    <input class="inputTxt" type="text" name="address_line_2" id="address_line_2">
 
                     <label for="postcode">Postcode <span class="required-asterisk">[<span class="asterisk">*</span>]</span></label>
-                    <input type="text" name="postcode" id="postcode" required>
+                    <input class="inputTxt" type="text" name="postcode" id="postcode" required>
 
                     <label for="city">City <span class="required-asterisk">[<span class="asterisk">*</span>]</span></label>
-                    <input type="text" name="city" id="city" required>
+                    <input class="inputTxt" type="text" name="city" id="city" required>
                 </div>
 
                 <div class="payment-details">
                     <h3>Payment Details</h3>
 
                     <label for="card_number">Card number <span class="required-asterisk">[<span class="asterisk">*</span>]</span></label>
-                    <input type="text" name="card_number" id="card_number" pattern="\d{13,20}" maxlength="19" required>
+                    <input class="inputTxt" type="text" name="card_number" id="card_number" pattern="\d{13,20}" maxlength="19" required>
 
                     <label for="expiry_month">Expiry month <span class="required-asterisk">[<span class="asterisk">*</span>]</span></label>
-                    <select name="expiry_month" id="expiry_month" required>
+                    <select class="inputTxt" name="expiry_month" id="expiry_month" required>
                         <option value=""></option>
                         @for ($m = 1; $m <= 12; $m++)
                             <option value="{{sprintf('%02d',$m)}}">{{sprintf('%02d',$m)}}</option>
@@ -43,7 +43,7 @@
                     </select>
 
                     <label for="expiry_year">Expiry year <span class="required-asterisk">[<span class="asterisk">*</span>]</span></label>
-                    <select name="expiry_year" id="expiry_year" required>
+                    <select class="inputTxt" name="expiry_year" id="expiry_year" required>
                         <option value=""></option>
                         @php
                             $currentYear = date('Y');
@@ -54,7 +54,7 @@
                     </select>
 
                     <label for="security_code">Security code (CVV) <span class="required-asterisk">[<span class="asterisk">*</span>]</span></label>
-                    <input type="text" name="security_code" id="security_code" pattern="\d{3,4}" required>
+                    <input class="inputTxt" type="text" name="security_code" id="security_code" pattern="\d{3,4}" required>
                     <br><br>
                 </div>
 
@@ -63,7 +63,7 @@
 
         </div>
 
-        <div class="order-summary">
+        <div class="order-summary modeBoxes">
             <h3>Order Summary</h3>
 
             @foreach($basket as $product)
