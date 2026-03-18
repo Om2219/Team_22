@@ -17,7 +17,8 @@ class AdminUserSeeder extends Seeder {
                 'surname' => 'User',
                 'email' => 'admin@roots.com',
                 'password' => Hash::make('password'), // Change this to a secure password on the website
-                'role' => 'admin'
+                'role' => 'admin',
+                'is_active' => true,
             ]);
         }
     }
