@@ -71,19 +71,23 @@
         .registerPage .RegisterForm{
             width: 600px;
             margin: 40px auto;
-            background: white;
             border: 3px solid #7a4900;
             border-radius: 8px;
         }
-
-
+        
+        [data-bs-theme="light"] .registerPage .RegisterForm{
+            background: white;
+        }
+        [data-bs-theme="dark"] .registerPage .RegisterForm{
+            background: rgb(44, 46, 48);
+        }
+        
         /** padding of the container */
         .container_signin{
             padding: 0 16px 0px;
         }
 
         .registerPage .container_signin{
-            background: white;
             border-radius: 0 0 8px 8px;
         }
 
@@ -172,6 +176,10 @@
 
         .register-hyperlinks {
             color: #04AA6D;
+        }
+
+        [data-bs-theme="dark"] .register-hyperlinks {
+            color: #1ff2a5
         }
         /** register */
         span.psw{

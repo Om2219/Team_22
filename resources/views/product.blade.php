@@ -30,7 +30,7 @@
                     <p class="text-grey"> {{$product->product_description}}<p>
                 </div>
                     
-                <div class="card bg-light border-1 rounded-3 mb-5">    
+                <div class="card modeBoxes border-1 rounded-3 mb-5">    
                     <div class="card-body">
                         <form action="{{route('basket.add', $product->id)}}" method="POST" novalidate>
                             @csrf
