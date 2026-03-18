@@ -52,6 +52,47 @@ class BasketController extends Controller
         ]);
     }
 
+    //checks if the user is logged in, if not redirects to login
+    //if logged in, you can checkout
+    //gets info from basket and shows order summary on checkout
+    //also shows the effects of vouchers on total price (finalPrice)
+
+    public function checkoutPage() {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
+
+        $basket = Basket::join('products','basket.product_id','=','products.id')
+            ->join('product_images','products.id','=','product_images.product_id')
+            ->select('basket.*','products.name','products.price','product_images.product_image')
+            ->get();
+
+        $totalPrice = $basket->sum(function($item) {
+            return $item->price * $item->quantity;
+        });
+
+        $discount = 0;
+        $voucher = null;
+
+        $voucherCode = session('voucher.code') ?? null;
+
+        if ($voucherCode) {
+            $voucher = Voucher::where('code', $voucherCode)
+                ->where('active', true)
+                ->first();
+
+            if ($voucher) {
+                $discount = $voucher->type === 'percent'
+                    ? ($totalPrice * $voucher->value) / 100
+                    : $voucher->value;
+            }
+        }
+
+        $finalTotal = max(0, $totalPrice - $discount);
+
+        return view('checkout', compact('basket', 'totalPrice', 'discount', 'finalTotal', 'voucher'));
+    }
+
     //adds product to the basket with the quantity specified
     //if the item added is already in the basket then the quantity is incremented by the amount specified
 
@@ -148,6 +189,24 @@ class BasketController extends Controller
             }
         }
 
+        $discount = 0;
+        $voucher = null;
+        $voucherCode = session('voucher.code') ?? null;
+
+        if ($voucherCode) {
+            $voucher = Voucher::where('code', $voucherCode)
+                ->where('active', true)
+                ->first();
+
+            if ($voucher) {
+                $discount = $voucher->type === 'percent'
+                    ? ($totalPrice * $voucher->value) / 100
+                    : $voucher->value;
+            }
+        }
+
+        $finalTotal = max(0, $totalPrice - $discount);
+
         $details->validate([
             'address_line_1' => 'required|string|max:100',
             'address_line_2' => 'nullable|string|max:100',
@@ -174,7 +233,7 @@ class BasketController extends Controller
         $order = Order::create([
             'user_id' => $user,
             'order_ref' => $ref,
-            'total' => $totalPrice,
+            'total' => $finalTotal,
             'address_line_1' => $details->address_line_1,
             'address_line_2' => $details->address_line_2,
             'postcode'       => $details->postcode,
@@ -186,7 +245,7 @@ class BasketController extends Controller
 
         foreach ($orderitems as $product) {
 
-            $ban = $item->is_reward ? 0 : $item->price;
+            $ban = $product->is_reward ? 0 : $product->price;
 
             $order->items()->create([
             'product_id' => $product->product_id,
@@ -195,7 +254,7 @@ class BasketController extends Controller
         ]);
 
         if ($totalPrice > 0) {
-            $pointsEarned = $totalPrice * 100;
+            $pointsEarned = $finalTotal * 100;
             $uM->points += $pointsEarned;
             $uM->save();
         }
@@ -212,8 +271,15 @@ class BasketController extends Controller
         }
 
         Basket::truncate();
+        session()->forget('voucher');
 
-        return view('OrderPlaced', ['order' => $order, 'items' => $orderitems ]);
+        return view('OrderPlaced', [
+            'order' => $order,
+            'items' => $orderitems,
+            'totalPrice' => $totalPrice,
+            'discount' => $discount,
+            'voucher' => $voucher
+        ]);
 
     }
     

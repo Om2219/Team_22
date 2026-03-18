@@ -1,7 +1,7 @@
 <x-layout>
     @vite('resources/js/slots.js')
     <div class="container mt-4 text-center">
-        <h1 class="font-bold mb-5">Bannana Blast</h1>
+        <h1 class="font-bold mb-5">Banana Blast</h1>
 
         <p>Your Points: <span id="userPoints">{{ auth()->user()->points }}</span></p>
 

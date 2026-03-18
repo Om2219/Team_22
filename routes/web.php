@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Models\Product;
+use App\Models\Basket;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\ContactFormController;
@@ -79,11 +80,11 @@ Route::post('basket/add/{product}', [BasketController::class, 'add'])->name('bas
 Route::delete('basket/remove/{product}', [BasketController::class, 'remove'])->name('basket.remove');   // removes a product from the basket
 Route::post('basket/update', [BasketController::class, 'update'])->name('basket.update');               // updates quantities in the basket
 
-Route::get('/reward', function () {  return view('reward'); }); 
+Route::get('/reward', function () {  return view('reward'); }); //returns rewards page
 
-Route::get('checkout', function () { if (!Auth::check()) {return redirect()->route('login');} return view('checkout'); }); // checks if a user is logged in and if so then shows checkout
+Route::get('checkout', [BasketController::class, 'checkoutPage'])->name('checkout'); //returns checkout page
 
-Route::post('checkout', [BasketController::class, 'Orders'])->name('checkout.place');
+Route::post('checkout', [BasketController::class, 'Orders'])->name('checkout.place'); //places the order using inputs given through checkout
 
 Route::get('OrderPlaced', function () { return view('OrderPlaced'); })-> name('OrderPlaced');// shows the order confirmation page 
 
