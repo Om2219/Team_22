@@ -119,6 +119,9 @@ Route::get('products/{cat}',[ProductController::class, 'cat'])->name('products.c
 
 Route::get('faq', function () { return view('faq'); }); // shows the FAQ page
 
+Route::get('/order', [BasketController::class, 'ordersPage'])->name('orders.page'); //shows the orders page
+Route::get('/order/{ref}', [BasketController::class, 'orderDetails'])->name('orders.details'); //shows the details for the order
+
 Route::get('mydetails', [DetailsController::class, 'show'])->name('mydetails');     // shows the my details page
 
 Route::get('/changeEmail', [DetailsController::class, 'show_changeEmail'])->name('change.email');               // shows the change email page

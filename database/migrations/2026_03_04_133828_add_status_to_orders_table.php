@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void {
         Schema::table('orders', function (Blueprint $table) {
             // Add status for tracking orders
-            $table->string('status')->default('pending')->after('total');
+            $table->string('status')->default('Pending')->after('total');
         });
     }
 

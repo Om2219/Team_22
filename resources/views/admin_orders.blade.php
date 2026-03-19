@@ -58,11 +58,11 @@
                     @csrf
                     @method('PUT')
                     <select name="status" onchange="this.form.submit()" class="status-select">
-                        <option value="pending" {{ $order->status == 'pending' ? 'selected' : '' }}>Pending</option>
-                        <option value="processing" {{ $order->status == 'processing' ? 'selected' : '' }}>Processing</option>
-                        <option value="shipped" {{ $order->status == 'shipped' ? 'selected' : '' }}>Shipped</option>
-                        <option value="delivered" {{ $order->status == 'delivered' ? 'selected' : '' }}>Delivered</option>
-                        <option value="cancelled" {{ $order->status == 'cancelled' ? 'selected' : '' }}>Cancelled</option>
+                        <option value="Pending" {{ $order->status == 'Pending' ? 'selected' : '' }}>Pending</option>
+                        <option value="Processing" {{ $order->status == 'Processing' ? 'selected' : '' }}>Processing</option>
+                        <option value="Shipped" {{ $order->status == 'Shipped' ? 'selected' : '' }}>Shipped</option>
+                        <option value="Delivered" {{ $order->status == 'Delivered' ? 'selected' : '' }}>Delivered</option>
+                        <option value="Cancelled" {{ $order->status == 'Cancelled' ? 'selected' : '' }}>Cancelled</option>
                     </select>
                 </form>
             </td>

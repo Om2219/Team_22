@@ -25,7 +25,7 @@ class ReportController extends Controller {
         // Row 3 - stats for the month
         $monthlyOrders = Order::whereMonth('created_at', now()->month)->count();
         $monthlyEarnings = Order::whereMonth('created_at', now()->month)->sum('total');
-        $pendingOrders = Order::where('status', 'pending')->count();
+        $pendingOrders = Order::where('status', 'Pending')->count();
 
         // top 5 products
         $topProducts = Product::withCount('orderItems')

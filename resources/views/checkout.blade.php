@@ -78,7 +78,6 @@
                 </div>
             @endforeach
 
-            <hr>
             <p>Subtotal: £{{number_format($totalPrice, 2)}}</p>
 
             @if($voucher)
