@@ -16,18 +16,7 @@ class ContactController extends Controller {
 
     // View the user message
     public function show($id) {
-        $message = ContactForm::find($id);
-        
-        if (!$message) {
-            return redirect()->route('admin.contactforms')->with('error', 'Message not found');
-        }
-
-        if (!$message->is_read) {
-            $message->is_read = true;
-            $message->save();
-        }
-
-        return view('admin_contact_show', compact('message'));
+        return redirect()->route('admin.messages', ['id' => $id]);
     }
 
     // Reply to the message
@@ -45,7 +34,7 @@ class ContactController extends Controller {
         $message->reply = $request->reply;
         $message->is_replied = now();
         $message->save();
-        return redirect()->route('admin.contactforms.show', $id)->with('success', 'Reply sent');
+        return redirect()->route('admin.messages.show', $id)->with('success', 'Reply sent');
     }
 
     // Delete the message
@@ -58,5 +47,20 @@ class ContactController extends Controller {
 
         $message->delete();
         return redirect()->route('admin.contactforms')->with('success', 'Message deleted');
+    }
+
+    // For the messages page
+    public function messages(Request $request) {
+        $messages = ContactForm::orderBy('created_at', 'desc')->get();
+        $selectedMessage = null;
+        if ($request->has('id')) {
+            $selectedMessage = ContactForm::find($request->id);
+            if ($selectedMessage && !$selectedMessage->is_read) {
+                $selectedMessage->is_read = true;
+                $selectedMessage->save();
+            }
+        }
+        
+        return view('admin_msg', compact('messages', 'selectedMessage'));
     }
 }
