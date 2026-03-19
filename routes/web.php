@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Models\Product;
+use App\Models\Basket;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\ContactFormController;
@@ -18,6 +19,7 @@ use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\ReportController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\PointsVoucherController;
 use App\Http\Controllers\DailySpin;
 use App\Http\Controllers\SlotMachine;
@@ -78,11 +80,11 @@ Route::post('basket/add/{product}', [BasketController::class, 'add'])->name('bas
 Route::delete('basket/remove/{product}', [BasketController::class, 'remove'])->name('basket.remove');   // removes a product from the basket
 Route::post('basket/update', [BasketController::class, 'update'])->name('basket.update');               // updates quantities in the basket
 
-Route::get('/reward', function () {  return view('reward'); }); 
+Route::get('/reward', function () {  return view('reward'); }); //returns rewards page
 
-Route::get('checkout', function () { if (!Auth::check()) {return redirect()->route('login');} return view('checkout'); }); // checks if a user is logged in and if so then shows checkout
+Route::get('checkout', [BasketController::class, 'checkoutPage'])->name('checkout'); //returns checkout page
 
-Route::post('checkout', [BasketController::class, 'Orders'])->name('checkout.place'); // the post to the checkout form
+Route::post('checkout', [BasketController::class, 'Orders'])->name('checkout.place'); //places the order using inputs given through checkout
 
 Route::get('OrderPlaced', function () { return view('OrderPlaced'); })-> name('OrderPlaced');// shows the order confirmation page 
 
@@ -117,6 +119,9 @@ Route::get('products/{cat}',[ProductController::class, 'cat'])->name('products.c
 
 Route::get('faq', function () { return view('faq'); }); // shows the FAQ page
 
+Route::get('/order', [BasketController::class, 'ordersPage'])->name('orders.page'); //shows the orders page
+Route::get('/order/{ref}', [BasketController::class, 'orderDetails'])->name('orders.details'); //shows the details for the order
+
 Route::get('mydetails', [DetailsController::class, 'show'])->name('mydetails');     // shows the my details page
 
 Route::get('/changeEmail', [DetailsController::class, 'show_changeEmail'])->name('change.email');               // shows the change email page
@@ -148,6 +153,8 @@ Route::get('/search', [ProductController::class, 'search'])->name('search');
 
 Route::get('termsandprivacy', function () { return view('termsandprivacy'); }); //shows the terms and privacy page (EMPTY RN)
 
+Route::get('/forgotPassword', [DetailsController::class, 'show_forgotPassword'])->name('forgotPassword.show'); //shows forgot password page
+Route::post('/forgotPassword', [DetailsController::class, 'update_forgotPassword'])->name('forgotPassword.update'); //updates the password in the database
 
 Route::middleware(['auth', 'admin'])->group(function() {
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])
@@ -164,6 +171,17 @@ Route::middleware(['auth', 'admin'])->group(function() {
     Route::post('admin/stock/{product}/restock', [ProductController::class, 'restock'])->name('stockRestock');
     // order status update route
     Route::put('/admin/orders/{id}/status', [OrderController::class, 'webUpdateStatus'])->name('admin.orders.status');
+    // contact form route
+    Route::get('/admin/contactforms', [ContactController::class, 'index'])->name('admin.contactforms');
+    Route::post('/admin/contactforms/{id}/reply', [ContactController::class, 'reply'])->name('admin.contactforms.reply');
+    Route::delete('/admin/contactforms/{id}', [ContactController::class, 'destroy'])->name('admin.contactforms.destroy');
+    Route::get('/admin/messages/{id}', [ContactController::class, 'messages'])->name('admin.messages.show');
+    Route::get('/admin/messages', [ContactController::class, 'messages'])->name('admin.messages');
+    Route::post('/admin/messages/{id}/reply', [ContactController::class, 'reply'])->name('admin.messages.reply');
+    // customer routes
+    Route::get('/admin/customers/create', [CustomerController::class, 'create'])->name('admin.customers.create');
+    Route::post('/admin/customers', [CustomerController::class, 'store'])->name('admin.customers.store');
+    Route::post('/admin/customers/{id}/toggle-status', [CustomerController::class, 'toggleStatus'])->name('admin.customers.toggle');
 });
 
 // Route::get('studentlisting', 'App\Http\Controllers\StudentController@list')->name('list_student');

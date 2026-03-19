@@ -8,27 +8,27 @@ use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
-class ReportController extends Controller
-{
-    public function index()
-    {
-        // row 1 - overall stats
+class ReportController extends Controller {
+
+    // Report page with different stats
+    public function index() {
+        // Row 1 - overall stats
         $totalOrders = Order::count();
         $totalEarnings = Order::sum('total');
         $totalCustomers = User::where('role', 'customer')->count();
 
-        // row 2 - stats for today
+        // Row 2 - stats for today
         $todayOrders = Order::whereDate('created_at', today())->count();
         $todayEarnings = Order::whereDate('created_at', today())->sum('total');
-        $todayTopProduct = Product::withCount('order_items')->orderBy('order_items_count', 'desc')->first();
+        $todayTopProduct = Product::withCount('orderItems')->orderBy('order_items_count', 'desc')->first();
 
-        // row 3 - stats for the current month
+        // Row 3 - stats for the month
         $monthlyOrders = Order::whereMonth('created_at', now()->month)->count();
         $monthlyEarnings = Order::whereMonth('created_at', now()->month)->sum('total');
-        $pendingOrders = Order::where('status', 'pending')->count();
+        $pendingOrders = Order::where('status', 'Pending')->count();
 
         // top 5 products
-        $topProducts = Product::withCount('order_items')
+        $topProducts = Product::withCount('orderItems')
             ->orderBy('order_items_count', 'desc')
             ->take(5)
             ->get();

@@ -1,4 +1,7 @@
 <x-layout>
+    <div class="back-btn-wrapper">
+        <a href="/reward" class="save-btn">Go back</a>
+    </div>
     <h1>Buy Rewards with points</h1>
 
     <p><strong>Your points:</strong> {{ $user->points }}</p>

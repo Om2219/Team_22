@@ -7,15 +7,15 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
-class Accountseeder1 extends Seeder
-{
+class Accountseeder1 extends Seeder {
     
-    public function run(): void
-    {
-        // need to prevent duplicates
+    public function run(): void {
+        // Needed to prevent duplicates
         if (!User::where('email', 'Certified@product.com')->exists()) {
             User::create([
-                'email' => 'Certified@product.com', //creates a seeded account, didn't apply a name because it's nullable
+                'forename' => 'Certified',          //creates a seeded account
+                'surname' => 'Product',
+                'email' => 'Certified@product.com', 
                 'password' => Hash::make('CertifiedProduct'),
             ]);
         }

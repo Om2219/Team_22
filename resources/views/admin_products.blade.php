@@ -1,7 +1,7 @@
 <x-layout>
    <div class="Admin_Dashboard">
 
-
+<!-- Admin Dashboard Sidebar -->
 <aside class="Sidebar">
 <h2>Roots Admin</h2>
 
@@ -21,7 +21,7 @@
 <main class="Admin_Content">
     <h1> Products</h1>
     <p> Manage products and stock levels</p>
-
+    <!-- Success/Error messages -->
     @if(session('success'))
         <div class="alert alert-success"> {{ session('success') }} </div>
     @endif
@@ -30,9 +30,11 @@
         <div class="alert alert-danger"> {{ session('error') }} </div>
     @endif
 
+<!-- Stock management table -->
 <section class="table-section">
     <h2>Stock Levels</h2>
 <table>
+    <!-- Table headers -->
     <tr>
         <th>Product ID</th>
         <th>Name</th>
@@ -42,7 +44,9 @@
         <th>Update Stock</th>
 </tr>
 
+<!-- Loop through products -->
 @foreach($products as $product)
+<!-- Highlighting red if stock is low -->
 <tr class="@if($product->stock && $product->stock->stock <= $product->stock->low_stock) table-danger @endif">
     <td>{{ $product->id }}</td>
     <td>{{ $product->name }}</td>
@@ -50,6 +54,7 @@
     <td>£{{ number_format($product->price, 2) }}</td>
     <td>
         @if($product->stock)
+        <!-- Showing stock -->
             @if($product->stock->stock <= $product->stock->low_stock)
                 <span class="text-danger fw-bold">{{ $product->stock->stock }}</span>
             @else
@@ -60,12 +65,14 @@
         @endif
     </td>
     <td>
+        <!-- Manually updating stock -->
         <form action="{{ route('updateStock', $product) }}" method="POST" class="d-inline-flex gap-3">
             @csrf
             <input type="number" name="stock" value="{{ $product->stock->stock }}"  min="0" class="form-control form-control-sm" style="width:100px;">
             <button type="submit" class="btn btn-sm btn-outline-dark"> Update </button>
         </form>
 
+        <!-- Restock button -->
         @if($product->stock && $product->stock->stock <= $product->stock->low_stock)
             <form action="{{ route('stockRestock', $product) }}" method="POST" class="d-inline ms-2">
                 @csrf
@@ -88,7 +95,7 @@
     .Admin_Dashboard{
         display: flex;
         min-height: 100vh;
-        background-color:#f5f1e8;
+        background-color: #e1edf1;
         font-family: 'Segoe UI', sans-serif;
 
     }
@@ -97,8 +104,8 @@
 
     .Sidebar{
         width: 260px;
-        background-color: #7a4900;
-        color:#fff;
+        background-color: #061156;
+        color: #fff;
         padding: 30px 20px;
         box-shadow: 4px 0 10px rgba(0,0,0,0.15);
     }
@@ -127,7 +134,7 @@
 
 .Sidebar ul li a:hover,
 .Sidebar ul li a.active{
-    background-color: #bdab53;
+    background-color: #e1edf1;
     color: #2e2e2e;
 }
 
@@ -135,7 +142,7 @@
 .Admin_Content{
 flex:1;
 padding: 40px;
-background-color: #f5f1e8;
+background-color: #e1edf1;
  font-family: 'Segoe UI', sans-serif;
 color: #2e2e2e;
 }
@@ -143,13 +150,51 @@ color: #2e2e2e;
 .Admin_Content h1{
     margin: 0 0 8px;
     font-size: 2.2rem;
-    color:#7a4900;
+    color: #061156;
 }
 
 .Admin_Content p{
  margin: 0 0 28px;
     font-size: 1rem;
-    color:#5a5a5a;
+    color: #5a5a5a;
+}
+
+.stats{
+    display: grid;
+    grid-template-colums:repeat(3,minmax(180px, 1fr));
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+.card{
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 18px 18px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+    border-left: 6px solid #e1edf1;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+.card:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+}
+
+.card h3{
+    margin: 0 0 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #061156;
+    letter-spacing: 0.2px;
+
+}
+
+.card p{
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #2e2e22;
 }
 
 .table-section{
@@ -163,7 +208,7 @@ color: #2e2e2e;
 
 .table-section h2{
     margin:  0 0 14px;
-    color: #7a4900;
+    color: #061156;
     font-size: 1.2rem;
 }
 
@@ -174,20 +219,14 @@ color: #2e2e2e;
     border-radius: 10px;
 }
 
-.table-section th {
+.table-section th, .table-section td{
     text-align: left;
     padding: 12px 12px;
     font-size: 0.95rem;
 }
 
-.table-section td {
-    text-align: left;
-    padding: 0px 12px;
-    font-size: 0.95rem;
-}
-
 .table-section th{
-    background: #7a4900;
+    background: #061156;
     color: #ffffff;
     font-weight: 700;
 
@@ -201,33 +240,6 @@ color: #2e2e2e;
 
 }
 
-.table-danger {
-    background-color: #fff3f3;
-}
-
-.text-danger {
-    color: #c44536;
-}
-
-.fw-bold {
-    font-weight: 700;
-}
-
-.alert-success {
-    background: #d4edda;
-    color: #155724;
-    padding: 12px;
-    border-radius: 4px;
-    margin-bottom: 20px;
-}
-
-.alert-danger {
-    background: #f8d7da;
-    color: #721c24;
-    padding: 12px;
-    border-radius: 4px;
-    margin-bottom: 20px;
-}
 
 /**Responsive */
 @media (max-width:900px){
@@ -243,7 +255,7 @@ color: #2e2e2e;
 
 .logout-link{
     background:none;
-    border: 2px solid #bdab53;
+    border: 2px solid #fff;
     color: white; 
     cursor: pointer;
     padding: 10px 12px;
@@ -257,26 +269,6 @@ color: #2e2e2e;
 .logout-link:hover{
     color:#bdab53;
     border-color:white;
-}
-
-.d-inline-flex {
-    margin-top: 16px;
-    align-items: center;
-}
-
-.d-inline {
-    margin-top: 16px;
-}
-
-.form-control-sm {
-    height: 28px;
-    padding: 2px 6px;
-}
-
-.btn-sm {
-    height: 28px;
-    padding: 2px 8px;
-    line-height: 1.2;
 }
 
     </style>

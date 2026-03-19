@@ -3,13 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AdminLoginController extends Controller
 {
-    // Handles admin login
+    // Admin login
     public function login(Request $request)
     {
         $request->validate([
@@ -17,22 +16,22 @@ class AdminLoginController extends Controller
             'password' => 'required|string',
         ]);
 
-        // Authenticate and error message
+        // Checking if they are an admin
         if (!Auth::attempt($request->only('email', 'password'))) {
             return response()->json(['message' => 'Invalid email or password'], 401);
         }
         
         $user = Auth::user();
 
-        // Check if user is admin
+        // Check if the user is an admin
         if ($user->role !== 'admin') {
             Auth::logout();
             return response()->json(['message' => 'Admin access required'], 403);
         }
-        // Need to generate token for admin user so that they can access admin portal
+        // Need a token for admin user
         $token = $user->createToken('admin-token')->plainTextToken;
 
-        // Return user details and token
+        // User details (for later admin use)
         return response()->json([
             'message' => 'Login successful',
             'user' => [
@@ -45,11 +44,8 @@ class AdminLoginController extends Controller
         ]);
     }
 
-    // Handles admin logout
+    // Admin logout
     public function logout(Request $request) {
-        if (!$request->user()) {
-            return response()->json(['message' => 'Not authenticated'], 401);
-        }
         $request->user()->currentAccessToken()->delete();
         return response()->json(['message' => 'Logged out successfully']);
     }

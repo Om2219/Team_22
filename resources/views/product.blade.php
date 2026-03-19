@@ -27,10 +27,10 @@
                 
                 <div>
                     <h5 class="fw-bold">Product Information</h5>
-                    <p class="text-grey"> {{$product->product_description}}<p>
+                    <p class="text-grey"> {{$product->product_description}}</p>
                 </div>
                     
-                <div class="card bg-light border-1 rounded-3 mb-5">    
+                <div class="card modeBoxes border-1 rounded-3 mb-5">    
                     <div class="card-body">
                         <form action="{{route('basket.add', $product->id)}}" method="POST" novalidate>
                             @csrf
@@ -81,16 +81,17 @@
                     </div>
                 </div>
             </div>
-
-            <div class="d-flex gap-2">
-                <a href="{{ route('product.edit', $product) }}" class="btn btn-outline-secondary btn-sm">Edit</a>
-                <form action ="{{ route('product.destroy', $product) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" onclick="return confirm('MONKEY BYE BYE YES??')" class="btn btn-outline-danger btn-sm"> Delete Product</button>
-                </form>
-                <hr>
-            </div>
+            @if(Auth::check() && Auth::user()->role === 'admin')
+                <div class="d-flex gap-2">
+                    <a href="{{ route('product.edit', $product) }}" class="btn btn-outline-secondary btn-sm">Edit</a>
+                    <form action ="{{ route('product.destroy', $product) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" onclick="return confirm('Are you sure you want to delete this product?')" class="btn btn-outline-danger btn-sm"> Delete Product</button>
+                    </form>
+                    <hr>
+                </div>
+            @endif
             </div>
         </div>
 

@@ -7,8 +7,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 
-class LoginController extends Controller
-{
+class LoginController extends Controller {
+
     public function create(){
         return view('login');
     }
@@ -19,7 +19,13 @@ class LoginController extends Controller
             return back()->withErrors(['email' => 'Invalid login details.']);
         }
 
-        if($user->role == 'admin'){
+        // Check if the user is banned
+        if(!$user->is_active){
+            return back()->withErrors(['email' => 'This account has been banned. Please contact customer support.']);
+        }
+
+        // Check if the user is an admin
+        if($user->role == 'admin') {
             return back()->withErrors([
                 'email' => 'Admin users please login via the admin login.',
             ]);

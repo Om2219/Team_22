@@ -2,7 +2,11 @@
    
     {{-- <div class="home-master">
         <div class="home-banner">
-            <img src="/images/logo_updated.png">
+            @if(Auth::check() && Auth::user()->role === 'admin')
+            <img src="{{ asset('images/admin logo.png') }}" class="logo">
+                @else
+                    <img src="{{ asset('images/logo_updated.png') }}" class="logo">
+            @endif
             <div class="business-description">
                 <h1>Roots, where creativity comes to thrive</h1> <!--slogan-->
                 <p>At Roots, we sell products such as books, toys, stationery, and more. These can be viewed below:</p> <!--website description-->
@@ -54,10 +58,10 @@
 
 <div class="scroll-spacer"></div> --}}
 
-    <div class="animBg">
+    <!--<div class="animBg">
         {{-- we can change the background to something more fitting this is tempoary --}}
         <img src="{{ asset('images/Mint.png') }}">
-    </div>
+    </div>-->
 
     <img id="pen" src="{{ asset('images/Pen.png') }}">
     {{-- <img id="holder" src="{{ asset('images/hold.png') }}"> --}}
@@ -68,13 +72,18 @@
 
             <section class="hero">
                 <div class="home-banner">
-                    <img src="/images/logo_updated.png">
+                    @if(Auth::check() && Auth::user()->role === 'admin')
+                        <img src="{{ asset('images/admin logo.png') }}" class="logo">
+                        @else
+                        <img src="{{ asset('images/logo_updated.png') }}" class="logo">
+                    @endif
 
                     <div class="business-description">
                         <h1>Roots, where creativity comes to thrive</h1>
                         <p>
                             At Roots, we sell products such as books, toys, stationery, 
-                            and more. These can be viewed below:
+                            and more. 
+                            <br> These can be viewed below along with our community:
                         </p>
                     </div>
                 </div>
@@ -83,21 +92,56 @@
             <section class="scroll-section ">
                 <!-- This section exists just to give scroll space -->
                 <div class="blockUno">
-                 <h1> hello </h1>
+                    <div class="card shadow-lg border-0 mb-4 text-center">
+                        <h1 class = "display-3 fw-bold "> Hear the communities thoughts</h1>
+                    </div>
+                 <img id="first" src="{{ asset('images/blockOne.png') }}">
+                 <br>
+                 <br>
                 </div>
-                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                 <div class="blockDos">
-                 <h2> Silly Monkey </h2>
+                 <div class="card shadow-lg border-0 mb-4 text-center">
+                    <h1 class = "display-3 fw-bold "> Meet The Mascot </h1>
+                 </div>
+                 <img id="second" src="{{ asset('images/blockTwo.png') }}">
+                 <br>
+                 <br>
                 </div>
-                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <div class = "blocktres">
-                 <h3> get back to monkey business </h3>
+                <br><br><br><br><br><br><br><br><br><br><br><br>
+                <br><br><br><br><br><br><br><br><br><br><br><br>
+                {{-- <div>
+                <h3> get back to monkey business </h3> 
+                <img class = "blocktres" src="{{ asset('images/blockThree.png') }}">
+                 <br>
+                 <br>
+                </div> --}}
+                <div class = "blocktres" >
+                    {{-- <h3> get back to monkey business </h3> --}}
+                    <h1 class = "display-3 fw-bold "> Product of the Month </h1>
+                    
+                    <div class="row align-items-center g-5">
+                        <div class="col-md-5 text-center">
+                            <img id ="third" src="{{ asset('images/products/Suja the Goat.png') }}">
+                        </div>
+                        <div class="col-md-7 g-5">
+                                <h3> THE SUJA THE GOAT </h3><br>
+                                <p class="lead">
+                                    A roots favourite, Suja the Goat has officially claimed the title of 
+                                    <em>Greatest Of All Time</em>.
+                                    Dressed in a stunning coat of emerald green fluff, Suja isn't 
+                                    just a plush, he is a friend, a icon, a cuddly sensation taking the toy world by storm.
+                                </p> <br>
+                                <div class="card shadow-sm rounded-3 border-0 mb-4 text-center">
+                                    <p class="mb-0"><strong>REPORTER'S NOTE:</strong> Sources confirm that Suja is 100% squishable and 
+                                    highly likely to steal your heart (and your favorite spot on the sofa). Get the full story 
+                                    before he sells out!</p>
+                                </div>
+                        </div>
+                    </div>
                 </div>
             </section>
-
-
 
             <section class="collections">
                 <h2>Browse Our Collections</h2>

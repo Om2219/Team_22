@@ -7,7 +7,6 @@
     </div>
 
     <div class="faq-master">
-        <br>
         <button class="questions" onclick="tog(this)">Can I track my order?
             <img src="images/dropdown-arrow_faq.png" height="20" width="20">
         </button>

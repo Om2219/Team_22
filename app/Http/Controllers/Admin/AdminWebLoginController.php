@@ -6,13 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AdminWebLoginController extends Controller
-{
+class AdminWebLoginController extends Controller {
+
+    // Shows the login
     public function showLoginForm(){
         return view('admin');
     }
 
-    // handling login form for admins
+    // Handling login (admins)
     public function login(Request $request){
         $request->validate([
             'email' => 'required|email',
@@ -21,11 +22,20 @@ class AdminWebLoginController extends Controller
 
         if (Auth::attempt($request->only('email', 'password'))) {
             $user = Auth::user();
-            // check if user is admin
+
+            // Check if the user is banned
+            if(!$user->is_active){
+                Auth::logout();
+                return back()->withErrors([
+                    'email' => 'This account has been banned. Please contact customer support.',
+                ]);
+            }
+
+            // Check if the user is an admin
             if ($user->role === 'admin') {
                 return redirect()->route('admin.dashboard');
             }
-            // if not admin show error
+            // Show error if they don't have admin access
             Auth::logout();
             return back()->withErrors([
                 'email' => 'Admin access only. Please use an admin account.',

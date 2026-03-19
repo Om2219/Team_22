@@ -1,4 +1,8 @@
 <x-layout>
+      <div class="back-btn-wrapper">
+        <a href="/reward" class="save-btn">Go back</a>
+    </div>
+
     <div class="wholeWheel">
         <div class="wheel">
             <div class="one">1000</div>
@@ -12,7 +16,9 @@
         </div>
         <div class="pointer"></div>
     </div>
-
+    
+    {{-- button to spin the daily wheel--}}
     <button id="spin">spin</button>
+    {{-- displays results of hte wheel--}}
     <div id="result" class="mt-4 text-center"></div>
 </x-layout>

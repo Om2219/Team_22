@@ -1,10 +1,14 @@
 
+
+
 /* om css*/
 header{
 
     /* background-color: #754C24; */
     background-color: seagreen;
     width: 100%;
+    /* sion */
+    overflow-x: hidden;
 }
 
 .logo {
@@ -112,7 +116,6 @@ a{
 
 body{
     background-color: white; 
-
 }
 
 
@@ -234,18 +237,44 @@ footer{
 }
 
 .blockUno {
-    background-color: seagreen;
     border-radius: 150px 20px 20px 150px; 
-    padding: 40px;
+    padding: 20px;
     width: 100%; 
     min-height: 600px; 
 
 }
 
-.blockDos {
-    background-color: seagreen;
-    border-radius: 150px 150px 150px 150px; 
+#first {
+    border-radius: 150px 20px 20px 150px; 
     padding: 40px;
+    width: 100%; 
+    min-height: 500px; 
+}
+
+#second {
+    padding: 40px;
+    max-height: 500px; 
+}
+
+#third {
+    padding: 40px;
+    max-height: 500px; 
+    border-radius: 150px 150px 150px 150px; 
+
+}
+
+#sillyMonkey {
+    padding: 40px;
+    height: 200px;        
+    width: 100%;
+    object-fit: contain;  
+}
+
+
+.blockDos {
+    /* background-color: seagreen; */
+    border-radius: 150px 150px 150px 150px; 
+    padding: 20px;
     width: 100%; 
     min-height: 600px; 
 
@@ -254,7 +283,7 @@ footer{
 .blocktres{
     background-color: seagreen;
     border-radius: 20px 150px 150px 20px; 
-    padding: 40px;
+    padding: 20px;
     width: 100%; 
     min-height: 600px; 
 
@@ -357,6 +386,7 @@ footer{
 /*Kyle CSS*/
 .faq-header {
     font-family:'Times New Roman', Times, serif;
+    margin-bottom: 20px;
 }
 
 .faq-header .faqDetails {
@@ -365,31 +395,43 @@ footer{
 }
 
 .faq-master .questions {
-    background: none;
-    border: 1px solid lightgray;
     border-radius: 6px;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.1); 
-    /*rgb 0,0,0 with 0.1 opacity, 0 offset (so the shadow is on the button), 
-    5 pixels down and blurred by 10 pixels*/
-
     font-size: 29px;
     cursor: pointer;
-
     justify-content: space-between;
     display: flex; /*so the text isn't centered, looks better*/
     width: 100%;
     padding: 10px 20px; /*10px makes the button smaller, 20px moves text away from the edges*/
     font-family:'Times New Roman', Times, serif; /*possibly subject to change, settled on this for now*/
-
     transition: background 0.5s;
 }
 
-.faq-master .questions:hover {
+[data-bs-theme="light"] .faq-master .questions {
+    background: none;
+    border: 1px solid lightgray;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1); 
+    /*rgb 0,0,0 with 0.1 opacity, 0 offset (so the shadow is on the button), 
+    5 pixels down and blurred by 10 pixels*/ 
+}
+[data-bs-theme="dark"] .faq-master .questions {
+    background: #303336;
+    border: 1px solid #1b1e22;
+    box-shadow: 0 5px 10px rgba(255, 255, 255, 0.1); 
+}
+
+[data-bs-theme="light"] .faq-master .questions:hover {
     background-color: rgb(233, 233, 233);
+}
+[data-bs-theme="dark"] .faq-master .questions:hover {
+    background-color: rgb(84, 89, 95);
 }
 
 .faq-master img {
-    margin-top: 5px;
+    margin-top: 10px;
+}
+
+[data-bs-theme="dark"] .faq-master img {
+    filter: invert(100%);
 }
 
 .faq-master .answer {
@@ -402,17 +444,34 @@ footer{
     color: black;
 }
 
+[data-bs-theme="dark"] .faq-master .answer.show {
+    color: white;
+}
+
 .faq-master .faq-hyperlinks {
     color: #04AA6D; /*override the a element color being white*/
     text-decoration: none;
 }
 
+[data-bs-theme="dark"] .faq-master .faq-hyperlinks {
+    color: #1ff2a5;
+}
+
 .MasterBasketBox { /*Reminder: use flex-wrap, get text to go to the right of the images*/
-    border: 2px solid black;
-    border-radius: 8px;
+    border-radius: 6px;
     padding: 20px 20px; /*move items away from the edges*/
     display: flex;
     flex-direction: column;
+}
+
+[data-bs-theme="light"] .MasterBasketBox {
+    border: 1px solid lightgray;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+[data-bs-theme="dark"] .MasterBasketBox {
+    border: 1px solid #1b1e22;
+    box-shadow: 0 5px 10px rgba(255, 255, 255, 0.1);
+    background-color: #303336;
 }
 
 .input {
@@ -428,15 +487,18 @@ footer{
 .basket_items {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
 }
 
 .basket-item {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
+    /*if anyone wants the line separating each product, just uncomment the line below*/
+    /*border-bottom: 1px solid #ddd;*/
     border-bottom: 1px solid #ddd;
     padding: 15px 0;
+    gap: 20px;
 }
 
 .basket-item p {
@@ -447,6 +509,12 @@ footer{
     flex: 1;
 }
 
+
+.basket-item .item-image {
+    padding-right: 3em;
+    border-radius: 4px;
+}
+
 .remove-btn button {
     padding: 8px 15px;
     border: none;
@@ -455,6 +523,7 @@ footer{
 }
 
 .basket_total {
+    padding-top: 15px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -471,12 +540,295 @@ footer{
     gap: 15px;
 }
 
+.MasterBasketBox input {
+    padding: 8px;
+    background: #ddd;
+    border: 4px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+    transition: 0.5s;
+}
+
+.MasterBasketBox input:hover {
+    border-color: rgb(185, 185, 185);
+    background: rgb(185, 185, 185);
+    outline: none;
+}
+
+/*remove spinner buttons to the right of quantity input boxes*/
+.MasterBasketBox input::-webkit-outer-spin-button,
+.MasterBasketBox input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    /*scrolling in the box still increments/decrements despite the 
+    spinner buttons being gone, so functionality is still there*/
+}
+
+.MasterBasketBox .quantityAlign {
+    display: grid;
+    max-width: 100px;
+}
+
+.MasterBasketBox .fieldAlign {
+    margin-top: 10px;
+}
+
 .basket-master button {
     padding: 12px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
+
+.checkout-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.checkout-master {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    max-width: 600px;
+    width: 100%;
+    padding: 30px 20px;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-master label {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.checkout-master .address-details, .checkout-master .payment-details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 450px;
+}
+
+.checkout-master input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.checkout-master select {
+    max-width: 150px;
+    margin-right: 15px;
+}
+
+.checkout-master form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+}
+
+.checkout-master input[type="text"], .checkout-master select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    background: #f9f9f9;
+    transition: 0.3s;
+}
+
+.checkout-master input[type="text"]:hover, .checkout-master select:hover {
+    background: #f1f1f1;
+    border-color: #b0b0b0;
+}
+
+.checkout-master input[type="text"]:focus, .checkout-master select:focus {
+    border-color: seagreen;
+}
+
+.checkout-master .asterisk {
+    color: red;
+    font-weight: bold;
+}
+
+.checkout-master .error-message {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 15px;
+    text-align: center;
+    margin: 0;
+    border: 1px solid #f5c6cb;
+    border-radius: 10px;
+    font-weight: bold;
+    opacity: 1;
+    transition: opacity 1s ease;
+    width: auto;
+    max-width: 70%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.order-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.order-summary, .order-details {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 300px;
+    max-width: 550px;
+    width: 100%;
+    padding: 30px;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    text-align: left;
+}
+
+.order-summary h3 {
+    padding-bottom: 15px;
+}
+
+.order-panels {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.order-title {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.final-total {
+    font-size: 1.3rem;
+}
+
+.order-info {
+    max-width: 600px;
+}
+
+.order-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.button-row {
+    display: flex;
+    gap: 15px;
+}
+
+.details-shipping, .details-payment, .details-status, .details-timestamp {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.summary-item {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.summary-item img {
+    border-radius: 4px;
+}
+
+.summary-details {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+}
+
+.summary-details p {
+    margin: 0;
+}   
+
+.orders-container h1 {
+    padding-bottom: 20px;
+}
+
+.label {
+    font-weight: bold;
+    font-size: 13px;
+    margin: 0;
+}
+
+.orders-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: none;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.order-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 1px solid #eee;
+}
+
+.order-row:last-child {
+    border-bottom: none;
+}
+
+.order-left {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+}
+
+.order-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 10px;
+    min-width: 120px;
+}
+
+.order-left p, .order-right p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.price-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
 
 .contactUsPage-master {
     border: 1px solid lightgray;
@@ -556,20 +908,29 @@ footer{
 }
 
 .contactUsPage-master button {
-    background-color: #4a3b2a; 
-    color: white;
     padding: 12px 25px;
-    border: none;
     border-radius: 5px;
     font-size: 1rem;
     cursor: pointer;
     transition: background 0.3s;
     margin-top: 10px;
+    border: none;
 }
 
 .contactUsPage-master .sendEmail:hover {
     background-color: #6b8e23;
 }
+
+/*Dark mode edits (Sion)*/
+[data-bs-theme="light"] .contactUsPage-master button {
+    background-color: #4a3b2a; 
+    color: white;
+}
+[data-bs-theme="dark"] .contactUsPage-master button {
+    background-color: #7f99c9; 
+    color: rgb(0, 0, 0);
+}
+
 
 .contactUsPage-master #message {
     max-height: 120px; /*otherwise the textarea field is massive*/
@@ -617,27 +978,42 @@ footer{
     display: grid;
     grid-template-columns: repeat(5, minmax(200px, 1fr));
     gap: 20px;
-    color: black;
 }
 
 .category-box {
+    text-decoration: none;
     text-align: center;
     padding: 20px;
-    border: 1px solid lightgray;
     border-radius: 5px;
-    color: black;
     transition: background 0.5s; /*slowly changes the bg colour*/
 }
 
-.category-box:hover {
+/*Dark mode edits (Sion)*/
+[data-bs-theme="dark"] .category-box:hover {
+    background-color: rgb(72, 72, 72);
+}
+
+[data-bs-theme="light"] .category-box:hover {
     background-color: rgb(233, 233, 233);
 }
+
+[data-bs-theme="dark"] .category-box {
+        color: white;
+        border: 1px solid rgb(61, 61, 61);
+
+}
+
+[data-bs-theme="light"] .category-box {
+        color: black;
+        border: 1px solid lightgray;
+
+}
+
+
 
 /*Suja */
 
     .save-btn {
-        background-color: #4a3b2a; 
-        color: white;
         padding: 12px 25px;
         border: none;
         border-radius: 5px;
@@ -648,6 +1024,16 @@ footer{
         display: inline-block;
     }
 
+    /*Dark mode edits (Sion)*/
+    [data-bs-theme="dark"] .save-btn {
+        background-color: #7f99c9; 
+        color: #212529;
+    }
+    [data-bs-theme="light"] .save-btn {
+        background-color: #4a3b2a; 
+        color: white;
+    }
+    
     .save-btn:hover {
         background-color: #6b8e23; 
     }
@@ -837,14 +1223,34 @@ user-select: none;
     margin: 0 auto;
     border: 2px solid black;
     padding: 0px 0px 25px 0px;
+    box-shadow: 0 5px 10px rgba(255, 255, 255, 0.1);
+}
+
+[data-bs-theme="light"] .details_container {
+    border: 2px solid black;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+[data-bs-theme="dark"] .details_container {
+    border: 2px solid #1b1e22;
+    box-shadow: 0 5px 10px rgba(255, 255, 255, 0.1);
+    background: #303336;
 }
 
 .email_container  {
     text-align: center;
     width: 300px;
     margin: 0 auto;
-    border: 2px solid black;
     padding: 0px 0px 15px 0px;  /* top right bottom left */
+}
+
+[data-bs-theme="light"] .email_container {
+    border: 2px solid black;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+[data-bs-theme="dark"] .email_container {
+    border: 2px solid #1b1e22;
+    box-shadow: 0 5px 10px rgba(255, 255, 255, 0.1);
+    background: #303336;
 }
 
 .password_container {
@@ -853,6 +1259,16 @@ user-select: none;
     margin: 0 auto;
     border: 2px solid black;
     padding: 0px 0px 15px 0px;
+}
+
+[data-bs-theme="light"] .password_container {
+    border: 2px solid black;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+[data-bs-theme="dark"] .password_container {
+    border: 2px solid #1b1e22;
+    box-shadow: 0 5px 10px rgba(255, 255, 255, 0.1);
+    background: #303336;
 }
 
 .email_section input[type=text]{
@@ -878,9 +1294,7 @@ user-select: none;
     text-align: center;
 }
 
-/* remove this just using this for now THIS IS AI GENERATED 😵
 
-/* Chat container */
 .chat-container {
     width: 350px;
     height: 500px;
@@ -889,21 +1303,16 @@ user-select: none;
     right: 20px;
     background: white;
     border-radius: 15px;
-    box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    font-family: Arial, sans-serif;
 }
 
-/* Header */
 .chat-header {
     background: #7110cc;
     color: white;
-    padding: 12px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    padding: 12px 15px;
     font-weight: bold;
 }
 
@@ -913,57 +1322,142 @@ user-select: none;
     border-radius: 50%;
 }
 
-/* Message area */
 .chat-messages {
     flex: 1;
-    padding: 15px;
     overflow-y: auto;
     background: #f5f5f5;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
 }
 
-/* Message bubbles */
-.user-message {
-    align-self: flex-end;
-    background: #4CAF50;
-    color: white;
-    padding: 10px 14px;
-    border-radius: 15px 15px 0 15px;
+.message {
+    padding: 8px 14px;
+    border-radius: 15px;
     max-width: 70%;
+}
+
+.user-message {
+    background: #7110cc;
+    color: white;
+    margin-left: auto; 
 }
 
 .bot-message {
-    align-self: flex-start;
     background: white;
-    padding: 10px 14px;
-    border-radius: 15px 15px 15px 0;
-    max-width: 70%;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* Input area */
-.chat-input {
+.text-grey {
+    white-space: pre-line;
+}
+
+/* Sion */
+/*
+.tlBlock
+{
+    padding: 20px;
+    width: 100%; 
+    min-height: 400px; 
+    position: relative;
+}
+
+.line {
+    background: black;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    transform: translateX(-50%) scaleY(0);
+    transform-origin: top;
+    left: 50%;
+}
+
+.timeArea {
+padding: 40px 40px 40px 40px;
+position: relative;
+width: 50%;
+}
+
+.imgItem {
+background: white;
+color: black;
+padding: 20%;
+display: inline-block;
+position: relative;
+opacity: 0;
+transform: translateY(50px);
+}
+
+.timeArea.leftA {
+    text-align: right;
+    left: 0;
+}
+
+.timeArea.rightA {
+text-align: left;
+left: 50%;
+}
+
+.timeImg {
+    width: 120px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.timeArea::before {
+    content: "";
+    height: 4px;
+    width: 40px;
+    background: white;
+    top: 60px;
+    position: absolute;
+}
+
+.timeArea.leftA::before {
+    right: -40px;
+}
+
+.timeArea.rightA::before {
+    left: -40px;
+} unused timeline code*/
+
+.aiSection {
+    position: relative;
+    z-index: 9999;
+}
+
+#chatbot {
+    display: none;
+}
+
+
+#navHeader {
+    background-color: seagreen;
+    position: sticky;
+    top: 0;
     display: flex;
-    border-top: 1px solid #ddd;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
 }
 
-.chat-input input {
-    flex: 1;
-    border: none;
-    padding: 12px;
-    outline: none;
-}
-
-.chat-input button {
-    background: #c02b2b;
-    border: none;
+/*Dark mode edits (Sion)*/
+[data-bs-theme="dark"] .viewProducts {
+    border-color: white;
     color: white;
-    padding: 0 20px;
-    cursor: pointer;
 }
 
-.chat-input button:hover {
-    background: #911414;
+[data-bs-theme="dark"] .viewProducts:hover {
+    background-color: white;
+    color: #212529;
+}
+
+[data-bs-theme="dark"] .modeBoxes {
+    background-color: rgb(44, 46, 48);
+}
+
+[data-bs-theme="dark"] .inputTxt {
+    color: rgb(0, 0, 0);
+}
+
+[data-bs-theme="dark"] .invImg {
+    filter: invert(100%);
 }

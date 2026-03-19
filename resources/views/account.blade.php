@@ -1,43 +1,66 @@
 <x-layout>
+<div class = "container">
+    <h1 class = "text-center">Account Home</h1>
+    <p  class = "text-center">Your Points: {{ auth()->user()->points }}</p>
 
-<h1 class = "Ah">Account Home</h1>
-<p>Your Points: {{ auth()->user()->points }}</p>
-
-<div class = "MasterAccountBox">
+    <div class = "row justify-content-center g-4">
 
 
-    <div class = "accountBox">
-        <h2>My Orders</h2>
-        <p> Track, Return, Cancel</p>
-        <a class = "headbut" href="/order">Check My Orders</a></button>
-    </div>
+        <div class = "col col-lg-3">
+            <div class="card border-dark text-center h-100 modeBoxes">
+                <div class="card-body d-flex flex-column">
+                    <h2>My Orders</h2>
+                    <p> Track, Return, Cancel your parcels</p>
+                    <a class = "headbut mt-auto mb-3" href="/order">Check My Orders</a>
+                </div>
+            </div>
+        </div>
 
-    <div class = "accountBox">
-        <h2>My Details</h2>
-        <p> Manage and change email and password</p>
-        <a class = "headbut" href="/mydetails">Edit My Details</a></button>
-    </div>
+        <div class = "col col-lg-3">
+            <div class="card border-dark text-center h-100 modeBoxes">
+                <div class="card-body d-flex flex-column">
+                    <h2>My Details</h2>
+                    <p> Manage and Change Email and Password</p>
+                    <a class = "headbut mt-auto mb-3" href="/mydetails">Edit My Details</a>
+                </div>
+            </div>
+        </div>
 
-    <div class = "accountBox">
-        <h2>Sign Out</h2>
-        <p> Sign Out Of Your Account</p>
-        <form method = "POST" action="{{route('logout')}}">
-            @csrf
-            <button type="submit" class = "headbut">Sign Out</button>
-        </form>
-    </div>
+        <div class="col col-lg-3">
+            <div class="card border-dark text-center h-100 modeBoxes">
+                <div class="card-body d-flex flex-column">
+                    <h2>Wishlist</h2>
+                    <p>View your Favourite Products</p>
+                    <a class="headbut mt-auto mb-3" href="{{ route('wishlist.index') }}">View wishlist</a>
+                </div>
+            </div>
+        </div>
 
-     <div class="accountBox">
-        <h2>Wishlist</h2>
-        <p>View products you've favourited</p>
-        <a class="headbut" href="{{ route('wishlist.index') }}">View wishlist</a>
-    </div>
+        <div class = "col col-lg-3">
+            <div class="card border-dark text-center h-100 modeBoxes">
+                <div class="card-body d-flex flex-column">
+                    <h2>My Rewards</h2>
+                    <p> Go to your Rewards Page</p>
+                    <a class = "headbut mt-auto mb-3" href="/reward"> my rewards</a>
+                </div>
+            </div>
+        </div>
 
-    <div class = "accountBox">
-        <h2>My rewards</h2>
-        <p> Go to your rewards page</p>
-        <a class = "headbut" href="/reward"> my rewards</a></button>
-    </div>
+        <div class = "col col-lg-3">
+            <div class="card border-dark text-center h-100 modeBoxes">
+                <div class="card-body d-flex flex-column">
+                    <h2>Sign Out</h2>
+                    <p> Sign Out Of Your Account</p>
+                    <form method = "POST" action="{{route('logout')}}" class="mt-auto">
+                    @csrf
+                        <button type="submit" class = "headbut w-100 mb-3">Sign Out</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+</div>
+
     <style>
         .MasterAccountBox {
             display: flex;
@@ -46,16 +69,10 @@
             flex-wrap: wrap;
         }
         .accountBox {
-            width: 220px;
-            min-height: 170px;
-            border: 1px solid black;
-            box-sizing: border-box;
-            padding: 20px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
+            border: 2px solid black;
+            padding: 29px;px;
+            text-align:center;
+            height:100%;
         }
         .accountBox h2 {
             margin: 0 0 10px 0;
@@ -66,13 +83,12 @@
 
         }
         .headbut {
-            display: inline-block;
-            padding: 10px 18px;
-            background-color: #eee8dc;
-            color: green;
-            text-decoration: none;
-            border: none;
-            border-radius: 8px;
+            display:inline-block;
+            padding:10px 18px;
+            background:#eee8dc;
+            color:green;
+            text-decoration:none;
+            border-radius:8px;
             cursor: pointer;
         }
     </style>
