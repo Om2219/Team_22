@@ -2,58 +2,55 @@
    <div class="Contact-Us">
 
 <main class="Contact_Us">
-    <h1>Contact Messages</h1>
+    <h1>Contact Massages</h1>
     
-<section class="stats_1">
-    @foreach($messages as $msg)
-        @if($msg->reply)
-            <div class="card" style="border-left-color: #28a745; opacity: 0.5;">
-                <h3>{{ $msg->name }}</h3>
-                <p>{{ $msg->email }}</p>
-                <p>{{ $msg->subject }}</p>
-                <span style="background: #28a745; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.8rem;">Replied</span>
-            </div>
-        @else
-            <div class="card" style="border-left-color: #ffc107; cursor: pointer;" onclick="location.href='{{ route('admin.messages', ['id' => $msg->id]) }}'">
-                <h3>{{ $msg->name }}</h3>
-                <p>{{ $msg->email }}</p>
-                <p>{{ $msg->subject }}</p>
-            </div>
-        @endif
-    @endforeach
-</section>
 
-@if(isset($selectedMessage))
+<section class="stats_1">
+    <div class="card">
+        <h3>Sarah Thompson</h3>
+        <p> sarah@example.com</p>
+        <p> Order Not Received</p>
+    </div>
+
+
+    <div class="card">
+        <h3>Mary  Johnson</h3>
+        <p> mary@example.com</p>
+        <p> Bulk Order inquiry</p>
+    </div>
+
+    <div class="card">
+        <h3>John Smith </h3>
+        <p> smith@example.com</p>
+        <p> Feedback product</p>
+    </div>
+</section>
+    
+
 <section class="message-detail">
     <div class="detail-box">
-        <h2>{{ $selectedMessage->name }}</h2>
-        <p>{{ $selectedMessage->email }}</p>
-        <h3>{{ $selectedMessage->subject }}</h3>
-        <span class="status {{ $selectedMessage->is_read ? 'read' : 'open' }}">
-            {{ $selectedMessage->is_read ? 'Read' : 'Open' }}
-        </span>
+        <h2>Sarah Thompson</h2>
+        <p> sarah@example.com</p>
+        <h3>Order Not Received</h3>
+        <span class = "status open">Open</span>
 
-        <div class="message-text">
-            <p>{{ $selectedMessage->message }}</p>
+    <div class="message-text">
+        <p>I placed an order a week ago but it has not arrived yet.
+            Can you please provide me with an update?</p>
+    </div>  
+</div>
+
+<div class="reply-box">
+    <h3>Reply to customer</h3>
+    <textarea placeholder ="Type your reply here......"></textarea>
+
+    <div class="reply-actions">
+        <button class="cancel-btn"> Cancel</button>
+        <button class="send-btn"> Reply</button>
         </div>
     </div>
 
-    <div class="reply-box">
-        <h3>Reply to customer</h3>
-        <form action="{{ route('admin.messages.reply', $selectedMessage->id) }}" method="POST">
-            @csrf
-            <textarea name="reply" placeholder="Type your reply here......" required></textarea>
-
-            <div class="reply-actions">
-                <a href="{{ route('admin.messages') }}" class="cancel-btn">Cancel</a>
-                <button type="submit" class="send-btn">Reply</button>
-            </div>
-        </form>
-    </div>
-
 </section>
-@endif
-
 </main>
 </div>
     
@@ -123,12 +120,12 @@ color: #0b1f78;
 .card p{
     margin: 0 0 8px;
     font-size: 0.98rem;
-    line-height: 1.5;
+    line height: 1.5;
     color: #2f3d68;
 }
 
-.message-detail{
-    display: grid;
+.messae-detail{
+    display: grid: 
     grid-template-columns: 1fr 1fr;
     gap: 24px;
     align-items: start;
@@ -235,7 +232,7 @@ color: #0b1f78;
 }
 
 .cancel-btn:hover{
-    background-color: #edf6fb;
+    background-colour: #edf6fb;
 }
 
 .send-btn{
@@ -245,7 +242,7 @@ color: #0b1f78;
 }
 
 .send-btn:hover{
-    background-color: #1c2f96;
+    background-colour: #1c2f96;
     border-color: #1c2f96;
 }
 
