@@ -2,28 +2,47 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Product;
+use App\Models\Review;
+use App\Models\User;
 
 class ReviewSeeder extends Seeder
 {
     public function run(): void
-{
-    $products = \App\Models\Product::all();
-    // Get an existing user or create a test one
-    $user = \App\Models\User::first() ?? \App\Models\User::factory()->create();
+    {
+       
+        $products = Product::all();
 
-    foreach ($products as $product) {
-        // Create 3 random reviews for each product to test the filter
-        for ($i = 0; $i < 3; $i++) {
-            \App\Models\Review::create([
-                'product_id' => $product->id,
-                'user_id' => $user->id,
-                'rating' => rand(1, 5), // Uses your confirmed 'rating' column
-                'comment' => 'Professional quality from Roots.',
-            ]);
+        // 2. Find the first user, or create one if the table is empty
+        $user = User::first() ?? User::factory()->create();
+
+        
+        $placeholders = [
+            'Exceptional quality, exactly what I was looking for!',
+            'Decent product for the price. Would buy again.',
+            'Arrived on time and works perfectly.',
+            'The material feels premium and durable.',
+            'A bit smaller than I expected, but still great quality.',
+            'Perfect gift for my friend, they loved it!',
+            'Roots never disappoints with their collection.',
+            'Highly recommend this to anyone starting out.',
+            'Great value for money and fast shipping.',
+            'Absolutely love the design of this item.'
+        ];
+
+       
+        foreach ($products as $product) {
+            
+            // 5. Create exactly 3 reviews for each product
+            for ($i = 0; $i < 3; $i++) {
+                Review::create([
+                    'product_id' => $product->id,
+                    'user_id'    => $user->id,
+                    'rating'     => rand(3, 5), 
+                    'comment'    => $placeholders[array_rand($placeholders)], // Pick random text
+                ]);
+            }
         }
     }
-}
-    
 }
