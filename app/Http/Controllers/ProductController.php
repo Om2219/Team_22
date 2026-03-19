@@ -139,6 +139,7 @@ class ProductController extends Controller
 
     // Oms work
 
+    // This fucnion returns all products with their stock ammount of that product
     public function stockChecker(){
 
         $products = Product::with('stock')->orderBy('name')->get();
@@ -146,6 +147,7 @@ class ProductController extends Controller
 
     }
 
+    // This fucnion restocks products to 67 if they are empty
     public function restock(Product $product){
 
         if(!$product->stock){
@@ -158,6 +160,7 @@ class ProductController extends Controller
 
     }
 
+    // This fucnion lets admin restock products to specific amoounts
     public function updateStock(Request $request, Product $product){
 
         $request->validate([ 'stock' => 'required|integer|min:0']);
@@ -171,7 +174,7 @@ class ProductController extends Controller
         return redirect()->route('admin.products')->with('success', 'Stock updated successfully for '. $product->name);
 
     }
-
+    // This fucnion lets admin edit existing products to change images or stock
     public function edit(Product $product) {
 
         $product->load('images', 'stock', 'reviews.user');
@@ -180,7 +183,7 @@ class ProductController extends Controller
 
         return view('edit', compact('product', 'categories')); // pass to view
     }
-
+    // This fucnion lets admin update products name category and descripton
     public function update(Request $request, Product $product){
 
         $validated = $request->validate([
@@ -229,6 +232,7 @@ class ProductController extends Controller
 
     }
 
+    // This fucnion deletes all data on a specific product
     public function destroy(Product $product){
 
        foreach($product->images as $image) {

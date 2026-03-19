@@ -2,15 +2,16 @@
     <div class = "container">
 
 
-
+        {{-- Displaying the users current points --}}
         <div class="card shadow-lg border-0 mb-4 text-center">
 
             <h1  class = "display-4 fw-bold text-secondary">Your Points: {{ auth()->user()->points }}</h1>
 
         </div>
 
+        {{-- collumn layout for daily spins, slots and voucher exchange--}}
         <div class="row g-4">
-
+        {{-- Daily Spin --}}
             <div class="col-md-4 ">
                 <div class="row row-cols-lg-1 g-1">
                     <div class="card text-center border-4 shadow-sm">
@@ -24,7 +25,7 @@
                 </div>
             </div>
 
-
+        {{-- Slots--}}
             <div class="col-md-4">
                 <div class="row row-cols-lg-1 g-1">
                     <div class="card text-center border-4 shadow-sm"> 
@@ -37,7 +38,7 @@
                     </div>
                 </div>
             </div>
-
+        {{-- vouchers--}}
             <div class="col-md-4">
                 <div class="row row-cols-lg-1 g-1">
                     <div class="card text-center border-4 shadow-sm">       
