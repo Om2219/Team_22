@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
 
 class DetailsController extends Controller {
@@ -39,19 +40,29 @@ class DetailsController extends Controller {
     //updates user's email with new one
     //only if current email field matches email in table
     //and if the new email is inputted twice correctly
+    //checks if email has been taken by someone else
+    //or if new email is same as current one
 
     public function update_email(Request $request) {
         $user = Auth::user();
 
         $request->validate([
             'current_email' => 'required|email',
-            'new_email' => 'required|email|confirmed|unique:users,email',
+            'new_email' => ['required','email','confirmed', Rule::unique('users', 'email')->ignore($user->id),],                                                     
         ]);
+
+        if ($request->current_email !== $user->email) {
+            return redirect()->back()->withErrors(['current_email' => 'Current email does not match our records.',]);
+        }
+
+        if ($request->new_email === $user->email) {
+            return redirect()->back()->withErrors(['new_email' => 'New email must be different from your current email.',]);
+        }
 
         $user->email = $request->new_email;
         $user->save();
 
-        return redirect()->route('mydetails');
+        return redirect()->route('mydetails')->with('success', 'Email updated successfully');
     }
 
     //shows change password page

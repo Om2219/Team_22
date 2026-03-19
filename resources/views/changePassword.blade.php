@@ -1,25 +1,17 @@
 <x-layout>
 
-    <a href="/mydetails" class="save-btn">Go back</a>
+    @if ($errors->any())
+        <div class="alert alert-danger" id="danger-alert">
+            <ul style="margin: 0; padding-left: 20px;">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
     <div class="password_container">
         <h1>Change password</h1>
-
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
-
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul style="margin: 0; padding-left: 20px;">
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
 
         <form action="{{ route('update.password') }}" method="POST">
             @csrf
@@ -38,3 +30,21 @@
     </div>
 
 </x-layout>
+
+<script>
+
+    //these scripts set the success and failure messages to fade out
+    //after 2 seconds of being on screen
+    //looks badboy
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const alert = document.getElementById('danger-alert');
+        if (alert) {
+            setTimeout(() => {
+                alert.style.transition = 'opacity 0.5s ease-out';
+                alert.style.opacity = '0';
+                setTimeout(() => alert.remove(), 500);
+            }, 2000);
+        }
+    });
+</script>
