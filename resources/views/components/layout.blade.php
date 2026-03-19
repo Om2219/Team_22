@@ -118,7 +118,7 @@
               <button class ="headbut"><a href="{{ route('products.cat', 'rewards')}}" class="text-green text-decoration-none">Rewards</a></button>
               <button class ="headbut"><a href="/contactform" class="text-green text-decoration-none">Contact Us</a></button>
               <button class ="headbut"><a href="/faq" class="text-green text-decoration-none">FAQ</a></button>
-              <button id ="aiBtn" class ="headbut"><a class="text-green text-decoration-none">MONKEYS</a></button>
+              <button id ="aiBtn" class ="headbut"><a class="text-green text-decoration-none">AI Chatbot</a></button>
               <button id ="darkBtn" class ="headbut"><a id="mTxt" class="text-green text-decoration-none"></a></button>  
           </div><br> 
         </nav> 

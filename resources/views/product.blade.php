@@ -27,7 +27,7 @@
                 
                 <div>
                     <h5 class="fw-bold">Product Information</h5>
-                    <p class="text-grey"> {{$product->product_description}}<p>
+                    <p class="text-grey"> {{$product->product_description}}</p>
                 </div>
                     
                 <div class="card modeBoxes border-1 rounded-3 mb-5">    
