@@ -32,15 +32,15 @@
 
 
         <div class="chat-container">
-
+            {{-- this is the avatars image and name for the ai assistant--}}
             <div class="chat-header d-flex align-items-center">
                 <img src="{{ Vite::asset('public/images/assistant.png') }}" class="avatar">
                 {{-- <span>Silly Monkey</span> --}}
                 <span> Assistant lilm Mo</span>
             </div>
-
+            {{-- this si the message history of the chat--}}
             <div id="content-box" class="chat-messages d-flex flex-column p-3 gap-2"></div>
-
+            {{-- This is the input area for users to message silly monkey--}}
             <div class="chat-input input-group">
                 <input id="input" type="text" name="input" placeholder="Type a message..." class="form-control">
                 <button id="button-submit" class="btn btn-danger">Send</button>
@@ -57,15 +57,16 @@
             'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
         }
     });
-
+    
+    //when the button is clicked the function starts
     $('#button-submit').on('click', function(){
 
         let value = $('#input').val();
 
         $('#content-box').append(`<div class="message user-message">${value}</div>`);
-
+        //clears the input
         $('#input').val("");
-
+        // post the message to backend (LLM)
         $.ajax({
             type: 'POST',
             url: '{{url("send")}}',
