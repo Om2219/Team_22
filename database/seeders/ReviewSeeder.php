@@ -14,7 +14,7 @@ class ReviewSeeder extends Seeder
        
         $products = Product::all();
 
-        // 2. Find the first user, or create one if the table is empty
+        
         $user = User::first() ?? User::factory()->create();
 
         
@@ -34,13 +34,13 @@ class ReviewSeeder extends Seeder
        
         foreach ($products as $product) {
             
-            // 5. Create exactly 3 reviews for each product
+       
             for ($i = 0; $i < 3; $i++) {
                 Review::create([
                     'product_id' => $product->id,
                     'user_id'    => $user->id,
                     'rating'     => rand(3, 5), 
-                    'comment'    => $placeholders[array_rand($placeholders)], // Pick random text
+                    'comment'    => $placeholders[array_rand($placeholders)], 
                 ]);
             }
         }

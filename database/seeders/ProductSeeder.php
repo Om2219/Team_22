@@ -355,5 +355,47 @@ Machine washable
             'is_reward' => true,
             'points_cost' => 10000,
         ]);
+        
+        
+Product::create([
+    'name' => 'The Goats Whip GOLDEN EDITION',
+    'product_description' => 'A legendary 24-karat gold-plated version of the fan-favorite Goats Whip. Engineered for the ultimate collector, this edition features shimmering gold accents and a custom "Roots" insignia. It is the pinnacle of luxury in our toy collection.',
+    'price' => null,
+    'category_id' => $rewards->id,
+    'is_reward' => true,
+    'points_cost' => 10000,
+]);
+
+
+Product::create([
+    'name' => 'Canvas GOLDEN EDITION',
+    'product_description' => 'Elevate your art to a royal standard. This Golden Edition canvas is pre-primed with a unique metallic-infused gesso, providing a luminous background that makes every brushstroke glow. Framed in hand-carved gilded wood.',
+    'price' => null,
+    'category_id' => $rewards->id,
+    'is_reward' => true,
+    'points_cost' => 10000,
+]);
+
+
+Product::create([
+    'name' => 'The Whispering Woods GOLDEN EDITION',
+    'product_description' => 'The ultimate edition of The Whispering Woods. This hardcover masterpiece features gold-leaf page edges, a velvet-lined spine, and exclusive concept art not found in the standard whispering woods collection.',
+    'price' => null,
+    'category_id' => $rewards->id,
+    'is_reward' => true,
+    'points_cost' => 10000,
+]);
+
+
+Product::create([
+    'name' => 'The Calculator GOLDEN EDITION',
+    'product_description' => 'Solve equations with prestige. The Golden Edition Calculator features mechanical gold-plated switches for a tactile feel and a high-contrast solar display. Mathematics has never felt this luxurious.',
+    'price' => null,
+    'category_id' => $rewards->id,
+    'is_reward' => true,
+    'points_cost' => 10000,
+]);
+
+
     }
 }

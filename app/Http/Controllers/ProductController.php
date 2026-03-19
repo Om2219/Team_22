@@ -13,10 +13,10 @@ class ProductController extends Controller
 
     public function productPage(Request $request)
     {
-        // // 1. Added withAvg to calculate the 1-5 star average from the reviews table
+    
         // $query = Product::with('images')->withAvg('reviews', 'rating');
 
-        // // Apply Sorting logic
+         // Apply Sorting logic
         // if ($request->get('sort') == 'price_asc') {
         //     $query->orderBy('price', 'asc');
         // } elseif ($request->get('sort') == 'price_desc') {
@@ -35,10 +35,10 @@ class ProductController extends Controller
 
         // return view('products', compact('products', 'rvp'));
         
-     // Build the query and include the average rating
+    
         $query = Product::with('images')->withAvg('reviews', 'rating');
 
-    // Handle user sorting preferences
+    
         $sort = $request->query('sort');
 
         if ($sort == 'price_asc') {
@@ -291,7 +291,7 @@ class ProductController extends Controller
     //     $query = Product::where('name', 'LIKE', "{$search}%")
     //                     ->withAvg('reviews', 'rating');
 
-    //     // 2. Sorting logic
+   
     //     if ($request->get('sort') == 'price_asc') {
     //         $query->orderBy('price', 'asc');
     //     } elseif ($request->get('sort') == 'price_desc') {
@@ -307,10 +307,10 @@ class ProductController extends Controller
     //     $products = $query->paginate(10);
 
     //     return view('search', compact('products', 'search'));
-        
-
-        
     // }
+
+    
+    //SUja's work - Improved search with sorting and pagination
     public function search(Request $request)
 {
     $search = $request->input('search');
