@@ -1,42 +1,55 @@
 <x-layout>
     <div class="loginPage">
-        <form action="{{ route('admin.login.submit') }}" method="POST" class="loginForm">
+        @if ($errors->any())
+            <div class="alert alert-danger" id="danger-alert">
+                <ul class="mb-0">
+                    @foreach ($errors->all() as $error)
+                        <li>{{$error}}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        <form class="loginForm" method="POST" action="{{route('forgotPassword.update')}}">
             @csrf
             <div class="imgcontainer">
-                        <img src="{{ asset('images/img_avatar2.png') }}" alt= "Admin Avatar" class ="avatar">
+                <img src="{{asset('images/img_avatar2.png')}}" class="avatar">
             </div>
 
-            <div class= "login">
-
+            <div class="login">
                 <div class="top-stuff">
-                    <h2>Admin Login</h2>
+                    <h2>Forgot Password</h2>
+                    <p>Enter your email and choose a new password</p>
                 </div>
 
-                <label for= "uname"><b>Admin Email</b></label>
-                <input id="email" type="text" placeholder= "Enter username" name="email" required>
+                <hr>
 
-                <label for= "psw"><b>Admin Password</b></label>
-                <input id="psw" type="password" placeholder= "Enter password" name="password" required>
+                <label for="email"><b>Email address</b></label>
+                <input type="text" name="email" placeholder="Enter email address" required>
 
-                <button type ="submit" class="mainLogin"> Login</button>
-                <div class="remember-box">
-                    <label>
-                        <input type = "checkbox" checked name="remember"> Remember Me
-                    </label>
-                </div>
-                <div class="login extra"> 
-                    <span class="psw"><a class="login-hyperlinks" href="#"></a></span> {{--keeping the format since it looks nice--}}
-                </div>
+                <label for="new_password"><b>New Password</b></label>
+                <input type="password" name="new_password" placeholder="Enter new password" required>
 
-                <div class="container_signin">
-                    <p>Not an Admin? <a class="login-hyperlinks" href="/login">Login</a></p>
+                <label for="new_password_confirmation"><b>Confirm Password</b></label>
+                <input type="password" name="new_password_confirmation" placeholder="Confirm new password" required>
+
+                <button type="submit" class="mainLogin">Reset Password</button>
+
+                <hr>
+
+                <div class="login-footer">
+                    <p>Want to go back? <a class="login-hyperlinks" href="{{route('login')}}">Login</a></p>
                 </div>
             </div>
         </form>
     </div>
 </x-layout>
 
+
 <style>
+
+    /*reusing this css*/
+
+
     /* border form */
     .loginPage .loginForm{
         width: 600px;
@@ -146,13 +159,15 @@
         padding-top: 16px;
     }
 
-    .top-stuff {
-        text-align:center; 
+    .login-footer {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 20px;
+        margin-right: 10px;
     }
 
-    .remember-box {
-        margin-left: 10px;
-        margin-top: 10px;
+    .top-stuff {
+        text-align:center; 
     }
 
     /**change style from span and cancel button on extra small */
@@ -166,3 +181,21 @@
         }
     }
 </style>
+
+<script>
+
+    //this script sets the failure message to fade out
+    //after 2 seconds of being on screen
+    //looks badboy
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const alert = document.getElementById('danger-alert');
+        if (alert) {
+            setTimeout(() => {
+                alert.style.transition = 'opacity 0.5s ease-out';
+                alert.style.opacity = '0';
+                setTimeout(() => alert.remove(), 500);
+            }, 2000);
+        }
+    });
+</script>

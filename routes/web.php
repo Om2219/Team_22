@@ -153,6 +153,8 @@ Route::get('/search', [ProductController::class, 'search'])->name('search');
 
 Route::get('termsandprivacy', function () { return view('termsandprivacy'); }); //shows the terms and privacy page (EMPTY RN)
 
+Route::get('/forgotPassword', [DetailsController::class, 'show_forgotPassword'])->name('forgotPassword.show'); //shows forgot password page
+Route::post('/forgotPassword', [DetailsController::class, 'update_forgotPassword'])->name('forgotPassword.update'); //updates the password in the database
 
 Route::middleware(['auth', 'admin'])->group(function() {
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])

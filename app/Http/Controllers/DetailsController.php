@@ -83,4 +83,37 @@ class DetailsController extends Controller {
             $user->save();
         return redirect()->route('mydetails')->with('success', 'Password updated successfully');
     }
+
+    //shows forgot password page
+
+    public function show_forgotPassword() {
+        return view('forgotPassword');
+    }
+
+    //checks if email is present in database
+    //checks if new password is valid (same validation as everywhere else)
+    //checks if password is same as old one (by which point it would be useless to reset the password)
+    //if everything checks out it changes the password in the user table
+
+    public function update_forgotPassword(Request $request) {
+        $request->validate([
+            'email' => ['required','email'],
+            'new_password' => ['required','confirmed', Password::min(6)->mixedCase()->numbers()->symbols()],
+        ]);
+
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+            return redirect()->back()->withErrors(['email' => 'No account found with that email']);
+        }
+
+        if (Hash::check($request->new_password, $user->password)) {
+            return redirect()->back()->withErrors(['new_password' => 'New password must be different from your current password']);
+        }
+
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        return redirect()->route('login')->with('success', 'Password reset successfully! You can now log in.');
+    }
 }
