@@ -13,24 +13,52 @@ class ProductController extends Controller
 
     public function productPage(Request $request)
     {
+    
+        // $query = Product::with('images')->withAvg('reviews', 'rating');
 
-        $query = Product::with('images');
+         // Apply Sorting logic
+        // if ($request->get('sort') == 'price_asc') {
+        //     $query->orderBy('price', 'asc');
+        // } elseif ($request->get('sort') == 'price_desc') {
+        //     $query->orderBy('price', 'desc');
+        // } elseif ($request->get('sort') == 'rating_desc') { 
+        //     // 2. Added this case to sort by the calculated average
+        //     $query->orderBy('reviews_avg_rating', 'desc');
+        // } else {
+        //     $query->orderBy('created_at', 'desc');
+        // }
 
-        // Apply Sorting logic
-        if ($request->get('sort') == 'price_asc') {
-            $query->orderBy('price', 'asc');
-        } elseif ($request->get('sort') == 'price_desc') {
-            $query->orderBy('price', 'desc');
+        // $products = $query->paginate(20)->withQueryString();
+
+        // $rp = session()->get('recently_viewed', []);
+        // $rvp = Product::with('images')->whereIn('id', $rp)->get();
+
+        // return view('products', compact('products', 'rvp'));
+        
+    
+        $query = Product::with('images')->withAvg('reviews', 'rating');
+
+    
+        $sort = $request->query('sort');
+
+        if ($sort == 'price_asc') {
+        $query->orderBy('price', 'asc');
+        } elseif ($sort == 'price_desc') {
+         $query->orderBy('price', 'desc');
+        } elseif ($sort == 'rating_desc') {
+         $query->orderBy('reviews_avg_rating', 'desc');
         } else {
-            $query->orderBy('created_at', 'desc');
+        $query->orderBy('created_at', 'desc');
         }
 
-            $products = $query->paginate(20)->withQueryString();
+     // Paginate results and keep the URL filters
+     $products = $query->paginate(20)->withQueryString();
 
-            $rp = session()->get('recently_viewed', []);
-            $rvp = Product::with('images')->whereIn('id', $rp)->get();
+    // Fetch recently viewed products from session
+     $recentIds = session()->get('recently_viewed', []);
+     $rvp = Product::with('images')->whereIn('id', $recentIds)->get();
 
-        return view('products', compact('products', 'rvp'));
+     return view('products', compact('products', 'rvp'));
 
     }
 
@@ -255,33 +283,71 @@ class ProductController extends Controller
     } 
     
     //Suja's work
-    public function search(Request $request){
-        $search = $request ->input('search');
+    // public function search(Request $request)
+    // {
+    //     $search = $request->input('search');
 
-        if (!$search) {
-            return redirect()->back();
-        }
+    //     if (!$search) {
+    //         return redirect()->back();
+    //     }
 
-        $products = Product::where('name', 'LIKE', "{$search}%")
-        ->orderBy('created_at', 'desc')
-        ->paginate(10);
-         return view('search', [
-        'products' => $products, 
-        'search' => $search
-        ]);
+        
+    //     $query = Product::where('name', 'LIKE', "{$search}%")
+    //                     ->withAvg('reviews', 'rating');
 
-        $query = Product::where('name', 'LIKE', "%{$search}%");
+   
+    //     if ($request->get('sort') == 'price_asc') {
+    //         $query->orderBy('price', 'asc');
+    //     } elseif ($request->get('sort') == 'price_desc') {
+    //         $query->orderBy('price', 'desc');
+    //     } elseif ($request->get('sort') == 'rating_desc') {
+    //         // This 'reviews_avg_rating' column is created automatically by withAvg()
+    //         $query->orderBy('reviews_avg_rating', 'desc');
+    //     } else {
+        
+    //         $query->orderBy('created_at', 'desc');
+    //     }
 
-        if ($request->get('sort') == 'price_asc') {
-            $query->orderBy('price', 'asc');
-        } elseif ($request->get('sort') == 'price_desc') {
-            $query->orderBy('price', 'desc');
-        } else {
-            $query->orderBy('created_at', 'desc');
-        }
+    //     $products = $query->paginate(10);
 
-            $products = $query->paginate(10);
-        return view('search', compact('products', 'search'));
+    //     return view('search', compact('products', 'search'));
+    // }
+
+    
+    //Suja's work - Improved search with sorting and pagination
+    public function search(Request $request)
+    {
+    $search = $request->input('search');
+    
+    // Redirect back if search is empty
+    if (empty($search)) {
+        return redirect()->back();
     }
+
+
+    $query = Product::where('name', 'LIKE', "{$search}%")
+                    ->withAvg('reviews', 'rating');
+
+    $sort = $request->query('sort');
+
+    
+    if ($sort == 'price_asc') {
+        $query->orderBy('price', 'asc');
+    } elseif ($sort == 'price_desc') {
+        $query->orderBy('price', 'desc');
+    } elseif ($sort == 'rating_desc') {
+     
+        $query->orderBy('reviews_avg_rating', 'desc');
+    } else {
+    
+        $query->orderBy('created_at', 'desc');
+    }
+
+    
+    $products = $query->paginate(10)->withQueryString();
+
+    return view('search', compact('products', 'search'));
+    }
+    
 
 }

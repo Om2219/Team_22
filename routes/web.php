@@ -167,8 +167,8 @@ Route::middleware(['auth', 'admin'])->group(function() {
     ->name('admin.products');
     Route::get('/admin/reports', [ReportController::class, 'index'])->name('admin.reports');
     // stock routes
-    Route::post('admin/stock/{product}/update', [ProductController::class, 'updateStock'])->name('updateStock');
-    Route::post('admin/stock/{product}/restock', [ProductController::class, 'restock'])->name('stockRestock');
+    Route::post('admin/stock/{product}/update', [ProductController::class, 'updateStock'])->name('admin.updateStock');
+    Route::post('admin/stock/{product}/restock', [ProductController::class, 'restock'])->name('admin.restock');
     // order status update route
     Route::put('/admin/orders/{id}/status', [OrderController::class, 'webUpdateStatus'])->name('admin.orders.status');
     // contact form route

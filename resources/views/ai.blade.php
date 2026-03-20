@@ -46,6 +46,9 @@
                 <button id="button-submit" class="btn btn-danger">Send</button>
             </div>
 
+           {{--  <img src="{{ Vite::asset('public/images/monkey.png') }}" class="avatar">
+            Silly Monkey --}}
+
         </div>
 
 
@@ -75,8 +78,8 @@
             success: function(data){
                 $('#content-box').append(`
                     <div>
-                        <img src="{{ Vite::asset('public/images/monkey.png') }}" class="bob">
-                        Silly Monkey
+                        <img src="{{ Vite::asset('public/images/assistant.png') }}" class="avatar">
+                        <span> Assistant lilm Mo</span>
                     </div>
                     <div class="message bot-message">${data}</div>
                 `);
