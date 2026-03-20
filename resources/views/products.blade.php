@@ -1,7 +1,7 @@
 <x-layout>
     <div class="container my-4">
     
-        <div class="row mb-4 shadow-sm p-3 bg-white rounded-4 align-items-center border">
+        <div class="row mb-4 shadow-sm p-3 rounded-4 align-items-center border modeBoxes">
             <div class="col-md-6"><h4 class="mb-0 fw-bold">Products</h4></div>
             <div class="col-md-6 d-flex justify-content-md-end mt-3 mt-md-0">
                 <form action="{{ url()->current() }}" method="GET" class="d-flex align-items-center">
