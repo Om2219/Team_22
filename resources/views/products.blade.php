@@ -1,7 +1,7 @@
 <x-layout>
     <div class="container my-4">
-     
-        <div class="row mb-4 shadow-sm p-3 rounded-4 align-items-center border modeBoxes">
+    
+        <div class="row mb-4 shadow-sm p-3 bg-white rounded-4 align-items-center border">
             <div class="col-md-6"><h4 class="mb-0 fw-bold">Products</h4></div>
             <div class="col-md-6 d-flex justify-content-md-end mt-3 mt-md-0">
                 <form action="{{ url()->current() }}" method="GET" class="d-flex align-items-center">
@@ -17,8 +17,10 @@
             </div>
         </div>
 
+        {{-- Product layout 4 columns --}}
         <div class="row row-cols-lg-4 g-4">
-
+        
+        {{-- loops through all the products--}}
             @foreach($products as $product)
                 <div class="col d-flex">
                     {{-- might remove the border im not sure --}}
@@ -52,6 +54,7 @@
             
         </div>
 
+        {{-- Product recently viewed are stored and displaye dat the bottom --}}
         <div class="container my-4" style="width: 67%;">
 
             @if(isset($rvp) && $rvp->count())

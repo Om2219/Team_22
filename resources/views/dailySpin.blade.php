@@ -16,7 +16,9 @@
         </div>
         <div class="pointer"></div>
     </div>
-
+    
+    {{-- button to spin the daily wheel--}}
     <button id="spin">spin</button>
+    {{-- displays results of hte wheel--}}
     <div id="result" class="mt-4 text-center"></div>
 </x-layout>

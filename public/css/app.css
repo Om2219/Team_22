@@ -237,7 +237,6 @@ footer{
 }
 
 .blockUno {
-    background-color: seagreen;
     border-radius: 150px 20px 20px 150px; 
     padding: 20px;
     width: 100%; 
@@ -257,6 +256,13 @@ footer{
     max-height: 500px; 
 }
 
+#third {
+    padding: 40px;
+    max-height: 500px; 
+    border-radius: 150px 150px 150px 150px; 
+
+}
+
 #sillyMonkey {
     padding: 40px;
     height: 200px;        
@@ -266,7 +272,7 @@ footer{
 
 
 .blockDos {
-    background-color: seagreen;
+    /* background-color: seagreen; */
     border-radius: 150px 150px 150px 150px; 
     padding: 20px;
     width: 100%; 
@@ -275,9 +281,9 @@ footer{
 }
 
 .blocktres{
-    /* background-color: seagreen; */
+    background-color: seagreen;
     border-radius: 20px 150px 150px 20px; 
-    padding: 40px;
+    padding: 20px;
     width: 100%; 
     min-height: 600px; 
 

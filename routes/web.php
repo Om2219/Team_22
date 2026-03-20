@@ -165,10 +165,6 @@ Route::middleware(['auth', 'admin'])->group(function() {
     ->name('admin.orders');
      Route::get('/admin/products', [AdminProductController::class, 'webIndex'])
     ->name('admin.products');
-
-    // new page for contact messages
-    Route::view('/admin/messages', 'admin_msg')
-    ->name('admin.messages');
     Route::get('/admin/reports', [ReportController::class, 'index'])->name('admin.reports');
     // stock routes
     Route::post('admin/stock/{product}/update', [ProductController::class, 'updateStock'])->name('updateStock');
@@ -177,9 +173,11 @@ Route::middleware(['auth', 'admin'])->group(function() {
     Route::put('/admin/orders/{id}/status', [OrderController::class, 'webUpdateStatus'])->name('admin.orders.status');
     // contact form route
     Route::get('/admin/contactforms', [ContactController::class, 'index'])->name('admin.contactforms');
-    Route::get('/admin/contactforms/{id}', [ContactController::class, 'show'])->name('admin.contactforms.show');
     Route::post('/admin/contactforms/{id}/reply', [ContactController::class, 'reply'])->name('admin.contactforms.reply');
     Route::delete('/admin/contactforms/{id}', [ContactController::class, 'destroy'])->name('admin.contactforms.destroy');
+    Route::get('/admin/messages/{id}', [ContactController::class, 'messages'])->name('admin.messages.show');
+    Route::get('/admin/messages', [ContactController::class, 'messages'])->name('admin.messages');
+    Route::post('/admin/messages/{id}/reply', [ContactController::class, 'reply'])->name('admin.messages.reply');
     // customer routes
     Route::get('/admin/customers/create', [CustomerController::class, 'create'])->name('admin.customers.create');
     Route::post('/admin/customers', [CustomerController::class, 'store'])->name('admin.customers.store');

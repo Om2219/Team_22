@@ -199,8 +199,13 @@
             <h6>Useful Links</h6>
               <ul class="list-unstyled">
                 <li class="list-group-item"><a href="/account" class="text-light text-decoration-none">Accounts page</a></li>
-                <li class="list-group-item"><a href="/order" class="text-light text-decoration-none">My Orders</a></li>
-                <li class="list-group-item"><a href="/reward" class="text-light text-decoration-none">Rewards</a></li>
+                @if(Auth::check())
+                  <li class="list-group-item"><a href="/order" class="text-light text-decoration-none">My Orders</a></li>
+                  <li class="list-group-item"><a href="/reward" class="text-light text-decoration-none">Rewards</a></li>
+                @else
+                  <li class="list-group-item"><a href="/account" class="text-light text-decoration-none">My Orders</a></li>
+                  <li class="list-group-item"><a href="/account" class="text-light text-decoration-none">Rewards</a></li>
+                @endif
               </ul>
           </div>
 
