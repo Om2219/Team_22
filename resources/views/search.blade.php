@@ -10,6 +10,7 @@
                 <option value="">Newest</option>
                 <option value="price_asc" {{ request('sort') == 'price_asc' ? 'selected' : '' }}>Low to High</option>
                 <option value="price_desc" {{ request('sort') == 'price_desc' ? 'selected' : '' }}>High to Low</option>
+                <option value="rating_desc" {{ request('sort') == 'rating_desc' ? 'selected' : '' }}>Highest Rated</option>
             </select>
         </form>
     </div> --}}
@@ -33,7 +34,7 @@
 
     <div class="container my-4">
 
-        <div class="row mb-4 shadow-sm p-3 bg-white rounded-4 align-items-center border">
+        <div class="row mb-4 shadow-sm p-3 rounded-4 align-items-center border modeBoxes">
             <div class="col-md-6">
                 <h4 class="mb-0 fw-bold">
                     Search Results for "{{ request()->query('search') }}"
@@ -49,6 +50,7 @@
                             <option value="">Newest</option>
                             <option value="price_asc" {{ request('sort') == 'price_asc' ? 'selected' : '' }}> Low to High </option>
                             <option value="price_desc" {{ request('sort') == 'price_desc' ? 'selected' : '' }}> High to Low </option>
+                            <option value="rating_desc" {{ request('sort') == 'rating_desc' ? 'selected' : '' }}> Highest Rated </option>
                         </select>
                     </div>
                 </form>

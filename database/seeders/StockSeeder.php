@@ -176,6 +176,30 @@ class StockSeeder extends Seeder
             'stock' => 10,
             'low_stock'=>2
         ]);
+        Stock::create([
+            'product_id' => 28, 
+            'stock' => 150,
+            'low_stock'=>15
+        ]); 
+            
+        Stock::create([
+            'product_id' => 29,
+            'stock' => 100,
+            'low_stock'=>15
+        ]);
+
+        Stock::create([
+            'product_id' => 30,
+            'stock' => 200,
+            'low_stock'=>20
+        ]);
+        Stock::create([
+                'product_id' => 31,
+                'stock' => 150,
+                'low_stock'=>15
+        ]);
+    
+                
 
     }
 }
