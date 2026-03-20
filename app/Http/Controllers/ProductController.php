@@ -314,36 +314,40 @@ class ProductController extends Controller
     // }
 
     
-    //SUja's work - Improved search with sorting and pagination
+    //Suja's work - Improved search with sorting and pagination
     public function search(Request $request)
-{
+    {
     $search = $request->input('search');
-
+    
+    // Redirect back if search is empty
     if (empty($search)) {
         return redirect()->back();
     }
 
-    // Search by name and calculate ratings
+
     $query = Product::where('name', 'LIKE', "%{$search}%")
                     ->withAvg('reviews', 'rating');
 
-    // Re-use the same sorting logic
     $sort = $request->query('sort');
+
     
     if ($sort == 'price_asc') {
         $query->orderBy('price', 'asc');
     } elseif ($sort == 'price_desc') {
         $query->orderBy('price', 'desc');
     } elseif ($sort == 'rating_desc') {
+     
         $query->orderBy('reviews_avg_rating', 'desc');
     } else {
+    
         $query->orderBy('created_at', 'desc');
     }
 
+    
     $products = $query->paginate(10)->withQueryString();
 
     return view('search', compact('products', 'search'));
-}
+    }
     
 
 }

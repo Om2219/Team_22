@@ -50,6 +50,7 @@
                             <option value="">Newest</option>
                             <option value="price_asc" {{ request('sort') == 'price_asc' ? 'selected' : '' }}> Low to High </option>
                             <option value="price_desc" {{ request('sort') == 'price_desc' ? 'selected' : '' }}> High to Low </option>
+                            <option value="rating_desc" {{ request('sort') == 'rating_desc' ? 'selected' : '' }}> Highest Rated </option>
                         </select>
                     </div>
                 </form>
