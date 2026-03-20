@@ -325,7 +325,7 @@ class ProductController extends Controller
     }
 
 
-    $query = Product::where('name', 'LIKE', "%{$search}%")
+    $query = Product::where('name', 'LIKE', "{$search}%")
                     ->withAvg('reviews', 'rating');
 
     $sort = $request->query('sort');
