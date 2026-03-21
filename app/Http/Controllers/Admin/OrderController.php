@@ -44,8 +44,10 @@ class OrderController extends Controller {
         $sort = $request->get('sort');
         if ($sort == 'oldest') {
             $query->orderBy('created_at', 'asc');
-        } else {
+        } elseif ($sort == 'newest') {
             $query->orderBy('created_at', 'desc');
+        } else {
+            $query->orderBy('id', 'desc');
         }
 
         // 20 orders per page
