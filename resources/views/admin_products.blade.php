@@ -21,6 +21,12 @@
 <main class="Admin_Content">
     <h1> Products</h1>
     <p> Manage products and stock levels</p>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h2 style="color: #061156; font-size: 1.2rem; margin: 0;">Product Information</h2>
+        <a href="{{ route('admin.customers.create') }}" style="background: #28a745; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px;">Add Product</a>
+    </div>
+
     <!-- Success/Error messages -->
     @if(session('success'))
         <div class="alert alert-success"> {{ session('success') }} </div>

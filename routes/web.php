@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\VoucherController;
+use App\Http\Controllers\Admin\FirstLoginController;
 use App\Http\Controllers\PointsVoucherController;
 use App\Http\Controllers\DailySpin;
 use App\Http\Controllers\SlotMachine;
@@ -199,6 +200,9 @@ Route::middleware(['auth', 'admin'])->group(function() {
     Route::get('/admin/vouchers/{id}/edit', [VoucherController::class, 'edit'])->name('admin.vouchers.edit');
     Route::put('/admin/vouchers/{id}', [VoucherController::class, 'update'])->name('admin.vouchers.update');
     Route::delete('/admin/vouchers/{id}', [VoucherController::class, 'destroy'])->name('admin.vouchers.destroy');
+    // first time login routes
+    Route::get('/admin/firstLogin', [FirstLoginController::class, 'show'])->name('admin.firstLogin');
+    Route::post('/admin/firstLogin', [FirstLoginController::class, 'updatePassword'])->name('admin.firstLogin.update');
 });
 
 // Route::get('studentlisting', 'App\Http\Controllers\StudentController@list')->name('list_student');
