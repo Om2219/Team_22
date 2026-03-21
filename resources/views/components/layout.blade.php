@@ -23,12 +23,19 @@
     <style>
     /* making it so that the admin theme has a different colour */
     .admin-theme header,
-    .admin-theme .blockUno,
-    .admin-theme .blockDos,
-    .admin-theme .blocktres,
     .admin-theme footer {
         background-color: #b2ddec
     }
+
+    .admin-theme .blockUno,
+    .admin-theme .blockDos,
+    .admin-theme .blockTres {
+        background-color: transparent;
+    }
+
+    .admin-theme .blockTres {
+        background-color: #b2ddec;
+    },
 
     .admin-theme .allProducts,
     .admin-theme .save-btn {
