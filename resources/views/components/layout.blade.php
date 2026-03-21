@@ -70,7 +70,12 @@
         color: #061156;
     }
     .admin-theme img[src*="admin logo.png"] {
-        width: 200px;
+        width: 160px;
+        height: auto;
+        object-fit: contain;
+    }
+    .home-banner img {
+        width: 150px;
         height: auto;
         object-fit: contain;
     }
