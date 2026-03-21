@@ -77,14 +77,16 @@ class CustomerController extends Controller {
         }
 
         $customer->save();
-        return response()->json($customer);
+        return redirect()->route('admin.customers')-> with('success', 'User updated Successfully');
+
     }
 
     // Delete a customer
     public function destroy($id) {
         $customer = User::where('role', 'customer')->findOrFail($id);
         $customer->delete();
-        return response()->json(['message' => 'Customer deleted successfully']);
+        return redirect()->route('admin.customers')-> with('success', 'User deleted Successfully');
+
     }
 
     // Showing the create a customer form
@@ -92,17 +94,12 @@ class CustomerController extends Controller {
         return view('admin_customers_create');
     }
 
-    // Being able to ban/unban a customer
-    public function toggleStatus($id) {
-        $user = User::find($id);
-        
-        if (!$user) {
-            return redirect()->back()->with('error', 'User not found');
-        }
-        
-        $user->is_active = !$user->is_active;
-        $user->save();
-        $status = $user->is_active ? 'unbanned' : 'banned';
-        return redirect()->back()->with('success', "User {$status}");
+    
+
+    //  Customer edit
+    public function edit($id) {
+        $user = User::where('role', 'customer')->findOrFail($id);
+        return view('admin_customers_edit', compact('user'));
+
     }
 }
