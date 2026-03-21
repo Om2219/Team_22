@@ -1,269 +1,249 @@
 <x-layout>
-   <div class="Contact-Us">
-
-<main class="Contact_Us">
-    <h1>Contact Massages</h1>
+   <div class="admin-wrapper">
+        <!-- left side -->
+         <div class="message-panel">
+        <h2>Messages</h2>
     
+    @foreach($messages as $msg)
+        @if($msg->reply)
+            <div class="card" 
+            style="border-left: 5px solid #28a745;"
+            onclick="location.href='{{ route('admin.messages', ['id' => $msg->id]) }}'">
 
-<section class="stats_1">
-    <div class="card">
-        <h3>Sarah Thompson</h3>
-        <p> sarah@example.com</p>
-        <p> Order Not Received</p>
-    </div>
-
-
-    <div class="card">
-        <h3>Mary  Johnson</h3>
-        <p> mary@example.com</p>
-        <p> Bulk Order inquiry</p>
-    </div>
-
-    <div class="card">
-        <h3>John Smith </h3>
-        <p> smith@example.com</p>
-        <p> Feedback product</p>
-    </div>
-</section>
-    
-
-<section class="message-detail">
-    <div class="detail-box">
-        <h2>Sarah Thompson</h2>
-        <p> sarah@example.com</p>
-        <h3>Order Not Received</h3>
-        <span class = "status open">Open</span>
-
-    <div class="message-text">
-        <p>I placed an order a week ago but it has not arrived yet.
-            Can you please provide me with an update?</p>
-    </div>  
+                <h3>{{ $msg->name }}</h3>
+                <p>{{ $msg->email }}</p>
+                <p>{{ $msg->subject }}</p>
+                <span>Replied</span>
+            </div>
+        @else
+            <div class="card" 
+                style="border-left: 5px solid #ffc107;"
+                 onclick="location.href='{{ route('admin.messages', ['id' => $msg->id]) }}'">
+                
+                <h3>{{ $msg->name }}</h3>
+                <p>{{ $msg->email }}</p>
+                <p>{{ $msg->subject }}</p>
+            </div>
+        @endif
+    @endforeach
 </div>
+    
+<!--right side -->
+<div class="message-view">
 
-<div class="reply-box">
-    <h3>Reply to customer</h3>
-    <textarea placeholder ="Type your reply here......"></textarea>
+    @if(!empty($selectedMessage))
+        
+        <div class="detail-box">
 
-    <div class="reply-actions">
-        <button class="cancel-btn"> Cancel</button>
-        <button class="send-btn"> Reply</button>
+            <h2>{{ $selectedMessage->name }}</h2>
+            <p>{{ $selectedMessage->email }}</p>
+            <h3>{{ $selectedMessage->subject }}</h3>
+
+            <span class="status {{ $selectedMessage->is_read ? 'read' : 'open' }}">
+            {{ $selectedMessage->is_read ? 'Read' : 'Open' }}
+            </span>
+
+            <div class="message-text">
+                <p>{{ $selectedMessage->message }}</p>
+            </div>  
         </div>
-    </div>
 
-</section>
-</main>
+        <div class="reply-box">
+            <h3>Reply to customer</h3>
+
+            <form action="{{ route('admin.messages.reply', $selectedMessage->id) }}" method="POST">
+                @csrf
+
+                <textarea name="reply" placeholder="Type your reply here......" required></textarea>
+
+                <div class="reply-actions">
+                <a href="{{ route('admin.messages') }}" class="cancel-btn">Cancel</a>
+                <button type="submit" class="send-btn">Reply</button>
+                </div>
+            </form>
+        </div>
+
+    @else
+    <p> Select a message to view</p>
+    @endif
 </div>
-    
+
+</main>
+
 </x-layout>
+    
 <style>
 
-    .Contact-Us{
+    /**page background */
+
+    .admin-wrapper{
+        display: grid;
+        grid-template-columns: 35% 65%;
+        gap: 20px;
+        margin: 30px;
+    }
+
+    /**left panel */
+    .message-panel{
+        background: #eef5f7;
+        padding: 20px;
+        max-height: 600px;
+        border-radius: 15px;
+        overflow-y: auto;
+    }
+
+    /**right panel */
+    .message-view{
         display: flex;
-        min-height: 100vh;
-        background-color:#d8eef8; /* light blue */
-        font-family: 'Segoe UI', sans-serif;
+        flex-direction: column;
+        gap:20px;
+    }
+    
+    .detail-box h2{
+        color: #1f3d2b;
     }
 
 
-.Contact_Us{
-flex:1;
-padding: 40px;
-background-color: #d8eef8;
- font-family: 'Segoe UI', sans-serif;
-color: #0b1f78;
-}
 
-.Contact_Us h1{
-    margin: 0 0 8px;
-    font-size: 2.2rem;
-    color:#0b1f78;
-}
 
-.Contact_Us p{
- margin: 0 0 28px;
-    font-size: 1rem;
-    color:#3d4a7a;
-}
 
-.stats_1{
-    display: grid;
-    grid-template-columns:repeat(3,1fr);
-    gap: 18px;
-    margin-bottom: 30px;
-    margin-top: 20px;
-}
-
-.card{
+    /* Cards */
+.card {
+    padding: 18px 20px;
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
+    transition: all  0.25s ease;
     background: #ffffff;
-    border-radius: 12px;
-    padding: 18px 18px;
-    box-shadow: 0 8px 18px rgba(11,31,120,0.10);
-    border-left: 6px solid #0b1f78;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
 }
 
 
 .card:hover{
-    transform: translateY(-2px);
-    box-shadow: 0 12px 24px rgba(11,31,120,0.16);
+    transform:translateY(-5px) scale(1.01);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
 }
 
+/**click effect */
+.card:active{
+    transform: scale(0.98);
+}
+
+/*Text */
 .card h3{
-    margin: 0 0 10px;
-    font-size: 1rem;
-    font-weight: 700;
-    color: #0b1f78;
-    letter-spacing: 0.2px;
-
+    margin-bottom: 5px;
+    color: #1f3d28;
 }
-
 .card p{
     margin: 0 0 8px;
     font-size: 0.98rem;
-    line height: 1.5;
+    line-height: 1.5;
     color: #2f3d68;
 }
 
-.messae-detail{
-    display: grid: 
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    align-items: start;
+/** badge */
+.card span{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #28a745;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
 }
 
+
+.card[style*="ffc107"]{
+    border-left: 5px solid #ffc107 !important;
+}
+
+
+
+/**boxes */
 .detail-box,.reply-box{
     background: #ffffff;
-    border-radius:14px;
-    padding: 24px;
-    box-shadow: 0 8px 18px rgba(11,32,120, 0.10);
+    border-radius:16px;
+    padding: 25px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 6px 15px rgba(0,0,0, 0.05);
 }
-.detail-box h2{
-    margin: 0 0 10px;
-    font-size: 1.6rem;
-    color: #0b1f78;
+/**detail text */
 
+.detail-box h2{
+    color: #1f3d2b;
 }
 .detail-box h3{
-     margin: 12px 0 10px;
-    font-size: 1.2rem;
-    color: #0b1f78;
-}
-
-.detail-box p{
-     margin: 0 0 12px;
-    font-size: 1rem;
-    color: #3d4a7a;
-    line-height: 1.6;
+    margin-top: 10px;
+    color: #7a4900;
 }
 
 
+/**staus */
 .status{
-    display:inline-block;
-    padding: 6px 14px;
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 0.85rem;
+    padding: 4px 10px;
     border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: 16px;
 }
 
 .status.open{
-    background-color: #dfe8ff;
-    color: #0b1f78;
+    background: #fff3cd;
+    color: #856404;
 }
 
-.message-text{
-    margin-top:10px;
-    padding-top:14px;
-    border-top: 1px solid #c7dff0;
+.status.read{
+    background: #d4edda;
+    color: #155724;
 }
 
-.message-text p{
-    margin: 0;
-    color: #2f3d68;
-    line-height: 1.7;
-}
 
-.reply-box h3{
- margin: 0 0 16px;
- font-size: 1.2rem;
- color: #0b1f78;
-}
 
-.reply-box textarea{
+/**textarea */
+textarea{
     width: 100%;
-    min-height: 160px;
-    border: 2px solid #b8d6e8;
+    min-height: 120px;
+    padding: 12px;
     border-radius: 12px;
-    padding: 14px;
-    font-size: 0.98rem;
-    color: #2f3d68;
-    background-color: #ffffff;
-    resize: vertical;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
+    border: 1px solid #ccc;
+    transition: 0.2s;
 }
 
-
-.reply-box textarea:focus{
-    outline: none;
-    border-color: #0b1f78;
-    box-shadow: 0 0 0 3px rgba(11,21,120, 0.10);
-}
-
-.reply-actions{
-    display:flex;
-    gap:12px;
-    margin-top:18px;
-
-}
-.cancel-btn, .send-btn{
-    padding: 11px 22px;
-    border-radius: 10px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
+/**buttons */
 .cancel-btn{
-    background-color: #ffffff;
-    color: #0b1f78;
-    border: 2px solid #b8d6e8;
+    padding: 8px 15px;
+    border-radius: 6px;
+    text-decoration: none;
 }
 
 .cancel-btn:hover{
-    background-colour: #edf6fb;
+    background-color: #edf6fb;
 }
 
 .send-btn{
-    background-color: #0b1f78;
-    color: #d8eef8;
-    border: 2px solid #0b1f78;
+    padding: 8px 15px;
+    background: #2f3d68;
+    color: white;
+    border: none;
+    border-radius: 6px;
 }
 
 .send-btn:hover{
-    background-colour: #1c2f96;
+    background-color: #1c2f96;
     border-color: #1c2f96;
 }
+.reply-actions{
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
 
 
-
-/**Responsive */
-@media (max-width:900px){
-    .stats_1{
+/** responsive */
+@media (max-width: 900px){
+    .admin-wrapper{
         grid-template-columns: 1fr;
-    }
-
-    .message-detail{
-        grid-template-columns: 1fr;
-    }
-
-    .Contact_Us{
-        padding: 22px;
-    }
-    .Contact_Us h1{
-        font-size: 1.9rem;
     }
 }
 
-    </style>
+</style>
