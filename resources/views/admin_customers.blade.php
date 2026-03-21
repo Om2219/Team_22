@@ -40,31 +40,45 @@
             <th>Status</th>
             <th>Actions</th>
         </tr>
-
+        <!--active or not-->
         @foreach ($users as $user)
         <tr>
             <td>{{ $user->id }}</td>
             <td>{{ $user->forename ?? 'Guest' }} {{ $user->surname ?? '' }}</td>
             <td>{{ $user->email }}</td>
-            <td>
-                @if($user->is_active)
-                    <span style="color: #28a745;">Active</span>
-                @else
-                    <span style="color: #c44536;">Banned</span>
-                @endif
-            </td>
-            <td>
-                <form action="{{ route('admin.customers.toggle', $user->id) }}" method="POST" style="display:inline;">
-                    @csrf
-                    <button type="submit" style="background: none; border: none; color: #061156; text-decoration: underline; cursor: pointer;">
-                        {{ $user->is_active ? 'Ban' : 'Unban' }}
-                    </button>
-                </form>
-            </td>
-        </tr>
-        @endforeach
 
-    </table>
+            <td>
+                 <span style="color: #28a745;">Active</span>
+               
+            </td>
+
+            <!--Edit button-->
+            <td style="display:flex; gap:8px; align-itens:center;">
+            
+            <a href="{{ route('admin.customers.edit', $user->id) }}"
+            style="color:#28a745; margin-right: 10px; text-decoration:none;">
+            Edit
+            </a>
+
+            |
+
+            <!--Delete button-->
+            <form action=" {{ route('admin.customers.destroy', $user->id) }}"
+                method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit"
+            onclick="return confirm('Are u sure you want to delete this user?')"
+                style="background: none; border:none; color:#c44536; cursor:pointer;">
+                Delete
+            </button>
+        </form>
+            
+    <td>
+</tr>
+@endforeach
+
+</table>
 </section>
 
 </main>
