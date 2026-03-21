@@ -191,7 +191,13 @@ Route::middleware(['auth', 'admin'])->group(function() {
     // customer routes
     Route::get('/admin/customers/create', [CustomerController::class, 'create'])->name('admin.customers.create');
     Route::post('/admin/customers', [CustomerController::class, 'store'])->name('admin.customers.store');
-    Route::post('/admin/customers/{id}/toggle-status', [CustomerController::class, 'toggleStatus'])->name('admin.customers.toggle');
+    // edit users
+    Route::get('/admin/customers/{id}/edit', [CustomerController::class, 'edit'])->name('admin.customers.edit');
+    Route::put('/admin/customers/{id}', [CustomerController::class, 'update'])->name('admin.customers.update');
+
+    // deleter users
+    Route::delete('/admin/customers/{id}', [CustomerController::class, 'destroy'])->name('admin.customers.destroy');
+
     // voucher routes
     Route::get('/admin/vouchers', [VoucherController::class, 'index'])->name('admin.vouchers');
     Route::get('/admin/vouchers/create', [VoucherController::class, 'create'])->name('admin.vouchers.create');
