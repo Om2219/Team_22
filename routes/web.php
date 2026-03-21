@@ -191,6 +191,13 @@ Route::middleware(['auth', 'admin'])->group(function() {
     Route::get('/admin/customers/create', [CustomerController::class, 'create'])->name('admin.customers.create');
     Route::post('/admin/customers', [CustomerController::class, 'store'])->name('admin.customers.store');
     Route::post('/admin/customers/{id}/toggle-status', [CustomerController::class, 'toggleStatus'])->name('admin.customers.toggle');
+    // voucher routes
+    Route::get('/admin/vouchers', [PointsVoucherController::class, 'adminIndex'])->name('admin.vouchers');
+    Route::get('/admin/vouchers/create', [PointsVoucherController::class, 'create'])->name('admin.vouchers.create');
+    Route::post('/admin/vouchers', [PointsVoucherController::class, 'store'])->name('admin.vouchers.store');
+    Route::get('/admin/vouchers/{id}/edit', [PointsVoucherController::class, 'edit'])->name('admin.vouchers.edit');
+    Route::put('/admin/vouchers/{id}', [PointsVoucherController::class, 'update'])->name('admin.vouchers.update');
+    Route::delete('/admin/vouchers/{id}', [PointsVoucherController::class, 'destroy'])->name('admin.vouchers.destroy');
 });
 
 // Route::get('studentlisting', 'App\Http\Controllers\StudentController@list')->name('list_student');
