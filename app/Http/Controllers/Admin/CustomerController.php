@@ -16,8 +16,43 @@ class CustomerController extends Controller {
     }
 
     // Web view
-    public function webIndex() {
-        $users = User::where('role', 'customer')->get();
+    public function webIndex(Request $request) {
+        $query = User::where('role', 'customer');
+
+        // search using name and email
+        if ($request->search) {
+            $query->where(function($q) use ($request) {
+                $q->where('forename', 'like', '%' . $request->search . '%')
+                ->orWhere('surname', 'like', '%' . $request->search . '%')
+                ->orWhere('email', 'like', '%' . $request->search . '%');
+            });
+        }
+
+        // filter by ban or not banned
+        if ($request->status && $request->status != 'all') {
+            if ($request->status == 'active') {
+                $query->where('is_active', 1);
+            } elseif ($request->status == 'banned') {
+                $query->where('is_active', 0);
+            }
+        }
+
+        // sort
+        $sort = $request->get('sort');
+        if ($sort == 'name_asc') {
+            $query->orderBy('forename', 'asc');
+        } elseif ($sort == 'name_desc') {
+            $query->orderBy('forename', 'desc');
+        } elseif ($sort == 'newest') {
+            $query->orderBy('created_at', 'desc');
+        } elseif ($sort == 'oldest') {
+            $query->orderBy('created_at', 'asc');
+        } else {
+            $query->orderBy('created_at', 'desc');
+        }
+
+        // 20 items per page
+        $users = $query->paginate(20)->withQueryString();
         return view('admin_customers', compact('users'));
     }
 

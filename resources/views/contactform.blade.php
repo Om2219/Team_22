@@ -14,7 +14,7 @@
                 </div>
                 
                 <div class="input-box">
-                    <p>Email</p>
+                    <p class="email-alignment">Email</p>
                     <input class="inputTxt" id="email" type="email" placeholder="enter email" name="email" required>
                 </div>
             </div>
