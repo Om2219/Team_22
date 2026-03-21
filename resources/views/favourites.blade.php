@@ -3,13 +3,13 @@
 
         <div class="col-md-6"><h1 class="mb-0 fw-bold">My Wishlist</h1></div><br>
 
-        <div class="row row-cols-lg-4 g-4">
             @if (session('success'))
             <p style="color: green;">{{  session('success') }}</p>
             @endif
             @if ($favourites->isEmpty())
             <p>You haven't got any products wishlisted yet.</p>
             @else
+            <div class="row row-cols-lg-4 g-4">
             @foreach ($favourites as $product)
             <div class="col d-flex">
                 <div class="card border-1 shadow-sm d-flex flex-column modeBoxes">

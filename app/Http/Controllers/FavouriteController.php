@@ -19,6 +19,7 @@ class FavouriteController extends Controller
     public function destroy(Product $product)
 {
     Auth::user()->favouriteProducts()->detach($product->id);
-    return back()->with('success', 'removed from wishlist');
+    // return back()->with('success', 'removed from wishlist');
+    return back();
 }
 }
