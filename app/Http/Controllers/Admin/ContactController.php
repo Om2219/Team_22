@@ -19,7 +19,7 @@ class ContactController extends Controller {
         return redirect()->route('admin.messages', ['id' => $id]);
     }
 
-    // Reply to the message
+    // Reply
     public function reply(Request $request, $id) {
         $request->validate([
             'reply' => 'required|string',
@@ -30,14 +30,14 @@ class ContactController extends Controller {
             return redirect()->route('admin.contactforms')->with('error', 'Message not found');
         }
 
-        // Save the reply - can add a feature to send an email/notification to the user
+        // Save the reply - can add a feature to send an email/notification to the user (maybe)
         $message->reply = $request->reply;
         $message->is_replied = now();
         $message->save();
         return redirect()->route('admin.messages.show', $id)->with('success', 'Reply sent');
     }
 
-    // Delete the message
+    // Delete
     public function destroy($id) {
         $message = ContactForm::find($id);
         
