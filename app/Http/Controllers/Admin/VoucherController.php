@@ -23,14 +23,19 @@ class VoucherController extends Controller {
     public function store(Request $request) {
         $request->validate([
             'code' => 'required|unique:vouchers',
-            'discount_amount' => 'required|numeric|min:0',
-            'expiry_date' => 'required|date|after:today',
+            'type' => 'required| in:fixed,percent',
+            'value' => 'required|numeric|min:0',
+            'expires_at' => 'required|date|after:today',
         ]);
 
-        Voucher::create($request->only('code', 'discount_amount', 'expiry_date'));
-        return redirect()->route('admin.vouchers')->with('success', 'Voucher created.');
+        Voucher::create([
+            'code' => $request->code,
+            'type' => $request->type,
+            'value' => $request->value,
+            'expires_at' => $request->expires_at,
+        ]);
+            
     }
-
     // Edit voucher
     public function edit($id) {
         $voucher = Voucher::find($id);
@@ -50,12 +55,19 @@ class VoucherController extends Controller {
 
         $request->validate([
             'code' => 'required|unique:vouchers,code,' . $voucher->id,
-            'discount_amount' => 'required|numeric|min:0',
-            'expiry_date' => 'required|date|after:today',
+            'type' => 'required| in:fixed,percent',
+            'value' => 'required|numeric|min:0',
+            'expires_at' => 'required|date|after:today',
         ]);
 
-        $voucher->update($request->only('code', 'discount_amount', 'expiry_date'));
-        return redirect()->route('admin.vouchers')->with('success', 'Voucher updated.');
+        $voucher->update([
+            'code' => $request->code,
+            'type' => $request->type,
+            'value' => $request->value,
+            'expires_at' => $request->expires_at,
+
+        ]);
+            
     }
 
     // Delete voucher
