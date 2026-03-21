@@ -7,7 +7,7 @@
         @if($orders->isEmpty())
             <p>You have not placed any orders yet.</p>
         @else
-            <div class="orders-list">
+            <div class="orders-list modeBoxes">
                 @foreach($orders as $order)
                     <div class="order-row">
 
