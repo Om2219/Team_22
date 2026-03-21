@@ -27,9 +27,9 @@
     </div>
 
     <div class = "accountBox">
-        <h2>My Rewards</h2>
-        <p> Go to your Rewards page</p>
-        <button class = "headbut"><a href="/reward"> My Rewards</a></button>
+        <h2>Voucher Management</h2>
+        <p> Manage and view vouchers</p>
+        <button class = "headbut"><a href="{{ route('admin.vouchers') }}">View Vouchers</a></button>
     </div>
 
     <div class = "accountBox">

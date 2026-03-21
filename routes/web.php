@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\VoucherController;
 use App\Http\Controllers\PointsVoucherController;
 use App\Http\Controllers\DailySpin;
 use App\Http\Controllers\SlotMachine;
@@ -191,6 +192,13 @@ Route::middleware(['auth', 'admin'])->group(function() {
     Route::get('/admin/customers/create', [CustomerController::class, 'create'])->name('admin.customers.create');
     Route::post('/admin/customers', [CustomerController::class, 'store'])->name('admin.customers.store');
     Route::post('/admin/customers/{id}/toggle-status', [CustomerController::class, 'toggleStatus'])->name('admin.customers.toggle');
+    // voucher routes
+    Route::get('/admin/vouchers', [VoucherController::class, 'index'])->name('admin.vouchers');
+    Route::get('/admin/vouchers/create', [VoucherController::class, 'create'])->name('admin.vouchers.create');
+    Route::post('/admin/vouchers', [VoucherController::class, 'store'])->name('admin.vouchers.store');
+    Route::get('/admin/vouchers/{id}/edit', [VoucherController::class, 'edit'])->name('admin.vouchers.edit');
+    Route::put('/admin/vouchers/{id}', [VoucherController::class, 'update'])->name('admin.vouchers.update');
+    Route::delete('/admin/vouchers/{id}', [VoucherController::class, 'destroy'])->name('admin.vouchers.destroy');
 });
 
 // Route::get('studentlisting', 'App\Http\Controllers\StudentController@list')->name('list_student');
