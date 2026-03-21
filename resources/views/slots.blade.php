@@ -1,7 +1,4 @@
 <x-layout>
-      <div class="back-btn-wrapper">
-        <a href="/reward" class="save-btn">Go back</a>
-    </div>
     @vite('resources/js/slots.js')
     <div class="container mt-4 text-center">
         <h1 class="font-bold mb-5">Banana Blast</h1>
@@ -67,5 +64,9 @@
         <audio id="spinAudio" src="{{ asset('Audio/slot_main.mp3') }}"></audio>
         <audio id="winAudio" src="{{ asset('Audio/slots_winner.mp3') }}"></audio>
         <audio id="loseAudio" src="{{ asset('Audio/slots_loser.mp3') }}"></audio>
+    </div>
+
+    <div class="back-btn-wrapper">
+        <a href="/reward" class="save-btn">Go back</a>
     </div>
 </x-layout>

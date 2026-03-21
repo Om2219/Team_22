@@ -25,7 +25,7 @@
                     </label>
                 </div>
                 <div class="login extra"> 
-                    <span class="psw"><a class="login-hyperlinks" href="#"></a></span> {{--keeping the format since it looks nice--}}
+                    <span class="psw"><a class="login-hyperlinks" href="#"></a></span> <!--keeping the format since it looks nice-->
                 </div>
 
                 <div class="container_signin">

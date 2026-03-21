@@ -31,6 +31,7 @@
 
                 <div class="name-entry-inputs">
                     <select id="title" name="title" required>
+                        <option value=""></option>
                         <option value="Mr.">Mr.</option>
                         <option value="Ms.">Ms.</option>
                         <option value="Mrs.">Mrs.</option>

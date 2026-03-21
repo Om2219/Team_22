@@ -1,7 +1,4 @@
 <x-layout>
-     <div class="back-btn-wrapper">
-        <a href="/account" class="save-btn">Go back</a>
-    </div>
     <div class = "container">
 
 
@@ -55,5 +52,8 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="back-btn-wrapper">
+        <a href="/account" class="save-btn">Go back</a>
     </div>
 </x-layout>

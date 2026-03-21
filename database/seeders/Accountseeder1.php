@@ -13,17 +13,11 @@ class Accountseeder1 extends Seeder {
         // Needed to prevent duplicates
         if (!User::where('email', 'Certified@product.com')->exists()) {
             User::create([
+                'title' => 'Mr',
                 'forename' => 'Certified',          //creates a seeded account
                 'surname' => 'Product',
                 'email' => 'Certified@product.com', 
                 'password' => Hash::make('CertifiedProduct'),
-            ]);
-
-            User::create([
-                'forename' => 'Hello',          //creates a seeded account
-                'surname' => 'Buddy',
-                'email' => 'hellobuddy@roots.com', 
-                'password' => Hash::make('HelloBuddy1!'),
             ]);
         }
     }

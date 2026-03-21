@@ -10,33 +10,34 @@
         </div>
     @endif
 
-    <div class="email_container">
+    <div class="email-container">
         <h1>Change email</h1>
-        <form action="{{ route('update.email') }}" method="POST">
+        <form action="{{route('update.email')}}" method="POST">
             @csrf
 
-            <label for="current_email">Current email</label>
+            <label for="current_email">Current Email</label>
             <input type="email" name="current_email" id="current_email" placeholder="Enter your current email" required>
 
-
-            <label for="new_email">New email</label>
+            <label for="new_email">New Email</label>
             <input type="email" name="new_email" id="new_email" placeholder="Enter your new email" required>
 
-            <label for="new_email_confirmation">Confirm new email</label>
+            <label for="new_email_confirmation">Confirm New Email</label>
             <input type="email" name="new_email_confirmation" id="new_email_confirmation" placeholder="Enter your new email again" required>
 
-            <button type="submit" class="save-btn">Update email</button>
+            <button type="submit" class="save-btn">Update Email</button>
         </form>
 
         <br>
 
-         <a href="/mydetails" class="save-btn">Go back</a>
+        <div class="back-btn-wrapper">
+            <a href="/mydetails" class="save-btn">Go back</a>
+        </div>
     </div>
 </x-layout>
 
 <script>
 
-    //these scripts set the success and failure messages to fade out
+    //this script sets the failure message to fade out
     //after 2 seconds of being on screen
     //looks badboy
 
@@ -51,3 +52,84 @@
         }
     });
 </script>
+
+<style>
+    .email-container {
+        width: 600px;
+        margin: 40px auto;
+        border: 3px solid #7a4900;
+        border-radius: 8px;
+        padding: 20px;
+        background: white;
+        text-align: left;
+    }
+
+    [data-bs-theme="light"] .email-container {
+        background: white;
+    }
+
+    [data-bs-theme="dark"] .email-container {
+        background: rgb(44, 46, 48);
+    }
+
+    .email-container h1 {
+        text-align: center;
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+
+    .email-container label {
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 8px;
+        display: inline-block;
+    }
+
+    .email-container input[type="email"] {
+        width: 100%;
+        height: 45px;
+        padding: 12px 20px;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        display: inline-block;
+        box-sizing: border-box;
+    }
+
+    .email-container button {
+        width: 100%;
+        padding: 14px 20px;
+        margin-top: 16px;
+        background-color: #bdab53;
+        color: black;
+        font-weight: 600;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .email-container a.save-btn {
+        display: inline-block;
+        text-align: center;
+        margin-top: 15px;
+        font-weight: 600;
+        padding: 12px 20px;
+        background-color: #bdab53;
+        color: black;
+        border-radius: 4px;
+        text-decoration: none;
+    }
+
+    [data-bs-theme="light"] .email-container a.save-btn {
+        background-color: #bdab53;
+        color: black;
+    }
+    [data-bs-theme="dark"] .email-container a.save-btn {
+        background-color: #8d7f3e;
+        color: rgb(255, 255, 255);
+    }
+
+    .email-container button:hover, .email-container a.save-btn:hover {
+        opacity: 0.8;
+    }
+</style>

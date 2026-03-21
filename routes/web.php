@@ -130,6 +130,15 @@ Route::post('/changeEmail', [DetailsController::class, 'update_email'])->name('u
 Route::get('/changePassword', [DetailsController::class, 'show_changePassword'])->name('change.password');    // shows the change password page
 Route::post('/changePassword', [DetailsController::class, 'update_password'])->name('update.password');       // updates the password in the database
 
+Route::get('/changeName', [DetailsController::class, 'show_changeName'])->name('change.name');  // shows the change name page
+Route::post('/updateName', [DetailsController::class, 'update_name'])->name('update.name');     // updates the password in the database
+
+Route::get('/changePhone', [DetailsController::class, 'show_changePhone'])->name('change.phone'); // shows the change phone number page
+Route::post('/updatePhone', [DetailsController::class, 'update_phone'])->name('update.phone');    // updates the phone number in the database
+
+Route::post('/profile/upload', [DetailsController::class, 'uploadPFP'])->name('pfp.upload'); //uploads profile picture to folder, sets path in database
+Route::post('/profile/remove', [DetailsController::class, 'removePFP'])->name('pfp.remove'); //removes profile picture from folder, removes path in database
+
 Route::get('aboutus', function () { return view('aboutus'); }); // shows the about us page
 
 Route::get('contactform', function () { return view('contactform'); }); // shows the contact form

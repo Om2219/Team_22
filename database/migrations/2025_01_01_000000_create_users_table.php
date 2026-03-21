@@ -16,7 +16,7 @@ return new class extends Migration
 
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('phone_number', 15)->nullable(); //accounts for foreign numbers and extensions (i.e. +44)
+            $table->string('phone_number', 16)->nullable(); //accounts for +44 extension
 
             $table->integer('points')->default(0);
 

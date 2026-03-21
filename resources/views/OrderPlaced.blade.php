@@ -45,7 +45,7 @@
 
         </div>
 
-        <div class="order-details">
+        <div class="order-details modeBoxes">
 
             <h3>Order Details</h3>
 

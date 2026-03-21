@@ -7,7 +7,7 @@
 
         <div class="order-panels">
 
-            <div class="order-summary">
+            <div class="order-summary modeBoxes">
                 <h3>Order Summary</h3>
 
                 @foreach ($items as $product)
@@ -28,7 +28,7 @@
                 </p>
             </div>
             
-            <div class="order-details">
+            <div class="order-details modeBoxes">
                 <h3>Order Details</h3>
 
                 <div class="details-address">

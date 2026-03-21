@@ -447,44 +447,83 @@ class ProductSeeder extends Seeder
         ]);
         
         
-Product::create([
-    'name' => 'The Goats Whip GOLDEN EDITION',
-    'product_description' => 'A legendary 24-karat gold-plated version of the fan-favorite Goats Whip. Engineered for the ultimate collector, this edition features shimmering gold accents and a custom "Roots" insignia. It is the pinnacle of luxury in our toy collection.',
-    'price' => null,
-    'category_id' => $rewards->id,
-    'is_reward' => true,
-    'points_cost' => 10000,
-]);
+        Product::create([
+            'name' => "The Goat's Whip - 'GOLDEN EDITION'",
+            'product_description' => <<<TEXT
+        Introducing The Goat's Whip, a high-speed toy car built for thrill-seekers and collectors alike. With its sleek, aerodynamic design and bold, striking colors, this miniature powerhouse is ready to race through any track or imaginative adventure. And best of all, it's the signature vehicle of choice for none other than the GOAT. 
+        
+        This particular model is the 'GOLDEN EDITION', a special version of The Goat's Whip that can only be purchased using Roots Reward Points.
+
+        Features:
+        • 1/24 scale
+        • Premium construction
+        • Rapid acceleration
+        • GOAT certified
+        TEXT, 
+            'price' => null,
+            'category_id' => $rewards->id,
+            'is_reward' => true,
+            'points_cost' => 7500,
+        ]);
 
 
-Product::create([
-    'name' => 'Canvas GOLDEN EDITION',
-    'product_description' => 'Elevate your art to a royal standard. This Golden Edition canvas is pre-primed with a unique metallic-infused gesso, providing a luminous background that makes every brushstroke glow. Framed in hand-carved gilded wood.',
-    'price' => null,
-    'category_id' => $rewards->id,
-    'is_reward' => true,
-    'points_cost' => 10000,
-]);
+        Product::create([
+            'name' => "Canvas - 'GOLDEN EDITION'",
+            'product_description' => <<<TEXT
+        This high-quality canvas provides a smooth, durable surface perfect for all your artistic endeavors. Ideal for painting, sketching, and mixed media projects, it’s designed to hold acrylic, oil, and watercolor paints with ease. Whether you're a professional artist or a beginner, this canvas ensures vibrant colors and sharp details, making it an essential tool for creating your next masterpiece. Stretching over a sturdy wooden frame, it’s ready for immediate use, offering both versatility and reliability for any creative project.
+
+        This particular model is the 'GOLDEN EDITION', a special version of our normal canvas that can only be purchased using Roots Reward Points.
+
+        Features:
+        • Size: 25.4 x 20.3cm (10 x 8 inches)
+        • 280gsm
+        • Pre-primed ready for use
+        • Acid free
+        • Golden frame for major aura points
+        TEXT,
+            'price' => null,
+            'category_id' => $rewards->id,
+            'is_reward' => true,
+            'points_cost' => 3000,
+        ]);
 
 
-Product::create([
-    'name' => 'The Whispering Woods GOLDEN EDITION',
-    'product_description' => 'The ultimate edition of The Whispering Woods. This hardcover masterpiece features gold-leaf page edges, a velvet-lined spine, and exclusive concept art not found in the standard whispering woods collection.',
-    'price' => null,
-    'category_id' => $rewards->id,
-    'is_reward' => true,
-    'points_cost' => 10000,
-]);
+        Product::create([
+            'name' => "The Whispering Woods - 'GOLDEN EDITION'",
+            'product_description' => <<<TEXT
+        A copy of "The Whispering Woods", the first entry in the "Roots Originals" series.  
+        
+        In the quiet depths of an enigmatic forest, the first sparks of Roots are born. This opening installment follows the founders as they uncover hidden inspiration in nature itself, where every rustle and shadow holds a secret waiting to be transformed into something extraordinary.
+
+        This particular model is the 'GOLDEN EDITION', a special version of The Whispering Woods that can only be purchased using Roots Reward Points.
+
+        The 'GOLDEN EDITION' comes complete with a golden hardback cover as well as a golden stand inscribed with the title of the book for display purposes.
+        TEXT,
+            'price' => null,
+            'category_id' => $rewards->id,
+            'is_reward' => true,
+            'points_cost' => 1500,
+        ]);
 
 
-Product::create([
-    'name' => 'The Calculator GOLDEN EDITION',
-    'product_description' => 'Solve equations with prestige. The Golden Edition Calculator features mechanical gold-plated switches for a tactile feel and a high-contrast solar display. Mathematics has never felt this luxurious.',
-    'price' => null,
-    'category_id' => $rewards->id,
-    'is_reward' => true,
-    'points_cost' => 10000,
-]);
+        Product::create([
+            'name' => "Calculator - 'GOLDEN EDITION'",
+            'product_description' => <<<TEXT
+        Swiftly overcome any mathematical hurdle with the press of a button. It’s approved for Key stage 3 and 4 students, and recommended for those taking GCSE and A level exams.
+
+        This particular model is the 'GOLDEN EDITION', a special version of our normal calculator that can only be purchased using Roots Reward Points.
+
+        Features:
+        • LCD display
+        • Improved trigonometry functions over previous models 
+        • Easy navigation
+        • Blinged out for all your exam needs
+        TEXT,
+            'price' => null,
+            'category_id' => $rewards->id,
+            'is_reward' => true,
+            'points_cost' => 1000,
+        ]);
 
 
     }
