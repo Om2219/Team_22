@@ -859,6 +859,11 @@ footer{
     grid-template-columns: repeat(4, minmax(200px, 1fr)); /*to align name and email on the same line*/
 }
 
+/*fixing some random error with alignment between the name and email fields*/
+.contactUsPage-master #email, .contactUsPage-master .email-alignment {
+    margin-left: 45px;
+}
+
 .contactUsPage-master .input-box {
     margin-top: 10px;
 }

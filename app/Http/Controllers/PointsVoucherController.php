@@ -11,10 +11,14 @@ use Illuminate\Support\Str;
 
 class PointsVoucherController extends Controller
 {
-    public function index()
+// Show the points voucher page
+
+public function index()
     {
         $user = Auth::user();
 
+        // These are the voucher offers users can redeem with points
+        // (Hard-coded here instead of database for simplicity)
         $offers = [
             [
                 'id' => 'MONKEY500',
@@ -42,7 +46,7 @@ class PointsVoucherController extends Controller
 
         return view('points_vouchers', compact('user', 'offers', 'myVouchers'));
     }
-
+// Handle voucher redemption using loyalty points
     public function redeem(Request $request)
     {
         $request->validate([
@@ -50,7 +54,7 @@ class PointsVoucherController extends Controller
         ]);
 
         $userId = Auth::id();
-
+// Same offers list again (used to check what was selected)
         $offers = [
             'MONKEY500' => [
                 'cost_points' => 500,
@@ -76,6 +80,8 @@ class PointsVoucherController extends Controller
         $newCode = null;
 
         try {
+            // Use a database transaction so points + voucher creation
+            // either BOTH succeed or BOTH fail (prevents data issues)
             DB::transaction(function () use ($userId, $offer, &$newCode) {
                 $user = User::where('id', $userId)->lockForUpdate()->firstOrFail();
 
@@ -104,7 +110,7 @@ class PointsVoucherController extends Controller
         } catch (\RuntimeException $e) {
             return back()->with('error', $e->getMessage());
         }
-
+// Success message with the generated code
         return back()->with('success', "Voucher purchased :3 Your code is {$newCode}");
     }
 }

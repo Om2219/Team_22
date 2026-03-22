@@ -28,8 +28,33 @@
 
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
     <h2 style="color: #061156; font-size: 1.2rem; margin: 0;">Customers Information</h2>
-    <a href="{{ route('admin.customers.create') }}" style="background: #28a745; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px;">+ Add User</a>
+    <a href="{{ route('admin.customers.create') }}" style="background: #28a745; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px;">Add User</a>
 </div>
+
+<!--filter bar-->
+    <form method="GET" class="filter-bar">
+        <input type="text" name="search" placeholder="Search name or email..."  value="{{ request('search')}}">
+
+        <select name="status">
+            <option value="all">All Users</option>
+            <option value="active" {{ request('status')=='active' ? 'selected' : '' }}>Active</option>
+            <option value="banned" {{ request('status')=='banned' ? 'selected' : '' }}>Banned</option>
+        </select>
+
+        <!--Sort -->
+    <select name="sort">
+        <option value="">Default </option>
+        <option value="name_asc" {{ request('sort')=='name_asc' ? 'selected' : '' }}>Name A-Z</option>
+        <option value="name_desc" {{ request('sort')=='name_desc' ? 'selected' : '' }}>Name Z-A</option>
+        <option value="newest" {{ request('sort')=='newest' ? 'selected' : '' }}>Newest</option>
+        <option value="oldest" {{ request('sort')=='oldest' ? 'selected' : '' }}>Oldest</option>
+    </select>
+
+    <!--Buttons--->
+    <button type="submit" class="filter-btn">Filter</button>
+</form>
+
+
 
 <section class="table-section">
     <table>
@@ -40,31 +65,48 @@
             <th>Status</th>
             <th>Actions</th>
         </tr>
-
+        <!--active or not-->
         @foreach ($users as $user)
         <tr>
             <td>{{ $user->id }}</td>
             <td>{{ $user->forename ?? 'Guest' }} {{ $user->surname ?? '' }}</td>
             <td>{{ $user->email }}</td>
-            <td>
-                @if($user->is_active)
-                    <span style="color: #28a745;">Active</span>
-                @else
-                    <span style="color: #c44536;">Banned</span>
-                @endif
-            </td>
-            <td>
-                <form action="{{ route('admin.customers.toggle', $user->id) }}" method="POST" style="display:inline;">
-                    @csrf
-                    <button type="submit" style="background: none; border: none; color: #061156; text-decoration: underline; cursor: pointer;">
-                        {{ $user->is_active ? 'Ban' : 'Unban' }}
-                    </button>
-                </form>
-            </td>
-        </tr>
-        @endforeach
 
-    </table>
+            <td>
+                 <span style="color: #28a745;">Active</span>
+               
+            </td>
+
+            <!--Edit button-->
+            <td style="display:flex; gap:8px; align-itens:center;">
+            
+            <a href="{{ route('admin.customers.edit', $user->id) }}"
+            style="color:#28a745; margin-right: 10px; text-decoration:none;">
+            Edit
+            </a>
+
+            |
+
+            <!--Delete button-->
+            <form action=" {{ route('admin.customers.destroy', $user->id) }}"
+                method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit"
+            onclick="return confirm('Are u sure you want to delete this user?')"
+                style="background: none; border:none; color:#c44536; cursor:pointer;">
+                Delete
+            </button>
+        </form>
+            
+    <td>
+</tr>
+@endforeach
+
+</table>
+
+<!--pagination-->
+{{ $users->links()}}
 </section>
 
 </main>
@@ -220,6 +262,62 @@ color: #2e2e2e;
 .table-section tr:hover td{
     background: rgba(189, 171, 83, 0.020);
 
+}
+.filter-bar{
+    display: flex;
+    justify-content:center;
+    gap:12px;
+    margin-bottom: 25px;
+    flex-wrap: nowrap;
+    align-items: center;
+    background: white;
+    padding: 15x 18px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+.filter-bar input, .filter-bar select{
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid #dcdcdc;
+    font-size: 0.95rem;
+    min-width: 150px;
+}
+
+.filter-bar input{
+    min-width: 220px;
+}
+
+
+.filter-bar input:focus, .filter-bar select:focus{
+    outline: none;
+    border-color: #1f3d2b;
+    box-shadow: 0 0 0 2px rgba(31, 61, 43, 0.15);
+}
+
+.filter-btn{
+    background: #39e87f;
+    color: white:
+    border: none:
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    
+}
+
+/**hover effect */
+.filter-btn:hover, .reset-btn:hover{
+    transform: translateY(-2px);
+}
+
+/**reset button */
+.reset-btn{
+    padding: 10px 16px;
+    background: #2f3d68;
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
 }
 
 

@@ -24,11 +24,11 @@ class LoginController extends Controller {
             return back()->withErrors(['email' => 'This account has been banned. Please contact customer support.']);
         }
 
-        // Check if the user is an admin
-        if($user->role == 'admin') {
-            return back()->withErrors([
-                'email' => 'Admin users please login via the admin login.',
-            ]);
+        // needed to temporarily change admin roles to customers so that they can see the user version of the website (changed back in logout)
+        if ($user->role === 'admin') {
+            session(['original_role' => 'admin']);
+            $user->role = 'customer';
+            $user->save();
         }
 
         Auth::login($user);
@@ -36,6 +36,15 @@ class LoginController extends Controller {
     }
     
     public function logout(){
+        $user = Auth::user();
+
+        // if it was an admin logging in as a user, make them an admin again
+        if (session('original_role') === 'admin') {
+            $user->role = 'admin';
+            $user->save();
+            session()->forget('original_role');
+        }
+
         Auth::logout();
         return redirect('/home');
     }

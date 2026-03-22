@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class AdminProductController extends Controller {
@@ -14,10 +15,48 @@ class AdminProductController extends Controller {
         return response()->json($products);
     }
 
-    // Web view for products
-    public function webIndex() {
-        $products = Product::with(['category', 'stock'])->get();
-        return view('admin_products', compact('products'));
+    // Web view for products - added searching and filters
+    public function webIndex(Request $request) {
+        $query = Product::with(['category', 'stock', 'images']);
+
+        // search by name
+        if ($request->search) {
+            $query->where('name', 'like', '%' . $request->search . '%');
+        }
+
+        // filter by category
+        if ($request->category) {
+            $query->where('category_id', $request->category);
+        }
+
+        // Filter by stock (changes based on the product so had to make it variable)
+        if ($request->stock_status == 'low') {
+            $query->whereHas('stock', function($q) {
+                $q->whereColumn('stock', '<=', 'low_stock');
+            });
+        } elseif ($request->stock_status == 'out') {
+            $query->whereHas('stock', function($q) {
+                $q->where('stock', 0);
+            });
+        } elseif ($request->stock_status == 'in') {
+            $query->whereHas('stock', function($q) {
+                $q->where('stock', '>', 0);
+            });
+        }
+
+        $sort = $request->get('sort');
+        if($sort == 'price_asc') {
+            $query->orderBy('price', 'asc');
+        } elseif($sort == 'price_desc') {
+            $query->orderBy('price', 'desc');
+        } else {
+            $query->orderBy('created_at', 'desc');
+        }
+
+        $categories = Category::orderBy('name')->get();
+        // 20 items per page
+        $products = $query->paginate(20)->withQueryString();
+        return view('admin_products', compact('products', 'categories'));
     }
 
     // Showing a product and the details
@@ -74,12 +113,11 @@ class AdminProductController extends Controller {
         return response()->json(['message' => 'Product deleted']);
     }
 
-    // Managing low stock < 29 - might need to change if we change all of the stock counts
+    // Managing low stock - changes based on product because admins can set it
     public function lowStock() {
         $products = Product::with('stock')->get()->filter(function($product) {
-            return $product->stock && $product->stock->stock < 29;
+            return $product->stock && $product->stock->stock <= $product->stock->low_stock;
         })->values();
-
         return response()->json($products);
     }
 

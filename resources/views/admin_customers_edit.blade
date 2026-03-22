@@ -1,0 +1,57 @@
+<x-layout>
+<div class="Admin_Dashboard">
+
+
+<aside class="Sidebar">
+<h2>Roots Admin</h2>
+
+<ul>
+    <li><a href="{{ route ('admin.dashboard') }}">Dashboard</a></li>
+    <li><a href="{{ route ('admin.customers') }}">Customers</a></li>
+    <li><a href="{{ route ('admin.orders') }}">Orders</a></li>
+    <li><a href="{{ route ('admin.products') }}">Products</a></li>
+    <li><a href="{{ route ('admin.reports') }}">Reports</a></li>
+    <li>
+        <form method = "POST" action="{{route('logout')}}"> @csrf <button class = "headbut">Sign Out</button> 
+    </form>
+</li>
+</ul>
+</aside>
+
+
+<main class="Admin_Content">
+    <h1>Customers</h1>
+
+<form action="{{ route ('admin.customers.update', $user->id) }}" method="POST" style="max-width:400px;">
+@csrf
+@method ('PUT')
+
+<div style="margin-bottom:15px;">
+    <label>First Name</label>
+    <input type="text" name="forename" value="{{ $user->forename}}"
+        style="width:100%"; padding:8px;>
+</div>
+
+<div style="margin-bottom:15px;">
+    <label>Last Name</label>
+    <input type="text" name="surname" value="{{ $user->surname}}"
+        style="width:100%"; padding:8px;>
+</div>
+
+<div style="margin-bottom:15px;">
+    <label>Email</label>
+    <input type="email" name="email" value="{{ $user->email}}"
+        style="width:100%"; padding:8px;>
+</div>
+
+<button type="submit"
+    style="background:#28a745; color:white; padding:10px 16px; border: none; border-radius:6px;">
+    Update user
+    </button>
+
+</form>
+</main>
+</div>
+
+
+</x-layout>

@@ -33,6 +33,10 @@ class AdminWebLoginController extends Controller {
 
             // Check if the user is an admin
             if ($user->role === 'admin') {
+                // check if its the first login
+                if ($user->change_password) { // if true they need to change it
+                    return redirect()->route('admin.firstLogin');
+                }
                 return redirect()->route('admin.dashboard');
             }
             // Show error if they don't have admin access

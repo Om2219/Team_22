@@ -16,14 +16,49 @@ class CustomerController extends Controller {
     }
 
     // Web view
-    public function webIndex() {
-        $users = User::where('role', 'customer')->get();
+    public function webIndex(Request $request) {
+        $query = User::where('role', 'customer');
+
+        // search using name and email
+        if ($request->search) {
+            $query->where(function($q) use ($request) {
+                $q->where('forename', 'like', '%' . $request->search . '%')
+                ->orWhere('surname', 'like', '%' . $request->search . '%')
+                ->orWhere('email', 'like', '%' . $request->search . '%');
+            });
+        }
+
+        // filter by ban or not banned
+        if ($request->status && $request->status != 'all') {
+            if ($request->status == 'active') {
+                $query->where('is_active', 1);
+            } elseif ($request->status == 'banned') {
+                $query->where('is_active', 0);
+            }
+        }
+
+        // sort
+        $sort = $request->get('sort');
+        if ($sort == 'name_asc') {
+            $query->orderBy('forename', 'asc');
+        } elseif ($sort == 'name_desc') {
+            $query->orderBy('forename', 'desc');
+        } elseif ($sort == 'newest') {
+            $query->orderBy('created_at', 'desc');
+        } elseif ($sort == 'oldest') {
+            $query->orderBy('created_at', 'asc');
+        } else {
+            $query->orderBy('id', 'asc');
+        }
+
+        // 20 items per page
+        $users = $query->paginate(20)->withQueryString();
         return view('admin_customers', compact('users'));
     }
 
     // Create a new customer
     public function store(Request $request) {
-        $request->validate([
+        $validate = $request->validate([
             'forename' => 'required|string|max:255',
             'surname' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
@@ -77,14 +112,16 @@ class CustomerController extends Controller {
         }
 
         $customer->save();
-        return response()->json($customer);
+        return redirect()->route('admin.customers')-> with('success', 'User updated Successfully');
+
     }
 
     // Delete a customer
     public function destroy($id) {
         $customer = User::where('role', 'customer')->findOrFail($id);
         $customer->delete();
-        return response()->json(['message' => 'Customer deleted successfully']);
+        return redirect()->route('admin.customers')-> with('success', 'User deleted Successfully');
+
     }
 
     // Showing the create a customer form
@@ -92,17 +129,12 @@ class CustomerController extends Controller {
         return view('admin_customers_create');
     }
 
-    // Being able to ban/unban a customer
-    public function toggleStatus($id) {
-        $user = User::find($id);
-        
-        if (!$user) {
-            return redirect()->back()->with('error', 'User not found');
-        }
-        
-        $user->is_active = !$user->is_active;
-        $user->save();
-        $status = $user->is_active ? 'unbanned' : 'banned';
-        return redirect()->back()->with('success', "User {$status}");
+    
+
+    //  Customer edit
+    public function edit($id) {
+        $user = User::where('role', 'customer')->findOrFail($id);
+        return view('admin_customers_edit', compact('user'));
+
     }
 }

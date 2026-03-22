@@ -12,6 +12,9 @@ class VoucherSeeder extends Seeder
     /**
      * Run the database seeds.
      */
+    // Insert voucher records into the vouchers table.
+        // upsert() will update existing rows if the voucher code already exists,
+        // instead of creating duplicates.
    public function run(): void
 {
     DB::table('vouchers')->upsert([

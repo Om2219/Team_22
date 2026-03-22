@@ -1,4 +1,19 @@
 <x-layout>
+
+    @if (session('success'))
+        <div class="alert alert-success" id="success-alert">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if ($errors->any())
+        <div class="alert alert-danger" id="danger-alert">
+            @foreach ($errors->all() as $error)
+                {{$error}}
+            @endforeach
+        </div>
+    @endif
+
     <div class="order-container">
 
         <h1 class="order-title">
@@ -62,7 +77,42 @@
 
         </div>
 
-        <a href="/order" class="save-btn">← Back to My Orders</a>
+        <div class="order-buttons">
+            <p>What do you want to do next?</p>
+            <div class="actual-buttons">
+                <a href="/order" class="save-btn">Back to My Orders</a>
+                <a href="{{route('refund.show', $order->order_ref)}}" class="save-btn">Process a refund for this order</a>
+            </div>
+        </div>
 
     </div>
 </x-layout>
+
+<script>
+
+    //these scripts set the success and failure messages to fade out
+    //after 2 seconds of being on screen
+    //looks badboy
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const alert = document.getElementById('danger-alert');
+        if (alert) {
+            setTimeout(() => {
+                alert.style.transition = 'opacity 0.5s ease-out';
+                alert.style.opacity = '0';
+                setTimeout(() => alert.remove(), 500);
+            }, 2000);
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const alert = document.getElementById('success-alert');
+        if (alert) {
+            setTimeout(() => {
+                alert.style.transition = 'opacity 0.5s ease-out';
+                alert.style.opacity = '0';
+                setTimeout(() => alert.remove(), 500);
+            }, 2000);
+        }
+    });
+</script>

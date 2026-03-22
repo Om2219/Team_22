@@ -30,6 +30,44 @@
     <div class="alert alert-danger"> {{ session('error') }} </div>
 @endif
 
+
+<!--add filters--->
+<form method="GET" class="filter-bar">
+
+    <!--search--->
+    <input type="text" name="search" placeholder="Search order ID or customer...."
+            value="{{ request ('search')}}">
+
+    <!--status--->
+    <select name="status">
+        <option value="all">All Status</option>
+        <option value="Pending" {{ request('status')=='Pending' ? 'selected' : '' }}>Pending</option>
+        <option value="Processing" {{ request('status')=='Processing' ? 'selected' : '' }}>Processing</option>
+        <option value="Shipped" {{ request('status')=='Shipped' ? 'selected' : '' }}>Shipped</option>
+        <option value="Delivered" {{ request('status')=='Delivered' ? 'selected' : '' }}>Delivered</option>
+        <option value="Cancelled" {{ request('status')=='Cancelled' ? 'selected' : '' }}>Cancelled</option>
+    </select>
+
+
+    <!--Date from--->
+    <input type="date" name="date_from" value=" {{ request('data_from')}}">
+
+    <!--Date To--->
+    <input type="date" name="date_to" value=" {{ request('data_to')}}">
+
+    <!--Sort To--->
+    <select name="sort">
+        <option value="">Default </option>
+        <option value="newest" {{ request('sort')=='newest' ? 'selected' : '' }}>Newest</option>
+        <option value="oldest" {{ request('sort')=='oldest' ? 'selected' : '' }}>Oldest</option>
+    </select>
+
+    <!--Buttons--->
+    <button type="submit" class="filter-btn">Filter</button>
+    <a href="{{ route ('admin.orders') }}" class="reset-btn">Reset</a>
+</form>
+
+
 <section class="table-section">
     <h2>Recent Orders</h2>
     <table>
@@ -63,12 +101,16 @@
                         <option value="Shipped" {{ $order->status == 'Shipped' ? 'selected' : '' }}>Shipped</option>
                         <option value="Delivered" {{ $order->status == 'Delivered' ? 'selected' : '' }}>Delivered</option>
                         <option value="Cancelled" {{ $order->status == 'Cancelled' ? 'selected' : '' }}>Cancelled</option>
+                        <option value="Pending Refund" {{ $order->status == 'Pending Refund' ? 'selected' : '' }}>Pending Refund</option>
+                        <option value="Refunded" {{ $order->status == 'Refunded' ? 'selected' : '' }}>Refunded</option>
                     </select>
                 </form>
             </td>
         </tr>
         @endforeach
     </table>
+
+    {{ $orders->links()}}
 </section>
 
 </main>
@@ -225,7 +267,62 @@ color: #2e2e2e;
     background: rgba(189, 171, 83, 0.020);
 
 }
+.filter-bar{
+    display: flex;
+    justify-content:center;
+    gap:12px;
+    margin-bottom: 25px;
+    flex-wrap: nowrap;
+    align-items: center;
+    background: white;
+    padding: 15x 18px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
 
+.filter-bar input, .filter-bar select{
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid #dcdcdc;
+    font-size: 0.95rem;
+    min-width: 150px;
+}
+
+.filter-bar input{
+    min-width: 220px;
+}
+
+
+.filter-bar input:focus, .filter-bar select:focus{
+    outline: none;
+    border-color: #1f3d2b;
+    box-shadow: 0 0 0 2px rgba(31, 61, 43, 0.15);
+}
+
+.filter-btn{
+    background: #39e87f;
+    color: white:
+    border: none:
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    
+}
+
+/**hover effect */
+.filter-btn:hover, .reset-btn:hover{
+    transform: translateY(-2px);
+}
+
+/**reset button */
+.reset-btn{
+    padding: 10px 16px;
+    background: #2f3d68;
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+}
 
 /**Responsive */
 @media (max-width:900px){

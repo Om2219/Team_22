@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\Refund;
 use App\Models\Basket;
 use App\Models\Product;
 use App\Models\Product_image;
@@ -103,11 +104,11 @@ class BasketController extends Controller
         $stock = Stock::where('product_id', $product->id)->first();
 
         if ($stock->stock <= 0) {
-            return back()->with('error', 'MONKEY HAS NO BANANAS!!!!!');
+            return redirect()->back()->withErrors(['stock' => 'This product is no longer in stock.',]);
         }
 
         if ($quantity > $stock->stock) {
-            return back()->with('error', 'MONKEY DOESNT HAVE ENOUGH BANANASS!!! :(');
+            return redirect()->back()->withErrors(['stock' => 'There is not enough stock to fulfil your order. Please select a lesser quantity.',]);
         }
 
 
@@ -115,7 +116,7 @@ class BasketController extends Controller
             $basketItem->quantity += $quantity;
 
             if ($basketItem->quantity > $stock->stock) {
-            return back()->with('error', 'MONKEY DOESNT HAVE ENOUGH BANANASSSSSS!!!! :(');
+            return redirect()->back()->withErrors(['stock' => 'There is not enough stock to fulfil your order. Please select a lesser quantity.',]);
         }
 
             $basketItem->save();
@@ -146,7 +147,7 @@ class BasketController extends Controller
         $stock = Stock::where('product_id', $productId)->first();
 
             if ($quantity > $stock->stock) {
-                return back()->with('error', "MONKEY DOESNT HAVE ENOUGH BANANASSSSSS!!!! :( only {$stock->stock} for {$basketItem->product->name}");
+                return back()->with('error', "There is not enough stock to fulfil your order. Please select a lesser quantity.");
             }
 
 
@@ -167,18 +168,18 @@ class BasketController extends Controller
     //stores the order in the database
     //also adds reward points based on total spend
     //100 points per £ spent
-
+// Handle checkout process and create a new order
     public function Orders(Request $details){
 
         $user = Auth::id();
 
         $ref = strtoupper(Str::random(6));
-
+// Retrieve all basket items joined with product and product image data
         $orderitems = Basket::join('products','basket.product_id','=','products.id')->join('product_images','products.id','=','product_images.product_id')->select('basket.*','products.name','products.price', 'products.is_reward','products.points_cost','product_images.product_image')->get();
         
         $totalPrice = 0;
         $tptd = 0;
-
+// Loop through basket items and separate money total from reward points total
         foreach ($orderitems as $item) {
 
             if ($item->is_reward) {
@@ -203,7 +204,7 @@ class BasketController extends Controller
                     : $voucher->value;
             }
         }
-
+// Final total cannot go below 0
         $finalTotal = max(0, $totalPrice - $discount);
 
         $details->validate([
@@ -271,6 +272,7 @@ class BasketController extends Controller
 
         Basket::truncate();
         session()->forget('voucher');
+    // Remove applied voucher from session
 
         return view('OrderPlaced', [
             'order' => $order,
@@ -281,7 +283,7 @@ class BasketController extends Controller
         ]);
 
     }
-    
+    // Apply a voucher code to the current session
     public function applyVoucher(Request $request){
     $request->validate([
         'code'=>'required|string'
@@ -296,6 +298,7 @@ class BasketController extends Controller
     return back()->with('voucher_success', 'Voucher has been applied');
 
     }
+    // Remove the currently applied voucher from session
     public function removeVoucher(){
         session()->forget('voucher');
         return back()->with('voucher_success', 'Voucher removed');
@@ -335,5 +338,76 @@ class BasketController extends Controller
             ->get();
 
         return view('orderDetails', compact('order', 'items'));
+    }
+
+    //shows the refund form in order details
+    //also shows order summary
+    //if the order is already being refunded or has already been refunded
+    //then the user cannot refund again
+
+    public function showRefundForm($ref) {
+        $order = Order::where('order_ref', $ref)
+                    ->where('user_id', Auth::id())
+                    ->firstOrFail();
+
+        if ($order->status == 'Pending Refund') {
+            return redirect()->back()->withErrors(['order_ref' => "This order is already being refunded."]);
+        }
+
+        if ($order->status == 'Refunded') {
+            return redirect()->back()->withErrors(['order_ref' => "This order has already been refunded."]);
+        }
+
+        $items = OrderItem::join('products', 'order_items.product_id', '=', 'products.id')
+            ->join('product_images', 'products.id', '=', 'product_images.product_id')
+            ->select(
+                'order_items.*',
+                'products.name',
+                'product_images.product_image'
+            )
+            ->where('order_items.order_id', $order->id)
+            ->get();
+
+        return view('refund', compact('order', 'items'));
+    }
+
+    //submits refund to refund table in database
+    //checks if the item already has a refund request in table
+    //checks if order is outside of refund policy (14 days)
+    //then sets order status to Pending Refund
+
+    public function submitRefund(Request $request, $ref) {
+        $order = Order::where('order_ref', $ref)
+                    ->where('user_id', Auth::id())
+                    ->firstOrFail();
+
+        if (Refund::where('order_id', $order->id)->exists()) {
+            return redirect()->back()->withErrors(['order_ref' => 'This order already has a refund request.']);
+        }
+
+        $request->validate([
+            'reason' => 'required|string',
+            'detailed_reason' => 'nullable|string',
+        ]);
+
+        $orderTime = strtotime($order->created_at);
+        $currentTime = time();
+        $diff = $currentTime - $orderTime;
+        $diffDays = $diff / 86400;
+
+        if ($diffDays > 14) {
+            return redirect()->back()->withErrors(['order_ref' => 'Sorry, you cannot request a refund for this order as it is beyond the 14-day refund window.']);
+        }
+
+        Refund::create([
+            'order_id' => $order->id,
+            'reason' => $request->reason,
+            'detailed_reason' => $request->detailed_reason,
+        ]);
+
+        $order->status = 'Pending Refund';
+        $order->save();
+
+        return redirect()->route('orders.details', $order->order_ref)->with('success', 'Your refund request has been submitted.');
     }
 }

@@ -47,6 +47,8 @@
 
     </div>
 
+    <br>
+
     <div class="back-btn-wrapper">
         <a href="/account" class="save-btn">Go back</a>
     </div>

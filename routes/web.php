@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\VoucherController;
+use App\Http\Controllers\Admin\FirstLoginController;
 use App\Http\Controllers\PointsVoucherController;
 use App\Http\Controllers\DailySpin;
 use App\Http\Controllers\SlotMachine;
@@ -91,30 +92,30 @@ Route::get('OrderPlaced', function () { return view('OrderPlaced'); })-> name('O
 
 Route::get('product/{product}',[ProductController::class, 'show'])->name('product.show'); // shows individual products 
 //oms
-Route::get('product/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');
-Route::put('product/{product}', [ProductController::class, 'update'])->name('product.update');
-Route::delete('product/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
+Route::get('product/{product}/edit', [ProductController::class, 'edit'])->name('product.edit'); //edit product
+Route::put('product/{product}', [ProductController::class, 'update'])->name('product.update'); //update product
+Route::delete('product/{product}', [ProductController::class, 'destroy'])->name('product.destroy'); //delete product
 
 Route::get('products',[ProductController::class, 'productPage'])->name('products.productPage'); // shows all products regardless of category
 
 //haidens - add authentication to this so only admin
-Route::get('products/create', [ProductController::class, 'create'])->name('products.create');
+Route::get('products/create', [ProductController::class, 'create'])->name('products.create'); //create product
 Route::post('products', [ProductController::class, 'store'])->name('products.store');
 //haidens 
-Route::post('product/{product}/reviews', [\App\Http\Controllers\ReviewController::class, 'store'])->middleware('auth')->name('reviews.store');
+Route::post('product/{product}/reviews', [\App\Http\Controllers\ReviewController::class, 'store'])->middleware('auth')->name('reviews.store'); //stores review
 
 Route::middleware('auth')->group(function (){
-    Route::get('/wishlist', [FavouriteController::class, 'index'])->name('wishlist.index');
-    Route::post('/wishlist/{product}', [FavouriteController::class, 'store'])->name('wishlist.store');
-    Route::delete('/wishlist/{product}', [FavouriteController::class, 'destroy'])->name('wishlist.destroy');
+    Route::get('/wishlist', [FavouriteController::class, 'index'])->name('wishlist.index'); //creates wishlist
+    Route::post('/wishlist/{product}', [FavouriteController::class, 'store'])->name('wishlist.store'); //stores wishlisted item
+    Route::delete('/wishlist/{product}', [FavouriteController::class, 'destroy'])->name('wishlist.destroy'); //deletes wishlisted item
 });
 Route::middleware('auth')->group(function () {
-    Route::get('/points/vouchers', [PointsVoucherController::class, 'index'])->name('points.vouchers');
-    Route::post('/points/vouchers/redeem', [PointsVoucherController::class, 'redeem'])->name('points.vouchers.redeem');
-});
+    Route::get('/points/vouchers', [PointsVoucherController::class, 'index'])->name('points.vouchers'); //creates voucher
+    Route::post('/points/vouchers/redeem', [PointsVoucherController::class, 'redeem'])->name('points.vouchers.redeem'); //redeems voucher
+    });
 
-Route::post('/voucher/apply', [BasketController::class, 'applyVoucher'])->name('voucher.apply');
-Route::post('/voucher/remove', [BasketController::class, 'removeVoucher'])->name('voucher.remove');
+Route::post('/voucher/apply', [BasketController::class, 'applyVoucher'])->name('voucher.apply'); //apply voucher
+Route::post('/voucher/remove', [BasketController::class, 'removeVoucher'])->name('voucher.remove'); //remove voucher
 
 Route::get('products/{cat}',[ProductController::class, 'cat'])->name('products.cat'); // shows products in their own category
 
@@ -153,7 +154,6 @@ Route::post('login', [LoginController::class, 'store'])->name('login.store'); //
 Route::post('logout', [LoginController::class, 'logout'])->name('logout'); //logsout user 
 Route::post('contactform', [ContactFormController::class, 'submit'])->name('contactform.submit');
 
-
 //admin login route
 Route::get('admin/login', [AdminWebLoginController::class, 'showLoginForm'])->name('admin.login');
 Route::post('admin/login', [AdminWebLoginController::class, 'login'])->name('admin.login.submit');
@@ -165,6 +165,9 @@ Route::get('termsandprivacy', function () { return view('termsandprivacy'); }); 
 
 Route::get('/forgotPassword', [DetailsController::class, 'show_forgotPassword'])->name('forgotPassword.show'); //shows forgot password page
 Route::post('/forgotPassword', [DetailsController::class, 'update_forgotPassword'])->name('forgotPassword.update'); //updates the password in the database
+
+Route::get('refund/{ref}', [BasketController::class, 'showRefundForm'])->name('refund.show'); //shows refund form
+Route::post('refund/{ref}', [BasketController::class, 'submitRefund'])->name('refund.submit'); //submits refund request to table
 
 Route::middleware(['auth', 'admin'])->group(function() {
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])
@@ -191,7 +194,13 @@ Route::middleware(['auth', 'admin'])->group(function() {
     // customer routes
     Route::get('/admin/customers/create', [CustomerController::class, 'create'])->name('admin.customers.create');
     Route::post('/admin/customers', [CustomerController::class, 'store'])->name('admin.customers.store');
-    Route::post('/admin/customers/{id}/toggle-status', [CustomerController::class, 'toggleStatus'])->name('admin.customers.toggle');
+    // edit users
+    Route::get('/admin/customers/{id}/edit', [CustomerController::class, 'edit'])->name('admin.customers.edit');
+    Route::put('/admin/customers/{id}', [CustomerController::class, 'update'])->name('admin.customers.update');
+
+    // deleter users
+    Route::delete('/admin/customers/{id}', [CustomerController::class, 'destroy'])->name('admin.customers.destroy');
+
     // voucher routes
     Route::get('/admin/vouchers', [VoucherController::class, 'index'])->name('admin.vouchers');
     Route::get('/admin/vouchers/create', [VoucherController::class, 'create'])->name('admin.vouchers.create');
@@ -199,6 +208,9 @@ Route::middleware(['auth', 'admin'])->group(function() {
     Route::get('/admin/vouchers/{id}/edit', [VoucherController::class, 'edit'])->name('admin.vouchers.edit');
     Route::put('/admin/vouchers/{id}', [VoucherController::class, 'update'])->name('admin.vouchers.update');
     Route::delete('/admin/vouchers/{id}', [VoucherController::class, 'destroy'])->name('admin.vouchers.destroy');
+    // first time login routes
+    Route::get('/admin/firstLogin', [FirstLoginController::class, 'show'])->name('admin.firstLogin');
+    Route::post('/admin/firstLogin', [FirstLoginController::class, 'updatePassword'])->name('admin.firstLogin.update');
 });
 
 // Route::get('studentlisting', 'App\Http\Controllers\StudentController@list')->name('list_student');

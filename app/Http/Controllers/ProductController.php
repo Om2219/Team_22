@@ -107,14 +107,14 @@ class ProductController extends Controller
     }
 
     //Haidens work
-
+//product creation form
     public function create()
     {
         $categories = Category::orderBy('name')->get();
         return view('create', compact('categories'));
 
     }
-
+//handling form submission and storing a new product
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -134,7 +134,7 @@ class ProductController extends Controller
             'is_reward' => 'nullable|boolean',
 
         ]);
-
+//create a new product in the database
         $product = Product::create([
             'name' => $validated['name'],
             'category_id' => $validated['category_id'],
@@ -143,14 +143,13 @@ class ProductController extends Controller
             'is_reward' => $request->has('is_reward'),
             'points_cost' => $request->is_reward ? $validated['points_cost'] : null,
         ]);
-
-
+//create product stock record    
         \App\Models\Stock::create([
             'product_id' => $product->id,
             'stock' => $validated['stock'],
             'low_stock' => $validated['low_stock'],
         ]);
-
+//handle image upload for product
         if ($request->hasFile('product_image')) {
             $image = $request->file('product_image');
             $filename = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
@@ -161,7 +160,7 @@ class ProductController extends Controller
                 'product_image' => $filename,
             ]);
         }
-
+//redirects to the product blade
         return redirect('/products')->with('success', 'Product created successfully!');
     }
 

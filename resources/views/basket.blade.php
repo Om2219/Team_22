@@ -20,7 +20,7 @@
                         <div class="item-details">
                             <p><b>{{$product->name}}</b></p>
                             <p>Price: £{{$product->price}}</p>
-                            @if (session('error')) <div class="alert alert-danger" role="alert">{{session('error')}}</div> @endif
+                            @if (session('error')) <div class="alert alert-danger" id="danger-alert"role="alert">{{session('error')}}</div> @endif
                             <form action="{{route('basket.update')}}" method="POST">
                                 @csrf
                                 <div class="quantityAlign">
@@ -93,3 +93,32 @@
     </div>
 
 </x-layout>
+
+<script>
+
+    //these scripts set the success and failure messages to fade out
+    //after 2 seconds of being on screen
+    //looks badboy
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const alert = document.getElementById('danger-alert');
+        if (alert) {
+            setTimeout(() => {
+                alert.style.transition = 'opacity 0.5s ease-out';
+                alert.style.opacity = '0';
+                setTimeout(() => alert.remove(), 500);
+            }, 2000);
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const alert = document.getElementById('success-alert');
+        if (alert) {
+            setTimeout(() => {
+                alert.style.transition = 'opacity 0.5s ease-out';
+                alert.style.opacity = '0';
+                setTimeout(() => alert.remove(), 500);
+            }, 2000);
+        }
+    });
+</script>
