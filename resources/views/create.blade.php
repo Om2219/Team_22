@@ -1,7 +1,9 @@
 <x-layout>
+<!-- Booststrap container -->
     <div class="container my-4">
+        <!-- Page title -->
         <h1 class="mb-0 fw-bold"> Add product</h1><br>
-
+<!-- Product creation form -->
         <form action="{{  route('products.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
@@ -11,13 +13,13 @@
             </div>
             <br>
 
-
+<!-- Category Dropdown -->
             <div class="mb-3">
                 <label class="form-label fw-bold" for="category_id" class="form-label">Category</label>
 
                 <select class="form-select" name="category_id" id="category_id" class="form-control" required>
                     <option value="">-- Select a category --</option>
-
+<!-- loop through the categories -->
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}">
                             {{ $category->name }}
@@ -27,7 +29,7 @@
             </div>
 
             <br>
-
+<!-- product descriiption/price/stock/images text area -->
             <div class="mb-3">
                 <label class="form-label fw-bold">Description</label><br>
                 <textarea class="form-control" name="product_description">{{  old('product_description') }}</textarea>
@@ -58,9 +60,9 @@
                 <input class="form-control" type="file" name="product_image" accept="image/*">
             </div>
             <br>
-
+<!-- submitting the product -->
             <button class="btn btn-outline-secondary btn-sm" type="submit">Add Product</button>
-
+<!--Display any errors if there are any -->
             @if ($errors->any())
                 <div style="color: red; margin-top: 10px;">
                     {{  $errors->first() }}

@@ -1,4 +1,5 @@
 <x-layout>
+    {{-- Page title for the rewards voucher section --}}
     <h1>Buy Rewards with points</h1>
 
     <p><strong>Your points:</strong> {{ $user->points }}</p>
@@ -6,13 +7,13 @@
     @if(session('success'))
         <p style="color:green;">{{ session('success') }}</p>
     @endif
-
+{{-- Error message if something goes wrong, like not enough points --}}
     @if(session('error'))
         <p style="color:red;">{{ session('error') }}</p>
     @endif
 
     <h2>Available offers</h2>
-
+  {{-- Simple grid layout to show each offer as its own box --}}
     <div style="display:grid; gap:12px; max-width:700px;">
         @foreach($offers as $offer)
             <div style="border:1px solid #333; padding:12px; border-radius:10px;">

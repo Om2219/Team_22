@@ -1,11 +1,12 @@
 <x-layout>
     <div class="container py-5">
-
+ <!--main container -->
         <div class="col-md-6"><h1 class="mb-0 fw-bold">My Wishlist</h1></div><br>
-
+ <!--Display success message -->
             @if (session('success'))
             <p style="color: green;">{{  session('success') }}</p>
             @endif
+ <!-- If wishlist is empty show message -->
             @if ($favourites->isEmpty())
             <p>You haven't got any products wishlisted yet.</p>
             @else
@@ -35,6 +36,7 @@
                                 View Product
                             </a>
                         </div>
+                        <!-- Form to remove product from wishlist -->
                         <form method="POST" action="{{ route('wishlist.destroy', $product) }}">
                             @csrf
                             @method('DELETE')
@@ -46,6 +48,7 @@
             @endforeach
             @endif
         </div><br>
+        <!-- Back button to account page -->
         <div class="back-btn-wrapper">
             <a href="/account" class="save-btn">Go back</a>
         </div>

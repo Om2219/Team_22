@@ -168,18 +168,18 @@ class BasketController extends Controller
     //stores the order in the database
     //also adds reward points based on total spend
     //100 points per £ spent
-
+// Handle checkout process and create a new order
     public function Orders(Request $details){
 
         $user = Auth::id();
 
         $ref = strtoupper(Str::random(6));
-
+// Retrieve all basket items joined with product and product image data
         $orderitems = Basket::join('products','basket.product_id','=','products.id')->join('product_images','products.id','=','product_images.product_id')->select('basket.*','products.name','products.price', 'products.is_reward','products.points_cost','product_images.product_image')->get();
         
         $totalPrice = 0;
         $tptd = 0;
-
+// Loop through basket items and separate money total from reward points total
         foreach ($orderitems as $item) {
 
             if ($item->is_reward) {
@@ -204,7 +204,7 @@ class BasketController extends Controller
                     : $voucher->value;
             }
         }
-
+// Final total cannot go below 0
         $finalTotal = max(0, $totalPrice - $discount);
 
         $details->validate([
@@ -272,6 +272,7 @@ class BasketController extends Controller
 
         Basket::truncate();
         session()->forget('voucher');
+    // Remove applied voucher from session
 
         return view('OrderPlaced', [
             'order' => $order,
@@ -282,7 +283,7 @@ class BasketController extends Controller
         ]);
 
     }
-    
+    // Apply a voucher code to the current session
     public function applyVoucher(Request $request){
     $request->validate([
         'code'=>'required|string'
@@ -297,6 +298,7 @@ class BasketController extends Controller
     return back()->with('voucher_success', 'Voucher has been applied');
 
     }
+    // Remove the currently applied voucher from session
     public function removeVoucher(){
         session()->forget('voucher');
         return back()->with('voucher_success', 'Voucher removed');

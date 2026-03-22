@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
+     // Store a new review or update an existing one
     public function store(Request $request, Product $product)
     {
         $validated = $request->validate([
@@ -16,6 +17,8 @@ class ReviewController extends Controller
             'comment' => 'nullable|string|max:1000',
         ]);
 
+        // Create a new review OR update existing review for this user and product
+        // This prevents a user from submitting multiple reviews for the same product
         Review::updateOrCreate(
             [
                 'product_id' => $product->id,
@@ -27,6 +30,7 @@ class ReviewController extends Controller
             ]
         );
 
+        // Redirect back to the product page with success message
         return redirect()
             ->route('product.show', $product)
             ->with('success', 'Review has been posted :3');

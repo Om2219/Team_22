@@ -92,30 +92,30 @@ Route::get('OrderPlaced', function () { return view('OrderPlaced'); })-> name('O
 
 Route::get('product/{product}',[ProductController::class, 'show'])->name('product.show'); // shows individual products 
 //oms
-Route::get('product/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');
-Route::put('product/{product}', [ProductController::class, 'update'])->name('product.update');
-Route::delete('product/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
+Route::get('product/{product}/edit', [ProductController::class, 'edit'])->name('product.edit'); //edit product
+Route::put('product/{product}', [ProductController::class, 'update'])->name('product.update'); //update product
+Route::delete('product/{product}', [ProductController::class, 'destroy'])->name('product.destroy'); //delete product
 
 Route::get('products',[ProductController::class, 'productPage'])->name('products.productPage'); // shows all products regardless of category
 
 //haidens - add authentication to this so only admin
-Route::get('products/create', [ProductController::class, 'create'])->name('products.create');
+Route::get('products/create', [ProductController::class, 'create'])->name('products.create'); //create product
 Route::post('products', [ProductController::class, 'store'])->name('products.store');
 //haidens 
-Route::post('product/{product}/reviews', [\App\Http\Controllers\ReviewController::class, 'store'])->middleware('auth')->name('reviews.store');
+Route::post('product/{product}/reviews', [\App\Http\Controllers\ReviewController::class, 'store'])->middleware('auth')->name('reviews.store'); //stores review
 
 Route::middleware('auth')->group(function (){
-    Route::get('/wishlist', [FavouriteController::class, 'index'])->name('wishlist.index');
-    Route::post('/wishlist/{product}', [FavouriteController::class, 'store'])->name('wishlist.store');
-    Route::delete('/wishlist/{product}', [FavouriteController::class, 'destroy'])->name('wishlist.destroy');
+    Route::get('/wishlist', [FavouriteController::class, 'index'])->name('wishlist.index'); //creates wishlist
+    Route::post('/wishlist/{product}', [FavouriteController::class, 'store'])->name('wishlist.store'); //stores wishlisted item
+    Route::delete('/wishlist/{product}', [FavouriteController::class, 'destroy'])->name('wishlist.destroy'); //deletes wishlisted item
 });
 Route::middleware('auth')->group(function () {
-    Route::get('/points/vouchers', [PointsVoucherController::class, 'index'])->name('points.vouchers');
-    Route::post('/points/vouchers/redeem', [PointsVoucherController::class, 'redeem'])->name('points.vouchers.redeem');
-});
+    Route::get('/points/vouchers', [PointsVoucherController::class, 'index'])->name('points.vouchers'); //creates voucher
+    Route::post('/points/vouchers/redeem', [PointsVoucherController::class, 'redeem'])->name('points.vouchers.redeem'); //redeems voucher
+    });
 
-Route::post('/voucher/apply', [BasketController::class, 'applyVoucher'])->name('voucher.apply');
-Route::post('/voucher/remove', [BasketController::class, 'removeVoucher'])->name('voucher.remove');
+Route::post('/voucher/apply', [BasketController::class, 'applyVoucher'])->name('voucher.apply'); //apply voucher
+Route::post('/voucher/remove', [BasketController::class, 'removeVoucher'])->name('voucher.remove'); //remove voucher
 
 Route::get('products/{cat}',[ProductController::class, 'cat'])->name('products.cat'); // shows products in their own category
 
