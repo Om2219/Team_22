@@ -129,7 +129,7 @@
 
 </table>
 
-{{ $products->links()}}
+    <div class="allPrButtons"><div class="d-flex flex-column align-items-center gap-2">{{ $products->links('pagination::bootstrap-5') }}</div>
 
 </main>
 
