@@ -1,5 +1,6 @@
-/* Essentially another version of login.blade but only with password fields */
 <x-layout>
+    <!-- Essentially another version of login.blade but only with password fields -->
+
     <div class="loginPage">
 <!-- Success message -->
         @if (session('success'))
