@@ -58,7 +58,7 @@ class CustomerController extends Controller {
 
     // Create a new customer
     public function store(Request $request) {
-        $request->validate([
+        $validate = $request->validate([
             'forename' => 'required|string|max:255',
             'surname' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
@@ -75,7 +75,6 @@ class CustomerController extends Controller {
             'is_active' => true
         ]);
 
-        $customer->update($validated);
         return redirect()->route('admin.customers')->with('success', 'User created');
     }
 
