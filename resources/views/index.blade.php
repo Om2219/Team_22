@@ -63,7 +63,7 @@
         <img src="{{ asset('images/Mint.png') }}">
     </div>-->
 
-    <img id="pen" src="{{ asset('images/Pen.png') }}">
+    <img id="pen" src="{{ asset('images/home-pen.png') }}">
     {{-- <img id="holder" src="{{ asset('images/hold.png') }}"> --}}
 
     <div class="dos">
