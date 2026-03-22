@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             // Adding a boolean so when its false the user is forced to change the password, it will then be changed to true
-            $table->boolean('change_password')->default(false);
+            $table->boolean('change_password')->default(true);
         });
     }
 

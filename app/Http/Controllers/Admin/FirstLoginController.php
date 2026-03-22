@@ -32,7 +32,7 @@ class FirstLoginController extends Controller {
         $user = auth()->user();
         $user->password = Hash::make($request->new_password);
         // Have to set the change password to true so admins are only asked once for the password change
-        $user->password_changed = true;
+        $user->change_password = false;
         $user->save();
         // Success + redirecting to admin dashboard
         return redirect()->route('admin.dashboard')->with('success', 'Password changed successfully!');
