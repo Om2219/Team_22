@@ -1,6 +1,20 @@
 <x-layout>
 
     {{-- <button class = "headbut"><a href=" {{route('products.productPage')}}">go back</a></button> --}}
+
+    @if (session('success'))
+        <div class="alert alert-success" id="success-alert">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if ($errors->any())
+        <div class="alert alert-danger" id="danger-alert">
+            @foreach ($errors->all() as $error)
+                {{$error}}
+            @endforeach
+        </div>
+    @endif
  
     <div class="container py-5">
        
@@ -22,8 +36,6 @@
                 @else
                     <h3 class="text-success fw-bold mb-4">£{{$product->price}}</h3>
                 @endif
-                
-                @if (session('error')) {{ session('error') }} @endif
                 
                 <div>
                     <h5 class="fw-bold">Product Information</h5>
@@ -95,8 +107,7 @@
             </div>
         </div>
 
-
-        <div >
+        <div>
             <h2 class="fw-bold mb-3">Reviews</h2>
 
             @php
@@ -116,22 +127,6 @@
                     {{ $i <= round($avg) ? '★' : '☆' }}
                 @endfor
             </p>
-
-            @if (session('success'))
-                <div class="alert alert-success">
-                    <p style="color: green;">{{ session('success') }}</p>
-                </div>
-            @endif
-
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $e)
-                            <li>{{ $e }}</li>
-                        @endforeach
-                    </ul>
-                </div>    
-            @endif
 
             @if(Auth::check())
                 <div class="card shadow-sm mb-4">
@@ -192,3 +187,32 @@
     </div>
  
 </x-layout>
+
+<script>
+
+    //these scripts set the success and failure messages to fade out
+    //after 2 seconds of being on screen
+    //looks badboy
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const alert = document.getElementById('danger-alert');
+        if (alert) {
+            setTimeout(() => {
+                alert.style.transition = 'opacity 0.5s ease-out';
+                alert.style.opacity = '0';
+                setTimeout(() => alert.remove(), 500);
+            }, 2000);
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const alert = document.getElementById('success-alert');
+        if (alert) {
+            setTimeout(() => {
+                alert.style.transition = 'opacity 0.5s ease-out';
+                alert.style.opacity = '0';
+                setTimeout(() => alert.remove(), 500);
+            }, 2000);
+        }
+    });
+</script>

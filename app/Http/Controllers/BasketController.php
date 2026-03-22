@@ -104,11 +104,11 @@ class BasketController extends Controller
         $stock = Stock::where('product_id', $product->id)->first();
 
         if ($stock->stock <= 0) {
-            return back()->with('error', 'MONKEY HAS NO BANANAS!!!!!');
+            return redirect()->back()->withErrors(['stock' => 'This product is no longer in stock.',]);
         }
 
         if ($quantity > $stock->stock) {
-            return back()->with('error', 'MONKEY DOESNT HAVE ENOUGH BANANASS!!! :(');
+            return redirect()->back()->withErrors(['stock' => 'There is not enough stock to fulfil your order. Please select a lesser quantity.',]);
         }
 
 
@@ -116,7 +116,7 @@ class BasketController extends Controller
             $basketItem->quantity += $quantity;
 
             if ($basketItem->quantity > $stock->stock) {
-            return back()->with('error', 'MONKEY DOESNT HAVE ENOUGH BANANASSSSSS!!!! :(');
+            return redirect()->back()->withErrors(['stock' => 'There is not enough stock to fulfil your order. Please select a lesser quantity.',]);
         }
 
             $basketItem->save();
@@ -147,7 +147,7 @@ class BasketController extends Controller
         $stock = Stock::where('product_id', $productId)->first();
 
             if ($quantity > $stock->stock) {
-                return back()->with('error', "MONKEY DOESNT HAVE ENOUGH BANANASSSSSS!!!! :( only {$stock->stock} for {$basketItem->product->name}");
+                return back()->with('error', "There is not enough stock to fulfil your order. Please select a lesser quantity.");
             }
 
 
