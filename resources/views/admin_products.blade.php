@@ -22,7 +22,46 @@
     <h1> Products</h1>
     <p> Manage products and stock levels</p>
 
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+<!--filter bar-->
+    <form method="GET" class="filter-bar">
+        <input type="text" name="search" placeholder="Search product name..."  value="{{ request('search')}}">
+
+        <!--category-->
+        <select name="category">
+            <option value="">All Categories</option>
+            @foreach($categories as $cat)
+            <option value="{{ $cat->id}}" 
+            {{ request('category')== $cat->id ? 'selected' : '' }}>
+            {{ $cat->name}}
+
+            </option>
+
+            @endforeach
+        </select>
+
+        <!--Stock -->
+    <select name="stock_status">
+        <option value="">All Stock </option>
+        <option value="in" {{ request('stock_status')=='in' ? 'selected' : '' }}> In Stock-Z</option>
+        <option value="low" {{ request('stock_status')=='low' ? 'selected' : '' }}>Low Stock-A</option>
+        <option value="out" {{ request('stock_status')=='out' ? 'selected' : '' }}>Out Of Stock</option>
+    </select>
+
+
+    <!--Sort --->
+    <select name="sort">
+        <option value=""> Newest </option>
+        <option value="price_asc" {{ request('sort')=='price_asc' ? 'selected' : '' }}>Price Low -> High</option>
+        <option value="price_desc" {{ request('sort')=='price_desc' ? 'selected' : '' }}>Price High -> Low</option>
+    </select>
+
+    <!--Buttons--->
+    <button type="submit" class="filter-btn">Filter</button>
+    <a href="{{ route('admin.products') }}" class="reset-btn">Reset</a>
+
+</form>
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
         <h2 style="color: #061156; font-size: 1.2rem; margin: 0;">Product Information</h2>
         <a href="{{ route('admin.customers.create') }}" style="background: #28a745; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px;">Add Product</a>
     </div>
@@ -35,7 +74,6 @@
     @if(session('error'))
         <div class="alert alert-danger"> {{ session('error') }} </div>
     @endif
-
 <!-- Stock management table -->
 <section class="table-section">
     <h2>Stock Levels</h2>
@@ -74,7 +112,7 @@
         <!-- Manually updating stock -->
         <form action="{{ route('updateStock', $product) }}" method="POST" class="d-inline-flex gap-3">
             @csrf
-            <input type="number" name="stock" value="{{ $product->stock->stock }}"  min="0" class="form-control form-control-sm" style="width:100px;">
+            <input type="number" name="stock" value="{{ $product->stock->stock ?? 0 }}"  min="0" class="form-control form-control-sm" style="width:100px;">
             <button type="submit" class="btn btn-sm btn-outline-dark"> Update </button>
         </form>
 
@@ -90,6 +128,8 @@
 @endforeach
 
 </table>
+
+{{ $products->links()}}
 
 </main>
 
@@ -244,6 +284,63 @@ color: #2e2e2e;
 .table-section tr:hover td{
     background: rgba(189, 171, 83, 0.020);
 
+}
+
+.filter-bar{
+    display: flex;
+    justify-content:center;
+    gap:12px;
+    margin-bottom: 25px;
+    flex-wrap: nowrap;
+    align-items: center;
+    background: white;
+    padding: 15x 18px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+.filter-bar input, .filter-bar select{
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid #dcdcdc;
+    font-size: 0.95rem;
+    min-width: 150px;
+}
+
+.filter-bar input{
+    min-width: 220px;
+}
+
+
+.filter-bar input:focus, .filter-bar select:focus{
+    outline: none;
+    border-color: #1f3d2b;
+    box-shadow: 0 0 0 2px rgba(31, 61, 43, 0.15);
+}
+
+.filter-btn{
+    background: #39e87f;
+    color: white:
+    border: none:
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    
+}
+
+/**hover effect */
+.filter-btn:hover, .reset-btn:hover{
+    transform: translateY(-2px);
+}
+
+/**reset button */
+.reset-btn{
+    padding: 10px 16px;
+    background: #2f3d68;
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
 }
 
 
