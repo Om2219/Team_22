@@ -48,7 +48,7 @@ class CustomerController extends Controller {
         } elseif ($sort == 'oldest') {
             $query->orderBy('created_at', 'asc');
         } else {
-            $query->orderBy('created_at', 'desc');
+            $query->orderBy('id', 'asc');
         }
 
         // 20 items per page
@@ -75,6 +75,7 @@ class CustomerController extends Controller {
             'is_active' => true
         ]);
 
+        $customer->update($validated);
         return redirect()->route('admin.customers')->with('success', 'User created');
     }
 
