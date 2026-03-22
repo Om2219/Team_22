@@ -5,7 +5,7 @@
     document.documentElement.dataset.bsTheme = "dark";
   } else {
     document.documentElement.dataset.bsTheme = "light";
-  }
+  } //brief script that allows the colour mode to stay consistent when traveling through the website
 </script>
 {{-- Page top with facion and page name --}}
 <head>
@@ -130,8 +130,8 @@
               <button class ="headbut"><a href="{{ route('products.cat', 'rewards')}}" class="text-green text-decoration-none">Rewards</a></button>
               <button class ="headbut"><a href="/contactform" class="text-green text-decoration-none">Contact Us</a></button>
               <button class ="headbut"><a href="/faq" class="text-green text-decoration-none">FAQ</a></button>
-              <button id ="aiBtn" class ="headbut"><a class="text-green text-decoration-none">AI Chatbot</a></button>
-              <button id ="darkBtn" class ="headbut"><a id="mTxt" class="text-green text-decoration-none"></a></button>  
+              <button id ="aiBtn" class ="headbut"><a class="text-green text-decoration-none">AI Chatbot</a></button> <!-- Button to toggle the AI chatbot-->
+              <button id ="darkBtn" class ="headbut"><a id="mTxt" class="text-green text-decoration-none"></a></button> <!-- Button to toggle the Light/Dark mode--> 
           </div><br> 
         </nav> 
       </header>
@@ -141,17 +141,17 @@
   <main class="container">
     {{-- the script containing the functions required upon opening the page--}}
     <script> 
-    window.onload = function() {
+    window.onload = function() { 
       let aiChatbot = document.getElementById("chatbot");
-      let chatbotBtn = document.getElementById("aiBtn");
-      aiChatbot.style.display="none";
+      let chatbotBtn = document.getElementById("aiBtn"); 
+      aiChatbot.style.display="none"; // have the chatbot's base presentation be invisible 
       chatbotBtn.onclick = function() {
         if (aiChatbot.style.display === "none"){
           aiChatbot.style.display = "block";
         } else {
           aiChatbot.style.display = "none"
         }
-      }
+      } // display/hide the chatbot when the button is pressed
 
       let modeStatus = localStorage.getItem('modeStatus') === 'true';
       let dBtn = document.getElementById("darkBtn");
@@ -162,7 +162,7 @@
         } else {
           modeText.textContent = "Light Mode";
           document.documentElement.dataset.bsTheme = "dark"
-        }
+        } // set the page to be light or dark based on the "modeStatus" expression
       dBtn.onclick = function() {
         modeStatus = !modeStatus;
         console.log("dark mode is ", modeStatus);
@@ -175,7 +175,7 @@
           document.documentElement.dataset.bsTheme = "dark"
         }
         localStorage.setItem('modeStatus', modeStatus);
-      } 
+      } // when the mode button is pressed, reverse the status of "modeStatus"
     };
     </script>
   @include("ai")
