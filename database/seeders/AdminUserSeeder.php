@@ -19,6 +19,7 @@ class AdminUserSeeder extends Seeder {
                 'password' => Hash::make('password'), // Change this to a secure password on the website
                 'role' => 'admin',
                 'is_active' => true,
+                'change_password' => true,
             ]);
         }
     }
