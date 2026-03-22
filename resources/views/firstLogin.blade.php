@@ -11,11 +11,9 @@
         <!-- Error message -->
         @if ($errors->any())
             <div class="alert alert-danger" id="danger-alert">
-                <ul class="mb-0">
-                    @foreach ($errors->all() as $error)
-                    <li>{{$error}}</li>
-                    @endforeach
-                </ul>
+                @foreach ($errors->all() as $error)
+                    {{$error}}
+                @endforeach
             </div>
         @endif
 
@@ -148,3 +146,32 @@
         text-align: center; 
     }
 </style>
+
+<script>
+
+    //these scripts set the success and failure messages to fade out
+    //after 2 seconds of being on screen
+    //looks badboy
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const alert = document.getElementById('danger-alert');
+        if (alert) {
+            setTimeout(() => {
+                alert.style.transition = 'opacity 0.5s ease-out';
+                alert.style.opacity = '0';
+                setTimeout(() => alert.remove(), 500);
+            }, 2000);
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const alert = document.getElementById('success-alert');
+        if (alert) {
+            setTimeout(() => {
+                alert.style.transition = 'opacity 0.5s ease-out';
+                alert.style.opacity = '0';
+                setTimeout(() => alert.remove(), 500);
+            }, 2000);
+        }
+    });
+</script>

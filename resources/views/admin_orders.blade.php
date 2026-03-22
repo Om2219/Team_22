@@ -101,6 +101,8 @@
                         <option value="Shipped" {{ $order->status == 'Shipped' ? 'selected' : '' }}>Shipped</option>
                         <option value="Delivered" {{ $order->status == 'Delivered' ? 'selected' : '' }}>Delivered</option>
                         <option value="Cancelled" {{ $order->status == 'Cancelled' ? 'selected' : '' }}>Cancelled</option>
+                        <option value="Pending Refund" {{ $order->status == 'Pending Refund' ? 'selected' : '' }}>Pending Refund</option>
+                        <option value="Refunded" {{ $order->status == 'Refunded' ? 'selected' : '' }}>Refunded</option>
                     </select>
                 </form>
             </td>

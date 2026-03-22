@@ -10,7 +10,7 @@
             <div class="card border-dark text-center h-100 modeBoxes">
                 <div class="card-body d-flex flex-column">
                     <h2>My Orders</h2>
-                    <p> Track, Return, Cancel your parcels</p>
+                    <p> Track, return and cancel your orders</p>
                     <a class = "headbut mt-auto mb-3" href="/order">Check My Orders</a>
                 </div>
             </div>
@@ -20,7 +20,7 @@
             <div class="card border-dark text-center h-100 modeBoxes">
                 <div class="card-body d-flex flex-column">
                     <h2>My Details</h2>
-                    <p> Manage and Change Email and Password</p>
+                    <p> Manage and change account details</p>
                     <a class = "headbut mt-auto mb-3" href="/mydetails">Edit My Details</a>
                 </div>
             </div>
@@ -30,8 +30,8 @@
             <div class="card border-dark text-center h-100 modeBoxes">
                 <div class="card-body d-flex flex-column">
                     <h2>Wishlist</h2>
-                    <p>View your Favourite Products</p>
-                    <a class="headbut mt-auto mb-3" href="{{ route('wishlist.index') }}">View wishlist</a>
+                    <p>View your favourite products</p>
+                    <a class="headbut mt-auto mb-3" href="{{ route('wishlist.index') }}">View Wishlist</a>
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@
                 <div class="card-body d-flex flex-column">
                     <h2>My Rewards</h2>
                     <p> Go to your Rewards Page</p>
-                    <a class = "headbut mt-auto mb-3" href="/reward"> my rewards</a>
+                    <a class = "headbut mt-auto mb-3" href="/reward"> My Rewards</a>
                 </div>
             </div>
         </div>
@@ -50,7 +50,7 @@
             <div class="card border-dark text-center h-100 modeBoxes">
                 <div class="card-body d-flex flex-column">
                     <h2>Sign Out</h2>
-                    <p> Sign Out Of Your Account</p>
+                    <p> Sign out of your ccount</p>
                     <form method = "POST" action="{{route('logout')}}" class="mt-auto">
                     @csrf
                         <button type="submit" class = "headbut w-100 mb-3">Sign Out</button>

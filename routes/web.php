@@ -154,7 +154,6 @@ Route::post('login', [LoginController::class, 'store'])->name('login.store'); //
 Route::post('logout', [LoginController::class, 'logout'])->name('logout'); //logsout user 
 Route::post('contactform', [ContactFormController::class, 'submit'])->name('contactform.submit');
 
-
 //admin login route
 Route::get('admin/login', [AdminWebLoginController::class, 'showLoginForm'])->name('admin.login');
 Route::post('admin/login', [AdminWebLoginController::class, 'login'])->name('admin.login.submit');
@@ -166,6 +165,9 @@ Route::get('termsandprivacy', function () { return view('termsandprivacy'); }); 
 
 Route::get('/forgotPassword', [DetailsController::class, 'show_forgotPassword'])->name('forgotPassword.show'); //shows forgot password page
 Route::post('/forgotPassword', [DetailsController::class, 'update_forgotPassword'])->name('forgotPassword.update'); //updates the password in the database
+
+Route::get('refund/{ref}', [BasketController::class, 'showRefundForm'])->name('refund.show'); //shows refund form
+Route::post('refund/{ref}', [BasketController::class, 'submitRefund'])->name('refund.submit'); //submits refund request to table
 
 Route::middleware(['auth', 'admin'])->group(function() {
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])

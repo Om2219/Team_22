@@ -69,7 +69,7 @@ class OrderController extends Controller {
     // Update status of an order
     public function updateStatus(Request $request, $id) {
         $request->validate([
-            'status' => 'required|in:Pending,Processing,Shipped,Delivered,Cancelled',
+            'status' => 'required|in:Pending,Processing,Shipped,Delivered,Cancelled,Pending Refund,Refunded',
         ]);
 
         $order = Order::find($id);
@@ -86,7 +86,7 @@ class OrderController extends Controller {
     // Update status (web view)
     public function webUpdateStatus(Request $request, $id) {
         $request->validate([
-            'status' => 'required|in:Pending,Processing,Shipped,Delivered,Cancelled',
+            'status' => 'required|in:Pending,Processing,Shipped,Delivered,Cancelled,Pending Refund,Refunded',
         ]);
 
         $order = Order::find($id);

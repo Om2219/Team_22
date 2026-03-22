@@ -10,7 +10,7 @@
 
     <div class="order-panels">
 
-        <div class="order-summary">
+        <div class="order-summary modeBoxes">
 
             <h3>Order Summary</h3>
 
