@@ -29,7 +29,6 @@ class DatabaseSeeder extends Seeder
             Accountseeder1::class,
             AdminUserSeeder::class,
             VoucherSeeder::class,
-            ReviewSeeder::class,
             
         ]);
         
