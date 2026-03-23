@@ -21,6 +21,11 @@
 <main class="Admin_Content">
 <div class="form-card">
     <h1> Edit Customers</h1>
+    @if(session('success'))
+    <div style="background: #d4edda; color: #155724; padding: 12px; border-radius: 4px; margin-bottom: 20px;">
+        {{ session('success') }}
+    </div>
+    @endif
 
 <form action="{{ route ('admin.customers.update', $user->id) }}" method="POST">
 @csrf
@@ -41,6 +46,14 @@
 <div class="form-group">
     <label>Email</label>
     <input type="email" name="email" value="{{ $user->email}}">
+</div>
+
+<div class="form-group">
+    <label>Status</label>
+    <select name="is_active">
+        <option value="1" {{ $user->is_active ? 'selected' : '' }}>Active</option>
+        <option value="0" {{ !$user->is_active ? 'selected' : '' }}>Banned</option>
+    </select>
 </div>
 
 </div>

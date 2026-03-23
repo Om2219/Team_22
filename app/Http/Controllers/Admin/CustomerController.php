@@ -93,6 +93,7 @@ class CustomerController extends Controller {
             'surname' => 'sometimes|required|string|max:255',
             'email' => "sometimes|required|email|unique:users,email,$id",
             'password' => 'sometimes|required|string|min:6',
+            'is_active' => 'sometimes|boolean',
         ]);
 
         if ($request->has('forename')) {
@@ -109,6 +110,10 @@ class CustomerController extends Controller {
 
         if ($request->has('password')) {
             $customer->password = Hash::make($request->password);
+        }
+
+        if ($request->has('is_active')) {
+            $customer->is_active = $request->is_active;
         }
 
         $customer->save();
