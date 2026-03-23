@@ -1,14 +1,14 @@
 <x-layout>
     <div class="loginPage">
+        @if ($errors->any())
+            <div class="alert alert-danger" id="danger-alert">
+                @foreach ($errors->all() as $error)
+                    {{$error}}</br>
+                @endforeach
+            </div>
+        @endif
         <form action="{{ route('admin.login.submit') }}" method="POST" class="loginForm">
             @csrf
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    @foreach ($errors->all() as $error)
-                        {{$error}}</br>
-                    @endforeach
-                </div>
-            @endif
             <div class="imgcontainer">
                         <img src="{{ asset('images/img_avatar2.png') }}" alt= "Admin Avatar" class ="avatar">
             </div>
@@ -173,3 +173,31 @@
         }
     }
 </style>
+<script>
+
+    //these scripts set the success and failure messages to fade out
+    //after 2 seconds of being on screen
+    // Same as user login
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const alert = document.getElementById('danger-alert');
+        if (alert) {
+            setTimeout(() => {
+                alert.style.transition = 'opacity 0.5s ease-out';
+                alert.style.opacity = '0';
+                setTimeout(() => alert.remove(), 500);
+            }, 2000);
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const alert = document.getElementById('success-alert');
+        if (alert) {
+            setTimeout(() => {
+                alert.style.transition = 'opacity 0.5s ease-out';
+                alert.style.opacity = '0';
+                setTimeout(() => alert.remove(), 500);
+            }, 2000);
+        }
+    });
+</script>
