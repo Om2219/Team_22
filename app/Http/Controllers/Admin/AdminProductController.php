@@ -50,7 +50,7 @@ class AdminProductController extends Controller {
         } elseif($sort == 'price_desc') {
             $query->orderBy('price', 'desc');
         } else {
-            $query->orderBy('created_at', 'desc');
+            $query->orderBy('id', 'asc');
         }
 
         $categories = Category::orderBy('name')->get();
