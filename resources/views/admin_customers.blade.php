@@ -73,8 +73,11 @@
             <td>{{ $user->email }}</td>
 
             <td>
+                @if($user->is_active)
                  <span style="color: #28a745;">Active</span>
-               
+                @else
+                <span style="color: #c44536;">Banned</span>
+                @endif
             </td>
 
             <!--Edit button-->
