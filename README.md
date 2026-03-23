@@ -19,7 +19,7 @@ Welcome to Team 22's Project Roots, a website for all of your stationery and art
 - User account authentication
 
 ## Demo
-You can check out the live site [here](https://yourwebsite.com).
+You can check out the live site [here](http://cs2team22.cs2410-web01pvm.aston.ac.uk).
 
 ## Installation
 To run a local version of the website, do the following:
