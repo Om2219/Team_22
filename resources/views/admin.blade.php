@@ -2,6 +2,13 @@
     <div class="loginPage">
         <form action="{{ route('admin.login.submit') }}" method="POST" class="loginForm">
             @csrf
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    @foreach ($errors->all() as $error)
+                        {{$error}}</br>
+                    @endforeach
+                </div>
+            @endif
             <div class="imgcontainer">
                         <img src="{{ asset('images/img_avatar2.png') }}" alt= "Admin Avatar" class ="avatar">
             </div>
