@@ -14,9 +14,8 @@ class DashboardController extends Controller {
         $totalUsers = User::where('role', 'customer')->count();
         $totalOrders = Order::count();
         $totalProducts = Product::count();
-        
+        // Can see the 7 most recent orders (random number based on what looked best)
         $recentOrders = Order::with('user')->orderBy('created_at', 'desc')->limit(7)->get();
-
         return view('admin_dashboard', compact('totalUsers', 'totalOrders', 'totalProducts', 'recentOrders'));
     }
 }

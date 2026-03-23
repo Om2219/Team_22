@@ -24,7 +24,7 @@ class ContactController extends Controller {
         $request->validate([
             'reply' => 'required|string',
         ]);
-
+        // Finding the message by id with error message
         $message = ContactForm::find($id);
         if (!$message) {
             return redirect()->route('admin.contactforms')->with('error', 'Message not found');
@@ -40,27 +40,30 @@ class ContactController extends Controller {
     // Delete
     public function destroy($id) {
         $message = ContactForm::find($id);
-        
+        // Error message if we can't find the message
         if (!$message) {
             return redirect()->route('admin.contactforms')->with('error', 'Message not found');
         }
-
+        //  Delete the message + success
         $message->delete();
         return redirect()->route('admin.contactforms')->with('success', 'Message deleted');
     }
 
     // For the messages page
     public function messages(Request $request) {
+        // Ordered by newest message
         $messages = ContactForm::orderBy('created_at', 'desc')->get();
+        // No selected message - waiting for a message to be clicked
         $selectedMessage = null;
+        // Checking for certain id
         if ($request->has('id')) {
             $selectedMessage = ContactForm::find($request->id);
+            // Changing message to read
             if ($selectedMessage && !$selectedMessage->is_read) {
                 $selectedMessage->is_read = true;
                 $selectedMessage->save();
             }
         }
-        
         return view('admin_msg', compact('messages', 'selectedMessage'));
     }
 }

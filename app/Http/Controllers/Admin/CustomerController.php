@@ -18,7 +18,6 @@ class CustomerController extends Controller {
     // Web view
     public function webIndex(Request $request) {
         $query = User::where('role', 'customer');
-
         // search using name and email
         if ($request->search) {
             $query->where(function($q) use ($request) {
@@ -37,7 +36,7 @@ class CustomerController extends Controller {
             }
         }
 
-        // sort
+        // sort, default is id ordering
         $sort = $request->get('sort');
         if ($sort == 'name_asc') {
             $query->orderBy('forename', 'asc');
@@ -51,13 +50,14 @@ class CustomerController extends Controller {
             $query->orderBy('id', 'asc');
         }
 
-        // 20 items per page
+        // 20 items per page like in product pages
         $users = $query->paginate(20)->withQueryString();
         return view('admin_customers', compact('users'));
     }
 
     // Create a new customer
     public function store(Request $request) {
+        // All fields that are needed
         $validate = $request->validate([
             'forename' => 'required|string|max:255',
             'surname' => 'required|string|max:255',
@@ -65,7 +65,7 @@ class CustomerController extends Controller {
             'password' => 'required|min:6',
             'role' => 'required|in:admin,customer'
         ]);
-
+        // Hashing the password for security and setting the status to active
         User::create([
             'forename' => $request->forename,
             'surname' => $request->surname,
@@ -74,7 +74,6 @@ class CustomerController extends Controller {
             'role' => $request->role,
             'is_active' => true
         ]);
-
         return redirect()->route('admin.customers')->with('success', 'User created');
     }
 
@@ -87,7 +86,7 @@ class CustomerController extends Controller {
     // Update a customer
     public function update(Request $request, $id) {
         $customer = User::where('role', 'customer')->findOrFail($id);
-
+        // Must validate all fields
         $request->validate([
             'forename' => 'sometimes|required|string|max:255',
             'surname' => 'sometimes|required|string|max:255',
@@ -95,7 +94,7 @@ class CustomerController extends Controller {
             'password' => 'sometimes|required|string|min:6',
             'is_active' => 'sometimes|boolean',
         ]);
-
+        // Updating whatever field was changed
         if ($request->has('forename')) {
             $customer->forename = $request->forename;
         }
@@ -115,7 +114,6 @@ class CustomerController extends Controller {
         if ($request->has('is_active')) {
             $customer->is_active = $request->is_active;
         }
-
         $customer->save();
         return redirect()->route('admin.customers')-> with('success', 'User updated Successfully');
 
@@ -136,7 +134,7 @@ class CustomerController extends Controller {
 
     
 
-    //  Customer edit
+    //  Customer edit and the data thats already there
     public function edit($id) {
         $user = User::where('role', 'customer')->findOrFail($id);
         return view('admin_customers_edit', compact('user'));

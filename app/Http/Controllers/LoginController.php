@@ -12,6 +12,8 @@ class LoginController extends Controller {
     public function create(){
         return view('login');
     }
+
+    // Handling user login
     public function store(Request $request){
         $request->validate([ 'email' => 'required|email', 'password' => 'required']);
         $user = User::where('email', $request->email)->first();

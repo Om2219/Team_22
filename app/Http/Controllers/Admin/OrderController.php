@@ -17,7 +17,6 @@ class OrderController extends Controller {
     // Web view
     public function webIndex(Request $request) {
         $query = Order::with('user');
-
         // can search by id or cusotmer name
         if ($request->search) {
             $query->where('id', 'like', '%' . $request->search . '%')
@@ -40,7 +39,7 @@ class OrderController extends Controller {
             $query->whereDate('created_at', '>=', $request->date_from);
         }
 
-        // sort
+        // sort, default is by id
         $sort = $request->get('sort');
         if ($sort == 'oldest') {
             $query->orderBy('created_at', 'asc');
@@ -49,8 +48,7 @@ class OrderController extends Controller {
         } else {
             $query->orderBy('id', 'desc');
         }
-
-        // 20 orders per page
+        // 20 orders per page like in product page
         $orders = $query->paginate(20)->withQueryString();
         return view('admin_orders', compact('orders'));
     }
@@ -58,11 +56,10 @@ class OrderController extends Controller {
     // Find orders by id
     public function show($id) {
         $order = Order::with(['user', 'items.product'])->find($id);
-
+        // Error message if cant find id
         if(!$order) {
             return response()->json(['message' => 'Order not found'], 404);
         }
-
         return response()->json($order);
     }
 
@@ -73,11 +70,11 @@ class OrderController extends Controller {
         ]);
 
         $order = Order::find($id);
-
+        // Error message
         if(!$order) {
             return response()->json(['message' => 'Order not found'], 404);
         }
-
+        // Success message
         $order->status = $request->status;
         $order->save();
         return response()->json(['message' => 'Order status updated']);
@@ -90,11 +87,11 @@ class OrderController extends Controller {
         ]);
 
         $order = Order::find($id);
-
+        // Error message
         if(!$order) {
             return redirect()->back()->with('error', 'Order not found');
         }
-
+        // Success message
         $order->status = $request->status;
         $order->save();
         return redirect()->back()->with('success', 'Order status updated');

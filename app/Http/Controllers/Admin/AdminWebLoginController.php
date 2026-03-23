@@ -13,7 +13,7 @@ class AdminWebLoginController extends Controller {
         return view('admin');
     }
 
-    // Handling login (admins)
+    // Handling login (admins), check if they are logging in correctly
     public function login(Request $request){
         $request->validate([
             'email' => 'required|email',
@@ -46,6 +46,7 @@ class AdminWebLoginController extends Controller {
             ]);
         }
 
+        // Error message for other errors
         return back()->withErrors([
             'email' => 'Invalid login details.',
         ]);
